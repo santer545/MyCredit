@@ -1,0 +1,173 @@
+html {
+    height: 100%;
+}
+
+body {
+    font: #{$body-font-size} / #{$body-line-height} $font-family-base;
+    background-color: $body-bg;
+    color: $brand-primary;
+    height: 100%;
+    @media screen and (max-width: $screen-md-max) {
+        line-height: $line-height-base;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: $body-font-size-mobile;
+    }
+    &.modal-open {
+        position: fixed;
+        overflow: auto;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+b,
+strong {
+    font-family: $font-family-bold;
+}
+
+a {
+    outline: none;
+    color: $base-link-color;
+    border-bottom: 1px solid $base-link-color;
+    &:focus,
+    &:hover {
+        outline: none;
+        text-decoration: none;
+        color: $base-link-color;
+        border: none;
+    }
+}
+a[href^="tel"] {
+    color: $base-link-color;
+    border-bottom: none;
+    cursor: pointer;
+}
+a[href^="mailto"] {
+    border-bottom: none;
+}
+
+p::selection,
+a::selection,
+label::selection,
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
+h6::selection,
+blockquote::selection,
+span::selection,
+strong::selection,
+li::selection {
+    background-color: $selection-color;
+}
+
+p::-moz-selection,
+a::-moz-selection,
+label::-moz-selection,
+h1::-moz-selection,
+h2::-moz-selection,
+h3::-moz-selection,
+h4::-moz-selection,
+h5::-moz-selection,
+h6::-moz-selection,
+blockquote::-moz-selection,
+span::-moz-selection,
+strong::-moz-selection,
+li::-moz-selection {
+    background-color: $selection-color;
+}
+
+label {
+    margin: 0;
+    font-weight: normal;
+}
+
+button,
+input[type="submit"] {
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.wrapper {
+    width: 100%;
+    min-width: 320px;
+    display: table;
+    table-layout: fixed;
+    overflow: hidden;
+    min-height: 100%;
+}
+
+.container-fluid {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    &--sm {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+}
+
+.container-big{
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: $container-padding;
+}
+
+.icons-sprite {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+ol{
+    padding: 0;
+    list-style-position: inside;
+}
+
+.custom-ul{
+    @include ul-reset;
+    margin-bottom: 30px;
+    li{
+        position: relative;
+        padding-left: $custom-ul-padding-left;
+        font: #{$custom-ul-font-size} / #{$custom-ul-line-height} $font-family-sans-serif;
+        @media screen and (max-width: $screen-xs-max) {
+            font-size: $custom-ul-font-size-mobile;
+        }
+        &:not(:last-child){
+            margin-bottom: 14px;
+        }
+        &:before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: $custom-ul-before-bg;
+        }
+    }
+    ul {
+        list-style-type: none;
+        padding: 0; 
+        margin: 0;  
+        li {
+            padding-left: 16px; 
+            &:before {
+                top: 11px!important;  
+                width: 6px;    
+                height: 1px;    
+                background-color: #333;
+            }
+            &:not(:last-child){
+                margin-bottom: 5px; 
+            }
+        }
+    }
+}

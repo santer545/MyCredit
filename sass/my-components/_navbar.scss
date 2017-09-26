@@ -1,0 +1,329 @@
+
+.navbar {
+    min-height: 0;
+    margin-bottom: 0;
+    margin-top: 30px;
+    padding: 0;
+    @include transition(margin-top 1s);
+    @media screen and (max-width: $screen-sm-max) {
+        margin-top: 5px;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        margin-top: 0;
+        padding-top: 25px;
+        border-bottom: 1px solid #dddddd;
+    }
+}
+
+
+.overflow-menu {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    @media screen and (max-width: $screen-xs-max) {
+        display: block; 
+    }
+    svg {
+        width: 30px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    li {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .more-menu {
+        li {
+            display: block;
+            float: none;
+            text-align: center;
+            &:not(:last-child) {
+                border-bottom: 1px solid #dddddd;
+            }
+        }
+        .dropdown-toggle {
+            @media screen and (max-width: $screen-xs-max) {
+                display: none;
+            }
+            @media screen and (min-width: 992px) {
+                display: none;
+            }
+        }
+        .dropdown-menu {
+            @media screen and (max-width: $screen-xs-max) {
+                position: static;
+                display: block;
+                float: none;  
+                border: none; 
+            }
+            li {
+                @media screen and (max-width: $screen-xs-max) {
+                    border: none;   
+                }
+            }
+        }
+    }
+    .dropdown-menu {
+        width: 186px;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        top: 40px;
+        border: 1px solid #dddddd;
+        border-radius: 20px;  
+        left: -78px;
+        
+        
+        a,
+        span {
+            display: block;
+            border: none;
+            padding: 10px 15px;
+            font: 14px "HelveticaNeueCyr Medium",Arial,sans-serif;
+            color: #0055b8;
+            &:hover {
+                background-color: transparent;
+            }
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0) rotate(45deg);
+            bottom: calc(100% - 10px);
+            background-color: #fff;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #dddddd;
+            border-bottom: none;
+            border-right: none;
+            @media screen and (max-width: $screen-xs-max) {
+                display: none;
+            }
+        }
+    }
+}
+
+
+.navbar-nav {
+    float: none;
+    font-size: 0;
+    margin: 0;
+    @media screen and (max-width: 991px) {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        margin-right: 0;
+        display: block; 
+    }
+    &:after {
+        content: "";
+        width: 100%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    li {
+        float: none;
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        &:not(:last-child) {
+            /* margin-right: 20px;
+            @media screen and (max-width: 1080px) {
+                margin-right: 14px;
+            }
+            @media screen and (max-width: $screen-sm-max) {
+                margin-right: 12px;
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                margin-right: 0;
+            } */
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            display: block;
+            text-align: left;
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background-image: url("../images/form-heading-bg.png");
+            background-repeat: no-repeat;
+            background-position: 0 100%;
+            background-size: 100% 3px;
+            @include translate(0,
+            -15px);
+            @include transition(transform 0.5s,
+            opacity 0.5s);
+            opacity: 0;
+            @media screen and (max-width: $screen-lg-max) {
+                background-size: 100% 3px;
+            }
+        }
+        &:hover {
+            a {
+                color: $second-color;
+            }
+            &:before {
+                display: none;
+                @include translate(0,
+                0);
+                opacity: 1;
+                @media screen and (max-width: $screen-lg-max) {
+                    @include translate(0, -6px);
+                }
+                @media screen and (max-width: $screen-xs-max) {
+                    @include translate(0,
+                    0);
+                }
+            }
+        }
+        a,
+        span {
+            font: $navbar-font-size $font-family-medium;
+            color: #0055b8;
+            border-bottom: none;
+            padding: $navbar-item-padding;
+            @include transition(color 0.3s);
+            @media screen and (max-width: 1300px) {
+                padding: 0 18px;
+            }
+            @media screen and (max-width: 1150px) {
+                font-size: 16px;
+                padding: 0 14px;
+            }
+            @media screen and (max-width: $screen-md-max) {
+                font-size: 17px;
+            }
+            @media screen and (max-width: 1080px) {
+                font-size: 16px;
+            }
+            @media screen and (max-width: 1030px) {
+                font-size: 15px;
+            }
+            @media screen and (max-width: $screen-sm-max) {
+                font-size: $navbar-font-size-laptop;
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                padding: $navbar-item-padding;
+            }
+            &:hover,
+            &:focus {
+                background-color: transparent;
+            }
+        }
+        span {
+            color: $second-color;
+        }
+        &.custom {
+            a,
+            span {
+                border: 1px dashed #ef5350;
+                color: #ef5350;
+                border-radius: 30px;
+                padding: 10px 30px 10px 20px;
+                background-image: url(../images/icons/menu-star.png);
+                background-position: 90% 13px;
+                background-repeat: no-repeat;
+                @media screen and (max-width: $screen-xs-max) {
+                    border: none;
+                    background-position: 22% 11px;
+                    display: block;
+                }
+                @media screen and (max-width: 350px) {
+                    background-position: 26% 11px;
+                }
+            }
+        }
+    }
+}
+
+.navbar-close {
+    position: absolute;
+    border: none;
+    display: none;
+    right: 15px;
+    width: 15px;
+    height: 15px;
+    top: 15px;
+    background-color: transparent;
+    opacity: 1;
+    background-image: url(../images/close.png);
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    cursor: pointer;
+    z-index: 2;
+    @media screen and (max-width: $screen-xs-max) {
+        display: block;
+    }
+}
+
+.navbar-collapse {
+    overflow: hidden;
+    @media screen and (max-width: $screen-sm-max) {
+        padding: 0 0 0 18px;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+
+        padding-left: 0;
+        background-color: #F8F7FC;
+        margin-bottom: -10px;
+        position: absolute;
+        top: 100%;
+        z-index: 20;
+        padding-bottom: 0;
+    }
+    
+}
+
+.dropdown-toggle {
+    border: none;
+    text-decoration: none;
+
+}
+
+.navbar-toggle {
+    float: none;
+    margin: 0;
+    background-color: $navbar-toggle-bg;
+    padding: 8px 10px 9px;
+    background-color: #4281ca;
+    @media screen and (max-width: $screen-xs-max) {
+        float: right;
+        height: auto;
+        margin-right: 0;
+        margin-left: 5px;
+        margin-top: 3px;
+        padding: 6px 10px;
+        display: block; 
+    }
+    
+    svg {
+        display: inline-block;
+        vertical-align: middle;
+        width: 30px;
+        height: 20px;
+    }
+    .icon-bar {
+        background-color: $icon-bar-bg;
+        @media screen and (max-width: $screen-xs) {
+            width: 15px;
+        }
+    }
+}
+
+.header-content {
+    .new-main .language-wr {
+        @media screen and (max-width: $screen-xs-max) {
+            margin-top: 3px;    
+        }
+    }
+    
+}

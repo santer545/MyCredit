@@ -1,0 +1,1193 @@
+
+.form {
+    &-submit {
+        display: inline-block;
+        vertical-align: middle;
+        &:nth-of-type(1) {
+            margin-right: 20px;
+            @media screen and (max-width: $screen-xs-max) {
+                margin-right: 0;
+            }
+            @media screen and (max-width: 340px) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+    &-wr {
+        padding: $form-wr-padding;
+        @media screen and (max-width: $screen-md-max) {
+            padding: $form-wr-padding-laptop;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            padding: $form-wr-padding-mobile;
+        }
+        a {
+            border: none;
+            color: #0056b8;
+            font-family: $font-family-roman;
+            text-decoration: underline;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    &-capitalize{
+        &:first-letter{
+            text-transform: capitalize;
+        }
+    }
+    &-group {
+        position: relative; 
+        margin-bottom: 17px;
+        font-size: 0;   
+        @include clearfix;
+        @media screen and (max-width: $screen-sm-max) {
+            margin-bottom: 20px;
+        }
+        &--label{
+            .form-label{
+                margin-top: 21px;
+            }
+        }
+        &--inline {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        &--margin {
+            margin-right: 20px;
+            margin-bottom: 0;
+            & + .btn {
+                vertical-align: top;
+            }
+        }
+        &--code{
+            width: 40%;
+            padding-right: 20px;
+            @media screen and (max-width: $screen-xs-max) {
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        &--phone{
+            width: 60%;
+            @media screen and (max-width: $screen-xs-max) {
+                width: 100%;
+            }
+        }
+    }
+    &-control--prolongation{
+        width: 90%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &-control--wr {
+    	position: relative;
+        width: 66%; 
+        float: left;  
+        &--pass {
+            float: none;
+            width: 100%;
+        }
+        &.dispensable{
+            .help-info{
+                top: 20px;
+            }
+        }
+        &:hover {
+            .help-tooltip-data--hover {
+                display: block;
+                opacity: 1;
+            }
+        }
+        .help-info{
+            @media screen and (max-width: $screen-sm-max) {
+                float: left;
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                float: none;
+            }
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            float: none;
+            padding: 0;
+            width: 100%;
+            text-align: left;
+        }
+    }
+    &-control {
+        height: $form-control-height;
+        border-radius: $form-control-radius;
+        border: 1px solid $form-control-border;
+        background-color: $form-control-bg;
+        color: $form-control-color;
+        padding: $form-control-padding;
+        font: #{$form-control-font-size} / #{$form-control-line-height} $font-family-roman;
+        @media screen and (max-width: $screen-sm-max) {
+            height: $form-control-height-tablet;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            width: 100%;
+            font: #{$form-control-font-size} / #{$form-control-line-height-phone} $font-family-roman;
+            padding: 0 30px 0 15px;
+        }
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: $form-control-placeholder-color;
+            @media screen and (max-width: $screen-xs-max) {
+                font-size: $form-control-placeholder-font-size;
+            }
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+            color: $form-control-placeholder-color;
+            @media screen and (max-width: $screen-xs-max) {
+                font-size: $form-control-placeholder-font-size;
+            }
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+            color: $form-control-placeholder-color;
+            @media screen and (max-width: $screen-xs-max) {
+                font-size: $form-control-placeholder-font-size;
+            }
+        }
+        
+        
+        &--spacing {
+            letter-spacing: 5px;    
+        }
+        &:focus{
+        	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                color: #fff;
+            }
+            &::-moz-placeholder { /* Firefox 19+ */
+                color: #fff;
+            }
+            &:-ms-input-placeholder { /* IE 10+ */
+                color: #fff;
+            }
+        }
+
+        &.input-disabled{
+            width: 100%;
+            height: auto;
+            padding: 0;
+            border-radius: 0;
+            border: 1px solid transparent;
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            background-color: transparent;
+        }
+        &--sm {
+            @media screen and (max-width: $screen-xs-max) {
+                padding-left: 20px;
+            }
+        }
+    }
+    &-prolongation{
+        font-size: 19px;
+    }
+    &-select--wrapper{
+        margin-bottom: 17px;
+    }
+    &-slider{
+        display: none;
+        @include transition(max-height 0.5s);
+        &--hidden{
+            max-height: 1000px;
+            overflow: visible;
+        }
+    }
+
+    &-number-date {
+        width: 125px;   
+        display: inline-block;  
+        vertical-align: top;  
+        @media screen and (max-width: $screen-md-max) {
+            width: 30%;   
+        }  
+    }
+    &-number-house {
+        width: 110px;   
+        display: inline-block;  
+        vertical-align: top;    
+        @media screen and (max-width: $screen-md-max) {
+            width: 30%; 
+        }
+    }
+
+    &-month-date {
+        width: 190px;   
+        display: inline-block;  
+        vertical-align: top;    
+        @media screen and (max-width: $screen-md-max) {
+            width: 30%;   
+        }
+    }
+
+
+    &-info {
+        position: absolute;
+        left: 0;    
+        top: 13px;
+        width: 25px;
+        cursor: pointer;
+        @media screen and (max-width: $screen-xs-max) {
+            top: 0;
+            left: 0;    
+        }
+        &--right {
+            right: 10px;
+        }
+        &--bottom {
+            top: 28px;
+        }
+        &--top {
+            top: 21px;  
+        }
+        img {
+            width: 17px;
+            height: 17px;
+        }
+    }
+    &-label {
+       float: left;
+        width: 34%; 
+        padding-right: 10px;   
+        padding-top: 13px;   
+        padding-left: 30px; 
+        margin-bottom: 0;   
+        font: #{$form-label-font-size} / #{$form-label-line-height} $font-family-bold;
+        color: $form-label-color;
+        @media screen and (max-width: $screen-xs-max) {
+            float: none;
+            padding: 0;
+            width: 100%;
+            margin: 0 0 5px 30px;
+        }
+        &--default {
+            width: 100%;    
+            padding: 0; 
+            margin-bottom: 5px; 
+            margin-left: 0; 
+        }
+        &--child {
+            display: block;
+            width: 100%;
+            margin: 0 0 6px 5px;
+            color: $form-label-color;
+            font: #{$form-label-font-size} / #{$form-label-child-line-height} $font-family-bold;
+            @media screen and (max-width: $screen-xs) {
+                margin: 0 0 6px;
+            }
+        }
+    }
+    &-btn--wr {
+        text-align: right;
+        @media screen and (max-width: $screen-xs-max) {
+            text-align: center;
+        }
+    }
+    .help-block {
+        font: #{$help-block-font-size} / #{$help-block-line-height} $font-family-roman;
+        color: $help-block-color;
+        margin: 7px 0 0;
+        text-align: left;
+        @media screen and (max-width: $screen-xs-max) {
+            padding: 0;
+        }
+    }
+    &-credit--result {
+        padding: $form-credit-result-padding;
+        background-color: $form-credit-result-bg;
+        border: 1px dashed $form-credit-result-border;
+        @media screen and (max-width: $screen-xs-max) {
+            margin-bottom: 30px;
+        }
+        .form-credit-heading {
+            font: #{$form-credit-heading-font-size} / #{$form-credit-heading-line-height} $font-family-medium;
+            margin: 0 0 22px;
+            padding: $form-credit-heading-padding;
+            background-image: url("../images/form-heading-bg.png");
+            background-repeat: no-repeat;
+            background-position: 0 100%;
+            color: $form-credit-heading-color;
+            span {
+                font: #{$form-credit-span-font-size} / #{$form-credit-span-line-height} $font-family-sans-serif;
+            }
+        }
+        .slider-money--holder{
+            margin: 0 0 22px;
+        }
+        .slider-money--label {
+            font: #{$form-credit-slider-label-fs} / #{$form-credit-slider-label-lh} $font-family-medium;
+        }
+        .slider {
+            width: 100%;
+            &-wrapper {
+                margin-bottom: 38px;
+            }
+        }
+        .slider-money {
+            @include clearfix;
+            margin-top: -12px;
+        }
+
+
+        .slider-days {
+            @include clearfix;
+            border-bottom: 1px solid #abd2e5;
+            margin-bottom: 22px;
+            .slider-wrapper {
+                margin-bottom: 46px;
+            }
+        }
+        .slider-money--label {
+            min-width: 0;
+            margin-right: 12px;
+        }
+
+        &.form-credit-slider {
+            padding: 25px 31px 0;
+        }
+    }
+    &-credit-label {
+        width: auto;
+        float: left;
+        margin-top: -6px;
+        color: #1f9bde;
+        @media screen and (max-width: $screen-xs-max) {
+            margin: 0;
+        }
+        &--right {
+            float: right;
+        }
+    }
+    &-credit--wr {
+        margin: 0 -7px 50px 7px;
+        @media screen and (max-width: $screen-md-max) {
+            margin: 0 0 30px;
+        }
+        &.form-credit--change{
+            .form-credit--result{
+                padding: 32px 30px 18px;
+            }
+        }
+    }
+    &-credit--info {
+        p{
+            margin-bottom: 10px;
+        }
+    }
+    &-change {
+        display: inline-block;
+        margin: 26px 0 0 5px;
+        padding: $form-change-padding;
+        font: #{$form-change-font-size} / #{$form-change-lh} $font-family-thin;
+        color: $form-change-color;
+        border-bottom: 1px dotted $form-change-border;
+        &:hover {
+            color: $form-change-border;
+            text-decoration: none;
+        }
+        &:focus{
+            text-decoration: none;
+            outline: none;
+        }
+    }
+    &-col-4 {
+        width: 160px;
+        float: left;
+        @media screen and (max-width: $screen-xs-max) {
+            width: 31%;
+        }
+        &:not(:last-child) {
+            margin-right: 3%;
+            @media screen and (max-width: $screen-xs-max) {
+                margin-right: 3%;
+            }
+        }
+        input {
+            width: 100%;
+        }
+    }
+    &-col-5 {
+        width: 50%;
+        float: left;
+        padding-right: 10px;
+        @media screen and (max-width: $screen-xs-max) {
+            width: 100%;
+            float: none;
+            margin-bottom: 5px;
+        }
+    }
+    &-col-6 {
+        width: 160px;
+        float: left;
+        @media screen and (max-width: $screen-xs-max) {
+            width: 46%;
+        }
+        &:not(:last-child) {
+            margin-right: 6.7%;
+        }
+        input {
+            width: 100%;
+        }
+    }
+}
+
+#phone {
+    font-size: 20px;    
+}
+
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #dde1e5;
+    border: none;
+    box-shadow: none;
+}
+
+
+#autocomplete {
+    background-image: url('../assets/images/search-icon.png');
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    background-position: 97% 14px;
+}
+
+// custom radio
+
+.custom-radio {
+    &-wr {
+        font-size: 0;   
+    }
+    width: 50%; 
+    display: inline-block;  
+    vertical-align: top;
+    cursor: pointer;
+    @media screen and (max-width: 600px) {
+        width: 100%;    
+    }
+    input[type="radio"] {
+        display: none;
+        & + span {
+            display: block;
+            font-family: $font-family-roman;    
+            font-size: 15px;    
+            color: #393939;
+            border: 1px solid #e2e2e2;
+            height: 45px;   
+            line-height: 45px;
+            text-align: center;
+            background-color: #fff;
+           
+        }
+        &:checked {
+            & + span {
+                background-color: #4281ca;
+                color: #fff;
+            }
+        }
+    }
+    &:first-of-type {
+        span {
+            border-right: none;
+        }
+    }
+
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #e2e2e2;
+}
+
+
+
+.prolongation-form{
+    padding: $prolongation-form-padding;
+    background-color: $prolongation-form-bg;
+    border: 1px solid $prolongation-form-border;
+    font-size: 0;
+    border-radius: $prolongation-form-radius;
+    .form-group--inline{
+        width: 50%;
+        @media screen and (max-width: $screen-xs-max) {
+            display: block;
+            width: auto;
+        }
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        margin-bottom: 30px;
+    }
+}
+
+.prolongation-card{
+    padding: $prolongation-card-padding;
+}
+
+.prolongation-label{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px;
+    display: block;
+    float: none;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 7px;
+}
+
+.hidden-form{
+    width: 56%;
+    margin: 0 auto;
+    @media screen and (max-width: $screen-sm-max) {
+        width: auto;
+        padding: 0 15px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .form-inline {
+        .form-group{
+            vertical-align: top;
+        }
+    }
+}
+
+.code-holder{
+    font-size: 0;
+    label{
+        font-size: $code-holder-label-fs;
+    }
+}
+
+.code-access{
+    width: $code-access-width;
+    margin-bottom: 10px;
+}
+
+.loan-info{
+    font: #{$loan-info-font-size} / #{$loan-info-line-height} $font-family-sans-serif;
+    padding-left: 2px;
+    color: $loan-info-color;
+    @media screen and (max-width: $screen-md-max) {
+        font-size: $loan-info-font-size-laptop;
+    }
+    @media screen and (max-width: $screen-xs) {
+        font-size: $loan-info-font-size-mobile;
+    }
+    .loan-span{
+        display: inline-block;
+        margin-right: 2%;
+        font: #{$loan-info-font-size} / #{$loan-span-line-height} $font-family-medium;
+        @media screen and (max-width: $screen-lg-max) {
+            width: auto;
+            margin-right: 5%;
+        }
+        @media screen and (max-width: $screen-md-max) {
+            font-size: $loan-info-font-size-laptop;
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            font-size: $loan-info-font-size-mobile;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            margin-right: 2px;
+        }
+    }
+}
+
+
+textarea.form-control{
+    height: $textarea-height;
+    padding-top: 10px;  
+    padding-bottom: $textarea-padding;
+    overflow-y: hidden;
+    line-height: 20px;  
+    resize: none; 
+    &.write-us{
+        resize: vertical;
+        height: $textarea-writeUs-height;
+    }
+}
+
+.control-switch{
+    display: none;
+    &:checked + label {
+        background-color: $control-switch-bg;
+    }
+}
+
+.label-switch{
+    font: #{$label-switch-font-size} / #{$label-switch-line-height} $font-family-roman;
+    display: inline-block;
+    padding: $label-switch-padding;
+    margin-right: 5px;
+    color: $white;
+    background-color: $label-switch-bg;
+    cursor: pointer;
+}
+
+
+.icon-warning{
+    display: inline-block;
+    width: $icon-warning-width;
+    height: $icon-warning-height;
+    margin-left: 21px;
+    font: #{$icon-warning-fs} / #{$icon-warning-lh} $font-family-medium;
+    border-radius: 50%;
+    background-color: $icon-warning-bg;
+    color: $white;
+    text-align: center;
+}
+
+.help-tooltip{
+    position: absolute;
+    top: -3px;
+    left: calc(100% + 40px);
+    padding: $help-tooltip-padding;
+    width: $help-tooltip-width;
+    font: #{$help-tooltip-font-size} / #{$help-tooltip-lh} $font-family-sans-serif;
+    color: $help-tooltip-color;
+    background-color: $help-tooltip-bg;
+    border: 1px solid $help-tooltip-border;
+    border-radius: $help-tooltip-radius;
+    opacity: 0;
+    z-index: 2;
+    @media screen and (max-width: $screen-md-max) {
+        width: $help-tooltip-width-laptop;
+    }
+    @media screen and (max-width: $screen-sm-max) {
+        position: static;
+        top: 0;
+        display: none;
+        width: $help-tooltip-width-tablet;
+        float: right;
+        margin-top: 10px;
+        @include translate(0, 0);
+        opacity: 1;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: $help-tooltip-font-size-mobile;
+        float: none;
+        opacity: 0;
+        display: none;
+        width: $help-tooltip-width-mobile;
+        text-align: left;
+    }
+    @include transition(opacity 0.3s);
+    &:before{
+        content: "";
+        position: absolute;
+        right: calc(100% - 5px);
+        top: 25px;
+        @include rotate(45deg);
+        width: $help-tooltip-before-width;
+        height: $help-tooltip-before-height;
+        border: 1px solid $help-tooltip-before-border;
+        border-top: none;
+        border-right: none;
+        background-color: $help-tooltip-before-bg;
+        z-index: 1;
+        @media screen and (max-width: $screen-xs-max) {
+            display: none;
+        }
+    }
+}
+
+.personal-table-holder{
+    position: relative;
+}
+
+.passport-holder{
+    @include clearfix;
+    margin-bottom: 20px;
+}
+
+.Zebra_DatePicker_Icon_Wrapper {
+    .datepicker[readonly=readonly] {
+        border: 1px solid #eaeaea;
+    }
+}
+
+.help-tooltip-data{
+    @extend .help-tooltip;
+    left: 0;
+    right: 0;
+    width: $help-tooltip-data-width;
+    bottom: calc(100% + 10px);
+    top: auto;
+    min-width: $help-tooltip-data-min-width;
+    max-width: none;
+    min-height: $help-tooltip-min-height;
+    word-break: break-word;
+    display: none;
+    background-color: $white;
+    color: $help-tooltip-data-color;
+    z-index: 30;
+    @media screen and (max-width: $screen-xs-max) {
+        min-width: 0;
+    }
+    &:before{
+        left: 10px;
+        right: auto;
+        top: calc(100% - 5px);
+        background-color: #fff;
+        @include rotate(-45deg);
+        @media screen and (max-width: $screen-xs-max) {
+            display: none;
+        }
+    }
+}
+
+.contacts-form--holder .help-tooltip-data{
+    left: 0;
+    right: 0;
+    bottom: calc(100% + 10px);
+    top: auto;
+    max-width: none;
+    &:before{
+        left: 10px;
+        right: auto;
+        top: calc(100% - 5px);
+        @include rotate(-45deg);
+        @media screen and (max-width: $screen-xs-max) {
+            display: none;
+        }
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        min-width: 0;
+    }
+}
+
+.form-info{
+    &:hover ~ .help-tooltip-data{
+        opacity: 1;
+        display: block;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        left: 0;
+        right: auto;
+    }
+}
+
+
+.jcf-number.jcf-focus{
+    @media screen and (max-width: 1321px) {
+        position: relative;
+    }
+}
+.jcf-focus ~ .help-tooltip-data{
+        opacity: 1;
+        display: block;
+        @media screen and (max-width: 1321px) {
+            max-width: none;
+            width: 100%;
+            top: 65px;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            left: 0;
+        }
+}
+
+.contacts-form--holder .jcf-focus ~ .help-tooltip-data{
+    @media screen and (max-width: 1321px) {
+        top: 0;
+    }
+    @media screen and (max-width: $screen-sm-max) {
+        max-width: 200px;
+        left: -200px;
+        top: 0;
+     }
+}
+
+.contacts-form--holder .help-tooltip-data{
+    @media screen and (max-width: $screen-sm-max) {
+        left: 0;
+        bottom: calc(100% + 10px);
+        top: auto;
+        position: absolute;
+        max-width: none;
+    }
+}
+
+
+
+$background: #e74c3c;
+$file-upload-color: #c0392b;
+$file-upload-size: 300px;
+
+.custom-file-upload-hidden {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+}
+.custom-file-upload {
+    display: block;
+    width: auto;
+    font-size: 16px;
+    margin-top: 30px;
+    //border: 1px solid #ccc;
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+
+.file-upload-wrapper {
+    position: relative;
+    margin-bottom: 5px;
+    //border: 1px solid #ccc;
+}
+.file-upload-input {
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $second-color;
+    &:hover, &:focus {
+        outline: none;
+    }
+}
+.file-upload-button {
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 11px 20px;
+    border: none;
+    margin-left: -1px;
+    background-color: darken($file-upload-color, 10);
+    float: left; /* IE 9 Fix */
+    @include transition(all 0.2s ease-in);
+    &:hover {
+        background-color: darken($file-upload-color, 20);
+    }
+}
+
+.jspPane {
+    width: 100%!important;
+    padding-right: 44px;
+}
+
+
+/*---------------------------------validation-------------------------*/
+
+textarea {
+	resize: none;
+	overflow: auto;
+}
+
+.title_form {
+    font:16px/41px Arial, sans-serif;
+    text-transform: uppercase;
+    color: #c00d0e;
+    display: block;
+    text-align: center;
+}
+
+.form {
+	.label_row {
+	    display: inline-block;
+	    vertical-align: middle;
+	    width: 140px;
+	    text-align: right;
+	    line-height: 30px;
+	    margin-right: 20px;
+	    font-size: 17px;
+	}
+}
+.form{
+	.input,
+	select {
+		display: inline-block;
+		vertical-align: middle;
+		width: 100%;
+	    height: 34px;
+	    border: 1px solid #000;
+	    padding: 0 10px;
+	    color: #1d1d1b;
+	}
+}
+.form {
+	.has-error .input,
+	.has-error select,
+    .has-error .jcf-number,
+    .has-error .dropdown-toggle.bs-placeholder,
+    .has-error ~ .input,
+    .has-error ~ select,
+    .has-error ~ .dropdown-toggle.bs-placeholder {
+		border: 1px solid #eb2a32;
+	}
+    .form-col-6, .form-col-4{
+
+    }
+    .form-col-4 {
+        .form-info {
+            @media screen and (max-width: $screen-xs-max) {
+                display: none;
+            }
+        }
+        .form-control {
+            @media screen and (max-width: $screen-xs-max) {
+                padding-left: 12px;
+            }
+        }
+    }
+    .has-error{
+        .form-control{
+            border: 1px solid $error-border;
+            @include box-shadow(0 0 0 0 rgba(0, 0, 0, 0));
+            background-color: #f1d4d4;
+            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                color: #eb2a32;
+            }
+            &::-moz-placeholder { /* Firefox 19+ */
+                color: #eb2a32;
+            }
+            &:-ms-input-placeholder { /* IE 10+ */
+                color: #eb2a32;
+            }
+        }
+
+    }
+}
+.form{
+	.error_text {
+	    padding-top: 7px;
+	    display: none;
+	    color: #eb2a32;
+        font: #{$error-font-size} / #{$error-line-height} $font-family-sans-serif;
+        @media screen and (max-width: $screen-sm-max) {
+            font-size: $error-font-size-tablet
+        }
+	}
+}
+.form{
+	select {
+		border-color: #cccccc
+	}
+}
+.form{
+	option {
+		line-height: 28px;
+	}
+}
+.form {
+	.checkbox,
+	.radio {
+	    display: inline-block;
+	    vertical-align: middle;
+	    margin-right: 20px;
+	}
+}
+.form {
+	.has-error {
+		.error_text {
+		    display: inline-block;
+		    width: 100%;
+		}
+        & ~ .error-text {
+            display: inline-block;
+            width: 100%;
+        }
+	}
+    .jcf-number.has-error + .error_text, .bootstrap-select.has-error + .error_text {
+            display: inline-block;
+            width: 100%;
+    }
+}
+.form {
+	.form-control-feedback {
+		display: none;
+		right: 20px;
+		top: 21px;
+        @media screen and (max-width: $screen-sm-max) {
+            top: 17px;
+        }
+	}
+    .has-success {
+        .icons-valide-icon {
+            display: block;
+            height: 15px;
+            width: 18px;
+        }
+    }
+    .has-error {
+        .icons-error-icon {
+            display: block;
+        }
+
+    }
+
+}
+
+
+
+
+.form{
+    &-error{
+        color: #eb2a32;
+    }
+	.has-error{
+		.glyphicon-remove {
+			display: block;
+		}
+	}
+}
+
+.bootstrap-select.has-success {
+    > .dropdown-toggle{
+        border: 1px solid $second-color;
+        @include box-shadow(0 0 0 0 rgba(0, 0, 0, 0));
+    }
+}
+.form {
+	.has-success {
+        .bootstrap-select.has-success>.dropdown-toggle{
+            border: 1px solid $second-color;
+        }
+		.glyphicon-ok {
+			display: block;
+		}
+        .form-control{
+            border: 1px solid $second-color;
+            @include box-shadow(0 0 0 0 rgba(0, 0, 0, 0));
+        }
+	}
+}
+
+.error-text{
+    color: $error-text-color;
+    font-size: $error-font-size;
+}
+
+.card-error{
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+
+.jspContainer
+{
+    overflow: hidden;
+    position: relative;
+}
+
+.jspPane
+{
+    position: absolute;
+}
+
+.jspVerticalBar
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    background: transparent;
+}
+
+.jspHorizontalBar
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    background: red;
+}
+
+.jspCap
+{
+    display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+    float: left;
+}
+
+.jspTrack
+{
+    background: transparent;
+    position: relative;
+}
+
+.jspDrag
+{
+    background: #1f9bde;
+    position: relative;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+    float: left;
+    height: 100%;
+}
+
+.jspArrow
+{
+    background: #50506d;
+    text-indent: -20000px;
+    display: block;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.jspArrow.jspDisabled
+{
+    cursor: default;
+    background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+    height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+    width: 16px;
+    float: left;
+    height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+    outline: none;
+}
+
+.jspCorner
+{
+    background: #eeeef4;
+    float: left;
+    height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+    margin: 0 -3px 0 0;
+}

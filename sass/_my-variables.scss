@@ -1,0 +1,1158 @@
+/**
+ * Defaults variables for fonts, colors, etc
+ */
+
+
+$body-font-size:                       16px;
+$body-line-height:                     1.5;
+$body-bg:                              #ffffff;
+$body-font-size-mobile:                15px;
+$base-link-color:                      #007e5c;
+$selection-color:                      #58b4e5;
+$container-max-width:                  1200px;
+$container-padding:                    0 15px;
+
+$custom-ul-font-size:                  19px;
+$custom-ul-line-height:                30px;
+$custom-ul-font-size-mobile:           16px;
+$custom-ul-padding-left:               31px;
+$custom-ul-before-bg:                  #1f9bde;
+
+$grid-columns:                         10; // number of columns
+$grid-float-breakpoint:                767px; // breakpoint for navbar
+$screen-lg-max:                        1600px;
+$screen-xlg:                           1919px;
+
+$brand-primary:                        #003764; // primary color
+$heading-color:                        #0056b8;
+$second-color:                         #00b181;
+
+$font-family-sans-serif:               'HelveticaNeueCyr Light', Arial, sans-serif !default;
+$font-family-bold:                     'HelveticaNeueCyr Bold', Arial, sans-serif !default;
+$font-family-black:                    'HelveticaNeueCyr Black', Arial, sans-serif !default;
+$font-family-heavy:                    'HelveticaNeueCyr Heavy', Arial, sans-serif !default;
+$font-family-medium:                   'HelveticaNeueCyr Medium', Arial, sans-serif !default;
+$font-family-roman:                    'HelveticaNeueCyr Roman', Arial, sans-serif !default;
+$font-family-thin:                    'HelveticaNeueCyr Thin', Arial, sans-serif !default;
+
+
+
+$heading-h1-fs:                        40px;
+$heading-h1-lh:                        45px;
+$heading-h1-page-font-size:            32px;
+$heading-h1-font-size:                 30px;
+$heading-h2-font-size:                 25px;
+$heading-h3-font-size:                 22px;
+
+$heading-h1-fs-laptop:                 26px;
+$heading-h1-fs-mobile:                 25px;
+$heading-h1-lh-laptop:                 27px;
+
+$heading-h2-laptop:                    24px;
+
+$heading-content-h1-fs-laptop:         23px;
+
+
+$app-heading-fs:                       17px;
+$app-heading-lh:                       1;
+
+
+$modal-heading:                        28px;
+$modal-heading-lh:                     1.2;
+$modal-heading-mobile:                 19px;
+
+$personal-table-heading:               25px;
+$personal-table-heading-lh:            1.2;
+$personal-table-heading-mobile:        18px;
+
+$card-heading:                         20px;
+$card-heading-lh:                      1.2;
+$card-heading-mobile:                  17px;
+
+
+$form-heading:                         25px;
+$form-heading-lh:                      1;
+$form-heading-padding:                 15px 0 21px 30px;
+
+$form-heading-tablet:                  20px;
+$form-heading-mobile:                  18px;
+$form-heading-padding-mobile:          15px 20px;
+
+$repayment-heading:                    22px;
+$repayment-heading-lh:                 1;
+
+$personal-heading:                     25px;
+$personal-heading-lh:                  30px;
+
+$application-heading:                  16px;
+$application-heading-lh:               1.4;
+
+$footer-heading:                       15px;
+$footer-heading-lh:                    25px;
+$footer-heading-color:                 #fff;
+
+$footer-heading-laptop:                16px;
+$footer-heading-mobile:                13px;
+
+$tab-heading:                          40px;
+$tab-heading-laptop:                   24px;
+$tab-heading-section:                  17px;
+$tab-heading-section-laptop:           14px;
+$tab-heading-section-padding:          20px;
+
+$tab-heading-answer:                   24px;
+$tab-heading-answer-laptop:            18px;
+$tab-heading-answer-color:             #1f9bde;
+
+$small-heading:                        15px;
+
+$modal-top-heading-fs:                 35px;
+$modal-top-heading-lh:                 0.9;
+
+$modal-top-heading-fs-mobile:          23px;
+
+$modal-top-heading-span-fs:            18px;
+$modal-top-heading-span-lh:            1.5;
+
+$faq-heading-lh:                       1.2;
+$how-heading-fs:                       25px;
+$how-heading-lh:                       1.2;
+
+$how-heading-fs-laptop:                20px;
+
+$small-slider-heading:                 22px;
+$small-slider-heading-lh:              1.2;
+$small-slider-heading-padding:         29px;
+
+$white:                                 #fff;
+
+/*
+ * header variables
+ */
+
+$header-bg:                             #fbfbfb;
+$header-border:                         #e2e2e2;
+$header-inverse-bg:                     #fff;
+$header-inverse-border:                 #eaeaea;
+
+$header-padding-bottom:                 0 0 16px;
+$header-group-padding-top:              23px;
+$header-logo-padding-top:               30px;
+$header-left-padding-top:               40px 0 0;
+$logo-holder-padding-left:              18px;
+$menu-holder-padding:                   0 30px;
+
+$header_c-height:                       146px;
+$header_h-height:                       100px;
+
+
+/*
+ * header variables responsive
+ */
+
+$header-tablet-padding:                 10px 0;
+$header-tablet-group-padding:           0;
+$header-logo-tablet-padding:            9px;
+$logo-holder-tablet-padding-left:       20px;
+$header_h-height-tablet:                63px;
+
+
+/*
+ * section credit variables
+ */
+
+$credit-padding:                        30px 0;
+
+$credit-color:                          $white;
+$credit-link-color:                     #69cbff;
+$credit-link-hover:                     #eb6446;
+$credit-header-bg:                      #f1f1f1;
+
+$credit-font-size:                      35px;
+$credit-font-size-span:                 32px;
+$credit-font-size-text:                 22px;
+$credit-header-font-size:               20px;
+$credit-heading-font-size:              40px;
+
+
+/*
+ * section credit variables responsive
+ */
+
+$credit-padding-bottom-table:           20px;
+
+$credit-font-size-mobile:               27px;
+$credit-font-size-span-mobile:          20px;
+$credit-font-size-text-tablet:          13px;
+$credit-heading-font-size-tablet:       20px;
+
+
+
+
+
+/*
+ * Main slider variables
+ */
+
+$main-slider-bg:                        #ffffff;
+$slider-border-radius:                  7px 7px 0 0;
+$slider-label-font-size:                18px;
+$slider-money-label-font-size:          18px;
+$slider-control-font-size:              25px;
+
+$slider-control-color:                  $second-color;
+
+/*
+ * Main slider variables responsive
+ */
+
+$slider-money-label-font-size-tablet:   14px;
+$slider-control-font-size-tablet:       24px;
+
+
+
+
+
+
+
+/*
+ * Loan block on slider variables
+ */
+
+
+$loan-info-sum-font-size:                24px;
+$loan-days-font-size:                    15px;
+$stages-tooltip-font-size:               12px;
+
+$stages-tooltip-bg:                      #f1f1f1;
+$loan-info-sum-color:                    $second-color;
+
+
+
+
+
+
+/**
+ * Advantages block variables
+ */
+
+
+$advantages-padding:                     75px 0;
+
+
+/**
+ * Advantages block variables responsive
+ */
+
+$advantages-padding-tablet:              20px 0;
+$advantages-padding-mobile:              20px 15px 30px;
+
+$advanteges-font-size:                   19px;
+
+
+
+
+
+
+
+/**
+ * Number block variables
+ */
+
+$numbers-info-font-size:                 25px;
+$numbers-numeral-font-size:              30px;
+$numbers-numeral-color:                  #58b4e5;
+
+/**
+ * Number block variables responsive
+ */
+
+$numbers-info-font-size-mobile:          23px;
+$numbers-numeral-font-size-mobile:       30px;
+
+
+
+/**
+ * Footer block variables
+ */
+
+$footer-bg:                               #0073b1;
+$footer-color:                            $white;
+$footer-bottom-line-bg:                   #1f9bde;
+$copyright-font-size:                     13px;
+
+$footer-link-font-size:                   18px;
+$footer-description-font-size:            16px;
+
+$footer-phone-padding:                    10px;
+$footer-phone-line-height:                19px;
+$footer-phone-city-font-size:             25px;
+$footer-phone-span-font-size:             14px;
+$footer-menu-font-size:                   14px;
+$footer-menu-color-hover:                 #c4e5f5;
+
+$footer-top-padding:                      64px 0 36px;
+$bottom-line-padding:                     0 0 50px;
+
+
+/**
+ * Footer variables responsive
+ */
+
+$footer-phone-padding-mobile:             20px;
+$footer-top-padding-laptop:               20px 0 0;
+$footer-description-padding-tablet:       0 35px 0;
+
+
+
+/**
+ * How-It block variables
+ */
+$how-it-work-font-size:                   19px;
+$how-it-work-padding:                     70px 0 88px;
+$how-it-list-font-size:                   18px;
+$how-it-list-line-height:                 25px;
+$how-it-item-font-size:                   25px;
+$how-it-item-line-height:                 30px;
+
+$how-it-before-font-size:                 130px;
+$how-it-before-line-height:               1;
+$how-it-before-color:                     #dbdbdb;
+
+/**
+ * How-It block variables responsive
+ */
+$how-it-work-padding-tablet:                     30px 0;
+$how-it-item-font-size-tablet:            19px;
+$how-it-before-line-height-tablet:        90px;
+
+
+
+
+
+/**
+ * Adaptive block
+ */
+$adaptive-border:                         #4281ca;
+$adaptive-font-size:                      19px;
+$adaptive-line-height:                    30px;
+
+$adaptive-text-padding-top:               115px;
+$adaptive-img-padding-top:                39px;
+
+
+/**
+ * Adaptive block responsive
+ */
+
+$adaptive-text-padding-top-laptop:        90px;
+$adaptive-text-padding-top-tablet:        40px;
+$adaptive-text-padding-bottom-tablet:     30px;
+
+$adaptive-font-size-mobile:               16px;
+
+
+
+
+
+
+/**
+ * Security Block variables
+ */
+
+
+$security-padding-top:                    142px;
+$security-padding-bottom:                 81px;
+$security-img-padding:                    0 0 70px 30%;
+
+$security-font-size:                      19px;
+$security-font-line-height:               30px;
+
+$security-list-padding-left:              170px;
+
+$security-first-element-width:            124px;
+$security-second-element-width:           $security-first-element-width;
+$security-first-element-height:           105px;
+$security-second-element-height:          125px;
+
+
+/**
+ * Security Block variables responsive
+ */
+
+$security-padding-bottom-laptop:          0;
+$security-padding-top-laptop:             50px;
+$security-padding-top-tablet:             0;
+$security-padding-bottom-tablet:          0px;
+
+$security-img-padding-laptop:             30px 0;
+$security-img-padding-mobile:             20px;
+$security-img-height-mobile:              170px;
+$security-font-size-tablet:               16px;
+$security-list-padding-left-tablet:       0;
+$security-list-padding-top-tablet:        0px;
+
+
+/**
+ * Seo Block variables
+ */
+
+$seo-padding:                             60px 0 90px;
+
+$seo-text-font-size:                      15px;
+$seo-max-height:                          330px;
+
+$seo-padding-right:                       44px;
+
+
+
+
+
+/**
+ * Main contacts Block variables
+ */
+
+$main-contacts-font-size:                 15px;
+
+$main-contacts-border:                    #f1f1f1;
+
+$main-contacts-padding:                   75px 0 67px;
+
+
+/**
+ * Main contacts Block variables responsive
+ */
+
+$main-contacts-padding-tablet:            35px 0;
+
+
+
+
+
+/**
+ * Numeric list Block variables
+ */
+
+$numeric-list-font-size:                  16px;
+$numeric-list-line-height:                1.7;
+$numeric-list-text-indent:                38px;
+
+
+/**
+ * Numeric list Block variables responsive
+ */
+
+$numeric-list-text-indent-tablet:         40px;
+$numeric-list-font-size-mobile:           12px;
+
+
+/**
+ * Back to top variables
+ */
+
+$back-to-top-height:                      60px;
+$back-to-top-width:                       $back-to-top-height;
+
+$back-to-top-bottom:                      20px;
+$back-to-top-right:                       20px;
+
+
+
+
+/*************************************************************
+ * Buttons variables
+ *
+ *
+ *
+ *
+ *
+ ************************************************************/
+
+/**
+ * Authorize button
+ */
+
+$btn-font-size:                           20px;
+$btn-authorize-font-size:                 18px;
+$btn-authorize-color:                     $white;
+$btn-authorize-bg:                        #4281ca;
+$btn-authorize-radius:                    3px;
+$btn-authorize-bg-hover:                  #0056b8;
+$btn-authorize-bg-position:               27px 15px;
+$btn-authorize-padding:                   13px 30px 10px 50px;
+
+/**
+ * Authorize button variables responsive
+ */
+
+$btn-authorize-padding-laptop:            13px 17px 13px 47px;
+$btn-authorize-padding-tablet:            8px 17px 6px 35px;
+$btn-authorize-bg-position-laptop:        21px 14px;
+$btn-authorize-bg-position-mobile:        12px 9px;
+$btn-font-size-tablet:                    17px;
+$btn-authorize-font-size-tablet:          16px;
+
+
+
+/**
+ * Primary button
+ */
+
+$btn-primary-bg:                          #1f9bde;
+$btn-primary-color:                       $white;
+$btn-primary-radius:                      5px;
+
+$btn-primary-bg-hover:                    $heading-color;
+$btn-primary-padding:                     10px 35px;
+
+/**
+ * Primary button responsive
+ */
+
+$btn-primary-padding-mobile:              11px 15px 10px;
+
+
+
+
+/**
+ * Info button
+ */
+
+$btn-info-bg:                             #5eb3d9;
+$btn-info-color:                          #ffffff;
+$btn-info-radius:                         0;
+$btn-info-padding:                        13px 23px;
+$btn-info-bg-hover:                       $heading-color;
+
+
+/**
+ * Success button
+ */
+
+$btn-success-bg:                          #1f9bde;
+$btn-success-color:                       #ffffff;
+$btn-success-radius:                      5px;
+$btn-success-padding:                     13px 30px;
+$btn-success-bg-hover:                    $heading-color;
+$btn-success-font-size-arrow:             17px;
+$btn-success-padding-arrow:               13px 86px 13px 41px;
+
+
+
+
+
+/**
+ * Warning button
+ */
+
+$btn-warning-bg:                          $second-color;
+$btn-warning-radius:                      0;
+$btn-warning-bg-hover:                    $heading-color;
+$btn-warning-padding:                     13px 23px;
+
+
+/**
+ * Personal button
+ */
+
+$btn-personal-bg:                         $second-color;
+$btn-personal-radius:                     5px;
+$btn-personal-color:                      #ffffff;
+$btn-personal-bg-hover:                   $heading-color;
+$btn-personal-padding:                    13px 30px;
+$btn-personal-padding-mobile:             10px 15px;
+$btn-personal-font-size-mobile:           13px;
+
+/**
+ * Size for buttons
+ */
+
+$btn-medium-padding:                      13px 30px;
+$btn-medium-wide-padding:                 11px 54px 10px;
+$btn-lg-padding:                          13px 60px;
+$btn-lg-padding-laptop:                   13px 20px;
+$btn-width:                               230px;
+$btn-sm-padding:                          10px 35px;
+$btn-sm-font-size:                        17px;
+
+
+
+
+
+/**
+ * Order button
+ */
+
+$btn-order-bg:                            #58b4e5;
+$btn-order-color:                         #ffffff;
+
+
+/**
+ * Change button
+ */
+
+$btn-change-padding:                      13px 16px 13px 37px;
+$btn-change-font-size:                    16px;
+
+
+
+/**
+ * Login button
+ */
+
+$btn-login-font-size:                     18px;
+$btn-login-padding:                       10px 45px;
+
+/**
+ * Cancel button
+ */
+
+$btn-cancel-border:                       $second-color;
+
+
+
+
+
+/********************************
+ * Navbar variables
+ *
+ *
+ *
+ *
+ *
+ ***********************************/
+
+
+$navbar-font-size:                        18px;
+$navbar-item-padding:                     10px 20px;
+$navbar-font-size-laptop:                 14px;
+$navbar-toggle-bg:                        #58b4e5;
+$icon-bar-bg:                             #ffffff;
+
+
+
+/****************************************
+ * Registration page components variables
+ *
+ *
+ *
+ *
+ ***************************************/
+
+$steps-padding:                           58px 15px 17px;
+$steps-logo-padding:                      55px 15px 30px;
+$steps-logo-font-size:                    14px;
+$steps-logo-line-height:                  1.2;
+$steps-dots-border:                       #cacaca;
+$steps-description-color:                 $steps-dots-border;
+$steps-icon-before-font-size:             10px;
+$steps-icon-before-line-height:           15px;
+$steps-icon-before-width:                 15px;
+$steps-icon-before-height:                $steps-icon-before-width;
+
+$steps-padding-laptop:                    30px 15px 10px;
+$steps-padding-mobile:                    10px 0 15px;
+
+$steps-logo-padding-laptop:               20px 15px 15px;
+$steps-logo-padding-mobile:               20px 15px;
+
+/**
+ * Loan panel variables
+ */
+
+$loan-padding:                            55px 40px 34px 15px;
+$loan-bg:                                 #eff9ff;
+$loan-border:                             #e2e2e2;
+$loan-font-size:                          12px;
+$loan-line-height:                        1.2;
+$loan-value-font-size:                    20px;
+
+$loan-padding-laptop:                     20px 0;
+$loan-font-size-mobile:                   11px;
+$loan-value-font-size-mobile:             18px;
+
+
+$reg-edit-font-size:                      15px;
+
+
+/**
+ * Registration tabs
+ */
+
+$registration-tabs-bg:                    #ffffff;
+$registration-tabs-border:                #e2e2e2;
+$registration-tabs-link-padding:          20px 98px 20px 25px;
+$registration-tabs-link-color:            #cacaca;
+$registration-tabs-link-active-bg:        #f1f1f1;
+$registration-tabs-link-font-size:         17px;
+
+$registration-tabs-link-padding-laptop:   35px 25px;
+$registration-tabs-link-padding-mobile:   20px 25px;
+
+
+/**
+ * Registration slider
+ */
+
+$registration-slider-bg:                  #ecf9ff;
+$registration-slider-border:              #5eb3d9;
+
+
+/**
+ * Registration contacts variables
+ */
+
+
+$registration-contacts-bg:                #f1f1f1;
+$contacts-form-holder-padding:            0 9px 0 22px;
+
+$contacts-form-holder-padding-tablet:     0 15px;
+
+/**
+ * Registration bar variables
+ */
+
+$registration-bar-bg:                     #ffffff;
+$registration-bar-padding:                50px 60px;
+$registration-bar-item-font-size:         19px;
+$registration-bar-item-line-height:       25px;
+$registration-bar-item-border:            #e0e0e0;
+$registration-heading-font-size:          30px;
+$registration-heading-line-height:        35px;
+
+
+
+$registration-bar-padding-tablet:         30px;
+
+/**
+ * pay-data variables
+ */
+
+$pay-data-padding:                        30px 0;
+
+$pay-data-padding-mobile:                 40px 0;
+
+/**
+ * Card block variables
+ */
+
+
+$card-info-padding:                       20px 20px 17px;
+$card-info-font-size:                     13px;
+$card-info-line-height:                   1.2;
+$card-info-font-size:                     13px;
+$card-label-line-height:                  $card-info-line-height;
+$card-label-color:                        #6e6e6e;
+$card-action-padding:                     37px 37px 33px;
+$card-action-font-size:                   18px;
+$card-action-line-height:                 $card-info-line-height;
+$card-action-bg:                          #ecf9ff;
+$card-action-border:                      #5eb3d9;
+$card-action-span-font-size:              15px;
+$card-action-span-line-height:            $card-info-line-height;
+$card-sum-font-size:                      17px;
+$card-sum-list-font-size:                 18px;
+$card-sum-list-line-height:               1.2;
+
+$card-sum-list-font-size-mobile:          15px;
+
+
+
+/**
+ * Card form holder
+ */
+
+$card-form-control-font-size:             19px;
+
+$card-form-control-font-size-tablet:      15px;
+
+
+/**
+ * Conditions variables
+ */
+
+$condition-heading-font-size:             17px;
+
+
+
+
+
+
+
+
+
+/**
+ *  Forms variables
+ *
+ *
+ *
+ */
+
+$form-control-height:                     45px;
+$form-control-padding:                    2px 30px 0 18px;
+$form-control-color:                      #393939;
+$form-control-bg:                         #ffffff;
+$form-control-radius:                     0;
+$form-control-border:                     #e2e2e2;
+$form-control-font-size:                  17px;
+$form-control-line-height:                45px;
+$form-control-placeholder-color:          #cacaca;
+
+
+$form-control-height-tablet:              45px;
+$form-control-line-height-phone:          45px;
+$form-control-placeholder-font-size:      14px;
+
+
+$form-label-font-size:                    14px;
+$form-label-color:                        #252525;
+$form-label-line-height:                  1.2;
+$form-label-child-line-height:            1;
+
+$form-wr-padding:                         40px 0 60px 0;
+
+$form-wr-padding-laptop:                  35px 0 30px 40px;
+$form-wr-padding-mobile:                  20px 0 0 0;
+
+
+
+$help-block-font-size:                    17px;
+$help-block-line-height:                  1.2;
+$help-block-color:                        #6e6e6e;
+
+
+$form-credit-result-padding:              32px 37px 34px;
+$form-credit-result-bg:                   #ecf9ff;
+$form-credit-result-border:               #5eb3d9;
+
+$form-credit-heading-font-size:           26px;
+$form-credit-heading-line-height:         1.4;
+$form-credit-heading-padding:             0 0 18px;
+$form-credit-heading-color:               $brand-primary;
+
+$form-credit-span-font-size:              18px;
+$form-credit-span-line-height:            1;
+
+
+
+
+
+$form-credit-slider-label-lh:             1;
+$form-credit-slider-label-fs:             18px;
+
+
+$form-change-padding:                     0 0 7px;
+$form-change-font-size:                   18px;
+$form-change-lh:                          1;
+$form-change-color:                       $brand-primary;
+$form-change-border:                      #eb5800;
+
+
+
+$prolongation-form-padding:               28px 28px 7px;
+$prolongation-form-bg:                    #ecf9ff;
+$prolongation-form-border:                #5eb3d9;
+$prolongation-form-radius:                5px;
+
+$prolongation-card-padding:               0 0 10px;
+
+$code-holder-label-fs:                    16px;
+$code-access-width:                       180px;
+
+
+$loan-info-font-size:                     23px;
+$loan-info-line-height:                   1.2;
+$loan-info-color:                         $brand-primary;
+
+$loan-info-font-size-laptop:              18px;
+$loan-info-font-size-mobile:              14px;
+
+$loan-span-line-height:                   1;
+
+$textarea-height:                         60px;
+$textarea-writeUs-height:                 150px;
+$textarea-padding:                        20px;
+
+$control-switch-bg:                       $brand-primary;
+$label-switch-padding:                    9px 28px 11px;
+$label-switch-font-size:                  17px;
+$label-switch-line-height:                1;
+$label-switch-bg:                         #5eb3d9;
+
+
+$icon-warning-height:                     30px;
+$icon-warning-width:                      $icon-warning-height;
+$icon-warning-fs:                         18px;
+$icon-warning-lh:                         1.5;
+$icon-warning-bg:                         #eb2100;
+
+
+
+$help-tooltip-padding:                    12px 20px;
+$help-tooltip-width:                      93%;
+$help-tooltip-font-size:                  15px;
+$help-tooltip-lh:                         1.2;
+$help-tooltip-color:                      #5e5e5e;
+$help-tooltip-bg:                         #f3f3f3;
+$help-tooltip-border:                     #ccc;
+$help-tooltip-radius:                     10px;
+
+$help-tooltip-width-laptop:               75%;
+$help-tooltip-width-tablet:               85%;
+$help-tooltip-width-mobile:               100%;
+$help-tooltip-font-size-mobile:           10px;
+
+$help-tooltip-before-width:               10px;
+$help-tooltip-before-height:              $help-tooltip-before-width;
+$help-tooltip-before-border:              #ccc;
+$help-tooltip-before-bg:                  #f3f3f3;
+
+
+$help-tooltip-data-width:                 100%;
+$help-tooltip-data-min-width:             200px;
+$help-tooltip-data-color:                 #333;
+$help-tooltip-min-height:                 50px;
+
+
+$error-border:                            #eb2a32;
+$error-font-size:                         13px;
+$error-line-height:                       1;
+$error-text-color:                        #eb2a32;
+
+$error-font-size-tablet:                  10px;
+
+
+
+
+
+
+
+/**
+ * Navs variables
+ *
+ *
+ *
+ */
+
+$navtabs-link-padding:                     18px 62px 16px;
+$navtabs-link-color:                       #c2c2c2;
+$navtabs-link-radius:                      10px 10px 0 0;
+$navtabs-link-border:                      #fff;
+
+$navtabs-link-fs-mobile:                   13px;
+$navtabs-link-padding-mobile:              15px 20px;
+
+$navtabs-link-hover-bg:                    #e6e4e4;
+$navtabs-link-hover-color:                 $brand-primary;
+
+
+$navtabs-inverse-link-padding:             13px 10px 9px;
+$navtabs-inverse-link-color:               $brand-primary;
+$navtabs-inverse-link-border:              #5eb3d9;
+$navtabs-inverse-link-fs:                  15px;
+
+$navtabs-inverse-link-fs-tablet:           12px;
+$navtabs-inverse-link-fs-mobile:           8px;
+
+
+
+
+/**
+ * Questions tabs
+ *
+ *
+ *
+ */
+
+$tab-content-padding:                      77px 25px;
+$tab-content-bg:                           #56ade0;
+$tab-content-radius:                       0;
+
+$tab-content-padding-tablet:               35px 25px;
+
+$tab-content-child-padding:                77px 40px;
+$tab-content-child-bg:                     #d4e8fb;
+$tab-content-child-h3-fs:                  18px;
+$tab-content-child-h3-padding:             13px;
+
+$tab-content-child-font-size:              19px;
+$tab-content-child-lh:                     1.3;
+
+$tab-content-child-font-size-laptop:       16px;
+
+
+
+
+$navtabs-parent-font-size:                 19px;
+$navtabs-parent-line-height:               1.2;
+
+$navtabs-parent-lap-top:                   16px;
+
+
+
+
+/**
+ * Social variables
+ *
+ */
+
+$social-wrapper-padding:                    73px 0 0;
+$social-wrapper-width:                      25%;
+
+$social-wrapper-padding-laptop:             73px 20px 25px 0;
+$social-wrapper-width-tablet:               40%;
+$social-wrapper-padding-mobile:             0 30px 30px;
+$social-wrapper-width-mobile:               100%;
+
+$social-link-fs:                            20px;
+
+
+
+/**
+ * Sidebar variables
+ *
+ *
+ */
+
+$side-bar-border:                            #e4e4e4;
+$side-bar-link-padding:                      18px 20px;
+$side-bar-link-fs:                           17px;
+$side-bar-link-lh:                           1.2;
+$side-bar-link-hover-bg:                     #0055B8;
+
+
+
+/**
+ * Content bar
+ *
+ *
+ */
+
+$content-bar-active-bg:                      #0056b8;
+$content-bar-link-fs:                        19px;
+$content-bar-link-lh:                        1.5;
+$content-bar-link-padding:                   15px 20px;
+
+$content-bar-link-color:                     #4281ca;
+$content-bar-link-bg:                        #f1f1f1;
+
+$content-bar-link-child-fs:                  17px;
+$content-bar-link-child-padding:             18px 40px;
+$content-bar-link-child-lh:                  1.2;
+
+
+
+
+
+/**
+ * Document tabs
+ *
+ *
+ */
+
+
+$document-tabs-link-color:                   #aeaeae;
+$document-tabs-link-fs:                      22px;
+$document-tabs-link-before-lh:               1.2;
+$document-tabs-link-before-color:            #1f9bde;
+$document-tabs-link-lh:                      1.5;
+$document-tabs-link-border:                  $document-tabs-link-color;
+$document-tabs-link-padding:                 0 10px 10px;
+$document-tabs-link-radius:                  0;
+
+$document-tabs-link-fs-tablet:               20px;
+$document-tabs-link-fs-mobile:               17px;
+$document-tabs-link-padding-mobile:          20px 10px;
+
+$document-tabs-link-active-color:            #00b181;
+$document-tabs-link-active-border:           $document-tabs-link-active-color;
+
+$doc-download-fs:                            25px;
+$doc-download-lh:                            1.2;
+$doc-download-focus-color:                   #eb5901;
+
+
+/**
+ * Breadcrumbs variables
+ *
+ *
+ */
+
+$breadcrumbs-fs:                             13px;
+$breadcrumbs-border:                         #007e5c;
+
+$breadcrumbs-fs-mobile:                      13px;
+
+
+
+
+/**
+ * Questions list variables
+ *
+ */
+
+
+$question-link-fs:                            19px;
+$question-link-lh:                            1.2;
+$question-link-padding:                       15px 75px 15px 41px;
+$question-link-bg:                            #f4f4f4;
+
+$question-link-bg-hover:                      #f4f4f4;
+
+$question-link-padding-mobile:                15px 50px 15px 20px;
+
+
+
+/**
+ * Question detail variables
+ *
+ *
+ */
+
+$question-detail-bg:                          #fdfdfd;
+$question-detail-border:                      #0055b8;
+$question-detail-padding:                     34px 38px;
+$question-detail-padding-mobile:              20px;
+
+
+
+
+/**
+ * Question current variables
+ *
+ *
+ */
+
+$question-current-padding:                    0 0 0 20px;
+$question-current-color:                      #73869c;
+$question-current-fs:                         17px;
+
+
+$question-button-wr-padding:                  20px 0 0;
+
+
+
+
+/**
+ * News variables
+ *
+ *
+ */
+
+
+$news-padding:                                40px;
+$news-border:                                 #f1f1f1;
+
+$news-figure-min-height:                      210px;
+$news-img-max-height:                         350px;
+
+$news-detail-padding-top:                     44px;
+$news-detail-padding-bottom:                  30px;
+
+$news-text-padding:                           30px;
+
+$news-pagination-fs:                          14px;
+$news-pagination-color:                       #73869c;
+
+$pagination-arrow-bg:                         #f1f1f1;
+$pagination-arrow-border:                     #ccc;
