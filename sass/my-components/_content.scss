@@ -86,10 +86,19 @@
 }
 .small-slider-holder{
     .credit-header{
+        position: relative; 
         font-size: 16px;
         padding: 20px;
         border-radius: 0;
         margin: 0;
+        .calculator-hb {
+            padding: 2px 10px;  
+            margin-left: 0; 
+            font-size: 13px;    
+        }
+        .neangelu-labe {
+            max-width: 100px;   
+        }
     }
 
     @media screen and (max-width: $screen-sm-max) {
@@ -99,15 +108,15 @@
 .small-credit-slider {
     position: relative;
     z-index: 2;
-    padding: 26px 20px;
+    padding: 26px 20px 0;
     border: 1px solid #f1f1f1;
     background-color: #fff;
-    border-bottom: none;
     @media screen and (max-width: $screen-md-max) {
         padding: 20px 15px;
     }
     .stages{
         margin-bottom: 0;
+        padding-bottom: 30px;   
     }
     .stages-item{
         width: 100%;
@@ -120,21 +129,25 @@
         float: none;
         text-align: left;
     }
-    .slider.slider-horizontal .slider-track{
+    /* .slider.slider-horizontal .slider-track{
         height: 5px;
-    }
+    } */
     .slider-money .slider-wrapper:after {
+        background-image: none;
         height: 5px;    
+    }
+    .slider-wrapper:before {
+        display: none;
     }
     .slider.slider-horizontal {
         width: 100%;    
     }
-    .slider.slider-horizontal .slider-handle{
+    /* .slider.slider-horizontal .slider-handle{
         width: 23px;
         height: 23px;
         margin: -9px 0 0 -2px;
         background-size: 60%;
-    }
+    } */
     .stages-item .loan-info .loan-info--sum{
         font-size: 16px;
     }
@@ -184,7 +197,7 @@
     }
     .slider-money--control{
         width: 60px;
-        font: 17px/ 30px 'HelveticaNeueCyr Bold', Arial, sans-serif;
+        /* font: 17px/ 30px 'HlveticaNeueCyr Bold', Arial, sans-serif;
         @media screen and (max-width: $screen-md-max) {
             width: 65%;
             font: 17px/ 2 'HelveticaNeueCyr Bold', Arial, sans-serif;
@@ -193,15 +206,17 @@
             font: 17px/ 40px 'HelveticaNeueCyr Bold', Arial, sans-serif;
             height: auto;
             padding: 0;
-        }
+        } */
         & + label{
             font-size: 14px;
             line-height: 30px;
+            margin-left: 3px;
         }
     }
     .stages-item .loan-info span{
 
             font-size: 11px;
+            margin-right: 3px;  
 
     }
     .loan-info {
@@ -223,6 +238,14 @@
     .slider-days {
         padding-top: 20px;
     }
+    .calculator-right {
+        padding: 0;
+    }
+    .calculator-images {
+        img {
+            margin-right: 10px;
+        }
+    }
 }
 
 .content {
@@ -233,8 +256,12 @@
     }
 
     .city-column {
-        width: 33.3%;
+        width: 100%;
+        padding: 0;
         li {
+            display: inline-block;
+            margin-right: 10px;
+            width: calc(33.3% - 10px);
             background-color: #f1f1f1;
         }
     }
@@ -255,6 +282,10 @@
     }
 }
 
+
+/* .ps-current {
+    height: 830px;
+} */
 
 /*------------------------how it work list ---------------------------*/
 

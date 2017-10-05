@@ -615,6 +615,13 @@
             float: none;
         }
     }
+    .slider-days,
+    .slider-money {
+        padding-right: 30px;
+    }
+    .slider-money-share {
+        font-size: 15px;
+    }
     .slider-control--wr {
         font-size: 18px;  
         @media screen and (max-width: $screen-md-max) {

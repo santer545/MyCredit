@@ -35,6 +35,7 @@ $baseBorderRadius: 4px;
         height: $baseLineHeight;
         @media screen and (max-width: $screen-xs-max) {
             margin-top: 15px;
+            margin-bottom: 15px;
         }
         .slider-track {
             height: $baseLineHeight/2;
@@ -64,20 +65,18 @@ $baseBorderRadius: 4px;
             }
         }
         .slider-handle {
-            width: 30px;
-            height: 30px;
-            margin: -11px 0 0 -17px;
+            width: 34px;
+            height: 34px;
+            margin: -13px 0 0 -17px;
             position: absolute;
-            z-index: 2;
+            z-index: 6;
             border-radius: 50%;
             background-color: #0056b8;
             cursor: pointer;
             background-image: url('../images/icons/double-arrows.png');
             background-repeat: no-repeat;
             background-position: 49%;
-            -webkit-box-shadow: 10px 10px 79px -14px rgba(0,0,0,0.75);
-            -moz-box-shadow: 10px 10px 79px -14px rgba(0,0,0,0.75);
-            box-shadow: 10px 10px 79px -14px rgba(0,0,0,0.75);
+            box-shadow: 2px 2px 16px -1px rgba(0,0,0,.75);
             &.triangle {
                 background: transparent none;
             }
@@ -192,7 +191,7 @@ $baseBorderRadius: 4px;
 .slider-track-high {
     position: absolute;
 
-    background-color: #bcbcbc;
+    background-color: #cdcdcd;
     border-radius: 0 4px 4px 0;
 }
 

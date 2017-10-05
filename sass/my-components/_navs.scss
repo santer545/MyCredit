@@ -447,6 +447,9 @@
         }
         @media screen and (max-width: $screen-sm-max) {
             padding-top: 30px;
+            text-align: center;
+        }
+        @media screen and (max-width: $screen-xs-max) {
             text-align: right;
         }
     }
