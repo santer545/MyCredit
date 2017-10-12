@@ -132,6 +132,9 @@
             font: #{$form-control-font-size} / #{$form-control-line-height-phone} $font-family-roman;
             padding: 0 30px 0 15px;
         }
+        &::-ms-clear {
+            display: none;
+        }
         &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
             color: $form-control-placeholder-color;
             @media screen and (max-width: $screen-xs-max) {
@@ -640,6 +643,11 @@ textarea.form-control{
     background-color: $icon-warning-bg;
     color: $white;
     text-align: center;
+}
+
+.icon-success {
+    @extend .icon-warning;
+    background-color: #00b181;
 }
 
 .help-tooltip{

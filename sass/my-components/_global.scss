@@ -78,6 +78,11 @@
             display: block;
             float: right;
         }
+        &--auth {
+            @media screen and (max-width: $screen-sm-max) {
+                margin: 7px 10px 0 0;
+            }
+        }
     }
     &-logo {
         display: block;
@@ -5972,6 +5977,7 @@ div#fancy_outer {
     border: 1px solid #e4e4e4;
     padding: 0 30px;
     .small-slider-holder {
+        margin-top: 0;
         .credit-header {
             margin: 0 -30px;
         }
@@ -6564,7 +6570,7 @@ div#fancy_outer {
     }
     .lang-img--rus,
     .lang-name--rus {
-        display: block;  
+        display: inline-block;  
     }
 }
 
@@ -6686,7 +6692,8 @@ div#fancy_outer {
             width: 50%;
             margin-bottom: 30px;
             padding-left: 20px;
-            display: inline-block;  
+            display: inline-block;
+            vertical-align: top;      
             float: none;
         }
         @media screen and (max-width: $screen-xs-max) {

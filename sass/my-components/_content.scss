@@ -85,22 +85,64 @@
     }
 }
 .small-slider-holder{
+    margin-top: 60px;
+    
     .credit-header{
         position: relative; 
         font-size: 16px;
         padding: 20px;
         border-radius: 0;
         margin: 0;
+        @media screen and (max-width: $screen-md-max) {
+            padding-right: 60px;
+        }
+        .calculator-heading--hb .neangelu-labe {
+            right: 5px;
+        }
         .calculator-hb {
             padding: 2px 10px;  
             margin-left: 0; 
             font-size: 13px;    
         }
         .neangelu-labe {
+            right: 5px;
             max-width: 100px;   
+            box-shadow: none;
+            @media screen and (max-width: $screen-md-max) {
+                width: 60px;
+                height: 60px;
+            }
+            @media screen and (max-width: $screen-sm-max) {
+                display: block;
+                bottom: 7px;
+                right: 5px;
+            }
+        }
+        
+        .calculator-skidka-text {
+            @media screen and (max-width: $screen-sm-max) {
+                text-align: left;
+            }
         }
     }
-
+    .calculator-heading--hb,
+    .calculator-heading--skidka {
+        padding: 20px 100px 20px 20px;
+        @media screen and (max-width: $screen-md-max) {
+            padding-right: 60px;
+        }
+        
+    }
+    .calculator-heading--hb {
+        .calculator-hb-text {
+            text-align: left;
+        }
+        .neangelu-labe {
+            @media screen and (max-width: $screen-sm-max) {
+                bottom: 15px;
+            }
+        }
+    }
     @media screen and (max-width: $screen-sm-max) {
         width: 100%;
     }
@@ -115,8 +157,7 @@
         padding: 20px 15px;
     }
     .stages{
-        margin-bottom: 0;
-        padding-bottom: 30px;   
+        margin-bottom: 0; 
     }
     .stages-item{
         width: 100%;
