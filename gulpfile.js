@@ -16,7 +16,7 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     browserSync = require('browser-sync'),
     criticalCss = require('gulp-critical-css'),
-    penthouse = require('penthouse'),
+    /*penthouse = require('penthouse'),*/
     inject = require('gulp-inject-string'),
     del = require('del'),
     replace = require('gulp-replace'),
@@ -104,7 +104,7 @@ gulp.task('default', function() {
 });
 
 gulp.task('server', function() {
-    gulp.start('default', 'watch', 'browser-sync', 'penthouse');
+    gulp.start('default', 'watch', 'browser-sync');
 });
 
 

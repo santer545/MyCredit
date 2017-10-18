@@ -431,8 +431,10 @@
 	    @media screen and (max-width: 1440px) {
 	    	left: 20%;
 	    }
-	    @media screen and (max-width: 1300px) {
-	    	left: 17%;
+	    @media screen and (max-width: 1350px) {
+	    	left: 18%;
+	    	top: 130px;
+	    	bottom: auto;
 	    }
 	    @media screen and (max-width: 1199px) {
 	    	left: 15%;
@@ -518,9 +520,9 @@
 		@media screen and (max-width: 1500px) {
 			padding-bottom: 32%;
 		}
-		@media screen and (max-width: 1300px) {
+		@media screen and (max-width: 1350px) {
 			background-position: 14% 0;
-			padding-bottom: 38%;	
+			padding-bottom: 32%;	
 		}
 		@media screen and (max-width: 820px) {
 			height: auto;
@@ -553,6 +555,15 @@
 			@media screen and (max-width: 350px) {
 				margin-left: 58px;
 				font-size: 12px;		
+			}
+		}
+		.neangelu-video-play {
+			@media screen and (max-width: 1350px) {
+				bottom: 23px;
+				top: auto;
+			}
+			@media screen and (max-width: 1110px) {
+				bottom: 26%;
 			}
 		}
 	}
@@ -655,7 +666,8 @@
 	}
 	@media screen and (max-width: 1350px) {
 		max-width: 250px;	
-		bottom: 66px;	
+		bottom: auto;
+    	top: 105px;
 	}
 	@media screen and (max-width: $screen-md-max) {
 		max-width: 235px;

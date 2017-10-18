@@ -24,6 +24,8 @@ img {
     height: auto;
 }
 
+
+
 b,
 strong {
     font-family: $font-family-bold;
@@ -169,5 +171,22 @@ ol{
                 margin-bottom: 5px; 
             }
         }
+    }
+}
+
+
+//grayscale for images in ie11
+.container-img {
+    img {
+        filter: url(../js/filters.svg#grayscale);
+        filter: gray;
+        -webkit-filter: grayscale(1);
+        transition: filter 0.3s;
+    }
+    .img_wrapper {
+        width: 100% !important;
+        position: relative;
+        vertical-align: middle;
+        padding-bottom: 40px;
     }
 }

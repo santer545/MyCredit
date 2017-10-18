@@ -86,7 +86,9 @@
 }
 .small-slider-holder{
     margin-top: 60px;
-    
+    .slider-money .slider-track-high, .slider-money .slider-track-low {
+        border-radius: 0 4px 4px 0;
+    }
     .credit-header{
         position: relative; 
         font-size: 16px;
@@ -301,9 +303,16 @@
         padding: 0;
         li {
             display: inline-block;
+            vertical-align: top;
             margin-right: 10px;
             width: calc(33.3% - 10px);
             background-color: #f1f1f1;
+            @media screen and (max-width: $screen-sm-max) {
+                width: calc(50% - 10px);
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                width: 100%;
+            }
         }
     }
 

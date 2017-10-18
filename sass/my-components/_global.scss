@@ -1195,16 +1195,23 @@
 }
 
 .calculator-images {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
     padding-top: 20px;  
     text-align: justify;
+    font-size: 0;
     @media screen and (max-width: $screen-xs-max) {
         text-align: left;
     }
-    img {
+    li {
         display: inline-block;
         @media screen and (max-width: $screen-xs-max) {
             margin-right: 10px;
         }
+    }
+    img {
+        display: inline-block;
     }
     &:after {
         content: '';
@@ -3024,6 +3031,11 @@
         span {
             color: #fff;
         }
+        @media screen and (max-width: 1350px) {
+            padding-top: 20px;
+            font: 25px/30px HelveticaNeueCyr Thin,Arial,sans-serif;
+        }
+
         @media screen and (max-width: $screen-sm-max) {
             font-size: 26px;    
             line-height: 34px;  
@@ -3687,13 +3699,14 @@
     bottom: -55px;
     padding: 0;
     margin: 0;
-    font-size: 0;
+    /* font-size: 0; */
     list-style-type: none;
     counter-reset: list 0;
     z-index: 20;
     opacity: 1;
     visibility: visible;
     text-align: justify;
+    -ms-text-align: justify;
 
     &:after {
         content: '';
@@ -4594,6 +4607,10 @@
         text-transform: uppercase;
         color: #0055b8;
         margin-bottom: 20px;
+        @media screen and (max-width: 1350px) {
+            padding-top: 20px;
+            font: 25px/30px HelveticaNeueCyr Thin,Arial,sans-serif;
+        }
         span {
             color: #ed592b;
         }
@@ -4625,6 +4642,34 @@
             font-size: 16px;
             line-height: 23px;
             padding: 30px 20px 0;
+        }
+        &.banner-small-screen {
+            display: none;
+            &:hover {
+                text-decoration: underline;
+                color: #fff;
+            }
+            @media screen and (max-width: 1350px) {
+                display: block;
+            }
+            @media screen and (max-width: $screen-md-max) {
+                display: none;
+            }
+            @media screen and (max-width: $screen-sm-max) {     
+                display: block; 
+            }
+        }
+        &.banner-large-screen {
+            display: block;
+            @media screen and (max-width: 1351px) {
+                display: none;
+            }
+            @media screen and (max-width: $screen-md-max) {
+                display: block;
+            }
+            @media screen and (max-width: $screen-sm-max) {
+                display: none;  
+            }
         }
     }
     .owl-span-text {
@@ -4732,10 +4777,15 @@
                 padding-bottom: 30%;
                 background-position: 46% 0;
             }
-            @media screen and (max-width: 1300px) {
-                padding-bottom: 36%;
+            @media screen and (max-width: 1350px) {
+                min-height: 0;
+                padding-bottom: 30%;
+                height: 510px;
             }
-            
+            @media screen and (max-width: $screen-md-max) {
+                min-height: 700px;
+                height: auto;
+            }
             @media screen and (max-width: 1100px) {
                 padding-bottom: 45%;
             }
@@ -5759,9 +5809,7 @@ div#fancy_outer {
         }
         img {
             width: 80%;
-            filter: gray; /* IE6-9 */
-            -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
-            -moz-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+            max-width: 250px;
             transition: filter 0.3s;
             opacity: .6;
             @media screen and (max-width: $screen-md-max) {
@@ -7815,12 +7863,14 @@ box-shadow: 5px 6px 113px -24px rgba(0,0,0,0.75);
 .reviews {
     &-list {
         margin-bottom: 20px;
+        @media screen and (max-width: $screen-sm-max) {
+            margin-top: 20px;
+        }
     }
     &-item {
-        padding: 0 0 20px;
         border-bottom: 1px solid #ccc;
         &:not(:last-child) {
-            margin-bottom: 30px;
+            margin-bottom: 10px;
         }
     }
     &-name {
@@ -7832,21 +7882,92 @@ box-shadow: 5px 6px 113px -24px rgba(0,0,0,0.75);
         vertical-align: middle;
         margin-right: 20px;
         border-radius: 3px;
+        border: none;
     }
     &-date {
         font-size: 13px;
         display: inline-block;
         vertical-align: middle;
         color: #666;
+        border: none;
+        background-color: #fff;
     }
     &-text {
-        padding-top: 10px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 100%;
     }
     &-constructor {
         padding-top: 20px;  
         .rating-container {
             margin-bottom: 10px;
         }
+    }
+    &-buttons {
+        
+        padding-top: 15px;
+        .btn {
+            margin-right: 15px;
+        }
+    }
+    &-top {
+        @include clearfix;
+    }
+}
+
+.moderator {
+    &-wrapper {
+        padding-left: 40px;
+        .reviews-text {
+            padding-top: 0;
+        }
+        /* 
+        background-image: url('../images/quot.png');
+        background-repeat: no-repeat;
+        background-position: 0 20px; */
+    }
+    &-answer {
+        background-color: #fff;
+        width: 100%;
+        border: none;
+        resize: none;
+        height: auto;
+    }
+    &-name {
+        font-family: $font-family-medium;
+        font-size: 17px;
+        color: #0055b8;
+        background-color: #fff;
+        border: none;
+    }
+}
+
+textarea.reviews-text {
+    padding-left: 10px;
+    padding-top: 10px;
+    height: 160px;
+}
+
+input.moderator-name {
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+textarea.moderator-answer {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding-left: 10px;
+    height: 160px;
+}
+
+.reviews-item {
+    .reviews-agree {
+        height: auto;
+        line-height: 1;
+        display: block;
+        float: none;
+        margin: 20px 0 10px;
     }
 }
 
@@ -8139,6 +8260,9 @@ box-shadow: 5px 6px 113px -24px rgba(0,0,0,0.75);
     }
 }
 
+input.rating {
+    display: none;
+}
 
 .g-recaptcha {
     @media screen and (max-width: $screen-xs-max) {

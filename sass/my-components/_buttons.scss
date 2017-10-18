@@ -207,10 +207,16 @@
     background-color: #ed592b;
     border: none;
     @include transition(background-color 0.3s);
-    @media screen and (max-width: 680px) {
+    @media screen and (max-width: 1350px) {
         height: 45px;
         line-height: 45px;
         font-size: 15px;
+        display: none;
+    }
+    @media screen and (max-width: $screen-md-max) {
+        display: inline-block;
+    }
+    @media screen and (max-width: $screen-xs-max) {
         display: none;
     }
     &:hover {
@@ -219,7 +225,13 @@
     }
 }
 
-
+.btn-moderator {
+    background-color: #0055b8;
+    color: #fff;
+    &:hover {
+        color: #fff;
+    }
+}
 
 
 /******************************
@@ -497,6 +509,10 @@
     @media screen and (max-width: 1500px) {
         margin-top: 10px;
         font-size: 14px;
+    }
+    @media screen and (max-width: 1400px) {
+        margin-top: 0;
+        margin-bottom: 20px;
     }
     @media screen and (max-width: 1300px) {
         margin-left: 15px;

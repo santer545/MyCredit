@@ -599,3 +599,11 @@
         }
     }
 }
+
+.repayment-additional {
+	& + div {
+		.btn {
+			margin-right: 15px;
+		}
+	}
+}
