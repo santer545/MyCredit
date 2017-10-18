@@ -71,6 +71,8 @@ function validate(form, paramId) {
     var cyrilic = false;
     var numberNotZero = false;
     var studentId = false;
+    
+    var flagValidInn = false;	// флаг валидности ИНН
 
     function mark(object, expression) {
         if (expression) {
@@ -81,6 +83,9 @@ function validate(form, paramId) {
             if (phone && (object.val().length > 0)) {}
             if (card && (object.val().length > 0)) {}
             if (numberNotZero && (object.val().length > 0)) {}
+            if (inn && (object.val().length > 0) && !flagValidInn) {$('#error_check_inn').removeClass('hidden');}
+            
+            $(object.closest(".js-address")).removeClass('hidden');	// если валидация не прошла, открываем поля с адресом
 
             e++;
         } else
@@ -150,7 +155,8 @@ function validate(form, paramId) {
                 inn = true;
                 reg = /\d\d\d\d\d\d\d\d\d\d/;
                 var innVal = $.trim($(this).val());
-                mark($(this), !reg.test(innVal) || !isValidInn(innVal) );
+                flagValidInn = isValidInn(innVal);
+                mark($(this), !reg.test(innVal) || !flagValidInn );
                 inn = false;
                 break;
             case "pass1":

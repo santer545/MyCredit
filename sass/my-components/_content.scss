@@ -654,7 +654,8 @@
     float: left;
     padding: 10px;
     text-align: center;
-    svg {
+    svg,
+    img {
         width: 60px;
         height: 60px;
         display: inline-block;
@@ -662,15 +663,26 @@
         
     }
     &.no-active {
-        svg {
-            filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale"); /* Firefox 10+, Firefox on Android */
-            filter: gray; /* IE6-9 */
-            -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+        svg,
+        img {
+            /* filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale"); Firefox 10+, Firefox on Android
+            filter: gray; IE6-9
+            -webkit-filter: grayscale(100%); Chrome 19+, Safari 6+, Safari 6+ iOS
             filter: grayscale(100%);
             -ms-filter: grayscale(100%);
             filter: grayscale(1);
+            filter: gray; */
+            filter: url(../js/filters.svg#grayscale);
             filter: gray;
-            opacity: 0.7;   
+            -webkit-filter: grayscale(1);
+            opacity: 0.7;
+
+
+            /* -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+            filter: url(../js/gray.svg#greyscale);
+            filter: gray;
+            opacity: 0.7;    */
         }
     }
 }

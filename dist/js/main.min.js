@@ -1,5 +1,36 @@
 $(document).ready(function() {
 
+    if ($('#watch').length > 0) {
+        var els = document.querySelectorAll('.letter-arrow');
+        Array.prototype.slice.call(els).forEach(function(el) {
+            el.setAttribute('stroke', 'white');
+            el.setAttribute('fill', 'transparent');
+        })
+
+
+
+        var SVGcrown = new Vivus('watch', {
+                duration: 300,
+                start: 'autostart'
+            },
+            /*callbackEnd,*/
+            function(myVivus) {
+                /*$('#watch .letter-arrow').attr('fill', 'transparent');*/
+                if (myVivus.getStatus() === 'end') {
+                    $('#watch .letter-arrow').attr('fill', 'white');
+                    setTimeout(function() {
+                        $('#watch .letter-arrow').attr('fill', 'transparent');
+
+                    }, 3000);
+                    myVivus.play(-1);
+                } else {
+                    myVivus.play(1);
+                }
+                /*myVivus.play(myVivus.getStatus() === 'end' ? -1 : 1);*/
+            })
+    }
+
+
     $('.nav-tabs a').click(function(e) {
         e.preventDefault();
         $(this).tab('show');
@@ -9,10 +40,26 @@ $(document).ready(function() {
     $('a[data-toggle="collapse"]').click(function(e) {
         e.preventDefault();
     })
+    /*$(".group1").colorbox({
+        rel:'group1',
+        current: "Изображение {current} из {total}"
+    });*/
 
+    lightbox.option({
+        albumLabel: "Изображение %1 of %2"
+    })
 
     anchorLink();
     navbarClose();
+
+    $('.js-owl-questions').owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: false,
+        dots: true,
+        nav: true,
+        navText: ['', '']
+    });
 
     $('.owl-cpa').owlCarousel({
         loop: true,
@@ -45,12 +92,15 @@ $(document).ready(function() {
         items: 1,
         loop: true,
         nav: true,
+        dots: true,
         autoplayTimeout: 9000,
         autoplayHoverPause: true,
         navText: ['', ''],
         responsive: {
             800: {
-                items: 2
+                items: 2,
+                dots: false,
+                nav: false
             },
             1300: {
                 items: 3
@@ -61,51 +111,38 @@ $(document).ready(function() {
 
 
 
-
-
-    /*
-        $('#clock').countdown('2017/08/10', function(event) {
-            var $this = $(this).html(event.strftime('' + '<div>%d<span>дней [*minSum*] [#67#] :-) </span></div> ' + '<div>%H<span>часов</span></div>' + '<div>%M<span> мин </span></div>' + '<div>%S<span>сек</span></div>'));
-        });
-    */
-
-
-
     $('.owl-carousel-banner').owlCarousel({
         loop: true,
         nav: true,
         items: 1,
         margin: 0,
-        autoplayTimeout: 9000,
+        autoplay: false,
         autoplayHoverPause: true,
         navText: ['', ''],
         responsive: {
             0: {
-                dots: true,
-                autoplay: false
-            },
-            480: {
-                autoplay: true
+                dots: true
             },
             1025: {
                 dots: false,
-                autoplay: true
             }
         }
     });
 
     $('.owl-carousel-text').owlCarousel({
         loop: true,
-        nav: true,
+        dots: true,
+        nav: false,
         items: 1,
         margin: 20,
         autoplayTimeout: 9000,
         autoplayHoverPause: true,
         navText: ['', ''],
-        dotsContainer: '#custom-dots',
         responsive: {
             800: {
-                items: 2
+                dots: false,
+                items: 2,
+                nav: true
             },
             480: {
                 autoplay: true
@@ -128,18 +165,14 @@ $(document).ready(function() {
             },
             480: {
                 autoplay: true
+            },
+            800: {
+                dots: false
             }
         }
     });
 
-    if ($(window).width() < 820) {
-        $('.js-advantages-slider').owlCarousel({
-            items: 1,
-            loop: true,
-            nav: true,
-            navText: ['', '']
-        });
-    }
+    owlAdvantages();
 
 
     choosePaymentMethod();
@@ -163,16 +196,17 @@ $(document).ready(function() {
 
     // z-index for svg elements
 
-    var svg = document.querySelector("svg");
-    var rects = document.querySelectorAll(".terminal-marker");
+    /*var svg = document.querySelector("svg");
+        var rects = document.querySelectorAll(".terminal-marker");
 
-    var i = rects.length;
-    while (i--) {
-        rects[i].addEventListener("mouseenter", function(e) {
-            svg.appendChild(e.target);
-        });
-    }
+        var i = rects.length;
+        while (i--) {
+            rects[i].addEventListener("mouseenter", function(e) {
+                svg.appendChild(e.target);
+            });
+        }
 
+    */
     $('.pgwSlideshow').pgwSlideshow();
 
     $("[class^=nameSlider]").each(function(i, elem) {
@@ -224,6 +258,46 @@ $(document).ready(function() {
         });
 
     });
+
+    // если есть Неангелы, то меняем условия:
+    if ($("#div_notangels").length > 0) {
+
+        var class_calculator_heading_top = $(".calculator-heading--top").prop('class');
+        $(".calculator-heading--top").removeClass("calculator-heading--hb");
+        $(".calculator-heading--top").removeClass("calculator-heading--skidka");
+        $(".calculator-heading--top").addClass("calculator-heading--neangelu");
+
+        // событие при смене слайдера-карусели:
+        $(".owl-carousel-banner").on('translated.owl.carousel', function(event) {
+
+            var item = $(".owl-item")[event.item.index];
+            item = $(item).children("#div_notangels");
+
+            if (item.length > 0) {
+                $(".calculator-heading--top").removeClass("calculator-heading--hb");
+                $(".calculator-heading--top").removeClass("calculator-heading--skidka");
+                $(".calculator-heading--top").addClass("calculator-heading--neangelu");
+            } else {
+                $(".calculator-heading--top").removeClass("calculator-heading--neangelu");
+                $(".calculator-heading--top").addClass(class_calculator_heading_top);
+            }
+        });
+
+        reloadCred('large_main'); // запускает обновление калькулятора
+
+        /*
+        $('.owl-carousel-banner').on('changed.owl.carousel', function(event) {
+               //current will now return current slide #
+                var current = (event.item.index + 1) - event.relatedTarget._clones.length / 2;
+                var allItems = event.item.count;
+                if (current > allItems || current == 0) {
+                    current = allItems - (current % allItems);
+                }
+                console.log(current);
+               // $('.number-of-slider').text(current + '/' + allItems);
+        });
+        */
+    }
 
     $('.change-button').click(function() {
         $(this).addClass('hidden');
@@ -380,6 +454,10 @@ $(document).ready(function() {
         $('#wayforpay-date').mask("99");
         $('#wayforpay-date1').mask("99");
         $('#wayforpay-cvv').mask("999");
+
+        $('.js-input-card').mask("9999 9999 9999 9999");
+        $('.js-input-time').mask("99/99");
+        $('.js-input-cvv').mask("999");
     });
     if ($.browser.mozilla) {
         if ($.browser.version < '34') {
@@ -823,6 +901,8 @@ $(document).ready(function() {
         }, 1200);
     }
     return false;*/
+
+    $('._orinationLeft_3O .button_1O').css('margin-bottom', '65!important');
 });
 
 
@@ -881,6 +961,15 @@ $(document).ready(function() {
             $('#promo1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
         }
     });
+
+    $('.modal').on('hidden.bs.modal', function(e) {
+        console.log('окно закрыто!');
+        $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+        $('#promo2')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+        console.log('окно закрыто!');
+    });
+
+
 
     $('.btn-user-close').click(function() {
         $('.info-user').removeClass('active');
@@ -948,12 +1037,7 @@ function stickyCalcHeight() {
     $('.header').css('top', stickyCalcHeight);
 }
 
-/*function stickyCalcMargin() {
-    var stickyCalcMargin = $('.sticky-calc').outerHeight();
-    stickyCalcMargin = 0 - stickyCalcMargin;
-    $('.sticky-calc').css('margin-top', stickyCalcMargin);
-}
-*/
+
 function preloader(immune, background, color) {
 
 
@@ -983,11 +1067,13 @@ function preloader(immune, background, color) {
 
 }
 
+
+
+
 $(document).ready(function($) {
+
     $(window).load(function() {
-        setTimeout(function() {
-            $('.preloader').fadeOut();
-        }, 0);
+
         setTimeout(function() {
             $('.js-tooltip').addClass('active');
             $('.js-tooltip .close').click(function() {
@@ -997,6 +1083,7 @@ $(document).ready(function($) {
     });
 
 });
+
 
 
 
@@ -1048,9 +1135,9 @@ function elementToTop() {
 function sharePopupShow() {
     setTimeout(function() {
         $('.share-popup').addClass('active');
-        setInterval(function() {
-            $('.share-popup').toggleClass('active');
-        }, 40000);
+        /* setInterval(function() {
+             $('.share-popup').toggleClass('active');
+         }, 40000);*/
     }, 20000);
 }
 
@@ -1065,9 +1152,9 @@ function sharePopupClose() {
 
 function anchorLink() {
     $('a[href*="#"]').click(function(e) {
-        e.preventDefault();
-        var href = $(this).attr('href');
-        $(this).closest('body').find(href);
+        /* e.preventDefault();
+         var href = $(this).attr('href');
+         $(this).closest('body').find(href);*/
 
         /*$('html, body').animate({
             scrollTop: ($(href).offset().top)
@@ -1075,6 +1162,9 @@ function anchorLink() {
     });
 }
 
+
+var elementDefault = $('.navbar-nav li');
+var elementDefault_1 = $('.second-nav li');
 
 function menuOverflow() {
     if ($(window).width() < 992 && $(window).width() > 699) {
@@ -1091,6 +1181,11 @@ function menuOverflow() {
             el1.appendTo('.js-second-more .dropdown-menu');
             $('.second-nav li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3))').remove();
         }
+    } else {
+        $('.navbar-nav li').remove();
+        elementDefault.appendTo('.navbar-nav');
+        $('.second-nav li').remove();
+        elementDefault_1.appendTo('.second-nav');
     }
 }
 
@@ -1122,9 +1217,9 @@ function overflowBlock() {
 function chooseFromSelect() {
     $('#neangelu-ticket').on('hidden.bs.select', function(e) {
         var value = $('#neangelu-ticket').find('option:selected').val();
-        console.log(value);
+
         var element = $('.js-neangelu-city-list').find('#' + value + '');
-        console.log(element);
+
         $('.neangelu-city-item:not(#' + value + ')').hide(200);
         $('#' + value + '').show(200);
     });
@@ -1135,5 +1230,262 @@ function chooseFromSelect() {
         $('#' + value + '').show(200);
     });
 
-    
+
 }
+
+function owlAdvantages() {
+    var $owl = $('.js-advantages-slider');
+    if ($(window).width() < 820) {
+        $('.js-advantages-slider').owlCarousel({
+            items: 1,
+            loop: true,
+            nav: false,
+            dots: true,
+            navText: ['', ''],
+            responsive: {
+
+                800: {
+                    dots: false,
+                    nav: false
+                }
+            }
+        });
+    } else {
+        /*$owl.owlCarousel('destroy'); 
+        $owl.owlCarousel({touchDrag: false, mouseDrag: false});*/
+    }
+}
+
+
+
+
+$(function() {
+    var nav = $('.step-verify--second .verify-body'),
+        animateTime = 500;
+    if (nav.hasClass('active')) {
+        autoHeightAnimate(nav, animateTime);
+    } else {
+        nav.stop().animate({ height: '0' }, animateTime);
+    }
+});
+
+
+/* Function to animate height: auto */
+function autoHeightAnimate(element, time) {
+    var curHeight = element.height(), // Get Default Height
+        autoHeight = element.css('height', 'auto').height(); // Get Auto Height
+    element.height(curHeight); // Reset to Default Height
+    element.stop().animate({ height: autoHeight }, time); // Animate to Auto Height
+}
+
+
+
+
+
+
+
+$(document).ready(function() {
+
+    // Grayscale images on Safari and Opera browsers
+    if(getBrowser()=='opera' || getBrowser()=='safari'){
+        var $images = $(".container-img img")
+        , imageCount = $images.length
+        , counter = 0;
+
+        // One instead of on, because it need only fire once per image
+        $images.one("load",function(){
+            // increment counter every time an image finishes loading
+            counter++;
+            if (counter == imageCount) {
+                // do stuff when all have loaded
+                grayscale($('.container-img img'));
+                $(".container-img img").hover(
+                    function () {
+                        grayscale.reset($(this));
+                    }, 
+                    function () {
+                        grayscale($(this));
+                    }
+                );
+            }
+        }).each(function () {
+        if (this.complete) {
+            // manually trigger load event in
+            // event of a cache pull
+                $(this).trigger("load");
+            }
+        });
+    };
+
+
+    // for svg 
+
+    // Grayscale images on Safari and Opera browsers
+    if(getBrowser()=='opera' || getBrowser()=='safari'){
+        var $images = $(".container-img svg")
+        , imageCount = $images.length
+        , counter = 0;
+
+        // One instead of on, because it need only fire once per image
+        $images.one("load",function(){
+            // increment counter every time an image finishes loading
+            counter++;
+            if (counter == imageCount) {
+                // do stuff when all have loaded
+                grayscale($('.container-img svg'));
+                $(".container-img svg").hover(
+                    function () {
+                        grayscale.reset($(this));
+                    }, 
+                    function () {
+                        grayscale($(this));
+                    }
+                );
+            }
+        }).each(function () {
+        if (this.complete) {
+            // manually trigger load event in
+            // event of a cache pull
+                $(this).trigger("load");
+            }
+        });
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    // Grayscale images only on browsers IE10+ since they removed support for CSS grayscale filter
+    if (getInternetExplorerVersion() >= 10){
+        $('.container-img img').each(function(){
+            var el = $(this);
+            el.css({"position":"absolute"}).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({"position":"absolute","z-index":"5","opacity":"0"}).insertBefore(el).queue(function(){
+                var el = $(this);
+                el.parent().css({"width":this.width,"height":this.height});
+                el.dequeue();
+            });
+            this.src = grayscaleIE10(this.src);
+        });
+
+        $('.container-img svg').each(function(){
+            var el = $(this);
+            el.css({"position":"absolute"}).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({"position":"absolute","z-index":"5","opacity":"0"}).insertBefore(el).queue(function(){
+                var el = $(this);
+                el.parent().css({"width":this.width,"height":this.height});
+                el.dequeue();
+            });
+            this.src = grayscaleIE10(this.src);
+        });
+        
+        // Quick animation on IE10+ 
+        $('.container-img img').hover(
+            function () {
+                $(this).parent().find('svg:first').stop().animate({opacity:1}, 200);
+            }, 
+            function () {
+                $('.img_grayscale').stop().animate({opacity:0}, 200);
+            }
+        ); 
+
+        $('.container-img svg').hover(
+            function () {
+                $(this).parent().find('svg:first').stop().animate({opacity:1}, 200);
+            }, 
+            function () {
+                $('.img_grayscale').stop().animate({opacity:0}, 200);
+            }
+        );  
+        
+        function grayscaleIE10(src){
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            var imgObj = new Image();
+            imgObj.src = src;
+            canvas.width = imgObj.width;
+            canvas.height = imgObj.height; 
+            ctx.drawImage(imgObj, 0, 0); 
+            var imgPixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            for(var y = 0; y < imgPixels.height; y++){
+                for(var x = 0; x < imgPixels.width; x++){
+                    var i = (y * 4) * imgPixels.width + x * 4;
+                    var avg = (imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;
+                    imgPixels.data[i] = avg; 
+                    imgPixels.data[i + 1] = avg; 
+                    imgPixels.data[i + 2] = avg;
+                }
+            }
+            ctx.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);
+            return canvas.toDataURL();
+        };
+    };
+    
+    // This block simply ads a corresponding class to the body tag so that we can target browsers with CSS classes
+    if(getBrowser()=='mozilla'){
+        // Mozilla
+        $('body').addClass('mozilla');
+    }
+    else if(getBrowser()=='ie'){
+        // IE Favourite
+        $('body').addClass('ie');
+    }
+    else if(getBrowser()=='opera'){
+        // Opera
+        $('body').addClass('opera');
+    }           
+    else if (getBrowser()=='safari'){ // safari
+        // Safari
+        $('body').addClass('safari');
+    }
+    else if(getBrowser()=='chrome'){
+        // Chrome
+        $('body').addClass('chrome');
+    };
+    if (getInternetExplorerVersion() >= 10){
+        $('body').addClass('ie11');
+    };
+
+    // Detection function to tell what kind of browser is used
+    function getBrowser(){
+        var userAgent = navigator.userAgent.toLowerCase();
+        $.browser.chrome = /chrome/.test(userAgent);
+        $.browser.safari= /webkit/.test(userAgent);
+        $.browser.opera=/opera/.test(userAgent);
+        $.browser.msie=/msie/.test( userAgent ) && !/opera/.test( userAgent );
+        $.browser.mozilla= /mozilla/.test( userAgent ) && !/(compatible|webkit)/.test( userAgent ) || /firefox/.test(userAgent);
+
+        if($.browser.chrome) return "chrome";
+        if($.browser.mozilla) return "mozilla";
+        if($.browser.opera) return "opera";
+        if($.browser.safari) return "safari";
+        if($.browser.msie) return "ie";
+    };
+    
+    // Since IE11 can not be detected like this because the new user agent on IE11 is trying to hide as Mozilla
+    // we detect IE11 with this function
+    function getInternetExplorerVersion(){
+        var rv = -1;
+        if (navigator.appName == 'Microsoft Internet Explorer'){
+            var ua = navigator.userAgent;
+            var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+            if (re.exec(ua) != null)
+            rv = parseFloat( RegExp.$1 );
+        }
+        else if (navigator.appName == 'Netscape'){
+            var ua = navigator.userAgent;
+            var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+            if (re.exec(ua) != null)
+            rv = parseFloat( RegExp.$1 );
+        }
+        return rv;
+    };
+});

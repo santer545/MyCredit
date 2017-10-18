@@ -257,7 +257,7 @@ function getDayLang(day) {
 			break;
 				
 		case "ua":
-			if (day.substring(1) == '1' && day !== '11') {
+			if (day.substring(day.length - 1) == '1' && day !== '11') {
 				dayStr = 'день';
 			} else if ((day.substring(day.length - 1) == '2' || day.substring(day.length - 1) == '3' || day.substring(day.length - 1) == '4') &&
 					(day !== '11') && (day !== '12') && (day !== '13') && (day !== '14')) {
@@ -633,22 +633,33 @@ function getSessionData() {
 	var options = {};
 	new Fingerprint2(options).get(function(result, components){
 		sessionData += '"fingerprint":"' + result + '", ';
-		console.log(result); //a hash, representing your device fingerprint
-		console.log(components); // an array of FP components
-	
-		sessionData += '"end":"ok"}';
-		// console.log(sessionData);
+		var dataComponents = {
+				fingerprintComponents: components
+		}; 
 		
-		// готовим данные для отправки:
-		var data = {
-			    typeData: 'userInfo',
-			    sessionData: sessionData
-			};
+		var options = {excludeUserAgent: true};	// отключаем использование UserAgent в формировании
+		new Fingerprint2(options).get(function(result, components){
+			sessionData += '"fingerprintDevice":"' + result + '", ';
+
+			// sessionData += '"fingerprintComponents":"' + components + '", ';
+			// console.log(result); //a hash, representing your device fingerprint
+			// console.log(components); // an array of FP components
+			// console.log(sessionData);
 		
-		// отправить массив на сервер
-		//console.log("Передаем запрос ajax 'userInfo'");
-		sendAjax(data);
-	
+			sessionData += '"end":"ok"}';
+			// console.log(sessionData);
+			
+			// готовим данные для отправки:
+			var data = {
+				    typeData: 'userInfo',
+				    sessionData: sessionData,
+				    dataComponents: dataComponents
+				};
+			
+			// отправить массив на сервер
+			//console.log("Передаем запрос ajax 'userInfo'");
+			sendAjax(data);
+		});
 	});
 }
 
@@ -754,25 +765,29 @@ function isValidInn(inn) {
 	
 	var flagValid = true;
 	
-	/*
-	var dateB = new Date(1900, 0, 1);			// дата 01.01.1900
-	var days = parseInt(inn.substring(0, 5));	// количество дней от 01.01.1900 
-	dateB.setDate(dateB.getDate() + days -1);		// ДР
-	console.log("ДР: " + dateB);
-	console.log('год ' + dateB.getFullYear() + ' месяц ' + (dateB.getMonth() +1) + ' день ' + dateB.getDate());
-	alert('год ' + dateB.getFullYear() + ' месяц ' + (dateB.getMonth() + 1) + ' день ' + dateB.getDate());
-	*/
-	
-	/*
-	var yearB = Math.floor(parseInt(inn.substring(0, 5)) / 365.25) + 1900;	// год рождения (приблизительно)
-	var dateNow = new Date();
-	if ((yearB > dateNow.getFullYear() - minYear) || (yearB < dateNow.getFullYear() - maxYear)) {
-		flagValid = false;
+	if (inn.length > 0) {
+		var dateB = new Date(1900, 0, 1);			// дата 01.01.1900
+		var days = parseInt(inn.substring(0, 5));	// количество дней от 01.01.1900 
+		dateB.setDate(dateB.getDate() + days -1);		// ДР
+		
+		var dayB = $("#day").val();
+		var monthB = $("#month").val();
+		var yearB = $("#year").val();
+		
+		// console.log('год: ' + dateB.getFullYear() + ' месяц: ' + (dateB.getMonth() +1) + ' день: ' + dateB.getDate());
+		// alert('год ' + dateB.getFullYear() + ' месяц ' + (dateB.getMonth() + 1) + ' день ' + dateB.getDate() + ' Дата из input: ' + dayB + '.' + monthB + '.' + yearB);
+		
+		// сравниваем дату из ИНН с введенной:
+		if (parseInt(dayB) !== dateB.getDate() || parseInt(monthB) !== (dateB.getMonth() +1) || parseInt(yearB) !== dateB.getFullYear()) {
+			flagValid = false;
+		}
+		// проверяем возраст:
+		var dateNow = new Date();
+		if ((parseInt(yearB) > dateNow.getFullYear() - minYear) || (parseInt(yearB) < dateNow.getFullYear() - maxYear)) {
+			flagValid = false;
+		}
 	}
-	// console.log('yearB = ' + yearB);
-	// console.log('flagValid = ' + flagValid);
-	*/
-	
+
 	return flagValid;
 }
 
@@ -1681,6 +1696,25 @@ function onClickCloseEmail() {
 	$("#div_SendEmail").addClass("bottom-call-hidden");
 	$("#div_resultEmail").addClass("bottom-call-hidden");
 	$("#button_sendMe").removeAttr("disabled");
+}
+
+/**
+ * запускает виджет от MyCredit
+ * @returns
+ */
+function onClockCreateWidget(satelliteId) {
+	
+	// делаем невидимым калькулятор:
+	$(".slider-action").addClass('hidden');
+	
+	var widgetOptions = {
+			sat_id: satelliteId,			// id опроса
+			container_id: 'MC_container',
+			money: $('[id ^= money-value]').val(),
+			days: $('[id ^= day-value]').val()
+	};
+
+	createWidget(widgetOptions);	
 }
 
 /**
@@ -2785,16 +2819,13 @@ function reloadCred(typeSlider) {
 	var percent = document.getElementById("percent-value" + prefix).value;
 	percent = getPercent(money, day, maxDay, minDay, maxSum, minSum, percent, ChildProducts);
 	if (percent <= 0.04) {
-		//var css = $("#js-money_large_main").css('background', 'red');
-		//$(".slider-track-low").css('background', 'red'); // green
 		$(".slider-selection").css('background-color', '#fc7f2b');
-		//$(".slider-track-high").css('background', 'red');
 		$(".slider-handle").css('background-color', '#fc7f2b');
-		//var css = $("#js-money_large_main").css();
-		//console.log('css = '+css);
+		$(".slider-money-share").addClass("active");	// подпись 0% до 500
 	} else {
 		$(".slider-selection").css('background', '#0056b8');
 		$(".slider-handle").css('background-color', '#0056b8');
+		$(".slider-money-share").removeClass("active");	// подпись 0% до 500
 	}
 	
 	var resolution = document.getElementById("resolution" + prefix).value;

@@ -5810,6 +5810,9 @@ div#fancy_outer {
         img {
             width: 80%;
             max-width: 250px;
+            /* filter: url(../js/filters.svg#grayscale); */
+            
+            -webkit-filter: grayscale(1);
             transition: filter 0.3s;
             opacity: .6;
             @media screen and (max-width: $screen-md-max) {
