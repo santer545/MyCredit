@@ -158,6 +158,9 @@
     @media screen and (max-width: $screen-md-max) {
         padding: 20px 15px;
     }
+    .calculator-images {
+        padding-bottom: 20px;   
+    }
     .stages{
         margin-bottom: 0; 
     }
@@ -297,7 +300,17 @@
     @media screen and (max-width: $screen-xs-max) {
         word-break: normal;
     }
-
+    &-calculator {
+        border: 1px solid #eaeaea;
+        margin-top: 20px;   
+        .slider-money--control {
+            width: 65px;    
+        }
+        .slider-money,
+        .slider-days {
+            padding: 30px 20px 44px 20px;
+        }
+    }
     .city-column {
         width: 100%;
         padding: 0;
@@ -657,10 +670,13 @@
     svg,
     img {
         width: 60px;
-        height: 60px;
         display: inline-block;
         vertical-align: middle;
         
+    }
+    svg {
+        width: 60px;    
+        height: 60px;   
     }
     &.no-active {
         svg,
