@@ -677,6 +677,36 @@
 }
 
 
+.btn-repay {
+    padding: 12px 15px; 
+    font-size: 16px;    
+    svg {
+        margin-right: 8px;  
+        display: inline-block;  
+        vertical-align: middle; 
+        width: 31px;     
+        height: 24px;   
+        line-height: 24px;   
+    }
+    span {
+        display: inline-block;  
+        vertical-align: middle; 
+    }
+}
+
+.btn-prolongate {
+    padding: 12px 15px; 
+    background-color: transparent;
+    border: 1px solid #0083ca;
+    color: #0083ca;
+    font-size: 16px;    
+    transition: all 0.3s;
+    &:hover {
+        color: #fff;
+        background-color: #0083ca;
+    }
+}
+
 
 /**************************
  * Cancel button

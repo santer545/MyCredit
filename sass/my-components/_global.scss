@@ -6964,6 +6964,9 @@ div#fancy_outer {
     box-shadow: 3px 4px 65px -8px rgba(0,84,184,1);
     z-index: 10;
     border: none;   
+    @media screen and (max-width: $screen-xs-max) {
+        display: none;
+    }
     &:hover,
     &:focus {
         color: #fff;
@@ -8551,27 +8554,27 @@ input.rating {
         position: fixed;
         left: 30px;
         top: 300px; 
-        min-width: 370px;
-        border: 1px solid #cecece;
-        display: flex;
+        width: 200px;
+        
+        
         border-radius: 43px 0 43px 0;
         -webkit-box-shadow: 10px 18px 85px -19px rgba(239,227,227,0.75);
         -moz-box-shadow: 10px 18px 85px -19px rgba(239,227,227,0.75);
         box-shadow: 10px 18px 85px -19px rgba(239,227,227,0.75);
-       background-color: #eaf1f4;
+       
         z-index: 20;
         
         @include translate(-600px, 0);
         @include transition(all 0.3s);
         
-        /* .btn-personal {
+        .btn-personal {
             position: absolute; 
             top: calc(100% - 20px);
             left: 50%;  
             padding: 9px; 
             font-size: 15px;      
             transform: translate(-50%, 0);
-        } */
+        }
 
 
         @media screen and (max-width: 1440px) {
@@ -8593,10 +8596,11 @@ input.rating {
             border: 1px solid #cecece;
             display: flex;
             
-            
+            background-color: #eaf1f4;
 
             .btn-personal {
                 position: static;
+                transform: translate(0, 0);
             }
             .share-left {
                 
@@ -8619,7 +8623,7 @@ input.rating {
     &-right {
         width: 60%;
         padding: 20px 40px 20px 20px;
-        
+
         ul {
             padding: 0 0 0 20px;
             li {
@@ -8648,6 +8652,19 @@ input.rating {
     animation-timing-function: linear;
     animation-direction: alternate;
     animation-delay: 0.5s;
+}
+
+.popup-share-text {
+    top: 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 0 25px;
+    line-height: 20px;
+    strong {
+        display: block;
+        padding: 0 14px;
+    }
 }
 
 @keyframes rotateScale {
@@ -8781,3 +8798,153 @@ input.rating {
     }
 }
 
+// gift section 
+
+.gift {
+    &-section {
+        position: relative;
+        background-color: #ff713e;
+        padding: 56px 0 35px;
+        @media screen and (max-width: $screen-md-max) {
+            padding: 26px 0 35px;
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            text-align: right;
+        }
+        @media screen and (max-width: 340px) {
+            text-align: center;
+        }
+        .form-group {
+            display: inline-block;
+            vertical-align: bottom;
+            width: 31.44%;
+            @media screen and (max-width: 1500px) {
+                width: 27.44%;
+            }
+            @media screen and (max-width: $screen-sm-max) {
+                width: 100%;
+            }
+            &:not(:last-of-type) {
+                padding-right: 20px;
+                @media screen and (max-width: $screen-sm-max) {
+                    padding: 0;
+                }
+            }
+            input {
+                width: 100%;
+            }
+            &:nth-of-type(3) {
+                width: 20.96%;
+                @media screen and (max-width: 1500px) {
+                    width: 27.44%;
+                }
+                @media screen and (max-width: $screen-sm-max) {
+                    width: 100%;
+                }
+            }
+            &:last-of-type {
+                .btn {
+                    max-width: 150px;
+                    padding: 12px 17px;
+                    font-size: 15px;
+                }
+
+                width: 15.72%;
+                @media screen and (max-width: $screen-sm-max) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    &-left {
+        position: absolute;
+        width: 26.66%;
+        bottom: 0;
+        left: 0;
+        @media screen and (max-width: $screen-md-max) {
+            left: -4%;
+            width: 24.66%;
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            left: 0;
+            width: 51.66%;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            left: -18%;
+            width: 78.66%;
+        }
+        @media screen and (max-width: 340px) {
+            display: none;
+        }
+        img {
+            width: 100%;
+        }
+    }
+    &-right {
+        position: absolute;
+        width: 26.66%;
+        bottom: 0;
+        right: 0;
+        @media screen and (max-width: $screen-md-max) {
+            width: 20.66%;
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            display: none;
+        }
+        img {
+            width: 100%;
+        }
+    }
+    &-heading {
+        font-family: $font-family-roman;
+        font-size: 30px;
+        line-height: 35px;
+        margin-bottom: 20px;
+        color: #fff;
+        @media screen and (max-width: $screen-md-max) {
+            font-size: 27px;
+            line-height: 30px;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            font-size: 18px;
+            line-height: 25px;
+        }
+    }
+    &-form-holder {
+        max-width: 954px;
+        margin: 0 auto;
+        font-size: 0;
+        @media screen and (max-width: 1500px) {
+            max-width: 754px;
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            max-width: 450px;
+            display: inline-block;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            max-width: 225px;
+        }
+        @media screen and (max-width: 340px) {
+            max-width: 100%;
+        }
+    }
+    &-detail {
+        padding-top: 20px;
+        a {
+            color: #fff;
+            border: none;
+            text-decoration: underline;
+            font-family: $font-family-bold;
+            font-size: 14px;
+            @media screen and (max-width: $screen-sm-max) {
+                margin-left: 120px;
+            }
+            @media screen and (max-width: 340px) {
+                margin-left: 0;
+            }
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

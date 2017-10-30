@@ -273,6 +273,20 @@
             margin-bottom: 5px; 
             margin-left: 0; 
         }
+        &--gift {
+            padding: 0;
+            margin-bottom: 5px;
+            display: block;
+            float: none;
+            color: #fff;
+            font-family: $font-family-bold;
+            font-size: 14px;
+            width: 100%;
+            text-align: left;
+            @media screen and (max-width: $screen-xs-max) {
+                margin: 0 0 5px;
+            }
+        }
         &--child {
             display: block;
             width: 100%;
@@ -724,7 +738,7 @@ textarea.form-control{
     left: 0;
     right: 0;
     width: $help-tooltip-data-width;
-    bottom: calc(100% + 10px);
+    bottom: calc(100% + 15px);
     top: auto;
     min-width: $help-tooltip-data-min-width;
     max-width: none;
@@ -777,6 +791,24 @@ textarea.form-control{
     @media screen and (max-width: $screen-xs-max) {
         left: 0;
         right: auto;
+    }
+}
+
+.personal-table-data--label {
+    position: relative; 
+}
+
+.agree {
+    vertical-align: middle; 
+    & + .form-info {
+        margin-left: 10px;  
+        position: static;
+        display: inline-block;  
+        vertical-align: middle; 
+    }
+        
+    & + .form-info + .help-tooltip-data {
+        bottom: calc(100% + 10px);
     }
 }
 

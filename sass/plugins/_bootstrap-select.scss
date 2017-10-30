@@ -172,6 +172,11 @@ select.selectpicker {
         &:focus {
             outline: none !important;
         }
+        .btn.dropdown-toggle.disabled.btn-default {
+            background-color: #dde1e5;
+            opacity: 1; 
+        }
+        
     }
     &.bs-container {
         position: absolute;
