@@ -634,18 +634,23 @@
     .tab-pane {
         max-height: none;
         overflow: visible;
-        padding-top: 30px;
+        margin-top: 20px;
     }
     .nav-tabs {
+        border-bottom: 1px solid #dde0eb;
+        margin: 0 -20px;
+        padding-left: 30px;
+        @media screen and (max-width: $screen-xs-max) {
+            padding-left: 0;
+        }
         >li {
             position: relative;
-            width: 33.333%;
             white-space: nowrap;
             text-align: center;
             overflow: hidden;
             @media screen and (max-width: $screen-xs-max) {
                 display: block;
-                width: 100%;
+                width: 33.333%;
                 height: auto !important;
             }
             &:not(:last-child) {
@@ -662,22 +667,25 @@
                 border-left: none;
             }
             a {
-                color: $document-tabs-link-active-color;
+                color: #005cbf;
                 border: none;
                 background: transparent;
-                border-bottom: 2px solid $document-tabs-link-active-border;
                 opacity: 1;
                 margin-bottom: 0;
+                &:after {
+                    transform: scale(1);
+                }
                 @media screen and (max-width: $screen-sm-max) {
                     background-position: 50% 100%;
                 }
             }
         }
         >li a {
-            font: #{$document-tabs-link-fs} / #{$document-tabs-link-lh} $font-family-sans-serif;
+            position: relative;
+            font: 16px / #{$document-tabs-link-lh} $font-family-roman;
             border: none;
-            color: $document-tabs-link-color;
-            border-bottom: 1px solid $document-tabs-link-border;
+            color: #363636;
+            border-bottom: none;
             border-radius: 0;
             padding: $document-tabs-link-padding;
             display: table;
@@ -685,17 +693,38 @@
             width: 100%;
             height: 100%;
             white-space: normal;
-            span {
-                display: table-cell;
-                vertical-align: middle;
-            }
+            text-decoration: none;
             @media screen and (max-width: $screen-sm-max) {
                 font-size: $document-tabs-link-fs-tablet;
             }
             @media screen and (max-width: $screen-xs-max) {
-                padding: $document-tabs-link-padding-mobile;
-                font-size: $document-tabs-link-fs-mobile;
+                padding: 10px 5px;
+                font-size: 14px;
             }
+            @media screen and (max-width: 340px) {
+                font-size: 11px;
+            }
+            &:hover {
+                background-color: #fff;
+            }
+            &:after {
+                content: '';
+                bottom: 0;
+                position: absolute;
+                height: 2px;
+                width: 100%;
+                left: 0;
+                right: 0;
+                transform: scale(0);
+                transition: transform 0.3s;
+                background-color: #0054bc;
+            }
+            span {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            
+            
         }
     }
     .tab-content {

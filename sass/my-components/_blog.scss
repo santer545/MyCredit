@@ -356,8 +356,13 @@
 	background-color: #fff;
 	padding: 20px 20px 30px;
 	border-radius: 5px;
+	margin-bottom: 60px;
 	@media screen and (max-width: $screen-sm-max) {
 		margin-bottom: 20px;
+	}
+	@media screen and (max-width: $screen-xs-max) {
+		padding-top: 0;
+		margin-bottom: 0;
 	}
 }
 

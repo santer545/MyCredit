@@ -1151,6 +1151,9 @@ h3,
   @media screen and (max-width: $screen-sm-max) {
     margin: 15px 0;
   }
+  @media screen and (max-width: $screen-xs-max) {
+    font-size: 18px;
+  }
 }
 
 .no-margin {
