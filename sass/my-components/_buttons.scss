@@ -1,6 +1,7 @@
 .btn {
     font-family: $font-family-sans-serif;
-    font-size: $back-to-top-right;
+    font-size: $btn-font-size;
+    text-decoration: none;  
     
     @media screen and (max-width: $screen-sm-max) {
         font-size: $btn-font-size-tablet;
@@ -51,6 +52,7 @@
     transition-property: color;
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
+    text-decoration: none;  
     @media screen and (max-width: $screen-md-max) {
         font-size: $btn-authorize-font-size-tablet;
         padding: $btn-authorize-padding-laptop;
@@ -58,7 +60,7 @@
     }
     @media screen and (max-width: $screen-sm-max) {
         margin-bottom: 0;
-        margin-top: 8px;    
+        margin-top: 3px;    
         vertical-align: top;
         padding: $btn-authorize-padding-tablet;
         background-position: $btn-authorize-bg-position-mobile;
@@ -77,8 +79,10 @@
         background-size: 17px;
     }
     
-    &:focus {
+    &:focus,
+    &:hover {
         outline: none;
+        text-decoration: none;  
     }
     &:before {
         content: "";
@@ -211,7 +215,7 @@
         height: 45px;
         line-height: 45px;
         font-size: 15px;
-        display: none;
+        
     }
     @media screen and (max-width: $screen-md-max) {
         display: inline-block;
@@ -219,7 +223,8 @@
     @media screen and (max-width: $screen-xs-max) {
         display: none;
     }
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: #d03505;
         color: #fff;
     }
@@ -230,6 +235,33 @@
     color: #fff;
     &:hover {
         color: #fff;
+    }
+}
+
+
+.btn-like {
+    font-size: 17px;
+    width: 100px;
+    padding: 10px 20px;
+    font-family: $font-family-medium;
+    color: #0082ce;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #fff;
+    border: 1px solid #0082ce;
+    height: 43px;
+    transition: all 0.3s;
+    @media screen and (max-width: $screen-xs-max) {
+        width: 50px;
+        font-size: 14px;
+        padding: 10px 13px;
+    }
+    &:hover,
+    &:focus,
+    &:active:focus {
+        color: #fff;
+        background-color: #0082ce;
     }
 }
 
@@ -482,6 +514,7 @@
     }
 }
 
+
 .btn-abs {
     margin-left: 0;
     vertical-align: middle;
@@ -544,6 +577,10 @@
     background-color: rgba(255, 255, 255, 0.2);  
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+
+
+
 
 .btn-user-close {
     position: absolute;
@@ -680,6 +717,10 @@
 .btn-repay {
     padding: 12px 15px; 
     font-size: 16px;    
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
     svg {
         margin-right: 8px;  
         display: inline-block;  
@@ -704,6 +745,25 @@
     &:hover {
         color: #fff;
         background-color: #0083ca;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 10px 9px;
+        font-size: 13px;
+    }
+}
+
+.btn-faq {
+    font-size: 17px;    
+    color: #fff;
+    background-color: #0082ce;
+    padding: 12px 30px; 
+    transition: background-color 0.3s, color 0.3s;
+    &:hover,
+    &:focus,
+    &:active:focus,
+    &:active {
+        background-color: #0270b0;
+        color: #fff;
     }
 }
 

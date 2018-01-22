@@ -4,7 +4,7 @@ html {
 
 body {
     font: #{$body-font-size} / #{$body-line-height} $font-family-base;
-    background-color: $body-bg;
+    background-color: #eceff9;
     color: $brand-primary;
     height: 100%;
     @media screen and (max-width: $screen-md-max) {
@@ -16,6 +16,9 @@ body {
     &.modal-open {
         position: fixed;
         overflow: auto;
+    }
+    &.home-page {
+        background-color: $body-bg;
     }
 }
 
@@ -33,23 +36,35 @@ strong {
 
 a {
     outline: none;
-    color: $base-link-color;
-    border-bottom: 1px solid $base-link-color;
+    color: #0055bc;
+    text-decoration: underline; 
     &:focus,
     &:hover {
-        outline: none;
+        color: #0055bc;
         text-decoration: none;
-        color: $base-link-color;
-        border: none;
     }
 }
+
 a[href^="tel"] {
-    color: $base-link-color;
-    border-bottom: none;
-    cursor: pointer;
+    outline: none;
+    color: #0055bc;
+    text-decoration: underline; 
+    &:focus,
+    &:hover {
+        color: #0055bc;
+        text-decoration: none;
+    }
 }
+
 a[href^="mailto"] {
-    border-bottom: none;
+    outline: none;
+    color: #0055bc;
+    text-decoration: underline; 
+    &:focus,
+    &:hover {
+        color: #0055bc;
+        text-decoration: none;
+    }
 }
 
 p::selection,
@@ -112,10 +127,11 @@ input[type="submit"] {
     &--sm {
         max-width: 960px;
         margin: 0 auto;
+        padding: 0 15px;
     }
 }
 
-.container-big{
+.container-big {
     max-width: $container-max-width;
     margin: 0 auto;
     padding: $container-padding;
@@ -126,25 +142,25 @@ input[type="submit"] {
     vertical-align: middle;
 }
 
-ol{
+ol {
     padding: 0;
     list-style-position: inside;
 }
 
-.custom-ul{
+.custom-ul {
     @include ul-reset;
     margin-bottom: 30px;
-    li{
+    li {
         position: relative;
         padding-left: $custom-ul-padding-left;
         font: #{$custom-ul-font-size} / #{$custom-ul-line-height} $font-family-sans-serif;
         @media screen and (max-width: $screen-xs-max) {
             font-size: $custom-ul-font-size-mobile;
         }
-        &:not(:last-child){
+        &:not(:last-child) {
             margin-bottom: 14px;
         }
-        &:before{
+        &:before {
             content: '';
             position: absolute;
             left: 0;
@@ -157,18 +173,18 @@ ol{
     }
     ul {
         list-style-type: none;
-        padding: 0; 
-        margin: 0;  
+        padding: 0;
+        margin: 0;
         li {
-            padding-left: 16px; 
+            padding-left: 16px;
             &:before {
-                top: 11px!important;  
-                width: 6px;    
-                height: 1px;    
+                top: 11px!important;
+                width: 6px;
+                height: 1px;
                 background-color: #333;
             }
-            &:not(:last-child){
-                margin-bottom: 5px; 
+            &:not(:last-child) {
+                margin-bottom: 5px;
             }
         }
     }
@@ -177,7 +193,7 @@ ol{
 
 //grayscale for images in ie11
 .container-img {
-    
+
     .no-active {
         svg,
         img {
@@ -192,14 +208,22 @@ ol{
         position: relative;
         vertical-align: middle;
         padding-bottom: 40px;
-            img {
+        img {
             filter: url(../js/filters.svg#grayscale);
             filter: gray;
             -webkit-filter: grayscale(1);
             transition: filter 0.3s;
         }
     }
-} 
+}
 
 
 
+
+/* Apply CSS to iOS affected versions only */
+
+body.iosBugFixCaret.modal-open,
+body.safari.modal-open {
+    position: fixed!important;
+    width: 100%;
+}

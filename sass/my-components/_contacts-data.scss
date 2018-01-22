@@ -17,6 +17,7 @@ $green: #8BC53F;
     counter-reset: li;
     animation: chase 1s 1 forwards;
     text-align: justify;
+    
     &:after {
         content: '';
         display: inline-block;
@@ -29,10 +30,10 @@ $green: #8BC53F;
     vertical-align: middle;
     position: relative;
     counter-increment: li;
-    
     text-align: center;
     color: $gray;
     transition: all 0.5s ease;
+    
     &:nth-of-type(1) {
         display: none;  
 
@@ -47,7 +48,7 @@ $green: #8BC53F;
         border: none;
         padding-top: 10px;  
         @media screen and (max-width: $screen-xs-max) {
-          font-size: 13px;
+          font-size: 12px;
           display: block;
           line-height: 14px;
         }
@@ -74,6 +75,8 @@ $green: #8BC53F;
     &:last-of-type {
         &:after {
             background-color: #f1f1f1;
+            margin-top: -19px;
+            height: 10px;
         }
     }
     &:after {
@@ -89,7 +92,7 @@ $green: #8BC53F;
       margin-top: -20px;
       
       @media screen and (max-width: $screen-xs-max) {
-          margin-top: -23px;
+          margin-top: -18px;
       }
     }
     &:first-child {
@@ -122,6 +125,12 @@ $green: #8BC53F;
         background-size: 62px 62px;
         background-repeat: no-repeat;
         background-position: 4px 4px;
+        @media screen and (max-width: $screen-xs-max) {
+            width: 61px;
+            height: 61px;
+            line-height: 61px;
+            background-size: 53px 53px;
+        }
       }
       &:after {
         background-color: #ccc;
@@ -394,6 +403,9 @@ $green: #8BC53F;
     border: 1px solid #6f97d4;
     margin-bottom: 31px;
     color: #393939;
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 10px;
+    }
     a {
         color: #0056b8;
         border-bottom: 1px solid #0056b8;
@@ -404,6 +416,13 @@ $green: #8BC53F;
     }
 }
 
+.well {
+    .btn {
+        @media screen and (max-width: $screen-xs-max) {
+            width: 100%;
+        }
+    }
+}
 
 .registration-anchor {
     color: #0055b8;
@@ -438,6 +457,7 @@ $green: #8BC53F;
     color: #0056b8;
     @media screen and (max-width: $screen-xs-max) {
         font-size: 23px;    
+        margin-bottom: 5px;
     }
     &--inverse {
         color: $second-color;
@@ -543,7 +563,7 @@ $green: #8BC53F;
 	&-form--holder{
         padding: $contacts-form-holder-padding;
         @media screen and (max-width: $screen-xs-max) {
-            padding: $contacts-form-holder-padding-tablet;
+            padding: 0 15px;
         }
         &.success{
             opacity: 0.7;
@@ -1090,6 +1110,8 @@ $green: #8BC53F;
     }
     @media screen and (max-width: $screen-xs-max) {
         margin-top: 30px;
+        padding: 15px 0;
+
     }
     &-item {
         color: #6f97d4;
@@ -1097,6 +1119,10 @@ $green: #8BC53F;
         line-height: 60px;   
         font-family: $font-family-bold;
         letter-spacing: -2px;   
+        @media screen and (max-width: $screen-xs-max) {
+            font-size: 50px;
+            line-height: 50px;
+        }
     }
 }
 

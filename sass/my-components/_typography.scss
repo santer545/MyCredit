@@ -434,6 +434,10 @@ Single-colored icons can be modified like so:
     color: $heading-color;
     word-wrap: break-word;
     z-index: 2;
+    @media screen and (max-width: 1440px) {
+      font-size: 30px;  
+      margin-bottom: 20px;  
+    }
     @media screen and (max-width: $screen-md-max) {
         font-size: $heading-h1-fs-laptop;
         line-height: $heading-h1-lh-laptop;
@@ -802,10 +806,9 @@ Single-colored icons can be modified like so:
     font: $heading-h1-page-font-size $font-family-roman;
     color: $heading-color;
     word-wrap: break-word;
-    margin: 0 0 38px;
+    margin: 10px 0 25px;
     @media screen and (max-width: $screen-md-max) {
         font-size: $heading-content-h1-fs-laptop;
-        margin-bottom: 30px;
     }
 }
 
@@ -933,6 +936,7 @@ Single-colored icons can be modified like so:
         cursor: default;
         border-bottom: none;
         display: block;
+        text-decoration: none;  
         @media screen and (max-width: $screen-xs-max) {
             cursor: pointer;
         }
@@ -995,7 +999,7 @@ Single-colored icons can be modified like so:
     }
     @media screen and (max-width: $screen-xs-max) {
         font-size: $form-heading-mobile;
-        padding: $form-heading-padding;
+        padding: 15px 0 21px 0px;
     }
 }
 
@@ -1063,10 +1067,11 @@ Single-colored icons can be modified like so:
     }
 }
 
-.faq-heading{
-    font: #{$heading-h2-font-size} / #{$faq-heading-lh} $font-family-roman;
-    margin: 0 0 25px;
-    color: $heading-color;
+.faq-new-heading{
+    font-family: $font-family-medium;
+    font-size: 18px;  
+    margin: 25px 0 15px;
+    color: #003466;
 }
 
 .how-heading{
@@ -1124,9 +1129,6 @@ h1{
 
 h1, h2 {
   margin: 35px 0 20px;
-  @media screen and (max-width: $screen-sm-max) {
-    margin: 15px 0;
-  }
 }
 
 .first-heading {
@@ -1136,6 +1138,9 @@ h1, h2 {
 h2{
   @extend .heading-h2;
   margin-bottom: 20px;
+  @media screen and (max-width: $screen-xs-max) {
+    font-size: 20px;
+  }
 }
 
 h3,

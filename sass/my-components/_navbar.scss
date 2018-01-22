@@ -6,7 +6,7 @@
     padding: 0;
     @include transition(margin-top 1s);
     @media screen and (max-width: $screen-sm-max) {
-        margin-top: 5px;
+        margin-top: 9px;
     }
     @media screen and (max-width: $screen-xs-max) {
         margin-top: 0;
@@ -191,6 +191,7 @@
             color: #0055b8;
             border-bottom: none;
             padding: $navbar-item-padding;
+            text-decoration: none;  
             @include transition(color 0.3s);
             @media screen and (max-width: 1300px) {
                 padding: 0 18px;
@@ -221,6 +222,9 @@
         }
         span {
             color: $second-color;
+            @media screen and (max-width: $screen-xs-max) {
+                display: block;
+            }
         }
         &.custom {
             a,
@@ -230,7 +234,7 @@
                 border-radius: 30px;
                 padding: 10px 30px 10px 20px;
                 background-image: url(../images/icons/menu-star.png);
-                background-position: 90% 13px;
+                background-position: 90% 11px;
                 background-repeat: no-repeat;
                 @media screen and (max-width: $screen-xs-max) {
                     border: none;

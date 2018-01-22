@@ -173,10 +173,26 @@
     }
 }
 
+.promocode {
+    font-size: 30px;    
+    line-height: 15px;  
+    margin-left: 10px; 
+    display: inline-block;  
+    vertical-align: middle; 
+    padding: 14px 22px;  
+    border-radius: 20px;    
+    border: 1px dashed $heading-color;
+    background: #fff;
+    @media screen and (max-width: $screen-sm-max) {
+        margin-left: 0; 
+        margin-top: 10px;   
+    }
+}
+
 .close-modal {
     background-color: rgba(0,0,0,0.6);
     .modal-content {
-        padding: 65px 90px 45px 0;
+        padding: 12% 15px 15% 50%;
         background-color: transparent;
         background-image: url('../assets/images/close-popup-bg.jpg');
         background-repeat: no-repeat;
@@ -184,7 +200,17 @@
         -moz-box-shadow: -15px 21px 61px -16px rgba(0,0,0,0.75);
         box-shadow: -15px 21px 61px -16px rgba(0,0,0,0.75);
         @media screen and (max-width: $screen-sm-max) {
+            background-position: 62% 0;
+        }
+        @media screen and (max-width: $screen-xs-max) {
             background-image: none;
+            padding: 12% 30px; 
+        }
+        .heading-h2 {
+            font-size: 24px;    
+            strong {
+                font-size: 31px;    
+            }
         }
     }
     .close {
@@ -1055,5 +1081,31 @@ td#fancy_title_right {
         padding: 30px;
         font-size: 22px;
         font-family: $font-family-roman;
+    }
+}
+
+.partner-modal {
+    @extend .thanks-modal;
+    
+    .modal-body {
+        padding: 0;
+    }
+    .modal-dialog {
+        width: 800px;
+        text-align: left;
+        @media screen and (max-width: $screen-xs-max) {
+            width: 90%; 
+            margin: 0 auto; 
+        }
+    }
+    .agree {
+        line-height: 1.2;
+        height: auto;
+    }
+    .modal-body .form-label {
+        margin-left: 0;
+    }
+    .modal-body .form-group {
+        margin-bottom: 10px;
     }
 }

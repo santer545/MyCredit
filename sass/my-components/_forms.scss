@@ -1,4 +1,3 @@
-
 .form {
     &-submit {
         display: inline-block;
@@ -31,37 +30,38 @@
             }
         }
     }
-    &-capitalize{
-        &:first-letter{
+    &-capitalize {
+        &:first-letter {
             text-transform: capitalize;
         }
     }
     &-group {
-        position: relative; 
+        position: relative;
         margin-bottom: 17px;
-        font-size: 0;   
+        font-size: 0;
         @include clearfix;
         @media screen and (max-width: $screen-sm-max) {
             margin-bottom: 20px;
         }
-        &--label{
-            .form-label{
+        &--label {
+            .form-label {
                 margin-top: 21px;
             }
         }
         &--inline {
             position: relative;
             display: inline-block;
+            vertical-align: top;
             margin-bottom: 20px;
         }
         &--margin {
             margin-right: 20px;
             margin-bottom: 0;
-            & + .btn {
+            &+.btn {
                 vertical-align: middle;
             }
         }
-        &--code{
+        &--code {
             width: 40%;
             padding-right: 20px;
             @media screen and (max-width: $screen-xs-max) {
@@ -70,28 +70,28 @@
                 margin-bottom: 15px;
             }
         }
-        &--phone{
+        &--phone {
             width: 60%;
             @media screen and (max-width: $screen-xs-max) {
                 width: 100%;
             }
         }
     }
-    &-control--prolongation{
+    &-control--prolongation {
         width: 90%;
         display: inline-block;
         vertical-align: middle;
     }
     &-control--wr {
-    	position: relative;
-        width: 66%; 
-        float: left;  
+        position: relative;
+        width: 66%;
+        float: left;
         &--pass {
             float: none;
             width: 100%;
         }
-        &.dispensable{
-            .help-info{
+        &.dispensable {
+            .help-info {
                 top: 20px;
             }
         }
@@ -101,7 +101,7 @@
                 opacity: 1;
             }
         }
-        .help-info{
+        .help-info {
             @media screen and (max-width: $screen-sm-max) {
                 float: left;
             }
@@ -130,48 +130,54 @@
         @media screen and (max-width: $screen-xs-max) {
             width: 100%;
             font: #{$form-control-font-size} / #{$form-control-line-height-phone} $font-family-roman;
-            padding: 0 30px 0 15px;
+            padding: 17px 30px 15px 15px;
         }
         &::-ms-clear {
             display: none;
         }
-        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        &::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
             color: $form-control-placeholder-color;
             @media screen and (max-width: $screen-xs-max) {
                 font-size: $form-control-placeholder-font-size;
             }
         }
-        &::-moz-placeholder { /* Firefox 19+ */
+        &::-moz-placeholder {
+            /* Firefox 19+ */
             color: $form-control-placeholder-color;
             @media screen and (max-width: $screen-xs-max) {
                 font-size: $form-control-placeholder-font-size;
             }
         }
-        &:-ms-input-placeholder { /* IE 10+ */
+        &:-ms-input-placeholder {
+            /* IE 10+ */
             color: $form-control-placeholder-color;
             @media screen and (max-width: $screen-xs-max) {
                 font-size: $form-control-placeholder-font-size;
             }
         }
-        
-        
+
+
         &--spacing {
-            letter-spacing: 5px;    
+            letter-spacing: 5px;
         }
-        &:focus{
-        	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        &:focus {
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            &::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
                 color: #fff;
             }
-            &::-moz-placeholder { /* Firefox 19+ */
+            &::-moz-placeholder {
+                /* Firefox 19+ */
                 color: #fff;
             }
-            &:-ms-input-placeholder { /* IE 10+ */
+            &:-ms-input-placeholder {
+                /* IE 10+ */
                 color: #fff;
             }
         }
 
-        &.input-disabled{
+        &.input-disabled {
             width: 100%;
             height: auto;
             padding: 0;
@@ -186,57 +192,56 @@
             }
         }
     }
-    &-prolongation{
+    &-prolongation {
         font-size: 19px;
     }
-    &-select--wrapper{
+    &-select--wrapper {
         margin-bottom: 17px;
     }
-    &-slider{
+    &-slider {
         display: none;
         @include transition(max-height 0.5s);
-        &--hidden{
+        &--hidden {
             max-height: 1000px;
             overflow: visible;
         }
     }
 
     &-number-date {
-        width: 125px;   
-        display: inline-block;  
-        vertical-align: top;  
+        width: 125px;
+        display: inline-block;
+        vertical-align: top;
         @media screen and (max-width: $screen-md-max) {
-            width: 30%;   
-        }  
+            width: 30%;
+        }
     }
     &-number-house {
-        width: 110px;   
-        display: inline-block;  
-        vertical-align: top;    
+        width: 110px;
+        display: inline-block;
+        vertical-align: top;
         @media screen and (max-width: $screen-md-max) {
-            width: 30%; 
+            width: 30%;
         }
     }
 
     &-month-date {
-        width: 190px;   
-        display: inline-block;  
-        vertical-align: top;    
+        width: 190px;
+        display: inline-block;
+        vertical-align: top;
         @media screen and (max-width: $screen-md-max) {
-            width: 30%;   
+            width: 30%;
         }
     }
 
-
     &-info {
         position: absolute;
-        left: 0;    
+        left: 0;
         top: 13px;
         width: 25px;
         cursor: pointer;
         @media screen and (max-width: $screen-xs-max) {
             top: 0;
-            left: 0;    
+            left: 0;
         }
         &--right {
             right: 10px;
@@ -245,7 +250,7 @@
             top: 28px;
         }
         &--top {
-            top: 21px;  
+            top: 21px;
         }
         img {
             width: 17px;
@@ -253,12 +258,12 @@
         }
     }
     &-label {
-       float: left;
-        width: 34%; 
-        padding-right: 10px;   
-        padding-top: 13px;   
-        padding-left: 30px; 
-        margin-bottom: 0;   
+        float: left;
+        width: 34%;
+        padding-right: 10px;
+        padding-top: 13px;
+        padding-left: 30px;
+        margin-bottom: 0;
         font: #{$form-label-font-size} / #{$form-label-line-height} $font-family-bold;
         color: $form-label-color;
         @media screen and (max-width: $screen-xs-max) {
@@ -268,10 +273,10 @@
             margin: 0 0 5px 30px;
         }
         &--default {
-            width: 100%;    
-            padding: 0; 
-            margin-bottom: 5px; 
-            margin-left: 0; 
+            width: 100%;
+            padding: 0;
+            margin-bottom: 5px;
+            margin-left: 0;
         }
         &--gift {
             padding: 0;
@@ -332,7 +337,7 @@
                 font: #{$form-credit-span-font-size} / #{$form-credit-span-line-height} $font-family-sans-serif;
             }
         }
-        .slider-money--holder{
+        .slider-money--holder {
             margin: 0 0 22px;
         }
         .slider-money--label {
@@ -384,14 +389,14 @@
         @media screen and (max-width: $screen-md-max) {
             margin: 0 0 30px;
         }
-        &.form-credit--change{
-            .form-credit--result{
+        &.form-credit--change {
+            .form-credit--result {
                 padding: 32px 30px 18px;
             }
         }
     }
     &-credit--info {
-        p{
+        p {
             margin-bottom: 10px;
         }
     }
@@ -406,7 +411,7 @@
             color: $form-change-border;
             text-decoration: none;
         }
-        &:focus{
+        &:focus {
             text-decoration: none;
             outline: none;
         }
@@ -450,14 +455,20 @@
             width: 100%;
         }
     }
+    &-text {
+        font-size: 14px;
+        color: #565656;
+    }
 }
 
 #phone {
-    font-size: 20px;    
+    font-size: 20px;
 }
 
 
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
     background-color: #dde1e5;
     border: none;
     box-shadow: none;
@@ -472,34 +483,32 @@
 }
 
 // custom radio
-
 .custom-radio {
     &-wr {
-        font-size: 0;   
+        font-size: 0;
     }
-    width: 50%; 
-    display: inline-block;  
+    width: 50%;
+    display: inline-block;
     vertical-align: top;
     cursor: pointer;
     @media screen and (max-width: 600px) {
-        width: 100%;    
+        width: 100%;
     }
     input[type="radio"] {
         display: none;
-        & + span {
+        &+span {
             display: block;
-            font-family: $font-family-roman;    
-            font-size: 15px;    
+            font-family: $font-family-roman;
+            font-size: 15px;
             color: #393939;
             border: 1px solid #e2e2e2;
-            height: 45px;   
+            height: 45px;
             line-height: 45px;
             text-align: center;
             background-color: #fff;
-           
         }
         &:checked {
-            & + span {
+            &+span {
                 background-color: #4281ca;
                 color: #fff;
             }
@@ -510,7 +519,6 @@
             border-right: none;
         }
     }
-
 }
 
 hr {
@@ -522,13 +530,13 @@ hr {
 
 
 
-.prolongation-form{
+.prolongation-form {
     padding: $prolongation-form-padding;
     background-color: $prolongation-form-bg;
     border: 1px solid $prolongation-form-border;
     font-size: 0;
     border-radius: $prolongation-form-radius;
-    .form-group--inline{
+    .form-group--inline {
         width: 50%;
         @media screen and (max-width: $screen-xs-max) {
             display: block;
@@ -540,11 +548,11 @@ hr {
     }
 }
 
-.prolongation-card{
+.prolongation-card {
     padding: $prolongation-card-padding;
 }
 
-.prolongation-label{
+.prolongation-label {
     display: inline-block;
     vertical-align: middle;
     margin-right: 30px;
@@ -556,7 +564,7 @@ hr {
     margin-bottom: 7px;
 }
 
-.hidden-form{
+.hidden-form {
     width: 56%;
     margin: 0 auto;
     @media screen and (max-width: $screen-sm-max) {
@@ -567,25 +575,25 @@ hr {
 
 @media screen and (min-width: 768px) {
     .form-inline {
-        .form-group{
+        .form-group {
             vertical-align: top;
         }
     }
 }
 
-.code-holder{
+.code-holder {
     font-size: 0;
-    label{
+    label {
         font-size: $code-holder-label-fs;
     }
 }
 
-.code-access{
+.code-access {
     width: $code-access-width;
     margin-bottom: 10px;
 }
 
-.loan-info{
+.loan-info {
     font: #{$loan-info-font-size} / #{$loan-info-line-height} $font-family-sans-serif;
     padding-left: 2px;
     color: $loan-info-color;
@@ -595,7 +603,7 @@ hr {
     @media screen and (max-width: $screen-xs) {
         font-size: $loan-info-font-size-mobile;
     }
-    .loan-span{
+    .loan-span {
         display: inline-block;
         margin-right: 2%;
         font: #{$loan-info-font-size} / #{$loan-span-line-height} $font-family-medium;
@@ -616,27 +624,27 @@ hr {
 }
 
 
-textarea.form-control{
+textarea.form-control {
     height: $textarea-height;
-    padding-top: 10px;  
+    padding-top: 10px;
     padding-bottom: $textarea-padding;
     overflow-y: hidden;
-    line-height: 20px;  
-    resize: none; 
-    &.write-us{
+    line-height: 20px;
+    resize: none;
+    &.write-us {
         resize: vertical;
         height: $textarea-writeUs-height;
     }
 }
 
-.control-switch{
+.control-switch {
     display: none;
-    &:checked + label {
+    &:checked+label {
         background-color: $control-switch-bg;
     }
 }
 
-.label-switch{
+.label-switch {
     font: #{$label-switch-font-size} / #{$label-switch-line-height} $font-family-roman;
     display: inline-block;
     padding: $label-switch-padding;
@@ -647,7 +655,7 @@ textarea.form-control{
 }
 
 
-.icon-warning{
+.icon-warning {
     display: inline-block;
     width: $icon-warning-width;
     height: $icon-warning-height;
@@ -664,7 +672,7 @@ textarea.form-control{
     background-color: #00b181;
 }
 
-.help-tooltip{
+.help-tooltip {
     position: absolute;
     top: -3px;
     left: calc(100% + 40px);
@@ -687,7 +695,8 @@ textarea.form-control{
         width: $help-tooltip-width-tablet;
         float: right;
         margin-top: 10px;
-        @include translate(0, 0);
+        @include translate(0,
+        0);
         opacity: 1;
     }
     @media screen and (max-width: $screen-xs-max) {
@@ -699,7 +708,7 @@ textarea.form-control{
         text-align: left;
     }
     @include transition(opacity 0.3s);
-    &:before{
+    &:before {
         content: "";
         position: absolute;
         right: calc(100% - 5px);
@@ -718,11 +727,11 @@ textarea.form-control{
     }
 }
 
-.personal-table-holder{
+.personal-table-holder {
     position: relative;
 }
 
-.passport-holder{
+.passport-holder {
     @include clearfix;
     margin-bottom: 20px;
 }
@@ -733,7 +742,7 @@ textarea.form-control{
     }
 }
 
-.help-tooltip-data{
+.help-tooltip-data {
     @extend .help-tooltip;
     left: 0;
     right: 0;
@@ -751,7 +760,7 @@ textarea.form-control{
     @media screen and (max-width: $screen-xs-max) {
         min-width: 0;
     }
-    &:before{
+    &:before {
         left: 10px;
         right: auto;
         top: calc(100% - 5px);
@@ -763,13 +772,13 @@ textarea.form-control{
     }
 }
 
-.contacts-form--holder .help-tooltip-data{
+.contacts-form--holder .help-tooltip-data {
     left: 0;
     right: 0;
     bottom: calc(100% + 10px);
     top: auto;
     max-width: none;
-    &:before{
+    &:before {
         left: 10px;
         right: auto;
         top: calc(100% - 5px);
@@ -783,8 +792,8 @@ textarea.form-control{
     }
 }
 
-.form-info{
-    &:hover ~ .help-tooltip-data{
+.form-info {
+    &:hover~.help-tooltip-data {
         opacity: 1;
         display: block;
     }
@@ -795,43 +804,47 @@ textarea.form-control{
 }
 
 .personal-table-data--label {
-    position: relative; 
+    position: relative;
 }
 
 .agree {
-    vertical-align: middle; 
-    & + .form-info {
-        margin-left: 10px;  
+    vertical-align: middle;
+    &+.form-info {
+        margin-left: 10px;
         position: static;
-        display: inline-block;  
-        vertical-align: middle; 
+        display: inline-block;
+        vertical-align: middle;
+        @media screen and (max-width: $screen-xs-max) {
+            margin-left: 21px;
+        }
     }
-        
-    & + .form-info + .help-tooltip-data {
+
+    &+.form-info+.help-tooltip-data {
         bottom: calc(100% + 10px);
     }
 }
 
 
-.jcf-number.jcf-focus{
+.jcf-number.jcf-focus {
     @media screen and (max-width: 1321px) {
         position: relative;
     }
 }
-.jcf-focus ~ .help-tooltip-data{
-        opacity: 1;
-        display: block;
-        @media screen and (max-width: 1321px) {
-            max-width: none;
-            width: 100%;
-            top: 65px;
-        }
-        @media screen and (max-width: $screen-xs-max) {
-            left: 0;
-        }
+
+.jcf-focus~.help-tooltip-data {
+    opacity: 1;
+    display: block;
+    @media screen and (max-width: 1321px) {
+        max-width: none;
+        width: 100%;
+        top: 65px;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        left: 0;
+    }
 }
 
-.contacts-form--holder .jcf-focus ~ .help-tooltip-data{
+.contacts-form--holder .jcf-focus~.help-tooltip-data {
     @media screen and (max-width: 1321px) {
         top: 0;
     }
@@ -839,10 +852,10 @@ textarea.form-control{
         max-width: 200px;
         left: -200px;
         top: 0;
-     }
+    }
 }
 
-.contacts-form--holder .help-tooltip-data{
+.contacts-form--holder .help-tooltip-data {
     @media screen and (max-width: $screen-sm-max) {
         left: 0;
         bottom: calc(100% + 10px);
@@ -864,12 +877,12 @@ $file-upload-size: 300px;
     position: absolute;
     left: -9999px;
 }
+
 .custom-file-upload {
     display: block;
     width: auto;
     font-size: 16px;
-    margin-top: 30px;
-    //border: 1px solid #ccc;
+    margin-top: 30px; //border: 1px solid #ccc;
     label {
         display: block;
         margin-bottom: 5px;
@@ -878,9 +891,9 @@ $file-upload-size: 300px;
 
 .file-upload-wrapper {
     position: relative;
-    margin-bottom: 5px;
-    //border: 1px solid #ccc;
+    margin-bottom: 5px; //border: 1px solid #ccc;
 }
+
 .file-upload-input {
     font-size: 16px;
     display: inline-block;
@@ -888,10 +901,12 @@ $file-upload-size: 300px;
     margin-right: 30px;
     padding-bottom: 5px;
     border-bottom: 1px solid $second-color;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         outline: none;
     }
 }
+
 .file-upload-button {
     cursor: pointer;
     display: inline-block;
@@ -902,7 +917,8 @@ $file-upload-size: 300px;
     border: none;
     margin-left: -1px;
     background-color: darken($file-upload-color, 10);
-    float: left; /* IE 9 Fix */
+    float: left;
+    /* IE 9 Fix */
     @include transition(all 0.2s ease-in);
     &:hover {
         background-color: darken($file-upload-color, 20);
@@ -915,15 +931,16 @@ $file-upload-size: 300px;
 }
 
 
+
 /*---------------------------------validation-------------------------*/
 
 textarea {
-	resize: none;
-	overflow: auto;
+    resize: none;
+    overflow: auto;
 }
 
 .title_form {
-    font:16px/41px Arial, sans-serif;
+    font: 16px/41px Arial, sans-serif;
     text-transform: uppercase;
     color: #c00d0e;
     display: block;
@@ -931,41 +948,42 @@ textarea {
 }
 
 .form {
-	.label_row {
-	    display: inline-block;
-	    vertical-align: middle;
-	    width: 140px;
-	    text-align: right;
-	    line-height: 30px;
-	    margin-right: 20px;
-	    font-size: 17px;
-	}
+    .label_row {
+        display: inline-block;
+        vertical-align: middle;
+        width: 140px;
+        text-align: right;
+        line-height: 30px;
+        margin-right: 20px;
+        font-size: 17px;
+    }
 }
-.form{
-	.input,
-	select {
-		display: inline-block;
-		vertical-align: middle;
-		width: 100%;
-	    height: 34px;
-	    border: 1px solid #000;
-	    padding: 0 10px;
-	    color: #1d1d1b;
-	}
-}
+
 .form {
-	.has-error .input,
-	.has-error select,
+    .input,
+    select {
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        height: 34px;
+        border: 1px solid #000;
+        padding: 0 10px;
+        color: #1d1d1b;
+    }
+}
+
+.form {
+    .has-error .input,
+    .has-error select,
     .has-error .jcf-number,
     .has-error .dropdown-toggle.bs-placeholder,
-    .has-error ~ .input,
-    .has-error ~ select,
-    .has-error ~ .dropdown-toggle.bs-placeholder {
-		border: 1px solid #eb2a32;
-	}
-    .form-col-6, .form-col-4{
-
+    .has-error~.input,
+    .has-error~select,
+    .has-error~.dropdown-toggle.bs-placeholder {
+        border: 1px solid #eb2a32;
     }
+    .form-col-6,
+    .form-col-4 {}
     .form-col-4 {
         .form-info {
             @media screen and (max-width: $screen-xs-max) {
@@ -978,78 +996,91 @@ textarea {
             }
         }
     }
-    .has-error{
-        .form-control{
+    .has-error {
+        .form-control {
             border: 1px solid $error-border;
-            @include box-shadow(0 0 0 0 rgba(0, 0, 0, 0));
+            @include box-shadow(0 0 0 0 rgba(0,
+            0,
+            0,
+            0));
             background-color: #f1d4d4;
-            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            &::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
                 color: #eb2a32;
             }
-            &::-moz-placeholder { /* Firefox 19+ */
+            &::-moz-placeholder {
+                /* Firefox 19+ */
                 color: #eb2a32;
             }
-            &:-ms-input-placeholder { /* IE 10+ */
+            &:-ms-input-placeholder {
+                /* IE 10+ */
                 color: #eb2a32;
             }
         }
-
     }
 }
-.form{
-	.error_text {
-	    padding-top: 7px;
-	    display: none;
-	    color: #eb2a32;
+
+.form {
+    .error_text {
+        padding-top: 7px;
+        display: none;
+        color: #eb2a32;
+        text-align: left;
         font: #{$error-font-size} / #{$error-line-height} $font-family-sans-serif;
         @media screen and (max-width: $screen-sm-max) {
             font-size: $error-font-size-tablet
         }
-	}
+    }
 }
-.form{
-	select {
-		border-color: #cccccc
-	}
-}
-.form{
-	option {
-		line-height: 28px;
-	}
-}
+
 .form {
-	.checkbox,
-	.radio {
-	    display: inline-block;
-	    vertical-align: middle;
-	    margin-right: 20px;
-	}
+    select {
+        border-color: #cccccc
+    }
 }
+
 .form {
-	.has-error {
-		.error_text {
-		    display: inline-block;
-		    width: 100%;
-		}
-        & ~ .error-text {
+    option {
+        line-height: 28px;
+    }
+}
+
+.form {
+    .checkbox,
+    .radio {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 20px;
+    }
+}
+
+.form {
+    .has-error {
+        .error_text {
             display: inline-block;
             width: 100%;
         }
-	}
-    .jcf-number.has-error + .error_text, .bootstrap-select.has-error + .error_text {
+        &~.error-text {
             display: inline-block;
             width: 100%;
+        }
+    }
+    .jcf-number.has-error+.error_text,
+    .bootstrap-select.has-error+.error_text {
+        display: inline-block;
+        width: 100%;
     }
 }
+
 .form {
-	.form-control-feedback {
-		display: none;
-		right: 20px;
-		top: 21px;
+    .form-control-feedback {
+        display: none;
+        right: 20px;
+        top: 21px;
         @media screen and (max-width: $screen-sm-max) {
             top: 17px;
         }
-	}
+    }
     .has-success {
         .icons-valide-icon {
             display: block;
@@ -1061,55 +1092,61 @@ textarea {
         .icons-error-icon {
             display: block;
         }
-
     }
-
 }
 
 
 
 
-.form{
-    &-error{
+.form {
+    &-error {
         color: #eb2a32;
     }
-	.has-error{
-		.glyphicon-remove {
-			display: block;
-		}
-	}
+    .has-error {
+        .glyphicon-remove {
+            display: block;
+        }
+    }
 }
 
 .bootstrap-select.has-success {
-    > .dropdown-toggle{
+    >.dropdown-toggle {
         border: 1px solid $second-color;
-        @include box-shadow(0 0 0 0 rgba(0, 0, 0, 0));
+        @include box-shadow(0 0 0 0 rgba(0,
+        0,
+        0,
+        0));
     }
 }
+
 .form {
-	.has-success {
-        .bootstrap-select.has-success>.dropdown-toggle{
+    .has-success {
+        .bootstrap-select.has-success>.dropdown-toggle {
             border: 1px solid $second-color;
         }
-		.glyphicon-ok {
-			display: block;
-		}
-        .form-control{
-            border: 1px solid $second-color;
-            @include box-shadow(0 0 0 0 rgba(0, 0, 0, 0));
+        .glyphicon-ok {
+            display: block;
         }
-	}
+        .form-control {
+            border: 1px solid $second-color;
+            @include box-shadow(0 0 0 0 rgba(0,
+            0,
+            0,
+            0));
+        }
+    }
 }
 
-.error-text{
+.error-text {
     color: $error-text-color;
     font-size: $error-font-size;
 }
 
-.card-error{
+.card-error {
     display: inline-block;
     margin-bottom: 20px;
 }
+
 
 
 
@@ -1122,19 +1159,16 @@ textarea {
  * may not operate correctly without them.
  */
 
-.jspContainer
-{
+.jspContainer {
     overflow: hidden;
     position: relative;
 }
 
-.jspPane
-{
+.jspPane {
     position: absolute;
 }
 
-.jspVerticalBar
-{
+.jspVerticalBar {
     position: absolute;
     top: 0;
     right: 0;
@@ -1143,8 +1177,7 @@ textarea {
     background: transparent;
 }
 
-.jspHorizontalBar
-{
+.jspHorizontalBar {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -1153,24 +1186,20 @@ textarea {
     background: red;
 }
 
-.jspCap
-{
+.jspCap {
     display: none;
 }
 
-.jspHorizontalBar .jspCap
-{
+.jspHorizontalBar .jspCap {
     float: left;
 }
 
-.jspTrack
-{
+.jspTrack {
     background: transparent;
     position: relative;
 }
 
-.jspDrag
-{
+.jspDrag {
     background: #1f9bde;
     position: relative;
     top: 0;
@@ -1180,14 +1209,12 @@ textarea {
 }
 
 .jspHorizontalBar .jspTrack,
-.jspHorizontalBar .jspDrag
-{
+.jspHorizontalBar .jspDrag {
     float: left;
     height: 100%;
 }
 
-.jspArrow
-{
+.jspArrow {
     background: #50506d;
     text-indent: -20000px;
     display: block;
@@ -1196,38 +1223,121 @@ textarea {
     margin: 0;
 }
 
-.jspArrow.jspDisabled
-{
+.jspArrow.jspDisabled {
     cursor: default;
     background: #80808d;
 }
 
-.jspVerticalBar .jspArrow
-{
+.jspVerticalBar .jspArrow {
     height: 16px;
 }
 
-.jspHorizontalBar .jspArrow
-{
+.jspHorizontalBar .jspArrow {
     width: 16px;
     float: left;
     height: 100%;
 }
 
-.jspVerticalBar .jspArrow:focus
-{
+.jspVerticalBar .jspArrow:focus {
     outline: none;
 }
 
-.jspCorner
-{
+.jspCorner {
     background: #eeeef4;
     float: left;
     height: 100%;
 }
 
+
 /* Yuk! CSS Hack for IE6 3 pixel bug :( */
-* html .jspCorner
-{
+
+* html .jspCorner {
     margin: 0 -3px 0 0;
+}
+
+
+.form-small-heading {
+    font-size: 15px;
+    margin: 5px 0;
+}
+
+
+.password-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: inline-block;
+    font-size: 0;  
+    width: 100%;    
+    padding-top: 5px;   
+    @media screen and (max-width: $screen-sm-max) {
+        margin-bottom: 20px;    
+        width: 300px;
+    }
+}
+
+.has-error {
+    .password-list li {
+        color: #eb2a32;
+    }
+    .password-list li:before {
+        background-color: #eb2a32;
+    }
+}
+
+.password-list li {
+    position: relative;
+    padding-left: 15px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 13px;    
+    width: 50%;
+    transition: all 0.7s;
+}
+
+.password-list li:before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    background-color: #0056b8;
+    transition: all 0.7s;
+    
+}
+
+.password-list li:after {
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #ccc;
+    -webkit-transition: width 0.7s;
+    -o-transition: width 0.7s;
+    transition: width 0.7s;
+    
+}
+
+.password-list li.active {
+    color: #ccc;
+}
+
+.password-list li.active:before {
+    background-color: #ccc;
+}
+
+.password-list li.active:after {
+    width: 100%;
+}
+
+.mobile-full-width.text-right {
+    .btn {
+        @media screen and (max-width: $screen-xs-max) {
+            width: 100%;
+        }
+    }
 }

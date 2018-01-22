@@ -18,7 +18,9 @@ $custom-ul-font-size-mobile:           16px;
 $custom-ul-padding-left:               31px;
 $custom-ul-before-bg:                  #1f9bde;
 
-$grid-columns:                         10; // number of columns
+
+$grid-gutter-width:                    20px;
+//$grid-columns:                         12; // number of columns
 $grid-float-breakpoint:                767px; // breakpoint for navbar
 $screen-lg-max:                        1600px;
 $screen-xlg:                           1919px;
@@ -450,11 +452,11 @@ $numeric-list-font-size-mobile:           12px;
  * Back to top variables
  */
 
-$back-to-top-height:                      60px;
+$back-to-top-height:                      40px;
 $back-to-top-width:                       $back-to-top-height;
 
-$back-to-top-bottom:                      20px;
-$back-to-top-right:                       20px;
+$back-to-top-bottom:                      10px;
+$back-to-top-right:                       10px;
 
 
 
@@ -623,7 +625,7 @@ $btn-cancel-border:                       $second-color;
  ***********************************/
 
 
-$navbar-font-size:                        18px;
+$navbar-font-size:                        17px;
 $navbar-item-padding:                     10px 20px;
 $navbar-font-size-laptop:                 14px;
 $navbar-toggle-bg:                        #58b4e5;
@@ -915,8 +917,8 @@ $help-tooltip-min-height:                 50px;
 
 
 $error-border:                            #eb2a32;
-$error-font-size:                         13px;
-$error-line-height:                       1;
+$error-font-size:                         11px;
+$error-line-height:                       1.2;
 $error-text-color:                        #eb2a32;
 
 $error-font-size-tablet:                  10px;

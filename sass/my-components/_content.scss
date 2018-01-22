@@ -84,19 +84,49 @@
         margin-bottom: 30px;
     }
 }
+.small-slider-title {
+    padding-right: 80px;    
+}
 .small-slider-holder{
-    margin-top: 60px;
+    border: 1px solid #dbdee9;
+    @media screen and (max-width: $screen-sm-max) {
+        margin-bottom: 20px;
+    }
     .slider-money .slider-track-high, .slider-money .slider-track-low {
         border-radius: 0 4px 4px 0;
     }
+    .calculator-banner-text svg {
+        display: none;
+    }
     .credit-header{
         position: relative; 
-        font-size: 16px;
-        padding: 20px;
+        font-size: 14px;
+        padding: 15px 60px 15px 20px;
         border-radius: 0;
+        background-color: #f1f1f1;
+        border-radius: 5px 5px 0 0;
         margin: 0;
         @media screen and (max-width: $screen-md-max) {
             padding-right: 60px;
+        }
+        .calculator-banner-text .calculator-text-holder {
+            width: 100%;
+            strong {
+                color: #0053bc;
+            }
+        }
+        .calculator-labe-zero {
+            max-width: 60px;    
+            right: 10px;    
+            top: -10px;
+            bottom: auto;
+            box-shadow: none;
+            @media screen and (max-width: $screen-sm-max) {
+                top: -20px; 
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                right: 5px; 
+            }
         }
         .calculator-heading--hb .neangelu-labe {
             right: 5px;
@@ -152,18 +182,61 @@
 .small-credit-slider {
     position: relative;
     z-index: 2;
-    padding: 26px 20px 0;
-    border: 1px solid #f1f1f1;
+    padding: 10px 20px 0;
     background-color: #fff;
+    border-radius: 5px; 
     @media screen and (max-width: $screen-md-max) {
-        padding: 20px 15px;
+        padding: 20px 15px 0;
+    }
+    @media screen and (max-width: $screen-sm-max) {
+        padding-bottom: 0;  
     }
     .calculator-images {
-        padding-bottom: 20px;   
+        padding-bottom: 10px;   
+        li {
+            &:not(:last-child) {
+                margin-right: 7%;
+                @media screen and (max-width: $screen-md-max) {
+                    margin-right: 5%;
+                }
+            }
+           
+        }
     }
     .stages{
         margin-bottom: 0; 
+        display: block;
+        width: 100%;
+        .calculator-heading {
+            font-size: 16px;
+            margin: 20px 0 10px;
+        }
+        .calculator-td-heading {
+            min-width: 0;
+        }
+        .calculator-table {
+            td {
+                font-size: 15px;
+                @media screen and (max-width: 340px) {
+                    font-size: 11px;
+                }
+            }
+
+            &--wr {
+                @media screen and (max-width: $screen-sm-max) {
+                    float: left;
+                    width: 50%; 
+                }
+            }
+        }
     }
+
+    .btn-slider {
+        /* @media screen and (max-width: $screen-md-max) {
+            width: 94%; 
+        } */
+    }
+    
     .stages-item{
         width: 100%;
         float: none;
@@ -210,11 +283,13 @@
         line-height: 1;
         font-size: 16px;
         padding-top: 8px;
+        width: 56%;
         @media screen and (max-width: $screen-md-max) {
             width: 55%;
         }
     }
     .slider-control--wr{
+        width: 44%;
         margin-top: -5px;
         @media screen and (max-width: $screen-md-max) {
             width: 45%;
@@ -230,29 +305,25 @@
         width: 96%;
     }
     .slider-money--holder {
-        margin-bottom: 21px;
-        @media screen and (max-width: $screen-md-max) {
-            margin-bottom: 5px;
-        }
+        margin-bottom: 5px;
+        
+    }
+    .btn-slider {
+        font-size: 17px;
     }
     .slider-wrapper {
         margin-bottom: 26px;
-        @media screen and (max-width: $screen-md-max) {
-            width: 95%;
-        }
     }
     .slider-money--control{
         width: 60px;
-        /* font: 17px/ 30px 'HlveticaNeueCyr Bold', Arial, sans-serif;
+        font-size: 20px;
         @media screen and (max-width: $screen-md-max) {
-            width: 65%;
-            font: 17px/ 2 'HelveticaNeueCyr Bold', Arial, sans-serif;
+            width: 80px;    
         }
-        @media screen and (max-width: $screen-xs-max) {
-            font: 17px/ 40px 'HelveticaNeueCyr Bold', Arial, sans-serif;
-            height: auto;
-            padding: 0;
-        } */
+        @media screen and (max-width: 380px) {
+            width: 70px;    
+        }
+        
         & + label{
             font-size: 14px;
             line-height: 30px;
@@ -283,13 +354,27 @@
     }
     .slider-days {
         padding-top: 20px;
+        border-bottom: 1px solid #eaeaea;
     }
     .calculator-right {
         padding: 0;
-    }
-    .calculator-images {
-        img {
-            margin-right: 10px;
+        display: block;
+        width: 100%;
+        .calculator-images {
+            ol {
+                font-size: 0;
+                li {
+                    width: 25%;
+                    text-align: center;
+                    margin-right: 0;    
+                    &:not(:last-child) {
+                        margin-right: 0;
+                    }
+                     @media screen and (max-width: $screen-sm-max) {
+                        text-align: left;
+                    }
+                }
+            }
         }
     }
 }
@@ -309,6 +394,10 @@
         .slider-money,
         .slider-days {
             padding: 30px 20px 44px 20px;
+        }
+
+        .slider-money-share  {
+            font-size: 13px;
         }
     }
     .city-column {
@@ -357,7 +446,7 @@
     /* padding-top: 50px; */
     word-wrap: break-word;
     @media screen and (max-width: $screen-xs-max) {
-        padding: 30px 0;
+        padding: 0;
     }
     &-work {
         font: 18px / 1.5 'HelveticaNeueCyr Light', Arial, sans-serif;
@@ -1054,14 +1143,14 @@
 }
 
 .loan-processing .credit-slider-wrapper {
-    .slider-money {
+    /* .slider-money {
         .slider{
             width: 80%;
         }
-    }
-    .slider {
+    } */
+    /* .slider {
         width: 100%;    
-    }
+    } */
     .slider-label{
         width: auto;
         font-size: 15px;
@@ -1115,6 +1204,9 @@
     }
     &-user-data{
         padding-top: 30px;
+        @media screen and (max-width: $screen-xs-max) {
+            padding-top: 0; 
+        }
     }
     &-holder{
         padding-left: 7px;
@@ -1126,6 +1218,10 @@
     margin-bottom: 30px;
     border: none;
     text-decoration: none;
+    font-size: 16px;    
+    @media screen and (max-width: $screen-xs-max) {
+        margin-bottom: 0;   
+    }
     .icon {
         width: 30px;
         height: 30px;
@@ -1180,21 +1276,24 @@
     @media screen and (max-width: $screen-xs-max) {
         margin-bottom: 20px;
     }
-    img {
+    img,
+    svg {
         @include transition(transform 0.3s);
     }
     &:hover {
         span {
             text-decoration: none;
         }
-        .terminal-left img {
+        .terminal-left img,
+        .terminal-left svg {
             @include scale(0.9);
         }
     }
 }
 
 .terminal-count {
-    padding-top: 30px;
+    margin-top: 90px;
+
 }
 
 .terminal-left,
@@ -3562,6 +3661,12 @@
             color: #fff;
             margin-bottom: 20px;    
             font-size: 17px;    
+            a {
+                color: #fff;
+                text-transform: lowercase;
+                border: none;
+                text-decoration: underline;
+            }
             &:not(:nth-child(2n)) {
                 margin-right: 20px; 
                 @media screen and (max-width: $screen-xs-max) {
