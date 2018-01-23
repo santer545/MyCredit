@@ -30,19 +30,24 @@
     position: relative;
     overflow: hidden;
     display: inline-block;
-    margin-top: 3px;
-    margin-bottom: 7px;
     @include button-variant($btn-authorize-color, #3068a9, transparent);
     vertical-align: top;
-    font-size: $btn-authorize-font-size;
+    font-size: 15px;
     font-family: $font-family-roman;
     border: 0;
     border-radius: $btn-authorize-radius;
-    padding: 11px 27px 10px 45px;
+    
+    
+    padding: 11px 12px 10px 26px;
     background-image: url(../images/icon53.svg);
     background-repeat: no-repeat;
-    background-position: 19px 13px;
-    background-size: 17px;
+    background-position: 9px 13px;
+    background-size: 13px;
+
+
+
+
+
     -webkit-transform: perspective(1px) translateZ(0);
     -ms-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
@@ -53,14 +58,13 @@
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
     text-decoration: none;  
-    @media screen and (max-width: $screen-md-max) {
+    /* @media screen and (max-width: $screen-md-max) {
         font-size: $btn-authorize-font-size-tablet;
         padding: $btn-authorize-padding-laptop;
             background-position: $btn-authorize-bg-position-laptop;
-    }
+    } */
     @media screen and (max-width: $screen-sm-max) {
         margin-bottom: 0;
-        margin-top: 3px;    
         vertical-align: top;
         padding: $btn-authorize-padding-tablet;
         background-position: $btn-authorize-bg-position-mobile;
@@ -104,13 +108,13 @@
         transition-timing-function: ease-out;
         background-image: url(../images/icon53.svg);
         background-repeat: no-repeat;
-        background-position: 55px 30px;
-        background-size: 17px;
-        @media screen and (max-width: $screen-md-max) {
+        background-position: 43px 30px;
+        background-size: 13px;
+        /* @media screen and (max-width: $screen-md-max) {
             background-position: 55px 30px;
             font-size: $btn-authorize-font-size-tablet;
             padding: $btn-authorize-padding-laptop;
-        }
+        } */
         @media screen and (max-width: $screen-sm-max) {
             background-position: 47px 26px;
         }
@@ -182,7 +186,9 @@
             background-color: $btn-authorize-bg;
         }
     }
-    &:hover {
+    &:hover,
+    &:focus,
+    &:active:focus {
         &:before {
             -webkit-transform: scale(0);
             -ms-transform: scale(0);
@@ -212,9 +218,9 @@
     border: none;
     @include transition(background-color 0.3s);
     @media screen and (max-width: 1350px) {
-        height: 45px;
-        line-height: 45px;
-        font-size: 15px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 13px;
         
     }
     @media screen and (max-width: $screen-md-max) {
