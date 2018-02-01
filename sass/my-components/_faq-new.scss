@@ -2,9 +2,9 @@
     &-new {
         background-color: #eceff9;
 
-		.parent-scroll .row>.fixed-bar {
-			float: right;
-		}
+        .parent-scroll .row>.fixed-bar {
+            float: right;
+        }
 
         .parent-scroll {
             [class^="col-"].pull-right {
@@ -222,6 +222,9 @@
         }
         img {
             margin-right: 10px;
+            @media screen and (max-width: $screen-xs-max) {
+                margin-right: 0;    
+            }
         }
         strong {
             display: block;
@@ -230,6 +233,9 @@
 }
 
 .questions-detail {
+    .city-holder {
+        padding: 0; 
+    }
     img {
         margin-bottom: 20px;
     }
@@ -242,97 +248,102 @@
     ol {
         counter-reset: list 0;
         list-style-type: none;
-        padding: 0;	
-        margin: 20px 0 0;	
-    }
-    li {
-    	padding-left: 34px;	
-    	position: relative;	
-        list-style-type: none;
-        &:not(:last-child) {
-        	margin-bottom: 15px;
+        padding: 0;
+        margin: 20px 0 0;
+        li {
+            padding-left: 34px;
+            position: relative;
+            list-style-type: none;
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+            &:before {
+                counter-increment: list;
+                content: counter(list) ". ";
+                font-size: 16px;
+                color: #0059b7;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
         }
-        &:before {
-            counter-increment: list;
-            content: counter(list) ". ";
-            font-size: 16px;	
-            color: #0059b7;
-            position: absolute;	
-            top: 0;	
-            left: 0;	
-        }
     }
+
     .italic-text {
-    	color: #363636;
-    	font-size: 16px;	
-    	font-style: italic;
-    	margin: 20px 0;	
+        color: #363636;
+        font-size: 16px;
+        font-style: italic;
+        margin: 20px 0;
     }
 
     blockquot {
-    	padding: 20px 30px;	
-    	background-color: #eaf2f9;
-    	position: relative;	
-    	margin: 20px 0;	
-    	display: block;	
-    	width: 100%;	
-    	&:before {
-    		content: '';
-    		position: absolute;	
-    		top: 0;	
-    		bottom: 0;	
-    		left: 0;	
-    		width: 2px;	
-    		background-color: #0083ca;
-    		font-style: italic;
-    	}
-    	p:last-child {
-    		margin-bottom: 0;	
-    	}
+        padding: 20px 30px;
+        background-color: #eaf2f9;
+        position: relative;
+        margin: 20px 0;
+        display: block;
+        width: 100%;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            background-color: #0083ca;
+            font-style: italic;
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
     }
 }
 
 .faq-like-values {
     display: inline-block;
     vertical-align: top;
-    width: 150px;
     background-color: #eff1fa;
     border: 1px solid #dbdee9;
     border-radius: 20px;
     height: 43px;
+    min-width: 150px;   
     @include clearfix;
+    text-align: center;
     font-size: 0;
-    overflow: hidden;   
-    margin-left: 15px;  
+    overflow: hidden;
+    margin-left: 15px;
     @media screen and (max-width: 340px) {
         margin-left: 0;
-        width: 127px;
+        min-width: 127px;
     }
-    > div {
-        width: 50%;
+    >div {
         display: inline-block;
         vertical-align: middle;
         padding: 8px 15px;
-        height: 100%;   
-        @media screen and (max-width: 340px) {
-            padding: 8px 8px;
+        height: 100%;
+        @media screen and (max-width: $screen-xs-max) {
+            padding: 12px 8px;  
         }
+        
         &:first-child {
             border-right: 1px solid #dbdee9;
         }
         span {
             font-family: $font-family-roman;
-            font-size: 17px;    
+            font-size: 17px;
             color: #363636;
-            margin-left: 5px;   
+            margin-left: 5px;
+            @media screen and (max-width: $screen-xs-max) {
+                font-size: 12px;    
+            }
         }
         img,
         span {
-            display: inline-block;  
-            vertical-align: middle; 
+            display: inline-block;
+            vertical-align: middle;
         }
         img {
-            margin-bottom: 0;   
+            margin-bottom: 0;
         }
     }
 }
@@ -347,6 +358,6 @@
 
 .faq-person {
     img {
-        margin-bottom: 0;   
+        margin-bottom: 0;
     }
 }

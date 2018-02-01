@@ -1074,6 +1074,9 @@
     }
     &--xs {
         width: 50%; 
+        @media screen and (max-width: $screen-xs-max) {
+            width: 70%; 
+        }
     }
     &--justify {
         text-align: justify;

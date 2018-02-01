@@ -152,8 +152,8 @@ ol {
     margin-bottom: 30px;
     li {
         position: relative;
-        padding-left: $custom-ul-padding-left;
-        font: #{$custom-ul-font-size} / #{$custom-ul-line-height} $font-family-sans-serif;
+        padding-left: 26px;
+        font: 16px / 25px $font-family-sans-serif;
         @media screen and (max-width: $screen-xs-max) {
             font-size: $custom-ul-font-size-mobile;
         }
@@ -164,11 +164,11 @@ ol {
             content: '';
             position: absolute;
             left: 0;
-            top: 12px;
+            top: 9px;
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background-color: $custom-ul-before-bg;
+            background-color: #0059b7;
         }
     }
     ul {

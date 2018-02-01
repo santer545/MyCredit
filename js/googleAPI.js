@@ -61,7 +61,7 @@ function initAutocomplete() {
 				{
 					// types: ['geocode'],
 					types: ['address'],
-					componentRestrictions: {country: 'ru'}
+					componentRestrictions: {country: 'ua'}
 	            }
 		);
 		// When the user selects an address from the dropdown, populate the address

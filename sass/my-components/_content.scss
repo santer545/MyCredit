@@ -233,7 +233,12 @@
             &--wr {
                 @media screen and (max-width: $screen-sm-max) {
                     float: left;
-                    width: 50%; 
+                    width: 60%; 
+                }
+                & + .calculator-table--wr {
+                    @media screen and (max-width: $screen-sm-max) {
+                        width: 40%; 
+                    }
                 }
             }
         }
@@ -260,14 +265,14 @@
         height: 5px;
     } */
     .slider-money .slider-wrapper:after {
-        background-image: none;
-        height: 5px;    
+        /* background-image: none; */
+        
     }
     .slider-wrapper:before {
-        display: none;
+        /* display: none; */
     }
     .slider.slider-horizontal {
-        width: 100%;    
+        /* width: 100%;     */
     }
     /* .slider.slider-horizontal .slider-handle{
         width: 23px;
@@ -388,7 +393,7 @@
 }
 
 .content {
-    font-size: 19px;
+    font-size: 16px;
     word-wrap: break-word;
     @media screen and (max-width: $screen-xs-max) {
         font-size: 16px;
@@ -417,7 +422,6 @@
             vertical-align: top;
             margin-right: 10px;
             width: calc(33.3% - 10px);
-            background-color: #f1f1f1;
             @media screen and (max-width: $screen-sm-max) {
                 width: calc(50% - 10px);
             }
@@ -425,6 +429,10 @@
                 width: 100%;
             }
         }
+    }
+
+    .city-holder {
+        padding: 0; 
     }
 
     &-padding{
@@ -443,6 +451,13 @@
     }
 }
 
+.content-page {
+    margin-bottom: 60px;    
+    @media screen and (max-width: $screen-xs-max) {
+        margin-bottom: 30px;    
+    }
+}
+
 
 /* .ps-current {
     height: 830px;
@@ -451,8 +466,6 @@
 /*------------------------how it work list ---------------------------*/
 
 .how {
-    padding-bottom: 60px;
-    /* padding-top: 50px; */
     word-wrap: break-word;
     @media screen and (max-width: $screen-xs-max) {
         padding: 0;
@@ -463,9 +476,10 @@
     &-top {
         margin-bottom: 20px;
         padding: 34px 38px;
-        background-color: #f9f9f9;
-        border-bottom: 2px solid #0055b8;
-        font: 22px / 32px 'HelveticaNeueCyr Light', Arial, sans-serif;
+        background-color: #eaf2f9;
+        border-left: 2px solid #0083ca;
+        font: 20px / 28px 'HelveticaNeueCyr Light', Arial, sans-serif;
+        color: #003466;
         @media screen and (max-width: $screen-xs-max) {
             margin-bottom: 20px;
             padding: 20px;
@@ -1036,7 +1050,6 @@
 
 .feedback{
     width: 80%; 
-    margin-bottom: 60px;
     @media screen and (max-width: $screen-md-max) {
         width: 100%;
     }
@@ -1377,13 +1390,13 @@
         -ms-transform: translateY(0) scale(1);
         -o-transform: translateY(0) scale(1);
         transform: translateY(0) scale(1);
-    @include transition(transform 0.3s);
-    &:hover {
-        -webkit-transform: translateY(0) scale(3);
-        -ms-transform: translateY(0) scale(3);
-        -o-transform: translateY(0) scale(3);
-        transform: translateY(0) scale(3);
-    }
+   /*  @include transition(transform 0.3s);
+   &:hover {
+       -webkit-transform: translateY(0) scale(3);
+       -ms-transform: translateY(0) scale(3);
+       -o-transform: translateY(0) scale(3);
+       transform: translateY(0) scale(3);
+   } */
 }
 
 

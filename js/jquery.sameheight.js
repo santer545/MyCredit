@@ -80,6 +80,15 @@ function initSameHeight() {
         biggestHeight: false
     });
 
+    jQuery('.js-advantages-slider').sameHeight({
+        elements: '.advantages-block',
+        flexible: true,
+        multiLine: true,
+        biggestHeight: false
+    });
+
+    
+
     jQuery('.nav-tabs--data').sameHeight({
         elements: '.nav-tabs--data li a',
         flexible: true,

@@ -422,6 +422,7 @@
 
 
 
+
 /*___________________________________social_____________________________________*/
 
 .new-main {
@@ -485,6 +486,7 @@
         }
     }
 }
+
 
 
 
@@ -623,6 +625,7 @@
 
 
 
+
 /*--------------------------------document tabs---------------------------------------*/
 
 .documents-tabs {
@@ -705,7 +708,7 @@
                 font-size: 11px;
             }
             &:hover {
-                background-color: #fff;
+                background-color: transparent;
             }
             &:after {
                 content: '';
@@ -723,8 +726,6 @@
                 display: table-cell;
                 vertical-align: middle;
             }
-            
-            
         }
     }
     .tab-content {
@@ -780,6 +781,7 @@
         }
     }
 }
+
 
 
 
@@ -1412,6 +1414,7 @@
 
 
 
+
 /* about page navigation */
 
 .second-nav {
@@ -1446,11 +1449,12 @@
             color: #0c406b;
             font-family: $font-family-roman;
             border: none;
+            text-decoration: none;
             @media screen and (max-width: $screen-md-max) {
                 font-size: 13px;
             }
             &:hover {
-                color: $second-color;
+                color: #0055b8;
             }
         }
     }
@@ -1557,6 +1561,17 @@
     border: 1px solid #dbdee9;
     @media screen and (max-width: $screen-sm-max) {
         margin-bottom: 20px;
+    }
+
+    ul {
+        padding: 0;
+        list-style-type: none;
+        margin: 0;
+        li {
+            a {
+                padding-left: 40px;
+            }
+        }
     }
 
     li {

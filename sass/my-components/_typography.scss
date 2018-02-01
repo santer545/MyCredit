@@ -852,6 +852,9 @@ Single-colored icons can be modified like so:
     @media screen and (max-width: $screen-md-max) {
         font-size: $heading-h2-laptop;
     }
+    @media screen and (max-width: $screen-xs-max) {
+      font-size: 18px;
+    }
     &--inverse {
       color: #fff;
     }
@@ -1120,6 +1123,9 @@ Single-colored icons can be modified like so:
 .heading-current-question{
   @extend .heading-h2;
   font-size: 21px;
+  @media screen and (max-width: $screen-xs-max) {
+    font-size: 18px;
+  }
 }
 
 h1{

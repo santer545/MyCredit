@@ -32,17 +32,17 @@
     display: inline-block;
     @include button-variant($btn-authorize-color, #3068a9, transparent);
     vertical-align: top;
-    font-size: 15px;
+    font-size: 18px;
     font-family: $font-family-roman;
     border: 0;
     border-radius: $btn-authorize-radius;
     
     
-    padding: 11px 12px 10px 26px;
-    background-image: url(../images/icon53.svg);
+    padding: 11px 27px 10px 45px;
+    background-image: url(../assets/images/login.svg);
     background-repeat: no-repeat;
-    background-position: 9px 13px;
-    background-size: 13px;
+    background-position: 11px 12px;
+    background-size: 18px;
 
 
 
@@ -64,22 +64,27 @@
             background-position: $btn-authorize-bg-position-laptop;
     } */
     @media screen and (max-width: $screen-sm-max) {
+        font-size: 15px;    
         margin-bottom: 0;
         vertical-align: top;
-        padding: $btn-authorize-padding-tablet;
-        background-position: $btn-authorize-bg-position-mobile;
+        padding: 8px 17px 7px 35px;
+        background-position: 9px 9px;
+        background-size: 16px;  
     }
     @media screen and (max-width: $screen-xs-max) {
         display: inline-block;
         margin-top: 3px;    
-        background-position: $btn-authorize-bg-position-mobile;
+        background-position: 9px 9px;
+        background-size: 16px;  
     }
     @media screen and (max-width: $screen-xs) {
         height: 36px;
+        padding: 0; 
+        width: 37px;    
         font-size: 0;
-        background-image: url(../images/icon53.svg);
+        background-image: url(../assets/images/login.svg);
         background-repeat: no-repeat;
-        background-position: 19px 9px;
+        background-position: 9px 9px;
         background-size: 17px;
     }
     
@@ -106,60 +111,73 @@
         transition-duration: 0.3s;
         -webkit-transition-timing-function: ease-out;
         transition-timing-function: ease-out;
-        background-image: url(../images/icon53.svg);
+        background-image: url(../assets/images/login.svg);
         background-repeat: no-repeat;
-        background-position: 43px 30px;
-        background-size: 13px;
+        background-position: 45px 29px;
+        background-size: 18px;
         /* @media screen and (max-width: $screen-md-max) {
             background-position: 55px 30px;
             font-size: $btn-authorize-font-size-tablet;
             padding: $btn-authorize-padding-laptop;
         } */
         @media screen and (max-width: $screen-sm-max) {
-            background-position: 47px 26px;
+            background-position: 43px 26px;
+            background-size: 16px;  
         }
         @media screen and (max-width: $screen-xs-max) {
-            background-position: 47px 25px;
+            background-position: 43px 25px;
         }
         @media screen and (max-width: $screen-xs) {
             display: none;
         }
     }
     &--content {
-        width: 48px;
+        width: 37px;
         height: 46px;
         padding: 0;
         font-size: 0;
-        margin-right: 3px;  
+        background-size: 16px;  
+        @media screen and (max-width: 1300px) {
+             
+        }
         @media screen and (max-width: $screen-md-max) {
-            height: 43px;
+            height: 42px;  
         }
         @media screen and (max-width: $screen-sm-max) {
-            background-position: 16px 12px;
+            background-position: 10px 12px;
+            
         }
         @media screen and (max-width: $screen-xs-max) {
             height: 36px;
-            background-position: 16px 8px;
+            background-position: 10px 8px;
         }
         
         &:before {
+            background-position: 45px 30px;
+            background-size: 16px;
             @media screen and (max-width: $screen-sm-max) {
-                background-position: 51px 29px;
+                background-position: 45px 30px;
             }
             @media screen and (max-width: $screen-xs-max) {
-                background-position: 51px 26px;
+                background-position: 46px 26px;
             }
             
         }
     }
     &--get {
         background-image: none;
-        padding: 11px 20px 10px;
-        @media screen and (max-width: $screen-xs-max) {
-            padding: 7px 20px;
+        padding: 11px 10px 10px;
+
+        @media screen and (max-width: $screen-md-max) {
+            font-size: 15px;    
         }
-        @media screen and (max-width: $screen-xs) {
+        @media screen and (max-width: $screen-md-max) {
+            padding: 11px 4px 10px; 
+        }
+        
+        @media screen and (max-width: $screen-xs-max) {
             height: 36px;
+            width: 39px;    
             font-size: 0;
             background-image: url('../images/icons/card.svg');
             background-repeat: no-repeat;
@@ -177,14 +195,11 @@
         } */
         &:before {
             background-image: none;
-            @media screen and (max-width: $screen-xs) {
+            @media screen and (max-width: $screen-xs-max) {
                 display: none;
             }
         }
-        &:active {
-            background-image: url('../images/icons/card.svg');
-            background-color: $btn-authorize-bg;
-        }
+        
     }
     &:hover,
     &:focus,
@@ -216,8 +231,10 @@
     line-height: 55px;
     background-color: #ed592b;
     border: none;
+    margin-bottom: 10px;    
     @include transition(background-color 0.3s);
-    @media screen and (max-width: 1350px) {
+    
+    @media screen and (max-width: 1500px) {
         height: 40px;
         line-height: 40px;
         font-size: 13px;
@@ -233,6 +250,32 @@
     &:focus {
         background-color: #d03505;
         color: #fff;
+    }
+}
+
+.btn-wish {
+    position: absolute; 
+    z-index: 10;    
+    bottom: 40px;   
+    left: 50%;  
+    transform: translate(-50%, 0);
+    color: #fff;
+    background-color: #45bc75;
+    border-color: transparent;
+    border-radius: 5px;
+    border-width: 0;
+    box-shadow: 0 0 1px transparent;
+    transition-property: color;
+    transition-duration: .3s;
+    padding: 15px 23px;
+    &:hover,
+    &:focus {
+        color: #fff;
+    }
+    &:hover,
+    &:active {
+        color: #fff;
+        background-color: #24864c;
     }
 }
 

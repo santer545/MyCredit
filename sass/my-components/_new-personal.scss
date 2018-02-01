@@ -72,6 +72,7 @@
             }
             a {
                 color: #4281ca;
+                text-decoration: none;  
             }
             li {
                 width: 100%;
@@ -96,10 +97,16 @@
     }
     .data-tab--wrapper {
         padding: 10px 0 0;
+        @media screen and (max-width: $screen-xs-max) {
+            padding-top: 0; 
+        }
     }
     .nav-tabs--data {
         border-bottom: 1px solid #dde0eb;
         padding-left: 40px;
+        @media screen and (max-width: $screen-xs-max) {
+            padding-left: 0;    
+        }
     }
     .nav-tabs--data li::before {
         background-color: #0054bc;
@@ -107,11 +114,28 @@
     .nav-tabs--data li {
         width: auto;
         margin-right: 40px;
+        @media screen and (max-width: $screen-xs-max) {
+            width: 33.33%;  
+            float: left;
+            margin-right: 0;    
+        }
+    }
+    .nav-tabs--data li a {
+        padding: 20px 0;
+        @media screen and (max-width: $screen-xs-max) {
+            padding: 10px 5px;    
+            font-size: 11px;    
+        }
+        @media screen and (max-width: 350px) {
+            font-size: 10px;    
+            padding: 10px 3px;  
+        }
     }
     .nav-tabs--data li a,
     .nav-tabs--data li.active a,
     .nav-tabs--data li a:hover {
-        padding: 20px 0;
+        
+        text-decoration: none;  
         background-color: #fbfbfb;
     }
     .nav-tabs--data li.active a:focus,
@@ -1443,6 +1467,9 @@
         border-radius: 5px;
         background-color: #fff;
         margin-bottom: 30px;
+        .btn-width {
+            padding: 11px 23px;
+        }
     }
     .card-form--holder {
         width: 30%;

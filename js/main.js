@@ -1,4 +1,38 @@
 $(document).ready(function() {
+    mobileMenuClose();
+    faqAnchor();
+    prolongationBlockAnimate();
+    anchorLink();
+    giftAnchor();
+    parallax();
+    //hearts();
+    customInput();
+    februaryValidate();
+    
+    // Detect ios 11_0_x affected 
+    // NEED TO BE UPDATED if new versions are affected
+    var ua = navigator.userAgent,
+        iOS = /iPad|iPhone|iPod/.test(ua),
+        iOS11 = /OS 11_0_1|OS 11_0_2|OS 11_0_3|OS 11_1/.test(ua);
+
+    // ios 11 bug caret position
+    if (iOS && iOS11) {
+
+        // Add CSS class to body
+        $("body").addClass("iosBugFixCaret");
+
+    }
+
+    partnersFormOpener();
+    partnersFormOpener1();
+
+    // promo popup
+    promoPopup();
+
+    paswwordChecker();
+
+    // gift popup
+    $('#gift-popup').modal('show');
 
     if ($('#watch').length > 0) {
         var els = document.querySelectorAll('.letter-arrow');
@@ -47,10 +81,56 @@ $(document).ready(function() {
 
     lightbox.option({
         albumLabel: "Изображение %1 of %2"
-    })
+    });
 
-    anchorLink();
+
     navbarClose();
+
+    // bonus slider
+
+    $('.owl-bonus').owlCarousel({
+        items: 4,
+        loop: false,
+        autoplay: false,
+        nav: true,
+        navClass: ['owl-prev disabled', 'owl-next'],
+        navText: ['<svg class="icon icon-arror-left"><use xlink:href="#icon-arror-left"></use></svg>', '<svg class="icon icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg>'],
+        responsive: {
+            0: {
+                items: 1,
+                margin: 55,
+                nav: true
+            },
+            768: {
+                items: 2,
+                margin: 35
+            },
+            1024: {
+                items: 4,
+                margin: 35,
+                nav: false
+            }
+        },
+        callbacks: true,
+        info: true,
+        onTranslated: $(this).on('translated.owl.carousel', function(e) {
+            var items_per_page = e.relatedTarget.options.slideBy;
+            var nav_container = e.relatedTarget.options.navContainer;
+            var item_index = e.item.index;
+            var item_count = e.item.count;
+            var last_vis_item_index = items_per_page + item_index;
+            if (last_vis_item_index === item_count) {
+                $(nav_container).find('div:last').addClass('disabled');
+            } else {
+                $(nav_container).find('div:last').removeClass('disabled');
+            }
+            if (item_index != 0) {
+                $(nav_container).find('div:first').removeClass('disabled');
+            } else {
+                $(nav_container).find('div:first').addClass('disabled');
+            }
+        })
+    });
 
     $('.js-owl-questions').owlCarousel({
         items: 1,
@@ -82,7 +162,6 @@ $(document).ready(function() {
 
     $(document).on('click', '.owl-cpa .owl-item', function() {
         n = $(this).index();
-        console.log(n)
         $('.owl-wrapper').trigger('owl.goTo', n);
     });
 
@@ -97,13 +176,14 @@ $(document).ready(function() {
         autoplayHoverPause: true,
         navText: ['', ''],
         responsive: {
-            800: {
+            1024: {
                 items: 2,
-                dots: false,
+                dots: true,
                 nav: false
             },
             1300: {
-                items: 3
+                items: 3,
+                nav: true
             }
         }
     });
@@ -260,6 +340,7 @@ $(document).ready(function() {
     });
 
     // если есть Неангелы, то меняем условия:
+    /*
     if ($("#div_notangels").length > 0) {
 
         var class_calculator_heading_top = $(".calculator-heading--top").prop('class');
@@ -284,19 +365,52 @@ $(document).ready(function() {
         });
 
         reloadCred('large_main'); // запускает обновление калькулятора
+    }
+    */
 
-        /*
-        $('.owl-carousel-banner').on('changed.owl.carousel', function(event) {
-               //current will now return current slide #
-                var current = (event.item.index + 1) - event.relatedTarget._clones.length / 2;
-                var allItems = event.item.count;
-                if (current > allItems || current == 0) {
-                    current = allItems - (current % allItems);
-                }
-                console.log(current);
-               // $('.number-of-slider').text(current + '/' + allItems);
+    // если есть owl-carousel студентов, то меняем условия:
+    if ($("#div_students").length > 0) {
+
+        var class_calculator_heading_top = $(".calculator-labe-zero").prop('class');
+
+        // событие при смене слайдера-карусели:
+        $(".owl-carousel-banner").on('translated.owl.carousel', function(event) {
+
+            var item = $(".owl-item")[event.item.index];
+            item = $(item).children("#div_students");
+
+            if (item.length > 0) {
+                $(".calculator-labe-zero").addClass("hidden");
+            } else {
+                $(".calculator-labe-zero").removeClass("hidden");
+            }
         });
-        */
+    }
+
+    // если есть элементы реструктуризации:
+    if ($(".restructuring-top").length > 0) {
+
+        // событие при нажатии на кнопку реструктуризации:
+        $(".js-btn-restruct").on('click', function(event) {
+
+            $(".restructuring-top").removeClass('hidden');
+            $(".restructuring-heading.js-first").removeClass('hidden');
+            $(".restructuring-wrapper.js-first").removeClass('hidden');
+        });
+
+        // событие при смене реструктуризации:
+        $(".js-restruct").on('click', function(event) {
+
+            var id = $(this).attr('data-id');
+
+            $(".js-restruct").removeClass('active');
+            $(this).addClass('active');
+
+            $(".restructuring-heading").addClass('hidden');
+            $(".restructuring-wrapper").addClass('hidden');
+            $("#restructuring-heading-" + id).removeClass('hidden');
+            $("#restructuring-wrapper-" + id).removeClass('hidden');
+        });
     }
 
     $('.change-button').click(function() {
@@ -395,6 +509,12 @@ $(document).ready(function() {
         $("#phone").mask("+38099 999 9999", {
             autoclear: false
         });
+        $('[type="tel"]').mask("+38099 999 9999", {
+            autoclear: false
+        });
+        $(".gift-section input[type='tel']").mask("+38099 999 9999", {
+            autoclear: false
+        });
         $('#login').mask("+38099 999 9999", {
             autoclear: false
         });
@@ -468,9 +588,15 @@ $(document).ready(function() {
     switch (document.getElementById("lang").innerHTML) {
         case "ru":
             titleSelect = 'Выберите';
+            titleSelectDateDay = "дд"
+            titleSelectDateMonth = "мм"
+            titleSelectDateYear = "гг"
             break;
         case "ua":
             titleSelect = 'Виберіть';
+            titleSelectDateDay = "дд"
+            titleSelectDateMonth = "мм"
+            titleSelectDateYear = "рр"
             break
         case "en":
             titleSelect = 'Select';
@@ -486,6 +612,18 @@ $(document).ready(function() {
     }
     $('.selectpicker').selectpicker({
         title: titleSelect,
+        dropupAuto: false
+    });
+    $('.selectpicker-date-day').selectpicker({
+        title: titleSelectDateDay,
+        dropupAuto: false
+    });
+    $('.selectpicker-date-month').selectpicker({
+        title: titleSelectDateMonth,
+        dropupAuto: false
+    });
+    $('.selectpicker-date-year').selectpicker({
+        title: titleSelectDateYear,
         dropupAuto: false
     });
     // $('#language').selectpicker({});
@@ -515,7 +653,8 @@ $(document).ready(function() {
         }, 0);
     });
 
-
+    // people with credits popups
+    randomId();
 
     // share-popup
 
@@ -531,7 +670,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-randomId();
+
 
 
 function randomId() {
@@ -550,7 +689,7 @@ function randomId() {
                 setTimeout(function() {
                     randomId();
                 }, 5000);
-            }, 30000);
+            }, 45000);
         }
     }
 }
@@ -657,6 +796,10 @@ function scrollBarHeight() {
         'max-height': sidebarHeight + 'px',
     });
 }
+
+
+
+
 $(window).resize(function() {
     if ($(window).width() > 1025) {
         $(".fixed-bar").stick_in_parent({
@@ -819,27 +962,9 @@ $('.fixed-bar').width($('.col-lg-3').width());
 $(window).resize(function() {
     $('.fixed-bar').width($('.col-lg-3').width());
 });
-$('.side-bar a, .footer-menu-link').on('click', function() {
-    var _this = this;
-    var target = $(this).attr('href');
-    $("a[href*='/faq/#']").removeClass('active');
-    var a = $("a[href='" + target + "']").addClass('active');
-    $("a[href*='/faq/#']").removeClass('active');
-    var a = $("a[href='" + target + "']").addClass('active');
-    var position = target.indexOf('#');
-    var id_selector = target.substr(position);
-    var top_pos = $('.header').outerHeight();
-    var header_height;
-    if (top_pos > 110) {
-        header_height = $('.header').outerHeight();
-    } else {
-        header_height = $('.header').outerHeight();
-    }
-    $('html, body').animate({
-        scrollTop: ($(id_selector).offset().top - header_height)
-    }, 1200);
-    return false;
-});
+
+
+
 $(document).ready(function() {
     $('.js-seo').jScrollPane({
         arrowScrollOnHover: true
@@ -912,7 +1037,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 
-
+    toggleText();
     // neangelu cities
     chooseFromSelect();
 
@@ -963,10 +1088,8 @@ $(document).ready(function() {
     });
 
     $('.modal').on('hidden.bs.modal', function(e) {
-        console.log('окно закрыто!');
         $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
         $('#promo2')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
-        console.log('окно закрыто!');
     });
 
 
@@ -1021,11 +1144,41 @@ $(document).ready(function() {
         return false;
     })
 
+    // Событие keydown на Input:
+    $("input").on("keydown", function(event) {
+        // console.log('keydown');
+        // console.log(event);
+
+        if (!pageInputKeys.startTime) { // Если еще не было ввода:
+            pageInputKeys.startTime = Date.now();
+        }
+        if (event.keyCode == 8) { // Backspace
+            pageInputKeys.Backspace++;
+        }
+        if (event.keyCode == 46) { // Delete
+            pageInputKeys.Delete++;
+        }
+        if (event.ctrlKey && event.keyCode == 67) { // Ctrl + C
+            pageInputKeys.CtrlC++;
+        }
+        if (event.ctrlKey && event.keyCode == 86) { // Ctrl + V
+            pageInputKeys.CtrlV++;
+        }
+        pageInputKeys.KeysCount++;
+
+        // console.log(pageInputKeys);
+        // console.log((pageInputType.lastTime - pageInputKeys.startTime) / 1000);
+
+        return true;
+    })
+
     // Событие show - открытие модального окна:
     $('#modal_auth').on('shown.bs.modal', function() {
         var dataSitekey = $("#buttonLogin1").attr("data-sitekey");
-        var widgetId = grecaptcha.render("buttonLogin1", { "sitekey": dataSitekey, "callback": "onReCaptchaVerifyAuth" });
-        grecaptcha.reset(widgetId);
+        if (dataSitekey != '0') {
+            var widgetId = grecaptcha.render("buttonLogin1", { "sitekey": dataSitekey, "callback": "onReCaptchaVerifyAuth" });
+            grecaptcha.reset(widgetId);
+        }
     });
 
 });
@@ -1151,28 +1304,40 @@ function sharePopupClose() {
 
 
 function anchorLink() {
-    $('a[href*="#"]').click(function(e) {
-        /* e.preventDefault();
-         var href = $(this).attr('href');
-         $(this).closest('body').find(href);*/
+    $(document).on('click', '.navbar-nav a[href*="#"]', function() {
+        var target = $(this).attr('href');
+        headerHeight = $('.header').outerHeight(true);
+        collapseHeight = $('.navbar-collapse.in').outerHeight(true);
 
-        /*$('html, body').animate({
-            scrollTop: ($(href).offset().top)
-        }, 1200);*/
+        var position = target.indexOf('#');
+        var id_selector = target.substr(position);
+
+        if (window.innerWidth <= 767) {
+            $('html, body').animate({
+                scrollTop: ($(id_selector).offset().top - collapseHeight)
+            }, 1200);
+        } else {
+            $('html, body').animate({
+                scrollTop: ($(id_selector).offset().top - headerHeight)
+            }, 1200);
+        }
+
+        return false;
     });
+
 }
 
 
-var elementDefault = $('.navbar-nav li');
-var elementDefault_1 = $('.second-nav li');
+var elementDefault = $('.navbar-nav > li');
+var elementDefault_1 = $('.second-nav > li');
 
 function menuOverflow() {
     if ($(window).width() < 992 && $(window).width() > 699) {
-        var l = $('.navbar-nav li').length;
+        var l = $('.navbar-nav > li').length;
         if (l > 3) {
-            var el = $('.navbar-nav li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3))');
+            var el = $('.navbar-nav > li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3))');
             el.appendTo('.more-menu .dropdown-menu');
-            $('.navbar-nav li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3))').remove();
+            $('.navbar-nav > li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3))').remove();
         }
 
         var l1 = $('.second-nav li').length;
@@ -1182,9 +1347,9 @@ function menuOverflow() {
             $('.second-nav li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3))').remove();
         }
     } else {
-        $('.navbar-nav li').remove();
+        $('.navbar-nav > li').remove();
         elementDefault.appendTo('.navbar-nav');
-        $('.second-nav li').remove();
+        $('.second-nav > li').remove();
         elementDefault_1.appendTo('.second-nav');
     }
 }
@@ -1259,26 +1424,16 @@ function owlAdvantages() {
 
 
 
-$(function() {
-    var nav = $('.step-verify--second .verify-body'),
-        animateTime = 500;
-    if (nav.hasClass('active')) {
-        autoHeightAnimate(nav, animateTime);
-    } else {
-        nav.stop().animate({ height: '0' }, animateTime);
-    }
-});
 
 
-/* Function to animate height: auto */
-function autoHeightAnimate(element, time) {
-    var curHeight = element.height(), // Get Default Height
-        autoHeight = element.css('height', 'auto').height(); // Get Auto Height
-    element.height(curHeight); // Reset to Default Height
-    element.stop().animate({ height: autoHeight }, time); // Animate to Auto Height
+
+
+function toggleText() {
+    setInterval(function() {
+        $('.how-widget-t').toggleClass('active');
+        $('.how-widget-q').toggleClass('active');
+    }, 5000);
 }
-
-
 
 
 
@@ -1287,140 +1442,94 @@ function autoHeightAnimate(element, time) {
 $(document).ready(function() {
 
     // Grayscale images on Safari and Opera browsers
-    if(getBrowser()=='opera' || getBrowser()=='safari'){
-        var $images = $(".container-img img")
-        , imageCount = $images.length
-        , counter = 0;
+    if (getBrowser() == 'opera' || getBrowser() == 'safari') {
+        var $images = $(".container-img img"),
+            imageCount = $images.length,
+            counter = 0;
 
         // One instead of on, because it need only fire once per image
-        $images.one("load",function(){
+        $images.one("load", function() {
             // increment counter every time an image finishes loading
             counter++;
             if (counter == imageCount) {
                 // do stuff when all have loaded
                 grayscale($('.container-img img'));
                 $(".container-img img").hover(
-                    function () {
+                    function() {
                         grayscale.reset($(this));
-                    }, 
-                    function () {
+                    },
+                    function() {
                         grayscale($(this));
                     }
                 );
             }
-        }).each(function () {
-        if (this.complete) {
-            // manually trigger load event in
-            // event of a cache pull
+        }).each(function() {
+            if (this.complete) {
+                // manually trigger load event in
+                // event of a cache pull
                 $(this).trigger("load");
             }
         });
     };
 
 
-    // for svg 
-
-    // Grayscale images on Safari and Opera browsers
-    if(getBrowser()=='opera' || getBrowser()=='safari'){
-        var $images = $(".container-img svg")
-        , imageCount = $images.length
-        , counter = 0;
-
-        // One instead of on, because it need only fire once per image
-        $images.one("load",function(){
-            // increment counter every time an image finishes loading
-            counter++;
-            if (counter == imageCount) {
-                // do stuff when all have loaded
-                grayscale($('.container-img svg'));
-                $(".container-img svg").hover(
-                    function () {
-                        grayscale.reset($(this));
-                    }, 
-                    function () {
-                        grayscale($(this));
-                    }
-                );
-            }
-        }).each(function () {
-        if (this.complete) {
-            // manually trigger load event in
-            // event of a cache pull
-                $(this).trigger("load");
-            }
-        });
-    };
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
     // Grayscale images only on browsers IE10+ since they removed support for CSS grayscale filter
-    if (getInternetExplorerVersion() >= 10){
-        $('.container-img img').each(function(){
+    if (getInternetExplorerVersion() >= 10) {
+        $('.container-img img').each(function() {
             var el = $(this);
-            el.css({"position":"absolute"}).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({"position":"absolute","z-index":"5","opacity":"0"}).insertBefore(el).queue(function(){
+            el.css({ "position": "absolute" }).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({ "position": "absolute", "z-index": "5", "opacity": "0" }).insertBefore(el).queue(function() {
                 var el = $(this);
-                el.parent().css({"width":this.width,"height":this.height});
+                el.parent().css({ "width": this.width, "height": this.height });
                 el.dequeue();
             });
             this.src = grayscaleIE10(this.src);
         });
 
-        $('.container-img svg').each(function(){
-            var el = $(this);
-            el.css({"position":"absolute"}).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({"position":"absolute","z-index":"5","opacity":"0"}).insertBefore(el).queue(function(){
-                var el = $(this);
-                el.parent().css({"width":this.width,"height":this.height});
-                el.dequeue();
-            });
-            this.src = grayscaleIE10(this.src);
-        });
-        
+
+
         // Quick animation on IE10+ 
         $('.container-img img').hover(
-            function () {
-                $(this).parent().find('svg:first').stop().animate({opacity:1}, 200);
-            }, 
-            function () {
-                $('.img_grayscale').stop().animate({opacity:0}, 200);
+            function() {
+                $(this).parent().find('img:first').stop().animate({ opacity: 1 }, 200);
+            },
+            function() {
+                $('.img_grayscale').stop().animate({ opacity: 0 }, 200);
             }
-        ); 
+        );
 
-        $('.container-img svg').hover(
-            function () {
-                $(this).parent().find('svg:first').stop().animate({opacity:1}, 200);
-            }, 
-            function () {
-                $('.img_grayscale').stop().animate({opacity:0}, 200);
-            }
-        );  
-        
-        function grayscaleIE10(src){
+
+
+        $('.no-active img').each(function() {
+            var el = $(this);
+            el.css({ "position": "absolute" }).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({ "position": "absolute", "z-index": "5", "opacity": "0" }).insertBefore(el).queue(function() {
+                var el = $(this);
+                el.parent().css({ "width": this.width, "height": this.height });
+                el.dequeue();
+            });
+            this.src = grayscaleIE10(this.src);
+        });
+
+
+
+
+
+
+
+        function grayscaleIE10(src) {
             var canvas = document.createElement('canvas');
             var ctx = canvas.getContext('2d');
             var imgObj = new Image();
             imgObj.src = src;
             canvas.width = imgObj.width;
-            canvas.height = imgObj.height; 
-            ctx.drawImage(imgObj, 0, 0); 
+            canvas.height = imgObj.height;
+            ctx.drawImage(imgObj, 0, 0);
             var imgPixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            for(var y = 0; y < imgPixels.height; y++){
-                for(var x = 0; x < imgPixels.width; x++){
+            for (var y = 0; y < imgPixels.height; y++) {
+                for (var x = 0; x < imgPixels.width; x++) {
                     var i = (y * 4) * imgPixels.width + x * 4;
                     var avg = (imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;
-                    imgPixels.data[i] = avg; 
-                    imgPixels.data[i + 1] = avg; 
+                    imgPixels.data[i] = avg;
+                    imgPixels.data[i + 1] = avg;
                     imgPixels.data[i + 2] = avg;
                 }
             }
@@ -1428,64 +1537,305 @@ $(document).ready(function() {
             return canvas.toDataURL();
         };
     };
-    
+
     // This block simply ads a corresponding class to the body tag so that we can target browsers with CSS classes
-    if(getBrowser()=='mozilla'){
+    if (getBrowser() == 'mozilla') {
         // Mozilla
         $('body').addClass('mozilla');
-    }
-    else if(getBrowser()=='ie'){
+    } else if (getBrowser() == 'ie') {
         // IE Favourite
         $('body').addClass('ie');
-    }
-    else if(getBrowser()=='opera'){
+    } else if (getBrowser() == 'opera') {
         // Opera
         $('body').addClass('opera');
-    }           
-    else if (getBrowser()=='safari'){ // safari
+    } else if (getBrowser() == 'safari') { // safari
         // Safari
         $('body').addClass('safari');
-    }
-    else if(getBrowser()=='chrome'){
+    } else if (getBrowser() == 'chrome') {
         // Chrome
         $('body').addClass('chrome');
     };
-    if (getInternetExplorerVersion() >= 10){
+    if (getInternetExplorerVersion() >= 10) {
         $('body').addClass('ie11');
     };
 
     // Detection function to tell what kind of browser is used
-    function getBrowser(){
+    function getBrowser() {
         var userAgent = navigator.userAgent.toLowerCase();
         $.browser.chrome = /chrome/.test(userAgent);
-        $.browser.safari= /webkit/.test(userAgent);
-        $.browser.opera=/opera/.test(userAgent);
-        $.browser.msie=/msie/.test( userAgent ) && !/opera/.test( userAgent );
-        $.browser.mozilla= /mozilla/.test( userAgent ) && !/(compatible|webkit)/.test( userAgent ) || /firefox/.test(userAgent);
+        $.browser.safari = /webkit/.test(userAgent);
+        $.browser.opera = /opera/.test(userAgent);
+        $.browser.msie = /msie/.test(userAgent) && !/opera/.test(userAgent);
+        $.browser.mozilla = /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent) || /firefox/.test(userAgent);
 
-        if($.browser.chrome) return "chrome";
-        if($.browser.mozilla) return "mozilla";
-        if($.browser.opera) return "opera";
-        if($.browser.safari) return "safari";
-        if($.browser.msie) return "ie";
+        if ($.browser.chrome) return "chrome";
+        if ($.browser.mozilla) return "mozilla";
+        if ($.browser.opera) return "opera";
+        if ($.browser.safari) return "safari";
+        if ($.browser.msie) return "ie";
     };
-    
+
     // Since IE11 can not be detected like this because the new user agent on IE11 is trying to hide as Mozilla
     // we detect IE11 with this function
-    function getInternetExplorerVersion(){
+    function getInternetExplorerVersion() {
         var rv = -1;
-        if (navigator.appName == 'Microsoft Internet Explorer'){
+        if (navigator.appName == 'Microsoft Internet Explorer') {
             var ua = navigator.userAgent;
-            var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+            var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
             if (re.exec(ua) != null)
-            rv = parseFloat( RegExp.$1 );
-        }
-        else if (navigator.appName == 'Netscape'){
+                rv = parseFloat(RegExp.$1);
+        } else if (navigator.appName == 'Netscape') {
             var ua = navigator.userAgent;
-            var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+            var re = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
             if (re.exec(ua) != null)
-            rv = parseFloat( RegExp.$1 );
+                rv = parseFloat(RegExp.$1);
         }
         return rv;
     };
 });
+
+// фунции Вячеслава
+
+function onClickSubmitContactInfo() {
+    // правим action, если главная страница:
+    if ($('form#clientContactInfo').attr('action') === '/') {
+        $('form#clientContactInfo').attr('action', '/' + $('#language').text() + '/');
+    }
+    window.document.forms['clientContactInfo'].submit();
+}
+
+/*
+function sendResGifts()
+{
+  $('html, body').animate({scrollTop: $('#gifts').offset().top}, 2000);
+}*/
+
+function promoPopup() {
+    setTimeout(function() {
+        $('#promocodePopup').modal('show');
+    }, 900000);
+}
+
+function partnersFormOpener() {
+    $('.js-open').click(function() {
+        if ($('.partner-modal input:checked').length != 0) {
+            $('.js-partners-form').removeClass('hidden');
+            $('.form-choose').addClass('hidden');
+        } else {
+            $('.js-partners-form').addClass('hidden');
+        }
+    });
+
+    $('.partner-modal').on('hidden.bs.modal', function(e) {
+        $('.js-partners-form').addClass('hidden');
+        $('.form-choose').removeClass('hidden');
+    })
+}
+
+function partnersFormOpener1() {
+    $(".partners-choose__wrapper input").change(function() {
+        if ($('.partners-choose__wrapper input:checked').length != 0) {
+            $('.js-opener-last').removeAttr('disabled');
+        }
+    });
+}
+
+
+
+
+
+function paswwordChecker() {
+    var element = document.getElementById('password');
+    var expBigLetter = /[A-Z]+/,
+        expSmallLetter = /[a-z]+/,
+        expNumber = /\d+/;
+    if (element) {
+        element.oninput = function() {
+            var val = document.getElementById('password').value;
+
+            var count = val.length;
+
+            var big_letter = document.getElementById('big_letter');
+            var small_letter = document.getElementById('small_letter');
+            var number_symbol = document.getElementById('number_symbol');
+            var count_letter = document.getElementById('count_letter');
+
+
+            if (count >= 6) {
+                count_letter.setAttribute('class', 'active');
+            } else {
+                count_letter.classList.remove('active');
+            }
+
+
+            if (expSmallLetter.test(val)) {
+                small_letter.setAttribute('class', 'active');
+            } else {
+                small_letter.classList.remove('active');
+            }
+            if (expBigLetter.test(val)) {
+                big_letter.setAttribute('class', 'active');
+            } else {
+                big_letter.classList.remove('active');
+            }
+            if (expNumber.test(val)) {
+                number_symbol.setAttribute('class', 'active');
+            } else {
+                number_symbol.classList.remove('active');
+            }
+        }
+    }
+
+}
+
+function giftAnchor() {
+    var location = document.location.href;
+    var position = location.indexOf('#');
+    var id_selector = location.substr(position);
+    history.pushState('', document.title, window.location.pathname);
+    headerHeight = $('.header').outerHeight(true);
+
+    if (id_selector && position >= 0) {
+        setTimeout(function() {
+            if (window.innerWidth <= 1300) {
+                $('html, body').animate({
+                    scrollTop: ($(id_selector).offset().top - 0)
+                }, 0);
+            } else {
+                $('html, body').animate({
+                    scrollTop: ($(id_selector).offset().top - 100)
+                }, 0);
+            }
+
+        }, 500);
+    }
+    return false;
+}
+
+function mobileMenuClose() {
+    $('.js-mobile-menu').click(function() {
+        $('#js_navbar').removeClass('in');
+    });
+}
+
+function prolongationBlockAnimate() {
+
+    var animateTimePhone = 500;
+    $('.js-prolongation-btn').click(function() {
+        var phoneWr = $(this).closest('.prolongation-item').find('.js-prolongation-height');
+
+        if (phoneWr.height() === 0) {
+
+            $('.js-prolongation-height').stop().animate({ height: '0' }, animateTimePhone);
+            autoHeightAnimate(phoneWr, animateTimePhone);
+            $('.prolongation-item').addClass('no-active');
+            $(this).closest('.prolongation-item').removeClass('no-active');
+        } else {
+            /*phoneWr.stop().animate({ height: '0' }, animateTimePhone);*/
+
+        }
+    });
+
+    /* Function to animate height: auto */
+    function autoHeightAnimate(element, time) {
+        var curHeight = element.outerHeight();
+        element.outerHeight(curHeight);
+        element.stop().animate({ height: autoHeight }, time);
+    }
+}
+
+function faqAnchor() {
+    $('.faq-bar a, .footer-menu-link').on('click', function() {
+        var _this = this;
+        var target = $(this).attr('href');
+        $("a[href*='/faq/#']").removeClass('active');
+        var a = $("a[href='" + target + "']").addClass('active');
+        $("a[href*='/faq/#']").removeClass('active');
+        var a = $("a[href='" + target + "']").addClass('active');
+        var position = target.indexOf('#');
+        var id_selector = target.substr(position);
+
+        $('html, body').animate({
+            scrollTop: ($(id_selector).offset().top - 100)
+        }, 1200);
+        return false;
+
+
+
+    });
+}
+
+function parallax() {
+
+}
+
+
+
+
+
+function hearts() {
+    var love = setInterval(function() {
+        var r_num = Math.floor(Math.random() * 40) + 1;
+        var r_size = Math.floor(Math.random() * 65) + 10;
+        var r_left = Math.floor(Math.random() * 100) + 1;
+        var r_bg = Math.floor(Math.random() * 25) + 100;
+        var r_time = Math.floor(Math.random() * 5) + 5;
+
+        //$('.heart-wrapper').append('<h2>Добавление дочернего элемента</h2>');
+
+        $('.full-height').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;background:rgba(255," + (r_bg - 25) + "," + r_bg + ",1);-webkit-animation:love " + r_time + "s ease;-moz-animation:love " + r_time + "s ease;-ms-animation:love " + r_time + "s ease;animation:love " + r_time + "s ease'></div>");
+
+        $('.full-height').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%;background:rgba(255," + (r_bg - 25) + "," + (r_bg + 25) + ",1);-webkit-animation:love " + (r_time + 5) + "s ease;-moz-animation:love " + (r_time + 5) + "s ease;-ms-animation:love " + (r_time + 5) + "s ease;animation:love " + (r_time + 5) + "s ease'></div>");
+
+        $('.heart').each(function() {
+            var top = $(this).css("top").replace(/[^-\d\.]/g, '');
+            var width = $(this).css("width").replace(/[^-\d\.]/g, '');
+            if (top <= -100 || width >= 150) {
+                $(this).detach();
+            }
+        });
+    }, 500);
+}
+
+function customInput() {
+    document.querySelector("html").classList.add('js');
+
+    var fileInput = document.querySelector(".input-file"),
+        button = document.querySelector(".input-file-trigger"),
+        the_return = document.querySelector(".file-return");
+    if (button && fileInput) {
+        button.addEventListener("keydown", function(event) {
+            if (event.keyCode == 13 || event.keyCode == 32) {
+                fileInput.focus();
+            }
+        });
+        button.addEventListener("click", function(event) {
+            fileInput.focus();
+            return false;
+        });
+        fileInput.addEventListener("change", function(event) {
+            the_return.innerHTML = this.value;
+        });
+    }
+
+}
+
+function februaryValidate() {
+    /*$('.js-wish').on("click", function() {
+        return validate($(this).parents('.envelop-wrapper').find(".js_validate"));
+    });*/
+    $('.js-wish').click(function() {
+        $('.envelop-wrapper').addClass('active');
+        setTimeout(function() {
+            $('.envelop-wrapper').css({'overflow':'hidden'});
+        }, 1300);
+        setTimeout(function() {
+            $('.envelop-inverse').css('visibility','visible');
+        }, 1400);
+        setTimeout(function() {
+            $('.envelop-letter').css({'overflow':'hidden','height':'100px'});
+        }, 300);
+    });
+}
+
+

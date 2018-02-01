@@ -13,6 +13,7 @@ var	flagRunQuery = false,
 	flagPlayCred = false,	// флаг анимации калькулятора
 	flagReg = {phone : false, reCaptcha : false},	// флаги для регистрации
 	pageInputType = {input: false, paste: false, lastTime : false},	// данные о способе ввода
+	pageInputKeys = {Backspace: 0, Delete: 0, CtrlC: 0, CtrlV: 0, KeysCount: 0, startTime: false},	// данные о вводимых символах
 	globalMoney = '0',	// сумма после reloadCred()
 	globalDay = '0',	// дней после reloadCred()
 	globalTimeStopSlider = 0,	// дата/время после reloadCred(). До первого изменения равен 0
@@ -269,6 +270,52 @@ function getDayLang(day) {
 				
 	}
 	return dayStr;
+}
+
+/**
+ * возвращает информацию об устройстве (СPU, GPU -видеокарты)
+ * @param 'CPU' | 'GPU'
+ * @returns string
+ */
+function getDeviceInfo(param) {
+	
+	var result = '';
+	
+	switch (param) {
+
+		case "CPU":
+			var client = new ClientJS(); // Create A New Client Object
+			var CPU = client.getCPU(); // Get CPU Architecture
+			if (CPU != undefined)
+				result = CPU;
+			if (navigator.hardwareConcurrency != undefined)
+				result += ' ' + navigator.hardwareConcurrency;
+			break;
+				
+		case "GPU":
+			var canvas = document.createElement('canvas');
+			var gl;
+			var debugInfo;
+			var vendor;
+			var renderer;
+
+			try {
+			  gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+			} catch (e) {
+			}
+
+			if (gl) {
+			  debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+			  vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+			  renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+			}
+			if (renderer != undefined)
+				result = renderer;
+			break;
+		
+	}
+	
+	return result;
 }
 
 /**
@@ -633,6 +680,15 @@ function getSessionData() {
 	var options = {};
 	new Fingerprint2(options).get(function(result, components){
 		sessionData += '"fingerprint":"' + result + '", ';
+		var cpu = getDeviceInfo('CPU');	// получаем тип процессора с параллельными потоками
+		if (cpu !== '') {
+			components[components.length] = {key:'cpu', value:cpu};
+		}
+		var gpu = getDeviceInfo('GPU');	// получаем тип видеокарты
+		if (gpu !== '') {
+			components[components.length] = {key:'gpu', value:gpu};
+		}
+		
 		var dataComponents = {
 				fingerprintComponents: components
 		}; 
@@ -837,10 +893,10 @@ function onChangeBusynessType(fromElement) {
 			// получаем значение выбранного элемента
 			var selectedOption = $("#mainSourceStandard :selected").val();
 			//console.log('selectedOption=' + selectedOption);
-			$("#mainSource [value='" + selectedOption + "']").attr("selected", "selected");
-			// устанавливаем selected методом из bootstrap
-			$('#mainSource').selectpicker('val', selectedOption);
-	
+			$("#mainSource option[value='" + selectedOption + "']").attr("selected", "selected");
+			// устанавливаем selected методом из bootstrap (лучше делать refresh)
+			//$('#mainSource').selectpicker('val', selectedOption);
+			
 			$("#mainSource").trigger("chosen:updated");
 			// метод для обновления select с классом selectpicker
 			$("#mainSource").selectpicker('refresh');
@@ -866,11 +922,11 @@ function onChangeBusynessType(fromElement) {
 			$('#dolj').attr('required', true);
 
 			if ($("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").removeClass("hidden");	// Рабочий телефон компании:
-			if ($("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").removeClass("hidden");	// Стаж работы:
+			// if ($("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").removeClass("hidden");	// Стаж работы:
 			if ($("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").removeClass("hidden");	// Расходы на семью:
 			if ($("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн ):
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
-			if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
+			// if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
 			if ($("#tr_purposeLoan").hasClass("hidden")) $("#tr_purposeLoan").removeClass("hidden");	// Цель получения займа
 			if ($("#tr_sumPayLoans").hasClass("hidden")) $("#tr_sumPayLoans").removeClass("hidden");	// Сумма платежей по кредитам
 			// if ($("#tr_sourceIncome").hasClass("hidden")) $("#tr_sourceIncome").removeClass("hidden");	// Есть ли у Вас источник дохода
@@ -878,10 +934,10 @@ function onChangeBusynessType(fromElement) {
 			if (!$("#tr_nameUniversity").hasClass("hidden")) $("#tr_nameUniversity").addClass("hidden");	// Название учебного заведения:
 			if (!$("#tr_Specializationfaculty").hasClass("hidden")) $("#tr_Specializationfaculty").addClass("hidden");	// Специализация факультета
 			if (!$("#tr_qualification").hasClass("hidden")) $("#tr_qualification").addClass("hidden");	// Степень/квалификация после выпуска
-			if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
-			if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
-			if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
-			if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
+			// if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
+			// if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
+			// if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
+			// if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
 			if (!$("#tr_studentID").hasClass("hidden")) $("#tr_studentID").addClass("hidden");	// Номер студенческого билета
 			
 			// устанавливаем признак "Есть источник дохода" 
@@ -898,7 +954,7 @@ function onChangeBusynessType(fromElement) {
 			*/
 			
 			if (!$("#tr_reasonDismissal").hasClass("hidden")) $("#tr_reasonDismissal").addClass("hidden");	// Причина увольнения:
-			if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
+			// if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
 			break;
 		
 		case "2": // Предприниматель
@@ -914,11 +970,11 @@ function onChangeBusynessType(fromElement) {
 			$('#dolj').removeAttr('required');
 
 			if (!$("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").addClass("hidden");	// Рабочий телефон компании:
-			if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
+			// if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
 			if ($("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").removeClass("hidden");	// Расходы на семью:
 			if ($("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн ):
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
-			if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
+			// if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
 			if ($("#tr_purposeLoan").hasClass("hidden")) $("#tr_purposeLoan").removeClass("hidden");	// Цель получения займа
 			if ($("#tr_sumPayLoans").hasClass("hidden")) $("#tr_sumPayLoans").removeClass("hidden");	// Сумма платежей по кредитам
 			//if ($("#tr_sourceIncome").hasClass("hidden")) $("#tr_sourceIncome").removeClass("hidden");	// Есть ли у Вас источник дохода
@@ -926,10 +982,10 @@ function onChangeBusynessType(fromElement) {
 			if (!$("#tr_nameUniversity").hasClass("hidden")) $("#tr_nameUniversity").addClass("hidden");	// Название учебного заведения:
 			if (!$("#tr_Specializationfaculty").hasClass("hidden")) $("#tr_Specializationfaculty").addClass("hidden");	// Специализация факультета
 			if (!$("#tr_qualification").hasClass("hidden")) $("#tr_qualification").addClass("hidden");	// Степень/квалификация после выпуска
-			if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
-			if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
-			if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
-			if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
+			// if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
+			// if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
+			// if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
+			// if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
 			if (!$("#tr_studentID").hasClass("hidden")) $("#tr_studentID").addClass("hidden");	// Номер студенческого билета
 			
 			/*if ($("#tr_mainSource").hasClass("hidden") && ( $('input[name="profile[sourceIncome]"]:checked').val() == '1')) {
@@ -937,7 +993,7 @@ function onChangeBusynessType(fromElement) {
 			}*/
 			
 			if (!$("#tr_reasonDismissal").hasClass("hidden")) $("#tr_reasonDismissal").addClass("hidden");	// Причина увольнения:
-			if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
+			// if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
 			break;
 			
 		case "3": // Не работаю
@@ -953,11 +1009,11 @@ function onChangeBusynessType(fromElement) {
 			$('#dolj').removeAttr('required');
 			
 			if (!$("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").addClass("hidden");	// Рабочий телефон компании:
-			if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
+			// if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
 			if ($("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").removeClass("hidden");	// Расходы на семью:
 			if ($("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн ):
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
-			if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
+			// if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
 			if ($("#tr_purposeLoan").hasClass("hidden")) $("#tr_purposeLoan").removeClass("hidden");	// Цель получения займа
 			if ($("#tr_sumPayLoans").hasClass("hidden")) $("#tr_sumPayLoans").removeClass("hidden");	// Сумма платежей по кредитам
 			//if ($("#tr_sourceIncome").hasClass("hidden")) $("#tr_sourceIncome").removeClass("hidden");	// Есть ли у Вас источник дохода
@@ -965,10 +1021,10 @@ function onChangeBusynessType(fromElement) {
 			if (!$("#tr_nameUniversity").hasClass("hidden")) $("#tr_nameUniversity").addClass("hidden");	// Название учебного заведения:
 			if (!$("#tr_Specializationfaculty").hasClass("hidden")) $("#tr_Specializationfaculty").addClass("hidden");	// Специализация факультета
 			if (!$("#tr_qualification").hasClass("hidden")) $("#tr_qualification").addClass("hidden");	// Степень/квалификация после выпуска
-			if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
-			if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
-			if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
-			if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
+			// if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
+			// if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
+			// if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
+			// if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
 			if (!$("#tr_studentID").hasClass("hidden")) $("#tr_studentID").addClass("hidden");	// Номер студенческого билета
 			
 			/*if ($("#tr_mainSource").hasClass("hidden") && ( $('input[name="profile[sourceIncome]"]:checked').val() == '1')) {
@@ -976,7 +1032,7 @@ function onChangeBusynessType(fromElement) {
 			}*/
 			
 			if (!$("#tr_reasonDismissal").hasClass("hidden")) $("#tr_reasonDismissal").addClass("hidden");	// Причина увольнения:
-			if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
+			// if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
 			break;
 			
 		case "4": // Учусь
@@ -992,11 +1048,11 @@ function onChangeBusynessType(fromElement) {
 			$('#dolj').removeAttr('required');
 
 			if (!$("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").addClass("hidden");	// Рабочий телефон компании:
-			if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
+			// if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
 			if ($("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").removeClass("hidden");	// Расходы на семью:
 			if ($("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн ):
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
-			if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
+			// if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
 			if ($("#tr_purposeLoan").hasClass("hidden")) $("#tr_purposeLoan").removeClass("hidden");	// Цель получения займа
 			if ($("#tr_sumPayLoans").hasClass("hidden")) $("#tr_sumPayLoans").removeClass("hidden");	// Сумма платежей по кредитам
 			//if ($("#tr_sourceIncome").hasClass("hidden")) $("#tr_sourceIncome").removeClass("hidden");	// Есть ли у Вас источник дохода
@@ -1004,10 +1060,10 @@ function onChangeBusynessType(fromElement) {
 			if ($("#tr_nameUniversity").hasClass("hidden")) $("#tr_nameUniversity").removeClass("hidden");	// Название учебного заведения:
 			if ($("#tr_Specializationfaculty").hasClass("hidden")) $("#tr_Specializationfaculty").removeClass("hidden");	// Специализация факультета
 			if ($("#tr_qualification").hasClass("hidden")) $("#tr_qualification").removeClass("hidden");	// Степень/квалификация после выпуска
-			if ($("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").removeClass("hidden");	// Бюджет или контракт?
-			if ($("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").removeClass("hidden");	// Форма обучения:
-			if ($("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").removeClass("hidden");	// Получаете первое высшее образование?
-			if ($("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").removeClass("hidden");	// Когда Вы начали учиться
+			// if ($("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").removeClass("hidden");	// Бюджет или контракт?
+			// if ($("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").removeClass("hidden");	// Форма обучения:
+			// if ($("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").removeClass("hidden");	// Получаете первое высшее образование?
+			// if ($("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").removeClass("hidden");	// Когда Вы начали учиться
 			if ($("#tr_studentID").hasClass("hidden")) $("#tr_studentID").removeClass("hidden");	// Номер студенческого билета
 			
 			/*if ($("#tr_mainSource").hasClass("hidden") && ( $('input[name="profile[sourceIncome]"]:checked').val() == '1')) {
@@ -1015,7 +1071,7 @@ function onChangeBusynessType(fromElement) {
 			}*/
 			
 			if (!$("#tr_reasonDismissal").hasClass("hidden")) $("#tr_reasonDismissal").addClass("hidden");	// Причина увольнения:
-			if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
+			// if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
 			break;
 			
 		case "5": // Пенсионер
@@ -1031,11 +1087,11 @@ function onChangeBusynessType(fromElement) {
 			$('#dolj').removeAttr('required');
 
 			if (!$("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").addClass("hidden");	// Рабочий телефон компании:
-			if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
+			// if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
 			if ($("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").removeClass("hidden");	// Расходы на семью:
 			if ($("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн ):
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
-			if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
+			// if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
 			if ($("#tr_purposeLoan").hasClass("hidden")) $("#tr_purposeLoan").removeClass("hidden");	// Цель получения займа
 			if ($("#tr_sumPayLoans").hasClass("hidden")) $("#tr_sumPayLoans").removeClass("hidden");	// Сумма платежей по кредитам
 			//if ($("#tr_sourceIncome").hasClass("hidden")) $("#tr_sourceIncome").removeClass("hidden");	// Есть ли у Вас источник дохода
@@ -1043,10 +1099,10 @@ function onChangeBusynessType(fromElement) {
 			if (!$("#tr_nameUniversity").hasClass("hidden")) $("#tr_nameUniversity").addClass("hidden");	// Название учебного заведения:
 			if (!$("#tr_Specializationfaculty").hasClass("hidden")) $("#tr_Specializationfaculty").addClass("hidden");	// Специализация факультета
 			if (!$("#tr_qualification").hasClass("hidden")) $("#tr_qualification").addClass("hidden");	// Степень/квалификация после выпуска
-			if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
-			if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
-			if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
-			if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
+			// if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
+			// if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
+			// if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
+			// if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
 			if (!$("#tr_studentID").hasClass("hidden")) $("#tr_studentID").addClass("hidden");	// Номер студенческого билета
 			
 			/*if ($("#tr_mainSource").hasClass("hidden") && ( $('input[name="profile[sourceIncome]"]:checked').val() == '1')) {
@@ -1054,7 +1110,7 @@ function onChangeBusynessType(fromElement) {
 			}*/
 			
 			if (!$("#tr_reasonDismissal").hasClass("hidden")) $("#tr_reasonDismissal").addClass("hidden");	// Причина увольнения:
-			if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
+			// if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
 			break;
 			
 		case "6": // Инвалид
@@ -1070,11 +1126,11 @@ function onChangeBusynessType(fromElement) {
 			$('#dolj').removeAttr('required');
 
 			if (!$("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").addClass("hidden");	// Рабочий телефон компании:
-			if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
+			// if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
 			if ($("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").removeClass("hidden");	// Расходы на семью:
 			if ($("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн ):
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
-			if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
+			// if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
 			if ($("#tr_purposeLoan").hasClass("hidden")) $("#tr_purposeLoan").removeClass("hidden");	// Цель получения займа
 			if ($("#tr_sumPayLoans").hasClass("hidden")) $("#tr_sumPayLoans").removeClass("hidden");	// Сумма платежей по кредитам
 			//if ($("#tr_sourceIncome").hasClass("hidden")) $("#tr_sourceIncome").removeClass("hidden");	// Есть ли у Вас источник дохода
@@ -1082,10 +1138,10 @@ function onChangeBusynessType(fromElement) {
 			if (!$("#tr_nameUniversity").hasClass("hidden")) $("#tr_nameUniversity").addClass("hidden");	// Название учебного заведения:
 			if (!$("#tr_Specializationfaculty").hasClass("hidden")) $("#tr_Specializationfaculty").addClass("hidden");	// Специализация факультета
 			if (!$("#tr_qualification").hasClass("hidden")) $("#tr_qualification").addClass("hidden");	// Степень/квалификация после выпуска
-			if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
-			if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
-			if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
-			if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
+			// if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
+			// if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
+			// if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
+			// if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
 			if (!$("#tr_studentID").hasClass("hidden")) $("#tr_studentID").addClass("hidden");	// Номер студенческого билета
 			
 			/*if ($("#tr_mainSource").hasClass("hidden") && ( $('input[name="profile[sourceIncome]"]:checked').val() == '1')) {
@@ -1093,7 +1149,7 @@ function onChangeBusynessType(fromElement) {
 			}*/
 			
 			if (!$("#tr_reasonDismissal").hasClass("hidden")) $("#tr_reasonDismissal").addClass("hidden");	// Причина увольнения:
-			if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
+			// if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
 			break;
 			
 		case "7": // Домохозяйка / Домохозяин
@@ -1109,11 +1165,11 @@ function onChangeBusynessType(fromElement) {
 
 			if (!$("#tr_dolj").hasClass("hidden")) $("#tr_dolj").addClass("hidden");			// Должность
 			if (!$("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").addClass("hidden");	// Рабочий телефон компании:
-			if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
+			// if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
 			if ($("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").removeClass("hidden");	// Расходы на семью:
 			if ($("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн ):
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
-			if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
+			// if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
 			if ($("#tr_purposeLoan").hasClass("hidden")) $("#tr_purposeLoan").removeClass("hidden");	// Цель получения займа
 			if ($("#tr_sumPayLoans").hasClass("hidden")) $("#tr_sumPayLoans").removeClass("hidden");	// Сумма платежей по кредитам
 			//if ($("#tr_sourceIncome").hasClass("hidden")) $("#tr_sourceIncome").removeClass("hidden");	// Есть ли у Вас источник дохода
@@ -1121,10 +1177,10 @@ function onChangeBusynessType(fromElement) {
 			if (!$("#tr_nameUniversity").hasClass("hidden")) $("#tr_nameUniversity").addClass("hidden");	// Название учебного заведения:
 			if (!$("#tr_Specializationfaculty").hasClass("hidden")) $("#tr_Specializationfaculty").addClass("hidden");	// Специализация факультета
 			if (!$("#tr_qualification").hasClass("hidden")) $("#tr_qualification").addClass("hidden");	// Степень/квалификация после выпуска
-			if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
-			if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
-			if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
-			if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
+			// if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
+			// if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
+			// if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
+			// if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
 			if (!$("#tr_studentID").hasClass("hidden")) $("#tr_studentID").addClass("hidden");	// Номер студенческого билета
 			
 			/*if ($("#tr_mainSource").hasClass("hidden") && ( $('input[name="profile[sourceIncome]"]:checked').val() == '1')) {
@@ -1132,7 +1188,7 @@ function onChangeBusynessType(fromElement) {
 			}*/
 			
 			if (!$("#tr_reasonDismissal").hasClass("hidden")) $("#tr_reasonDismissal").addClass("hidden");	// Причина увольнения:
-			if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
+			// if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
 			break;
 			
 		case "8": // Декрет
@@ -1148,11 +1204,11 @@ function onChangeBusynessType(fromElement) {
 			$('#dolj').removeAttr('required');
 
 			if (!$("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").addClass("hidden");	// Рабочий телефон компании:
-			if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
+			// if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
 			if ($("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").removeClass("hidden");	// Расходы на семью:
 			if ($("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн ):
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
-			if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
+			// if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
 			if ($("#tr_purposeLoan").hasClass("hidden")) $("#tr_purposeLoan").removeClass("hidden");	// Цель получения займа
 			if ($("#tr_sumPayLoans").hasClass("hidden")) $("#tr_sumPayLoans").removeClass("hidden");	// Сумма платежей по кредитам
 			//if ($("#tr_sourceIncome").hasClass("hidden")) $("#tr_sourceIncome").removeClass("hidden");	// Есть ли у Вас источник дохода
@@ -1160,10 +1216,10 @@ function onChangeBusynessType(fromElement) {
 			if (!$("#tr_nameUniversity").hasClass("hidden")) $("#tr_nameUniversity").addClass("hidden");	// Название учебного заведения:
 			if (!$("#tr_Specializationfaculty").hasClass("hidden")) $("#tr_Specializationfaculty").addClass("hidden");	// Специализация факультета
 			if (!$("#tr_qualification").hasClass("hidden")) $("#tr_qualification").addClass("hidden");	// Степень/квалификация после выпуска
-			if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
-			if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
-			if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
-			if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
+			// if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
+			// if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
+			// if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
+			// if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
 			if (!$("#tr_studentID").hasClass("hidden")) $("#tr_studentID").addClass("hidden");	// Номер студенческого билета
 			
 			/*if ($("#tr_mainSource").hasClass("hidden") && ( $('input[name="profile[sourceIncome]"]:checked').val() == '1')) {
@@ -1171,7 +1227,7 @@ function onChangeBusynessType(fromElement) {
 			}*/
 			
 			if (!$("#tr_reasonDismissal").hasClass("hidden")) $("#tr_reasonDismissal").addClass("hidden");	// Причина увольнения:
-			if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
+			// if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
 			break;
 			
 		case "9": // Уволена / Уволен
@@ -1187,11 +1243,11 @@ function onChangeBusynessType(fromElement) {
 			$('#dolj').removeAttr('required');
 
 			if (!$("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").addClass("hidden");	// Рабочий телефон компании:
-			if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
+			// if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
 			if ($("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").removeClass("hidden");	// Расходы на семью:
 			if ($("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн ):
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
-			if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
+			// if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
 			if ($("#tr_purposeLoan").hasClass("hidden")) $("#tr_purposeLoan").removeClass("hidden");	// Цель получения займа
 			if ($("#tr_sumPayLoans").hasClass("hidden")) $("#tr_sumPayLoans").removeClass("hidden");	// Сумма платежей по кредитам
 			//if ($("#tr_sourceIncome").hasClass("hidden")) $("#tr_sourceIncome").removeClass("hidden");	// Есть ли у Вас источник дохода
@@ -1199,10 +1255,10 @@ function onChangeBusynessType(fromElement) {
 			if (!$("#tr_nameUniversity").hasClass("hidden")) $("#tr_nameUniversity").addClass("hidden");	// Название учебного заведения:
 			if (!$("#tr_Specializationfaculty").hasClass("hidden")) $("#tr_Specializationfaculty").addClass("hidden");	// Специализация факультета
 			if (!$("#tr_qualification").hasClass("hidden")) $("#tr_qualification").addClass("hidden");	// Степень/квалификация после выпуска
-			if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
-			if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
-			if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
-			if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
+			// if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
+			// if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
+			// if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
+			// if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
 			if (!$("#tr_studentID").hasClass("hidden")) $("#tr_studentID").addClass("hidden");	// Номер студенческого билета
 			
 			/*if ($("#tr_mainSource").hasClass("hidden") && ( $('input[name="profile[sourceIncome]"]:checked').val() == '1')) {
@@ -1210,7 +1266,7 @@ function onChangeBusynessType(fromElement) {
 			}*/
 			
 			if ($("#tr_reasonDismissal").hasClass("hidden")) $("#tr_reasonDismissal").removeClass("hidden");	// Причина увольнения:
-			if ($("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").removeClass("hidden");	// Планируете ли искать новую работу?
+			// if ($("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").removeClass("hidden");	// Планируете ли искать новую работу?
 			break;
 
 		default:
@@ -1225,11 +1281,11 @@ function onChangeBusynessType(fromElement) {
 			$('#dolj').removeAttr('required');
 
 			if (!$("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").addClass("hidden");	// Рабочий телефон компании:
-			if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
+			// if (!$("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").addClass("hidden");	// Стаж работы:
 			if (!$("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").addClass("hidden");	// Расходы на семью:
 			if (!$("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").addClass("hidden");	// Месячный доход ( грн ):
-			if (!$("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").addClass("hidden");	// Следующее получение дохода:
-			if (!$("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").addClass("hidden");	// Как часто Вы получаете доход
+			// if (!$("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").addClass("hidden");	// Следующее получение дохода:
+			// if (!$("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").addClass("hidden");	// Как часто Вы получаете доход
 			if (!$("#tr_purposeLoan").hasClass("hidden")) $("#tr_purposeLoan").addClass("hidden");	// Цель получения займа
 			if (!$("#tr_sumPayLoans").hasClass("hidden")) $("#tr_sumPayLoans").addClass("hidden");	// Сумма платежей по кредитам
 			//if ($("#tr_sourceIncome").hasClass("hidden")) $("#tr_sourceIncome").removeClass("hidden");	// Есть ли у Вас источник дохода
@@ -1237,10 +1293,10 @@ function onChangeBusynessType(fromElement) {
 			if (!$("#tr_nameUniversity").hasClass("hidden")) $("#tr_nameUniversity").addClass("hidden");	// Название учебного заведения:
 			if (!$("#tr_Specializationfaculty").hasClass("hidden")) $("#tr_Specializationfaculty").addClass("hidden");	// Специализация факультета
 			if (!$("#tr_qualification").hasClass("hidden")) $("#tr_qualification").addClass("hidden");	// Степень/квалификация после выпуска
-			if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
-			if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
-			if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
-			if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
+			// if (!$("#tr_isBudget").hasClass("hidden")) $("#tr_isBudget").addClass("hidden");	// Бюджет или контракт?
+			// if (!$("#tr_formTraining").hasClass("hidden")) $("#tr_formTraining").addClass("hidden");	// Форма обучения:
+			// if (!$("#tr_isFirstEducation").hasClass("hidden")) $("#tr_isFirstEducation").addClass("hidden");	// Получаете первое высшее образование?
+			// if (!$("#tr_beginLearn").hasClass("hidden")) $("#tr_beginLearn").addClass("hidden");	// Когда Вы начали учиться
 			if (!$("#tr_studentID").hasClass("hidden")) $("#tr_studentID").addClass("hidden");	// Номер студенческого билета
 			
 			/*if ($("#tr_mainSource").hasClass("hidden") && ( $('input[name="profile[sourceIncome]"]:checked').val() == '1')) {
@@ -1248,7 +1304,7 @@ function onChangeBusynessType(fromElement) {
 			}*/
 			
 			if (!$("#tr_reasonDismissal").hasClass("hidden")) $("#tr_reasonDismissal").addClass("hidden");	// Причина увольнения:
-			if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
+			// if (!$("#tr_planNewJob").hasClass("hidden")) $("#tr_planNewJob").addClass("hidden");	// Планируете ли искать новую работу?
 			break;
 	}
 
@@ -1262,7 +1318,7 @@ function onChangeBusynessType(fromElement) {
 			if ($("#tr_company").hasClass("hidden")) $("#tr_company").removeClass("hidden");	// Название компании
 			if ($("#tr_dolj").hasClass("hidden")) $("#tr_dolj").removeClass("hidden");			// Должность
 			if ($("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").removeClass("hidden");	// Рабочий телефон компании
-			if ($("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").removeClass("hidden");	// Стаж работы
+			// if ($("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").removeClass("hidden");	// Стаж работы
 			if ($("#tr_costFamily").hasClass("hidden")) {
 				$('#costFamily').attr('required', true);
 				$("#tr_costFamily").removeClass("hidden");	// Расходы на семью
@@ -1271,11 +1327,11 @@ function onChangeBusynessType(fromElement) {
 				$('#GrossMonthlyIncome').attr('required', true);
 				$("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн )
 			}
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода
-			if ($("#tr_oftenPay").hasClass("hidden")) {
-				$('#oftenPay').attr('required', true);
-				$("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
-			}
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода
+			//if ($("#tr_oftenPay").hasClass("hidden")) {
+			//	$('#oftenPay').attr('required', true);
+			//	$("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			//}
 			break;
 			
 		case "9":	// // Нет дохода
@@ -1285,11 +1341,11 @@ function onChangeBusynessType(fromElement) {
 				$('#GrossMonthlyIncome').removeAttr('required');
 				$("#tr_GrossMonthlyIncome").addClass("hidden");	// Месячный доход ( грн ):
 			}
-			if (!$("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").addClass("hidden");	// Следующее получение дохода:
-			if (!$("#tr_oftenPay").hasClass("hidden")) {
-				$('#oftenPay').removeAttr('required');
-				$("#tr_oftenPay").addClass("hidden");	// Как часто Вы получаете доход
-			}
+			// if (!$("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").addClass("hidden");	// Следующее получение дохода:
+			// if (!$("#tr_oftenPay").hasClass("hidden")) {
+			// 	$('#oftenPay').removeAttr('required');
+			//	$("#tr_oftenPay").addClass("hidden");	// Как часто Вы получаете доход
+			// }
 			if (!$("#tr_costFamily").hasClass("hidden")) {
 				$('#costFamily').removeAttr('required');
 				$("#tr_costFamily").addClass("hidden");	// Расходы на семью:
@@ -1330,36 +1386,48 @@ function onChangeDate(typeDate) {
 
 	switch (typeDate) {
 		case "Birthday":
-			var strDate = document.getElementById('year').value + '-' + document.getElementById('month').value + '-' + document.getElementById('day').value; 
-			var newDate = new Date(strDate);
-			if(newDate == 'Invalid Date') {
-				$("#spanErrorDateBirthday").removeClass("hidden");
-				$("#dateBirthday").val("");
-				$("#divErrorDateBirthday").find(".error_text").removeClass("hidden");
-				$("#divErrorDateBirthday").children().addClass("has-error");
-			} else {
-				$("#spanErrorDateBirthday").addClass("hidden");
-				$("#dateBirthday").val("newDate");
-				$("#divErrorDateBirthday").find(".error_text").addClass("hidden");
-				$("#divErrorDateBirthday").find(".has-error").removeClass("has-error");
+			var year = document.getElementById('year').value;
+			var month = document.getElementById('month').value;
+			var day = document.getElementById('day').value;
+			var strDate = year + '-' + month + '-' + day; 
+			// console.log(strDate);
+			// если всё заполнено:
+			if (year && month && day) {
+				var newDate = new Date(strDate);
+				if(newDate == 'Invalid Date') {
+					$("#spanErrorDateBirthday").removeClass("hidden");
+					$("#dateBirthday").val("");
+					$("#divErrorDateBirthday").find(".error_text").removeClass("hidden");
+					$("#divErrorDateBirthday").children().addClass("has-error");
+				} else {
+					$("#spanErrorDateBirthday").addClass("hidden");
+					$("#dateBirthday").val("newDate");
+					$("#divErrorDateBirthday").find(".error_text").addClass("hidden");
+					$("#divErrorDateBirthday").find(".has-error").removeClass("has-error");
+				}
 			}
 			break;
 	
 		case "Passport":
-			var strDate = document.getElementById('PassportRegistrationYear').value + '-' + document.getElementById('PassportRegistrationMonth').value + '-' + document.getElementById('PassportRegistrationday').value; 
-			console.log(strDate);
-			console.log(new Date(strDate));
-			var newDate = new Date(strDate);
-			if(newDate == 'Invalid Date') {
-				$("#spanErrorDatePassport").removeClass("hidden");
-				$("#datePassport").val("");
-				$("#divErrorDatePassport").find(".error_text").removeClass("hidden");
-				$("#divErrorDatePassport").children().addClass("has-error");
-			} else {
-				$("#spanErrorDatePassport").addClass("hidden");
-				$("#datePassport").val("newDate");
-				$("#divErrorDatePassport").find(".error_text").addClass("hidden");
-				$("#divErrorDatePassport").find(".has-error").removeClass("has-error");
+			var year = document.getElementById('PassportRegistrationYear').value;
+			var month = document.getElementById('PassportRegistrationMonth').value;
+			var day = document.getElementById('PassportRegistrationday').value;
+			var strDate = year + '-' + month + '-' + day; 
+			//console.log(strDate);
+			//console.log(new Date(strDate));
+			if (year && month && day) {
+				var newDate = new Date(strDate);
+				if(newDate == 'Invalid Date') {
+					$("#spanErrorDatePassport").removeClass("hidden");
+					$("#datePassport").val("");
+					$("#divErrorDatePassport").find(".error_text").removeClass("hidden");
+					$("#divErrorDatePassport").children().addClass("has-error");
+				} else {
+					$("#spanErrorDatePassport").addClass("hidden");
+					$("#datePassport").val("newDate");
+					$("#divErrorDatePassport").find(".error_text").addClass("hidden");
+					$("#divErrorDatePassport").find(".has-error").removeClass("has-error");
+				}
 			}
 			break;
 	}
@@ -1427,23 +1495,23 @@ function onChangeMainSource() {
 			if ($("#tr_company").hasClass("hidden")) $("#tr_company").removeClass("hidden");	// Название компании
 			if ($("#tr_dolj").hasClass("hidden")) $("#tr_dolj").removeClass("hidden");			// Должность
 			if ($("#tr_work_tel").hasClass("hidden")) $("#tr_work_tel").removeClass("hidden");	// Рабочий телефон компании
-			if ($("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").removeClass("hidden");	// Стаж работы
+			// if ($("#tr_vremyaorg").hasClass("hidden")) $("#tr_vremyaorg").removeClass("hidden");	// Стаж работы
 			if ($("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").removeClass("hidden");	// Расходы на семью
 			$('#costFamily').attr('required', true);
 			if ($("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн )
 			$('#GrossMonthlyIncome').attr('required', true);
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода
-			if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
-			$('#oftenPay').attr('required', true);
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода
+			// if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			// $('#oftenPay').attr('required', true);
 			break;
 	
 		case "9":	// Нет дохода
 		
 			if (!$("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").addClass("hidden");	// Месячный доход ( грн ):
 			$('#GrossMonthlyIncome').removeAttr('required');
-			if (!$("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").addClass("hidden");	// Следующее получение дохода:
-			if (!$("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").addClass("hidden");	// Как часто Вы получаете доход
-			$('#oftenPay').removeAttr('required');
+			// if (!$("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").addClass("hidden");	// Следующее получение дохода:
+			// if (!$("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").addClass("hidden");	// Как часто Вы получаете доход
+			// $('#oftenPay').removeAttr('required');
 			if (!$("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").addClass("hidden");	// Расходы на семью:
 			$('#costFamily').removeAttr('required');
 			break;
@@ -1451,9 +1519,9 @@ function onChangeMainSource() {
 		default:
 			if ($("#tr_GrossMonthlyIncome").hasClass("hidden")) $("#tr_GrossMonthlyIncome").removeClass("hidden");	// Месячный доход ( грн )
 			$('#GrossMonthlyIncome').attr('required', true);
-			if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
-			if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
-			$('#oftenPay').attr('required', true);
+			// if ($("#tr_nextPay").hasClass("hidden")) $("#tr_nextPay").removeClass("hidden");	// Следующее получение дохода:
+			// if ($("#tr_oftenPay").hasClass("hidden")) $("#tr_oftenPay").removeClass("hidden");	// Как часто Вы получаете доход
+			// $('#oftenPay').attr('required', true);
 			if ($("#tr_costFamily").hasClass("hidden")) $("#tr_costFamily").removeClass("hidden");	// Расходы на семью
 			$('#costFamily').attr('required', true);
 			break;
@@ -1730,7 +1798,7 @@ function onClickGetCode() {
 	ga('send', 'event', 'SMS', 'Click');	// аналитика Google
 
 	$("#mobile-phone").val($("#phone").val());
-	//sendCodeReg($("#phone").val(), $("#captcha").val());	// отправляем код
+	//sendCodeReg($("#phone").val(), $("#captcha").val());	// отправляем код (устаревшее)
 	sendCodeReg($("#phone").val(), $("#g-recaptcha-response").val());	// отправляем код
 }
 
@@ -1807,11 +1875,59 @@ function onClickFormSlider(prefix) {
 }
 
 /**
+ * обрабатывает событие нажатия кнопки рейтинга страницы
+ * @param int param
+ * @returns
+ */
+function onClickLikePage(param) {
+	
+	var url = "/ru/?ajax";	
+	var data = {
+		    typeData: 'clickPageLike',
+		    pageId: $('#span_page_rating').text(),
+		    like: param
+		};
+
+	// console.log(data);
+	
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: {data: data},
+		dataType: 'json',
+		success: function(json){
+			if(json) {
+				//var js = JSON.parse(json);
+				var js = json;
+				if (js.message == 'OK') {
+					$("#errorCaptcha").addClass("hidden");
+					$("#span_like_positive").text(js.pageRatingPositive);	// перезаписать положительные отзывы
+					$("#span_like_negative").text(js.pageRatingNegative);	// перезаписать отрицательные отзывы
+					$('.btn-like').attr('disabled', true);					// отключить кнопки
+				} else if (js.message == 'existPhone') {
+				} else {
+					console.log(js.message_details);
+				}
+				// console.log(js);
+			};
+		},
+	
+		error: function(jqXHR, textStatus, errorThrown){
+			// console.log(jqXHR); // вывод JSON в консоль
+			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			// console.log(errorThrown); // вывод JSON в консоль
+		}
+	});
+}
+
+/**
  * обрабатывает Click кнопки "Войти" в момент входа в ЛК
  * @returns
  */
 function onClickLogin() {
 	
+	$('#buttonLogin1').attr('disabled', true);
+
 	sendPageInputType();	// высылает на сервер способ введения информации
 	setTimeout(commitForm, 500);	// задержка, без нее возвращается ошибка (ответ от ajax)
 	
@@ -1845,6 +1961,64 @@ function onclickRefreshProduct() {
 	if(window.document.forms['form_credit'] != null) window.document.forms['form_credit'].submit();
 	
 	// console.log('onclickRefreshProduct');
+}
+
+
+/**
+ * отправляет данные по карте в CRM при нажатии на кнопку
+ * @returns
+ */
+function onClickSendCardDetails() {
+	
+	$("#button_sendCard").attr('disabled', true);	// дизейблим кнопку отправки
+
+	var cardNumber = $("#card_number").val();
+	var cardTime = $("#card_time").val();
+	var cardCvv2 = $("#cvv2").val();
+	var backUrl = $("#backUrl").text();
+	
+	var url = "/ru/?ajax";	
+
+	var data = {
+		    typeData: 'sendCardDetails',
+		    cardNumber: cardNumber,
+		    cardTime: cardTime, 
+		    cardCvv2: cardCvv2,
+		    backUrl: backUrl
+		};
+
+	// отправить массив на сервер
+	console.log("Передаем запрос ajax " + url);
+	console.log(data);
+
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: {data: data},
+		dataType: 'json',
+		success: function(json){
+			if(json) {
+				//var js = JSON.parse(json);
+				var js = json;
+				
+				console.log(js);
+				if (js.message == 'OK') {
+					payStep2();	// переходим на второй шаг верификации
+				}
+			};
+		},
+	
+		error: function(jqXHR, textStatus, errorThrown){
+			// console.log(jqXHR); // вывод JSON в консоль
+			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			// console.log(errorThrown); // вывод JSON в консоль
+			
+			$("#button_sendCard").removeAttr("disabled");
+		}
+	});
+
+	return false;
+
 }
 
 /**
@@ -1903,6 +2077,17 @@ function onClickSendMe() {
 	$("#div_SendEmail").removeClass("bottom-call-hidden");
 	$("#div_resultEmail").addClass("bottom-call-hidden");
 	$("#button_sendMe").attr("disabled", true);
+}
+
+
+/**
+ * открывает форму начала регистрации карты
+ * @returns
+ */
+function onClickStartVerify() {
+	$("#div_card_list").addClass("hidden");
+	$("#div_step1").removeClass("hidden");
+
 }
 
 /**
@@ -2057,7 +2242,71 @@ function onClickSubmitForm(form, prefix) {
 			submitCredit(prefix);
 		}
 		*/
+		
+		if (form === 'form_prolongation') {
+			
+			ga('send', 'event', 'LKextend', 'Click');	// аналитика Google
+			// ga('send', 'event', 'Dalee1', 'Click');	// аналитика Google
+			// eval("yaCounter" + YandexMetrikaId + ".reachGoal('clickContacts');");	// аналитика Yandex
+	
+			window.document.forms["form_prolongation"].submit();
+		}
+		
+
 	}
+}
+
+/**
+ * обрабатывает кнопки посылки информации для партнерской программы
+ * @returns
+ */
+function onClickSubmitPartner(event) {
+   	
+	var button = event.target;
+
+	var action = $(button).closest('form').find('input[name=Action]').val();
+	var tellingFriends = $(button).closest('form').find('input[name=out_TellingFriends]').val();
+	var distributeFlyers = $(button).closest('form').find('input[name=out_DistributeFlyers]').val();
+	var advertisementsOnStands = $(button).closest('form').find('input[name=out_AdvertisementsOnStands]').val();
+	var glueAds = $(button).closest('form').find('input[name=out_GlueAds]').val();
+	var sendActiveLinks = $(button).closest('form').find('input[name=out_SendActiveLinks]').val();
+	var name = $(button).closest('form').find('input[name=Name]').val();
+	var email = $(button).closest('form').find('input[type=email]').val();
+	var tel = $(button).closest('form').find('input[type=tel]').val();
+
+	if (validate($(button).closest('form'))) { 
+	
+		$("[name=name]").val(name);
+		$("[name=email]").val(email);
+		$("[name=tel]").val(tel);
+		
+		// клиентские данные:
+		var clientData = {};
+		if (tellingFriends === '1') clientData.tellingFriends = tellingFriends;
+		if (distributeFlyers === '1') clientData.distributeFlyers = distributeFlyers;
+		if (advertisementsOnStands === '1') clientData.advertisementsOnStands = advertisementsOnStands;
+		if (glueAds === '1') clientData.glueAds = glueAds;
+		if (sendActiveLinks === '1') clientData.sendActiveLinks = sendActiveLinks;
+		
+		var data = {
+				typeData: 'sendClientContactInfo',
+				Name: name,
+  				Phone: tel,
+  				Email: email,
+				Action: action,
+				Data: clientData
+			};
+		
+		// console.log(data);
+		// отправить массив на сервер
+		// console.log("Передаем запрос 'sendClientContactInfo'");
+		sendAjax(data);
+		
+		$(button).closest('.modal.fade').modal('hide');
+		
+		$("#thanks").modal('show');	// сообщение "Отправлено"
+	}
+
 }
 
 /**
@@ -2086,7 +2335,10 @@ function onClickSubmitReg(form, prefix) {
 		if (form === 'js-form-1-1') {
 			
 			ga('send', 'event', 'Kod', 'Click');	// аналитика Google
+			if (prefix === 'fb' ) { fbq('track', 'Lead') };	// аналитика Facebook
+			
 			$("#sms-phone").val($("#phone").val());
+
 			window.document.forms["js-form-1-1"].submit();
 		}
 		if (form === 'js-form-1-2') {
@@ -2099,7 +2351,7 @@ function onClickSubmitReg(form, prefix) {
 			ga('send', 'event', 'Dalee2', 'Click');	// аналитика Google
 			// yaCounter37666645.reachGoal('clickPersonalData');	// аналитика Yandex
 			// eval("yaCounter" + YandexMetrikaId + ".reachGoal('clickPersonalData');");	// аналитика Yandex
-			
+
 			window.document.forms["js-form-2"].submit();
 		}
 		if (form == 'js-form-3') {
@@ -2108,6 +2360,7 @@ function onClickSubmitReg(form, prefix) {
 			// yaCounter37666645.reachGoal('clickEmployment');	// аналитика Yandex
 			// eval("yaCounter" + YandexMetrikaId + ".reachGoal('clickEmployment');");	// аналитика Yandex
 			
+			$("#buttonCreateCredit").attr('disabled', true);
 			submitCredit(prefix);
 		}
 
@@ -2138,6 +2391,50 @@ function onClickSubmitSlider(prefix) {
 	ga('send', 'event', 'calculator', 'Click');	// аналитика Google
 
 	window.document.forms['form_slider_' + prefix].submit();
+}
+
+/**
+ * обрабатывает события для поиска элементов в разделе "Справка"
+ * @returns
+ */
+function onClickForSearch(event) {
+	
+	console.log('onClickForSearch');
+	
+	var forSearch = $("#search_faq").val();
+	if (forSearch.length > 3) {
+		
+		$('#accordion').addClass('hidden');
+		
+		// var contains = $('div.js_faq_search:contains("' + forSearch + '")');	// удовлетворяющие условию элементы
+		var divCount = 0;
+		$('.js_faq_search').each(function(key, value) {
+		    // регулярное выражение для поиска:
+			var reg = new RegExp(forSearch, "i");
+		    // Если есть удовлетворяющие условию элементы:
+		    if (reg.test($(value).html())) {
+				$(value).removeClass('hidden');
+				divCount ++;
+		    } else {
+				$(value).addClass('hidden');
+		    }
+		});
+
+		// если ничего не найдено - сообщение:
+		if (divCount == 0) {
+			$('#js_zero').removeClass('hidden');
+			$('#js_found').addClass('hidden');
+		} else {
+			$('#js_zero').addClass('hidden');
+			$('#js_found').removeClass('hidden');
+		}
+	} else {
+		
+		$('#accordion').removeClass('hidden');
+
+		$('.js_faq_search').addClass('hidden');
+		$('#js_zero').addClass('hidden');
+	}
 }
 
 /**
@@ -2200,8 +2497,8 @@ function onKeyUpPhone(idPhone) {
 		}
 
 		// делаем активными/неактивными элементы формы:
-		if ((strNum.length == 12) && (document.getElementById("regCodereg").value.length == 0)) {
-			
+		// if ((strNum.length == 12) && (document.getElementById("regCodereg").value.length == 0)) {
+		if ((strNum.length == 12) && (($('#regCodereg').val() == '') || ($("#regCodereg").length = 0))) {
 			$('#buttonGetCode').removeAttr('disabled');
 
 			if (flagReg.reCaptcha) {
@@ -2396,6 +2693,32 @@ function onReCaptchaExpired() {
 }
 
 /**
+ * выполняется после загрузки скрипта grecaptcha
+ */
+function onReCaptchaloadCallback() {
+
+	// console.log('start 6 recaptchaOnloadCallback');
+
+    var dataSitekey = '',
+    	idCaptcha;
+    if ($("#buttonGetCode").length) {
+    	dataSitekey = ($("#buttonGetCode").attr("data-sitekey") != undefined)? $("#buttonGetCode").attr("data-sitekey") : '';
+    	idCaptcha = "buttonGetCode";
+    } else if ($("#buttonLogin1").length) {
+    	dataSitekey = ($("#buttonLogin1").attr("data-sitekey") != undefined)? $("#buttonLogin1").attr("data-sitekey") : '';
+    	idCaptcha = "buttonLogin1";
+    }
+
+    if (dataSitekey.length > 5) {
+        var widgetId = grecaptcha.render(idCaptcha, {
+        	// "sitekey": dataSitekey, 
+        	// "callback": "onReCaptchaVerify"
+        });
+        grecaptcha.reset(widgetId);
+	}
+}
+
+/**
  * обрабатывает событие проверки каптчи на стороне клиента
  * @param response
  */
@@ -2425,11 +2748,142 @@ function onReCaptchaVerifyAuth(response) {
 	 
 	// записываем код каптчи:
 	//$("#captcha").val( $("#g-recaptcha-response").val() );
-	$("#captcha").val(response);
+	//$("#captcha").val(response);
+
+	if(response.length != 0) {
+		$("#captcha").val(response);
+	} else {
+		$("#captcha").val('no response');
+	}
 
 	grecaptcha.reset();	// сброс капчи
 	
 	onClickLogin();
+}
+
+/**
+ * обрабатывает второй шаг верификации карты
+ * @returns
+ */
+function payStep2() {
+	console.log('payStep2');
+
+	$("#div_step1").addClass("hidden");
+	$("#div_waiting").removeClass("hidden");
+
+	var cardNumber = $("#card_number").val();
+
+	var url = "/ru/?ajax";	
+
+	var data = {
+		    typeData: 'checkStatusCard',
+		    cardNumber: cardNumber
+		};
+
+	// отправить массив на сервер
+	// console.log("Передаем запрос ajax " + url);
+	console.log(data);
+
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: {data: data},
+		dataType: 'json',
+		success: function(json){
+			if(json) {
+				//var js = JSON.parse(json);
+				var js = json;
+				
+				console.log(js);
+				if (js.message == 'OK') {
+					$("#div_waiting").addClass("hidden");
+					// если 3ds:
+					if (js.status == 1) {
+						if (js.params ) {
+							// заполняем форму для внешнего поста:
+							console.log(js.params);
+							location.href = js.params.VerifiedURL;
+						}
+						// $("#div_step2_3ds").removeClass("hidden");
+					}
+					// если не 3ds:
+					if (js.status == 2) {
+						$("#div_step2").removeClass("hidden");
+					}
+					// $("#button_sendMe").removeAttr("disabled");
+				}
+			};
+		},
+	
+		error: function(jqXHR, textStatus, errorThrown){
+			// console.log(jqXHR); // вывод JSON в консоль
+			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			// console.log(errorThrown); // вывод JSON в консоль
+			
+			$("#div_waiting").addClass("hidden");
+			// $("#button_sendCard").removeAttr("disabled");
+		}
+	});
+
+	return false;
+}
+
+/**
+ * обрабатывает второй шаг верификации карты - ввод кода, если карта не 3ds
+ * @returns
+ */
+function payStep2_SendCode() {
+	console.log('payStep2_SendCode');
+
+	$("#div_step2").addClass("hidden");
+	$("#div_waiting").removeClass("hidden");
+
+	var cardNumber = $("#card_number").val();
+	var sendCode = $("#sendCode").val();
+
+	var url = "/ru/?ajax";	
+
+	var data = {
+		    typeData: 'paySendCode',
+		    cardNumber: cardNumber,
+		    sendCode: sendCode
+		};
+
+	// отправить массив на сервер
+	console.log("Передаем запрос ajax " + url);
+	console.log(data);
+
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: {data: data},
+		dataType: 'json',
+		success: function(json){
+			if(json) {
+				//var js = JSON.parse(json);
+				var js = json;
+				
+				console.log(js);
+				if (js.message == 'OK') {
+					// $("#div_waiting").addClass("hidden");
+					// $("#div_step2").removeClass("hidden");
+					// $("#button_sendMe").removeAttr("disabled");
+					location.href = js.url;
+				}
+			};
+		},
+	
+		error: function(jqXHR, textStatus, errorThrown){
+			// console.log(jqXHR); // вывод JSON в консоль
+			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			// console.log(errorThrown); // вывод JSON в консоль
+			
+			$("#div_waiting").addClass("hidden");
+			// $("#button_sendCard").removeAttr("disabled");
+		}
+	});
+
+	return false;
 
 }
 
@@ -3070,7 +3524,8 @@ function sendPageInputType() {
 	// готовим данные для отправки:
 	var data = {
 		    typeData: "userInfo",
-		    pageInputType: pageInputType
+		    pageInputType: pageInputType,
+		    pageInputKeys: pageInputKeys
 	};
 	
 	// отправить массив на сервер
@@ -3219,7 +3674,7 @@ function submitCredit(prefix) {
 	if(window.document.forms['form_credit'] != null) {
 
 		ga('send', 'event', 'Application', 'Click');	// аналитика Google
-		eval("yaCounter" + YandexMetrikaId + ".reachGoal('clickApplication');");	// аналитика Yandex
+		// eval("yaCounter" + YandexMetrikaId + ".reachGoal('clickApplication');");	// аналитика Yandex
 
 		window.document.forms['form_credit'].submit();
 	}
@@ -3233,10 +3688,8 @@ function submitCredit(prefix) {
 /**
  * запускает submit формы списка кредитов (действие по выбранному кредиту)
  * 
- * @param int
- *            href
- * @param int
- *            cred_id
+ * @param int href
+ * @param int cred_id
  * @returns {Boolean}
  */
 function submit_credits_form(href, cred_id) {
@@ -3245,9 +3698,28 @@ function submit_credits_form(href, cred_id) {
 	document.getElementById("href").value = href;
 		
 	if(window.document.forms['credits_form'] != null) window.document.forms['credits_form'].submit();
-	// window.document.forms['credits_form'].submit();
 	
-	console.log('credits_form submit');
+	// console.log('credits_form submit');
+	
+	return false;
+}
+
+/**
+ * запускает submit формы кредита
+ * @param formKey
+ * @param href
+ * @param amount
+ * @returns
+ */
+function submitCreditsForm(formKey, href, amount) {
+
+	if (href !== 0) document.getElementById("href_" + formKey).value = href;
+	if (amount !== 0) document.getElementById("amount_" + formKey).value = amount;
+		
+	if(window.document.forms['credits_form_' + formKey] != null) 
+		window.document.forms['credits_form_' + formKey].submit();
+	
+	console.log('submit credits_form_' + formKey);
 	
 	return false;
 }
@@ -3260,6 +3732,8 @@ function submit_credits_form(href, cred_id) {
 function submitPay(isCurrentCard) {
 
 	$('.js-btn-pay').attr('disabled', true);	// дизейблим кнопки оплат
+	
+	ga('send', 'event', 'LKrepay', 'Click');	// аналитика Google
 	
 	if (isCurrentCard == 1) {
 		document.getElementById("isCurrentCard").value = "1";
@@ -3504,6 +3978,11 @@ $(function() {
 			// console.log(a.currentTarget);
 			// console.log('id='+a.currentTarget.id);
 			
+			// ничего не делать на определенных id:
+			if (a.currentTarget.id === 'message') {
+				return;
+			} 
+				
 			// если Enter, или Tab:
 			if (13 == a.which || 9 == a.which) {
 				// если проходит валидацию (передаем ID элемента):
@@ -3587,7 +4066,7 @@ $(document).ready(function() {
 	$('#input-1').rating('update', score);
 	// $('#input-1').rating('refresh', {disabled: false});
 	
-	if ($('#buttonGetCode') && ((($('#phone').val() !== undefined) ? $('#phone').val().length : 0) < 10)) {
+	if (($('button').is('#buttonGetCode')) && ((($('#phone').val() !== undefined) ? $('#phone').val().length : 0) < 10)) {
 		
 		// выключаем кнопку "Получить код СМС" (так как Гугл устанавливает ее активной)
 		setTimeout(function(){
@@ -3602,6 +4081,68 @@ $(document).ready(function() {
 			refreshCounters();
 		}, 20000);
 	}
+	
+    // если есть элементы партнерской программы:
+    if ($(".js-btn-partner").length > 0) {
+
+        // событие при нажатии на кнопку записи партнерской информации:
+    	$(".js-btn-partner").on('click', function(event) {
+    		onClickSubmitPartner(event);
+    	});
+
+        // событие при изменении checkbox партнерской информации:
+		$(":checkbox").change(function(){
+
+			var flag; 
+
+			if(this.checked){
+		    	$("[name=" + this.name + "]").attr('checked', true);
+				flag = '1';
+		    }else{
+		    	$("[name=" + this.name + "]").removeAttr('checked');
+		    	flag = '0';
+		    }
+	    	$("[name=out_" + this.name + "]").val(flag);
+		});
+
+		// событие при нажатии в поле телефон:
+    	$("#Phone_1").keyup(function(event) {
+    		onKeyUpPhone('Phone_1');
+    	});
+    	$("#Phone_2").keyup(function(event) {
+    		onKeyUpPhone('Phone_2');
+    	});
+
+    }
+	
+    // если есть элементы для поиска в "Справке":
+    if ($(".search-icon").length > 0) {
+
+        // событие при нажатии на кнопку поиска:
+    	$(".search-icon").on('click', function(event) {
+    		onClickForSearch(event);
+    	});
+
+		// событие при нажатии в поле телефон:
+    	$("#search_faq").keyup(function(event) {
+    		onClickForSearch(event);
+    	});
+    }
+	
+    // если есть элементы для рейтинга страницы:
+    if ($("#span_page_rating").length > 0) {
+
+        // событие при нажатии на кнопку положительного отзыва:
+    	$("#btn_like_positive").on('click', function(event) {
+    		onClickLikePage(1);
+    	});
+
+        // событие при нажатии на кнопку отрицательного отзыва:
+    	$("#btn_like_negative").on('click', function(event) {
+    		onClickLikePage(-1);
+    	});
+    }
+	
 });
 
 // Событие onClick на GoogleStars:

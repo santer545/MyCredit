@@ -102,10 +102,26 @@
             	line-height: 25px;	
             	font-size: 13px;	
             }
+            @media screen and (max-width: $screen-xs-max) {
+                margin-bottom: 10px;    
+            }
             &:not(:last-child) {
                 margin-right: 10px;
                 @media screen and (max-width: $screen-md-max) {
                 	margin-right: 5px;	
+                }
+            }
+            &.pagination-step {
+                width: auto;
+                padding: 0 10px;    
+                @media screen and (max-width: $screen-xs-max) {
+                    display: block; 
+                    float: none;    
+                }
+                img {
+                    width: 5px; 
+                    height: 8px;    
+                    margin: 0 10px; 
                 }
             }
             &.active,
@@ -275,6 +291,7 @@
     }
 }
 
+
 .pagination-arrow {
     position: relative;
     display: inline-block;
@@ -341,9 +358,8 @@
 		transition: all 0.3s;
 		text-decoration: none;
 		&:hover {
-			border: 1px solid #dbdee9;
+			border: 1px solid #0054bc;
 			color: #0054bc;
-			background-color: #c7cbd6;
 		}	
 		img {
 			display: block;	
@@ -352,21 +368,23 @@
 	}
 }
 
+.blog {
+    margin-bottom: 90px;    
+    position: relative;
+    z-index: 2;
+}
+
 .blog-content {
 	background-color: #fff;
 	padding: 20px 20px 30px;
 	border-radius: 5px;
-	margin-bottom: 60px;
 	@media screen and (max-width: $screen-sm-max) {
 		margin-bottom: 20px;
-	}
-	@media screen and (max-width: $screen-xs-max) {
-		padding-top: 0;
-		margin-bottom: 0;
 	}
 }
 
 .blog-main-img {
+    margin-bottom: 15px;    
 	img {
 		width: 100%;	
 	}
@@ -472,4 +490,22 @@
 			margin-right: 10px;	
 		}
 	}
+}
+
+figcaption {
+    .share-section {
+    img {
+        width: 19px;    
+        display: inline-block;  
+        vertical-align: middle; 
+        margin-right: 10px; 
+    }
+    span {
+        display: inline-block;  
+        vertical-align: middle; 
+        color: #7c8295;
+        font-size: 12px;    
+        font-family: $font-family-medium;
+    }
+}
 }
