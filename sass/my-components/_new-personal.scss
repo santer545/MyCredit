@@ -1201,11 +1201,12 @@
             margin-right: 5px;
         }
         &--inverse {
+            margin: 0;
             padding-bottom: 10px;
         }
         .form-group {
             margin-bottom: 0;
-            margin-right: 20px;
+            margin-right: 0;
             width: 200px;
         }
         input {
@@ -1219,6 +1220,10 @@
             vertical-align: middle;
             font-size: 16px;
             margin-left: 20px;
+            &.error-text {
+                margin-left: 0;
+                display: inline;
+            }
         }
         .btn-personal {
             padding: 9px 15px;

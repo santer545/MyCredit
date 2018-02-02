@@ -124,6 +124,7 @@
         color: $form-control-color;
         padding: $form-control-padding;
         font: #{$form-control-font-size} / #{$form-control-line-height} $font-family-roman;
+        box-shadow: none;
         @media screen and (max-width: $screen-sm-max) {
             height: $form-control-height-tablet;
         }

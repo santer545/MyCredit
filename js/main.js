@@ -6,9 +6,8 @@ $(document).ready(function() {
     giftAnchor();
     parallax();
     //hearts();
-    customInput();
-    februaryValidate();
-    
+    //customInput();
+
     // Detect ios 11_0_x affected 
     // NEED TO BE UPDATED if new versions are affected
     var ua = navigator.userAgent,
@@ -1797,45 +1796,12 @@ function hearts() {
     }, 500);
 }
 
-function customInput() {
-    document.querySelector("html").classList.add('js');
 
-    var fileInput = document.querySelector(".input-file"),
-        button = document.querySelector(".input-file-trigger"),
-        the_return = document.querySelector(".file-return");
-    if (button && fileInput) {
-        button.addEventListener("keydown", function(event) {
-            if (event.keyCode == 13 || event.keyCode == 32) {
-                fileInput.focus();
-            }
-        });
-        button.addEventListener("click", function(event) {
-            fileInput.focus();
-            return false;
-        });
-        fileInput.addEventListener("change", function(event) {
-            the_return.innerHTML = this.value;
-        });
-    }
 
-}
 
-function februaryValidate() {
-    /*$('.js-wish').on("click", function() {
-        return validate($(this).parents('.envelop-wrapper').find(".js_validate"));
-    });*/
-    $('.js-wish').click(function() {
-        $('.envelop-wrapper').addClass('active');
-        setTimeout(function() {
-            $('.envelop-wrapper').css({'overflow':'hidden'});
-        }, 1300);
-        setTimeout(function() {
-            $('.envelop-inverse').css('visibility','visible');
-        }, 1400);
-        setTimeout(function() {
-            $('.envelop-letter').css({'overflow':'hidden','height':'100px'});
-        }, 300);
-    });
-}
+
+
+
+
 
 

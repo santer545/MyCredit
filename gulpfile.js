@@ -74,16 +74,73 @@ gulp.task('critical', () => {
 
 
 
+// настройки путей к файлам
+var rootDir = '.';
+var sourceDir = rootDir + '/js';    // здесь хранятся все исходники
+var destDir = rootDir + '/dist';        // здесь хранится все на выходе
+
+
+
+
 // Scripts
 gulp.task('scripts', function() {
-    return gulp.src('js/**/*.js')
-        //.pipe(concat('all.js'))
-        .pipe(gulp.dest('dist/js'))
+
+return  gulp.src([
+           sourceDir + '/jquery-2.2.1.min.js',
+           sourceDir + '/bootstrap-select.js',
+           sourceDir + '/jquery.maskedinput.min.js',
+           sourceDir + '/bootstrap-slider.js',
+           sourceDir + '/jquery.sameheight.js',
+           sourceDir + '/validate.js',
+           sourceDir + '/jquery.reject.js',
+           
+           sourceDir + '/jquery.countTo.js',
+           sourceDir + '/jquery.knob.js',
+           sourceDir + '/jquery.ui.widget.js',
+           sourceDir + '/jquery.iframe-transport.js',
+           sourceDir + '/bootstrap.min.js',
+           sourceDir + '/jquery.placeholder.min.js',
+           sourceDir + '/owl.carousel.js',
+           sourceDir + '/jcf.js',
+           sourceDir + '/jcf.number.js',
+           sourceDir + '/accounting.min.js',
+           sourceDir + '/viewportchecker.js',
+           sourceDir + '/jquery.sticky-kit.min.js',
+           sourceDir + '/jquery.jscrollpane.min.js',
+           sourceDir + '/jquery.mousewheel.js',
+           sourceDir + '/eskju.jquery.scrollflow.min.js',
+           sourceDir + '/videojs.js',
+           sourceDir + '/lightgallery.min.js',
+           sourceDir + '/lg-fullscreen.min.js',
+           sourceDir + '/lg-thumbnail.min.js',
+           sourceDir + '/zebra_datepicker.js',
+           sourceDir + '/star-raiting.js',
+           sourceDir + '/device.min.js',
+           sourceDir + '/functions.js',
+           sourceDir + '/googleAPI.js',
+           sourceDir + '/forWidget.js',
+           sourceDir + '/fingerprint2.js',
+           sourceDir + '/pgwslideshow.js',
+           sourceDir + '/css3-animate-it.js',
+           sourceDir + '/jquery.appear.js',
+           sourceDir + '/jquery.countdown.min.js',
+           sourceDir + '/svgfixer.js',
+           sourceDir + '/jquery.colorbox.js',
+           sourceDir + '/lightbox.js',
+           sourceDir + '/imagizer.js',
+           sourceDir + '/vivus.js',
+           sourceDir + '/client.min.js',
+           sourceDir + '/grayscale.js',
+           sourceDir + '/wish.js',
+           sourceDir + '/main.js'
+    ])
+
+    //.pipe(browserify(components.scripts.options))
+        .pipe(concat('all.min.js'))
         .pipe(rename({ suffix: '.min' }))
-        //.pipe(uglify())
-        .pipe(gulp.dest('dist/js'))
         .pipe(notify({ message: 'Scripts task complete' }));
 });
+
 
 // Images
 gulp.task('images', function() {
