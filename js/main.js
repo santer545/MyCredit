@@ -5,7 +5,7 @@ $(document).ready(function() {
     anchorLink();
     giftAnchor();
     parallax();
-    //hearts();
+    hearts();
     //customInput();
 
     // Detect ios 11_0_x affected 
@@ -1775,16 +1775,16 @@ function parallax() {
 function hearts() {
     var love = setInterval(function() {
         var r_num = Math.floor(Math.random() * 40) + 1;
-        var r_size = Math.floor(Math.random() * 65) + 10;
+        var r_size = Math.floor(Math.random() * 25) + 10;
         var r_left = Math.floor(Math.random() * 100) + 1;
-        var r_bg = Math.floor(Math.random() * 25) + 100;
-        var r_time = Math.floor(Math.random() * 5) + 5;
+        var r_bg = Math.floor(Math.random() * 0.5) + 0.3;
+        var r_time = Math.floor(Math.random() * 10) + 5;
 
         //$('.heart-wrapper').append('<h2>Добавление дочернего элемента</h2>');
 
-        $('.full-height').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;background:rgba(255," + (r_bg - 25) + "," + r_bg + ",1);-webkit-animation:love " + r_time + "s ease;-moz-animation:love " + r_time + "s ease;-ms-animation:love " + r_time + "s ease;animation:love " + r_time + "s ease'></div>");
+        $('.full-height').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;opacity:" + r_bg + ";animation-duration:" + r_time +"s'><img src='assets/images/wishes/heart.svg'></div>");
 
-        $('.full-height').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%;background:rgba(255," + (r_bg - 25) + "," + (r_bg + 25) + ",1);-webkit-animation:love " + (r_time + 5) + "s ease;-moz-animation:love " + (r_time + 5) + "s ease;-ms-animation:love " + (r_time + 5) + "s ease;animation:love " + (r_time + 5) + "s ease'></div>");
+        $('.full-height').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%'><img src='assets/images/wishes/heart.svg'></div>");
 
         $('.heart').each(function() {
             var top = $(this).css("top").replace(/[^-\d\.]/g, '');
@@ -1797,6 +1797,36 @@ function hearts() {
 }
 
 
+function randomBetween(range) {
+    var min = range[0],
+        max = range[1];
+    if (min < 0) {
+        return min + Math.random() * (Math.abs(min)+max);
+    }else {
+        return min + Math.random() * max;
+    }
+}
+
+$.fn.equalizerAnimation = function(speed, barsHeight){
+    var $equalizer = $(this);
+    setInterval(function(){
+        $equalizer.find('span').each(function(i){
+          $(this).css({ height:randomBetween(barsHeight[i])+'px' });
+        });
+    },speed);
+    $equalizer.on('click',function(){
+        $equalizer.toggleClass('paused');
+    });
+}
+
+var barsHeight = [
+  [10, 15],
+  [12, 17],
+  [13, 15],
+  [14, 17],
+  [15, 20]
+];
+$('.equalizer').equalizerAnimation(180, barsHeight);
 
 
 

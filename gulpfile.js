@@ -136,8 +136,9 @@ return  gulp.src([
     ])
 
     //.pipe(browserify(components.scripts.options))
-        .pipe(concat('all.min.js'))
+       .pipe(concat('all.js'))
         .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('dist/js'))
         .pipe(notify({ message: 'Scripts task complete' }));
 });
 

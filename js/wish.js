@@ -1,6 +1,7 @@
 $(document).ready(function() {
     februaryValidate();
     customInput();
+    setLike();
 });
 
 
@@ -12,12 +13,15 @@ var fileBodyPath;
 var fileBodyInverse;
 var fileSize;
 
-file.addEventListener('change', function() {
-    fileName = document.getElementById('wish-file').files[0].name;
-    fileBodyPath = document.getElementById('wish-file').value;
-    fileBody = btoa(fileBodyPath);
-    fileBodyInverse = atob(fileBody);
-});
+if (file) {
+    file.addEventListener('change', function() {
+        fileName = document.getElementById('wish-file').files[0].name;
+        fileBodyPath = document.getElementById('wish-file').value;
+        fileBody = btoa(fileBodyPath);
+        fileBodyInverse = atob(fileBody);
+    });
+}
+
 
 
 
@@ -48,7 +52,7 @@ function wishSend() {
         // событие закачки файла:
         reader.addEventListener("load", function() {
             fileContent = reader.result;
-            
+
             fileContent = new Uint8Array(fileContent);
             str = '';
 
@@ -148,20 +152,41 @@ function februaryValidate() {
 
             // envelop animations
             $('.envelop-wrapper').addClass('active');
-            setTimeout(function() {
-                $('.envelop-wrapper').css({ 'overflow': 'hidden' });
-            }, 1300);
+            
             setTimeout(function() {
                 $('.envelop-inverse').css('visibility', 'visible');
-            }, 1400);
+            }, 3000);
             setTimeout(function() {
-                $('.envelop-letter').css({ 'overflow': 'hidden', 'height': '100px' });
-            }, 300);
+                $('.envelop-typing').addClass('active');
+            }, 3500);
             setTimeout(function() {
-                $('.envelop-wrapper:before').css({ 'z-index': '4' });
+                $('.envelop-wrapper').addClass('z-index');
             }, 1000);
+            setTimeout(function() {
+                $('.envelop-wrapper').addClass('sended');
+                $('.mail-box').addClass('opened');
+            }, 4000);
+            setTimeout(function() {
+                $('.mail-box').removeClass('opened');
+                $('.february-final').addClass('active');
+            }, 7000);
+            setTimeout(function() {
+                $('.envelop-letter').css({ 'overflow': 'hidden', 'height': '100px', 'opacity': '0' });
+            }, 300);
+            
         }
 
         return validate($(this).parents('.envelop-wrapper').find(".js_validate"));
     });
+}
+
+
+
+function setLike() {
+    var like = document.getElementsByClassName('wish-like');
+    for (i = 0; i < like.length; i++) {
+        like[i].addEventListener('click', function(e) {
+            this.classList.toggle("active");
+        });
+    }
 }
