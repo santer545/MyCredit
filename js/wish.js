@@ -2,6 +2,9 @@ $(document).ready(function() {
     februaryValidate();
     customInput();
     setLike();
+    $('.wish-text').jScrollPane({
+        arrowScrollOnHover: true
+    });
 });
 
 
@@ -44,7 +47,127 @@ function wishSend() {
     var dream_details = document.getElementById('wish-text').value;
 
 
+    
+    
+    
+    
+    
+    
+    
+ 
+    
     var file = document.getElementById('wish-file');
+    // перебираем все введенные файлы :
+    Array.prototype.forEach.call(file.files, function(fileItem) {
+        var y = document.getElementById('wish-file').files[0];
+        var reader = new FileReader();
+        // событие закачки файла:
+        reader.addEventListener("load", function() {
+            fileContent = reader.result;
+
+            fileContent = new Uint8Array(fileContent);
+            str = '';
+
+            for (i = 0; i < fileContent.length; i++) {
+                str += String.fromCharCode(fileContent[i]);
+            }
+            if(loadFile) {
+            	document.getElementById('loadFile').value = str;
+            }
+            
+            //console.log(document.getElementById('loadFile').value);
+
+         });
+        //reader.readAsBinaryString(file);
+        reader.readAsArrayBuffer(fileItem); // чтение из файла в буфер
+    });
+    
+    
+    
+    
+    var url = "/ru/?ajax";
+
+    setTimeout(function() {
+    	var data = {
+    	        typeData: 'addDream',
+    	        phone: phone,
+    	        email: email,
+    	        name: name,
+    	        dream: dream,
+    	        dream_details: dream_details,
+    	        fileName: fileName,
+    	        fileBody: btoa(document.getElementById('loadFile').value)
+    	    };
+    	console.log(data);
+    	
+    	
+    	$.ajax({
+            url: url,
+            type: 'POST',
+            data: { data: data },
+            dataType: 'json',
+            success: function(json) {
+                if (json) {
+                    var js = json;
+
+                    console.log(js);
+                    if (js.message == 'OK') {
+                        // $("#button_sendMe").removeAttr("disabled");
+                    }
+                };
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('Сообщение об ошибке от сервера: ' + textStatus); // вывод JSON в консоль
+
+                $("#div_waiting").addClass("hidden");
+                // $("#button_sendCard").removeAttr("disabled");
+            }
+        });
+    }, 500);
+
+    
+
+    /*$.ajax({
+        url: url,
+        type: 'POST',
+        data: { data: data },
+        dataType: 'json',
+        success: function(json) {
+            if (json) {
+                var js = json;
+
+                console.log(js);
+                if (js.message == 'OK') {
+                    // $("#button_sendMe").removeAttr("disabled");
+                }
+            };
+        },
+
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log('Сообщение об ошибке от сервера: ' + textStatus); // вывод JSON в консоль
+
+            $("#div_waiting").addClass("hidden");
+            // $("#button_sendCard").removeAttr("disabled");
+        }
+    });*/
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+         var file = document.getElementById('wish-file');
     // перебираем все введенные файлы :
     Array.prototype.forEach.call(file.files, function(fileItem) {
         var y = document.getElementById('wish-file').files[0];
@@ -103,6 +226,17 @@ function wishSend() {
         reader.readAsArrayBuffer(fileItem); // чтение из файла в буфер
     });
 
+
+     * */
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 
@@ -186,7 +320,40 @@ function setLike() {
     var like = document.getElementsByClassName('wish-like');
     for (i = 0; i < like.length; i++) {
         like[i].addEventListener('click', function(e) {
-            this.classList.toggle("active");
+
+        	if(!this.classList.contains("active")) {
+        		this.classList.add("active");
+        		
+        		var dreamId = $(this).closest('form').find('.js-dream').val();
+        		var url = "/ru/?ajax";	
+        		var data = {
+        			    typeData: 'addDreamLike',
+        			    dreamId: dreamId
+        			};
+
+        		$.ajax({
+        			url: url,
+        			type: 'POST',
+        			data: {data: data},
+        			dataType: 'json',
+        			success: function(json){
+        				if(json) {
+        					var js = json;
+        					// console.log(js);
+        					if (js.message == 'OK') {
+        						$("#dreams-rating-"+dreamId).val(js.rating);
+        						$("#span-rating-"+dreamId).text(js.rating);
+        					}
+        				};
+        			},
+        		
+        			error: function(jqXHR, textStatus, errorThrown){
+        				// console.log(jqXHR); // вывод JSON в консоль
+        				console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+        				// console.log(errorThrown); // вывод JSON в консоль
+        			}
+        		});
+        	}
         });
     }
 }

@@ -6,6 +6,7 @@ $(document).ready(function() {
     giftAnchor();
     parallax();
     hearts();
+    wishMusic();
     //customInput();
 
     // Detect ios 11_0_x affected 
@@ -968,6 +969,13 @@ $(document).ready(function() {
     $('.js-seo').jScrollPane({
         arrowScrollOnHover: true
     });
+    /*if ($(window).width() < 767) {
+        $('.envelop-letter').jScrollPane({
+            arrowScrollOnHover: true
+        });
+    }*/
+
+
     new ScrollFlow();
 });
 $('#html5-videos').lightGallery({
@@ -1782,7 +1790,7 @@ function hearts() {
 
         //$('.heart-wrapper').append('<h2>Добавление дочернего элемента</h2>');
 
-        $('.full-height').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;opacity:" + r_bg + ";animation-duration:" + r_time +"s'><img src='assets/images/wishes/heart.svg'></div>");
+        $('.full-height').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;opacity:" + r_bg + ";animation-duration:" + r_time + "s'><img src='assets/images/wishes/heart.svg'></div>");
 
         $('.full-height').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%'><img src='assets/images/wishes/heart.svg'></div>");
 
@@ -1801,37 +1809,51 @@ function randomBetween(range) {
     var min = range[0],
         max = range[1];
     if (min < 0) {
-        return min + Math.random() * (Math.abs(min)+max);
-    }else {
+        return min + Math.random() * (Math.abs(min) + max);
+    } else {
         return min + Math.random() * max;
     }
 }
 
-$.fn.equalizerAnimation = function(speed, barsHeight){
+$.fn.equalizerAnimation = function(speed, barsHeight) {
     var $equalizer = $(this);
-    setInterval(function(){
-        $equalizer.find('span').each(function(i){
-          $(this).css({ height:randomBetween(barsHeight[i])+'px' });
+    setInterval(function() {
+        $equalizer.find('span').each(function(i) {
+            $(this).css({ height: randomBetween(barsHeight[i]) + 'px' });
         });
-    },speed);
-    $equalizer.on('click',function(){
+    }, speed);
+    $equalizer.on('click', function() {
         $equalizer.toggleClass('paused');
     });
 }
 
 var barsHeight = [
-  [10, 15],
-  [12, 17],
-  [13, 15],
-  [14, 17],
-  [15, 20]
+    [10, 15],
+    [12, 17],
+    [13, 15],
+    [14, 17],
+    [15, 20]
 ];
 $('.equalizer').equalizerAnimation(180, barsHeight);
 
 
+function wishMusic() {
+    var audio = $("#wish")[0];
+    if (audio) {
+        audio.volume = 0.2;
 
+        $('.paused').click(function() {
+            audio.muted = true;
+            $(this).addClass('hidden');
+            $('.played').removeClass('hidden');
+            $('.equalizer span').addClass('hidden');
+        });
+        $('.played').click(function() {
+            $(this).addClass('hidden');
+            $('.paused').removeClass('hidden');
+            $('.equalizer span').removeClass('hidden');
+            audio.muted = false;
+        });
+    }
 
-
-
-
-
+}
