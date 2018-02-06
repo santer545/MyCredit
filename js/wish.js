@@ -16,24 +16,40 @@ var fileBodyPath;
 var fileBodyInverse;
 var fileSize;
 
-if (file) {
+/*if (file) {
     file.addEventListener('change', function() {
         fileName = document.getElementById('wish-file').files[0].name;
         fileBodyPath = document.getElementById('wish-file').value;
         fileBody = btoa(fileBodyPath);
         fileBodyInverse = atob(fileBody);
     });
+}*/
+
+
+
+function previewFile() {
+    var filePath = document.getElementById('wish-file').files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function() {
+        var path = reader.result;
+        document.getElementById('loadFile').value = path;
+        /*console.log(document.getElementById('loadFile').value);*/
+    }
+
+    if (filePath) {
+        var test = reader.readAsDataURL(filePath);
+        console.log('readAsDataUrl:' + test);
+    } else {
+        console.log('Loh');
+    }
 }
 
 
 
-
-
-
-
-
-
-
+file.addEventListener('change', function() {
+    previewFile();
+});
 
 
 
@@ -56,17 +72,23 @@ function wishSend() {
 
 
 
-    var file = document.getElementById('wish-file');
-    // перебираем все введенные файлы :
-    Array.prototype.forEach.call(file.files, function(fileItem) {
+
+
+
+
+
+
+
+
+    /*Array.prototype.forEach.call(file.files, function(fileItem) {
         var y = document.getElementById('wish-file').files[0];
         var reader = new FileReader();
-        // событие закачки файла:
+       
         reader.addEventListener("load", function() {
             fileContent = reader.result;
-            
+
             fileContent = new Uint8Array(fileContent);
-            
+
             str = '';
 
             for (i = 0; i < fileContent.length; i++) {
@@ -78,16 +100,20 @@ function wishSend() {
             }
 
         });
-        //reader.readAsBinaryString(file);
-        reader.readAsArrayBuffer(fileItem); // чтение из файла в буфер
-    });
+        
+        reader.readAsArrayBuffer(fileItem); 
+    });*/
+    
 
-
-
+    
 
     var url = "/ru/?ajax";
 
     setTimeout(function() {
+
+        console.log(document.getElementById('loadFile').value);
+
+
         var data = {
             typeData: 'addDream',
             phone: phone,
@@ -96,8 +122,9 @@ function wishSend() {
             dream: dream,
             dream_details: dream_details,
             fileName: fileName,
-            fileBody: btoa(document.getElementById('loadFile').value)
+            fileBody: document.getElementById('loadFile').value
         };
+
         console.log(data);
 
 
@@ -126,9 +153,11 @@ function wishSend() {
                         }, 1000);
                         setTimeout(function() {
                             $('.envelop-wrapper').addClass('sended');
+                            $('.mail-box-top').addClass('opened');
                             $('.mail-box').addClass('opened');
                         }, 4000);
                         setTimeout(function() {
+                            $('.mail-box-top').removeClass('opened');
                             $('.mail-box').removeClass('opened');
                             $('.february-final').addClass('active');
                         }, 7000);
@@ -194,7 +223,7 @@ function wishSend() {
                                     document.getElementById('ajaxServerError').innerHTML = 'Така мрія вже існує';
                                 }
                                 break;
-                            default: 
+                            default:
                                 document.getElementById('ajaxServerError').innerHTML = 'Системная ошибка. Повторите свой запрос еще раз!';
                                 break;
                         }
