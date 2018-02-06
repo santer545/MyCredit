@@ -1098,7 +1098,7 @@
             -webkit-box-shadow: 4px -1px 66px -13px rgba(169, 111, 223, 1);
             -moz-box-shadow: 4px -1px 66px -13px rgba(169, 111, 223, 1);
             box-shadow: 4px -1px 66px -13px rgba(169, 111, 223, 1);
-            @media screen and (max-width: 1500px) {
+            @media screen and (max-width: 1700px) {
             max-width: 100px;
             right: 30px;
         }
@@ -3283,6 +3283,12 @@
     right: 0;
     bottom: 20px;
     width: 19.53%;
+    @media screen and (max-width: 1700px) {
+        width: 13.5%;
+        top: 20px;  
+        bottom: auto;
+        right: 30px;      
+    }
     @media screen and (max-width: 1500px) {
         top: 5px;
         bottom: auto;
@@ -3319,6 +3325,7 @@
     bottom: 20px;
     @media screen and (max-width: 1800px) {
         right: 25px;
+        width: 11%; 
     }
     @media screen and (max-width: 1500px) {
         right: 5px;
@@ -4991,7 +4998,7 @@
         color: #0055b8;
         margin-bottom: 20px;
         
-        @media screen and (max-width: 1500px) {
+        @media screen and (max-width: 1700px) {
             padding-top: 40px;  
             margin-bottom: 10px;    
             font-size: 28px;

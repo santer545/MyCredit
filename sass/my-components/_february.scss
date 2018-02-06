@@ -8,6 +8,13 @@
     height: 100%;
     min-height: 100%;
     background-color: #9a5acf;
+    @media screen and (max-width: $screen-xs-max) {
+        height: auto;
+    }
+    &--inverse {
+        height: auto;
+        padding-bottom: 40px;   
+    }
 }
 
 .february-toolbar {
@@ -29,23 +36,25 @@
         bottom: 0;
     }
 
-    @media screen and (max-width: $screen-xs-max) {
-        transform: translate(0, 0);
-        left: auto;
-        right: 0;
+    @media screen and (max-width: 1700px) {
         bottom: 0;
         height: 35px;
         box-shadow: none;
         border: 1px solid #f1f1f1;
         width: auto;
-
     }
-    @media screen and (max-width: $screen-xs-max) and (max-height: 500px) {
+    @media screen and (max-width: $screen-xs-max) {
+        width: 325px;
+        bottom: 30px;
+        height: auto;
+    }
+    
+    /* @media screen and (max-width: $screen-xs-max) and (max-height: 500px) {
         
     }
     @media screen and (max-width: 480px) and (max-height: 500px) {
         left: 0;
-    }
+    } */
     /* @media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
         display: block;
         bottom: 40vh;
@@ -56,8 +65,12 @@
         @media screen and (max-height: 600px) {
             padding: 15px 10px 0;
         }
-        @media screen and (max-width: $screen-xs-max) {
+        @media screen and (max-width: 1700px) {
             padding: 15px 11px 0;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            padding: 15px 5px 0;
+            display: none;
         }
         span.paused {
             position: relative;
@@ -96,28 +109,36 @@
         margin: 0;
         list-style-type: none;
         float: left;
+        @media screen and (max-width: $screen-xs-max) {
+            float: none;
+            width: 100%;
+        }
         li {
             float: left;
-            padding: 20px 15px;
+            padding: 21px 15px;
             line-height: 1;
             font-size: 16px;
             color: #0054bc;
-            @media screen and (max-width: $screen-xs-max) {
+            @media screen and (max-width: 1700px) {
                 font-size: 11px;
-            }
-
-            @media screen and (max-height: 600px) {
-                padding: 15px 10px 4px;
-                font-size: 10px;
-            }
-            @media screen and (max-width: $screen-xs-max) {
                 padding: 13px 5px;
             }
+            @media screen and (max-width: $screen-xs-max) {
+                padding: 9px 5px;
+                line-height: 1;
+                width: 33.3%;
+                text-align: center;
+            }
+
+            
             /* @media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
                 float: none;
             } */
             a {
                 text-decoration: none;
+            }
+            span {
+                opacity: 0.5;   
             }
         }
     }
@@ -129,8 +150,14 @@
         @media screen and (max-height: 600px) {
             padding: 19px 20px;
         }
+        @media screen and (max-width: 1700px) {
+            padding: 15px 10px 23px 30px;
+        }
         @media screen and (max-width: $screen-xs-max) {
-            padding: 20px 20px 23px;
+            padding: 15px 35px 23px 30px;   
+            display: none;
+        }
+        @media screen and (max-width: 340px) {
             display: none;  
         }
         /* @media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
@@ -158,20 +185,25 @@
 }
 
 .february-heading {
-    font-size: 29px;
+    font-size: 25px;
     padding-top: 20px;
     padding-bottom: 20px;
-    line-height: 33px;
+    line-height: 28px;
     color: #fff;
     @media screen and (max-width: 1700px) {
-        font-size: 22px;
-        padding-top: 20px;
+        font-size: 20px;
+        padding-top: 10px;
         padding-bottom: 20px;
-        line-height: 28px;
+        line-height: 23px;
+    }
+    @media screen and (max-width: $screen-md-max) {
+        padding-top: 10px;  
+        font-size: 20px;    
+        line-height: 25px;    
     }
     @media screen and (max-width: $screen-xs-max) {
-        font-size: 16px;
-        line-height: 20px;
+        font-size: 14px;
+        line-height: 16px;
     }
     @media screen and (max-height: 600px) {
         font-size: 13px;
@@ -192,54 +224,74 @@
 
 .february-footer {
     position: absolute; 
-    bottom: 0;
+    bottom: 10px;
     left: 0;    
     right: 0;   
-    width: 100%;    
+    width: 100%;
+    @media screen and (max-width: $screen-md-max) {
+        bottom: 35px;   
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        position: relative;
+        margin-top: 78%;   
+        bottom: auto;
+    }
+    @media screen and (max-width: $screen-xs-max) and (max-height: 420px) {
+        margin-top: 40%;    
+    }
 }
 
 .envelop {
     position: relative;
-    height: 320px;
-    background: url('../assets/images/envelop.png') no-repeat;
+    height: 340px;
+    background: url('../assets/images/wishes/envelop.png') no-repeat;
     background-size: cover;
     z-index: 4;
-    @media screen and (max-height: 900px) {
+    /* @media screen and (max-height: 900px) {
         height: 230px;
-    }
-    @media screen and (max-width: 1600px) {
+    } */
+    @media screen and (max-width: 1700px) {
         background-size: contain;
-        height: 255px;  
+        height: 238px;  
+    }
+    @media screen and (max-width: 1500px) {
+        height: 234px;   
     }
     @media screen and (max-width: 1400px) {
-        height: 250px;
+        height: 234px;
         background-size: contain;
+    }
+    @media screen and (max-width: 1100px) {
+        height: 200px;  
+    }
+    @media screen and (max-width: $screen-sm-max) {
+        height: 230px;  
     }
     @media screen and (max-width: $screen-xs-max) {
         height: 165px;
     }
-    @media screen and (max-height: 1000px) {
-        height: 300px;
-    }
-    @media screen and (max-height: 800px) {
-        height: 230px;
+    // @media screen and (max-height: 1000px) {
+    //     height: 270px;
+    // }
+    /* @media screen and (max-height: 800px) {
+        height: 210px;
         background-size: cover;
-    }
-    @media screen and (max-width: $screen-xs-max) and (max-height: 700px) {
+    } */
+    /* @media screen and (max-width: $screen-xs-max) and (max-height: 700px) {
         height: 140px;
         background-size: cover;
-    }
-    @media screen and (max-height: 700px) {
-        height: 140px;
+    } */
+    /* @media screen and (max-height: 700px) {
+        height: 190px;
         background-size: cover;
     }
     @media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
         height: 72px;
     }
-
+    
     @media screen and (max-width: 340px) {
         height: 142px;
-    }
+    } */
     @media screen and (min-height: 1080px) {
         background-size: cover;
     }
@@ -263,32 +315,39 @@
     &-wrapper,
     .paper {
         position: relative;
-        max-width: 780px;
+        max-width: 730px;
         margin: 0 auto;
         z-index: 10;
         @media screen and (max-width: 1700px) {
-            max-width: 580px;
+            max-width: 510px;
+        }
+        @media screen and (max-width: 1500px) {
+            width: 520px;   
         }
         @media screen and (max-width: 1400px) {
-            max-width: 550px;
+            max-width: 500px;
+        }
+        @media screen and (max-width: 1100px) {
+            max-width: 430px;   
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            max-width: 495px;   
         }
         @media screen and (max-width: $screen-xs-max) {
-            max-width: 89%;
+            max-width: 300px;
         }
-        @media screen and (max-height: 700px) {
-            max-width: 340px;
-        }
-        @media screen and (max-width: $screen-xs-max) {
-            max-width: 89%;
-        }
-        @media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
+        /* @media screen and (max-height: 700px) {
+            max-width: 420px;
+        } */
+        
+        /* @media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
             max-width: 270px;
-        }
+        } */
 
         &:before {
             content: '';
             position: absolute;
-            bottom: calc(100% - 2px);
+            bottom: calc(100% - 3px);
             padding-bottom: 33%;
             left: 3px;
             right: 3px;
@@ -310,6 +369,9 @@
             right: 4px;
             background-color: #eff2f3;
             z-index: 2;
+            @media screen and (max-width: $screen-md-max) {
+                bottom: 30px;   
+            }
         }
         .form-label {
             float: none;
@@ -331,13 +393,16 @@
             }
         }
         .form-control {
-            height: 40px;
+            height: 35px;
             padding-left: 10px;
             padding-top: 5px;
             padding-bottom: 5px;
-            line-height: 40px;
+            line-height: 35px;
             padding-right: 10px;
             font-size: 14px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
             @media screen and (max-width: 1700px) {
                 height: 30px;
                 line-height: 30px;
@@ -367,9 +432,9 @@
             }
         }
         textarea.form-control {
-            height: 115px;
+            height: 90px;
             @media screen and (max-width: 1700px) {
-                height: 70px;
+                height: 60px;
             }
             @media screen and (max-height: 600px) {
                 height: 47px;
@@ -384,6 +449,9 @@
             animation-fill-mode: forwards;
             .envelop-letter {
                 transform: translate(0, 100%);
+                opacity: 0;
+                height: 80px;
+                overflow: hidden;
             }
             &.z-index:before {
                 transform: rotateX(180deg);
@@ -401,7 +469,7 @@
     &-letter {
         position: absolute;
         padding-left: 100px;
-        padding-top: 20px;
+        padding-top: 10px;
         padding-right: 100px;
         padding-bottom: 20px;
         bottom: 89%;
@@ -410,7 +478,7 @@
         background-color: #fff;
         border-radius: 5px 5px 0 0;
         z-index: 3;
-        transition: transform 0.7s;
+        transition: all 0.7s;
         form {
             position: relative; 
             z-index: 30;    
@@ -428,14 +496,13 @@
         @media screen and (max-height: 600px) {
             padding: 20px;
         }
-        @media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
+        /* @media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
             bottom: 73%;
-        }
+        } */
          @media screen and (max-width: $screen-xs-max){
-            bottom: 87%;    
+            bottom: 70%;    
             padding-top: 10px;  
-            max-height: 200px;  
-            overflow-y: auto;
+            
          }
 
         &:after {
@@ -446,22 +513,22 @@
             left: 0;
             right: 0;
             background-color: #fff;
-            @media screen and (max-width: $screen-xs-max){
-                background-color: transparent;
+            @media screen and (max-height: 1100px) {
+                height: 80px;  
             }
         }
     }
     &-heading {
-        font-size: 25px;
+        font-size: 21px;
         font-family: $font-family-roman;
         color: #0054bc;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         text-align: center;
         @media screen and (max-width: 1400px) {
             font-size: 18px;
         }
         @media screen and (max-width: $screen-xs-max){
-            font-size: 17px;    
+            font-size: 14px;    
             margin-bottom: 5px; 
         }
         @media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
@@ -495,11 +562,11 @@
     bottom: 56px;
     right: 5%;
     width: 13%;
-    z-index: 5;
+    z-index: 11;
     @media screen and (max-width: $screen-xs-max) {
-        width: 30%;
+        width: 25%;
         right: 0;
-        bottom: 0;
+        bottom: 55px;
     }
     @media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
         width: 20%; 
@@ -587,14 +654,12 @@
         top: 34px;
     }
     @media screen and (max-width: $screen-xs-max) and (max-height: 700px) {
-        top: 33px;
+        top: 26px;
     }
     @media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
-        top: 38px;
+        top: 36px;
     }
-    @media screen and (max-width: 500px) and (max-height: 400px) {
-        top: 20px;  
-    }
+    
 
     @media screen and (min-width: 1921px) {
         left: 17%;  
@@ -745,6 +810,21 @@
             vertical-align: top;
             display: block;
             float: right;
+            margin-right: 0;    
+        }
+    }
+    .lk-dropdown {
+        margin-top: 15px;   
+        @media screen and (max-width: 1300px) {
+            max-width: 148px;
+            margin-top: 7px;    
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            margin: 13px 5px 0 0;   
+        }
+        @media screen and (max-width: $screen-xs) {
+            float: right;
+            display: block;
         }
     }
     .header-logo {
@@ -761,7 +841,7 @@
     }
     .authorize {
         @media screen and (max-width: 1300px) {
-            padding-top: 7px;
+            padding-top: 9px;
         }
         @media screen and (max-width: $screen-sm-max) {
             padding-top: 11px;
@@ -873,11 +953,31 @@
 @keyframes skew {
     0% {
         transform: rotateX(36deg) rotateY(180deg) translate(0, -150px) skewX(10deg) scale(1);
-        opacity: 1;
     }
     100% {
-        transform: rotateX(36deg) rotateY(196deg) translate(-100%, -285px) skewX(10deg) scale(0.4);
-        opacity: 0;
+        transform: rotateX(36deg) rotateY(196deg) translate(-100%, -235px) skewX(10deg) scale(0.2);
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    @keyframes skew {
+        0% {
+            transform: rotateX(36deg) rotateY(180deg) translate(0, -150px) skewX(10deg) scale(1);
+        }
+        100% {
+            transform: rotateX(50deg) rotateY(196deg) translate(-120%, -350px) skewX(10deg) scale(0.2);
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    @keyframes skew {
+        0% {
+            transform: rotateX(36deg) rotateY(180deg) translate(0, -150px) skewX(10deg) scale(1);
+        }
+        100% {
+            transform: rotateX(50deg) rotateY(196deg) translate(-107%, -250px) skewX(10deg) scale(0.2);
+        }
     }
 }
 
@@ -885,11 +985,31 @@
     @keyframes skew {
         0% {
             transform: rotateX(36deg) rotateY(180deg) translate(0, -150px) skewX(10deg) scale(1);
-            opacity: 1;
         }
         100% {
-            transform: rotateX(50deg) rotateY(196deg) translate(-50%, 385px) skewX(10deg) scale(0.2);
-            opacity: 0;
+            transform: rotateX(50deg) rotateY(196deg) translate(-50%, -100px) skewX(10deg) scale(0.2);
+        }
+    }
+}
+
+@media screen and (max-width: $screen-xs-max) {
+    @keyframes skew {
+        0% {
+            transform: rotateX(36deg) rotateY(180deg) translate(0, -150px) skewX(10deg) scale(1);
+        }
+        100% {
+            transform: rotateX(50deg) rotateY(196deg) translate(-50%, -100px) skewX(10deg) scale(0.2);
+        }
+    }
+}
+
+@media screen and (max-width: $screen-xs-max) and (max-height: 400px) {
+    @keyframes skew {
+        0% {
+            transform: rotateX(36deg) rotateY(180deg) translate(0, -150px) skewX(10deg) scale(1);
+        }
+        100% {
+            transform: rotateX(50deg) rotateY(196deg) translate(-96%, -220px) skewX(10deg) scale(0.2);
         }
     }
 }
@@ -955,9 +1075,7 @@ $black: #0055b8;
 
 // wishes list
 .wish {
-    &-list {
-        padding-bottom: 60px;
-    }
+    
     &-item {
         background-color: #fff;
         display: table;
@@ -1099,6 +1217,9 @@ $black: #0055b8;
         font-size: 23px;
         text-align: center;
     }
+    @media screen and (max-width: 340px) {
+        font-size: 19px;    
+    }
 }
 
 .february-rooles {
@@ -1142,6 +1263,16 @@ $black: #0055b8;
         &.active {
             background-color: rgba(255, 255, 255, 1);
             color: #8a5bca;
+        }
+    }
+    .pagination-step {
+        svg {
+            fill: currentColor;
+            color: #fff;
+            width: 6px;
+            display: inline-block;
+            margin-left: 5px;
+            vertical-align: baseline;
         }
     }
 }

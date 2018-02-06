@@ -47,15 +47,15 @@ function wishSend() {
     var dream_details = document.getElementById('wish-text').value;
 
 
-    
-    
-    
-    
-    
-    
-    
- 
-    
+
+
+
+
+
+
+
+
+
     var file = document.getElementById('wish-file');
     // перебираем все введенные файлы :
     Array.prototype.forEach.call(file.files, function(fileItem) {
@@ -64,44 +64,44 @@ function wishSend() {
         // событие закачки файла:
         reader.addEventListener("load", function() {
             fileContent = reader.result;
-
+            
             fileContent = new Uint8Array(fileContent);
+            
             str = '';
 
             for (i = 0; i < fileContent.length; i++) {
                 str += String.fromCharCode(fileContent[i]);
             }
-            if(loadFile) {
-            	document.getElementById('loadFile').value = str;
+            console.log(str);
+            if (loadFile) {
+                document.getElementById('loadFile').value = str;
             }
-            
-            //console.log(document.getElementById('loadFile').value);
 
-         });
+        });
         //reader.readAsBinaryString(file);
         reader.readAsArrayBuffer(fileItem); // чтение из файла в буфер
     });
-    
-    
-    
-    
+
+
+
+
     var url = "/ru/?ajax";
 
     setTimeout(function() {
-    	var data = {
-    	        typeData: 'addDream',
-    	        phone: phone,
-    	        email: email,
-    	        name: name,
-    	        dream: dream,
-    	        dream_details: dream_details,
-    	        fileName: fileName,
-    	        fileBody: btoa(document.getElementById('loadFile').value)
-    	    };
-    	console.log(data);
-    	
-    	
-    	$.ajax({
+        var data = {
+            typeData: 'addDream',
+            phone: phone,
+            email: email,
+            name: name,
+            dream: dream,
+            dream_details: dream_details,
+            fileName: fileName,
+            fileBody: btoa(document.getElementById('loadFile').value)
+        };
+        console.log(data);
+
+
+        $.ajax({
             url: url,
             type: 'POST',
             data: { data: data },
@@ -109,10 +109,96 @@ function wishSend() {
             success: function(json) {
                 if (json) {
                     var js = json;
-
+                    var lang = document.getElementById('lang').innerText;
                     console.log(js);
                     if (js.message == 'OK') {
-                        // $("#button_sendMe").removeAttr("disabled");
+                        // envelop animations
+                        $('.envelop-wrapper').addClass('active');
+
+                        setTimeout(function() {
+                            $('.envelop-inverse').css('visibility', 'visible');
+                        }, 3000);
+                        setTimeout(function() {
+                            $('.envelop-typing').addClass('active');
+                        }, 3500);
+                        setTimeout(function() {
+                            $('.envelop-wrapper').addClass('z-index');
+                        }, 1000);
+                        setTimeout(function() {
+                            $('.envelop-wrapper').addClass('sended');
+                            $('.mail-box').addClass('opened');
+                        }, 4000);
+                        setTimeout(function() {
+                            $('.mail-box').removeClass('opened');
+                            $('.february-final').addClass('active');
+                        }, 7000);
+                        setTimeout(function() {
+                            $('.envelop-letter').css({ 'overflow': 'hidden', 'height': '100px', 'opacity': '0' });
+                        }, 300);
+                    } else {
+                        document.getElementById('ajaxServerError').classList.remove('hidden');
+                        switch (js.errorType) {
+                            case 'NoData':
+                                if (lang == 'ru') {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Не хватает данных';
+                                } else {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Не вистачає даних';
+                                }
+                                break;
+                            case 'NoTemplateEmail':
+                                if (lang == 'ru') {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Не правильный email';
+                                } else {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Не вірний email';
+                                }
+                                break;
+                            case 'existPhone':
+                                if (lang == 'ru') {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Пользователь с таким телефоном уже существует';
+                                } else {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Користувач с таким телефоном вже існує';
+                                }
+                                break;
+                            case 'existEmail':
+                                if (lang == 'ru') {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Пользователь с таким email уже существует';
+                                } else {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Користувач с таким email вже існує';
+                                }
+                                break;
+                            case 'maxFileSize':
+                                if (lang == 'ru') {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Вы пытаетесь загрузить файл слишком большого размера (рекоммендуемы размер 100kb)';
+                                } else {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Ви намагаетеся завантажити файл великого розміру (рекомендовано файл до 100kb)';
+                                }
+                                break;
+                            case 'errorPutFile':
+                                if (lang == 'ru') {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Ошибка загрузки файла';
+                                } else {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Помилка завантаження файлу';
+                                }
+                                break;
+                            case 'errorPutDream':
+                                if (lang == 'ru') {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Ваша мечта не записалась';
+                                } else {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Вашу мрію не зафіксовано';
+                                }
+                                break;
+                            case 'existDream':
+                                if (lang == 'ru') {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Такая мечта уже существует';
+                                } else {
+                                    document.getElementById('ajaxServerError').innerHTML = 'Така мрія вже існує';
+                                }
+                                break;
+                            default: 
+                                document.getElementById('ajaxServerError').innerHTML = 'Системная ошибка. Повторите свой запрос еще раз!';
+                                break;
+                        }
+                        /*document.getElementById('ajaxServerError').innerHTML = js.error;*/
                     }
                 };
             },
@@ -120,123 +206,12 @@ function wishSend() {
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('Сообщение об ошибке от сервера: ' + textStatus); // вывод JSON в консоль
 
+
                 $("#div_waiting").addClass("hidden");
                 // $("#button_sendCard").removeAttr("disabled");
             }
         });
-    }, 500);
-
-    
-
-    /*$.ajax({
-        url: url,
-        type: 'POST',
-        data: { data: data },
-        dataType: 'json',
-        success: function(json) {
-            if (json) {
-                var js = json;
-
-                console.log(js);
-                if (js.message == 'OK') {
-                    // $("#button_sendMe").removeAttr("disabled");
-                }
-            };
-        },
-
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.log('Сообщение об ошибке от сервера: ' + textStatus); // вывод JSON в консоль
-
-            $("#div_waiting").addClass("hidden");
-            // $("#button_sendCard").removeAttr("disabled");
-        }
-    });*/
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-         var file = document.getElementById('wish-file');
-    // перебираем все введенные файлы :
-    Array.prototype.forEach.call(file.files, function(fileItem) {
-        var y = document.getElementById('wish-file').files[0];
-        var reader = new FileReader();
-        // событие закачки файла:
-        reader.addEventListener("load", function() {
-            fileContent = reader.result;
-
-            fileContent = new Uint8Array(fileContent);
-            str = '';
-
-            for (i = 0; i < fileContent.length; i++) {
-                str += String.fromCharCode(fileContent[i]);
-            }
-
-            var url = "/ru/?ajax";
-
-            var data = {
-                typeData: 'addDream',
-                phone: phone,
-                email: email,
-                name: name,
-                dream: dream,
-                dream_details: dream_details,
-                fileName: fileName,
-                fileBody: btoa(str)
-            };
-
-            console.log(data);
-
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: { data: data },
-                dataType: 'json',
-                success: function(json) {
-                    if (json) {
-                        var js = json;
-
-                        console.log(js);
-                        if (js.message == 'OK') {
-                            // $("#button_sendMe").removeAttr("disabled");
-                        }
-                    };
-                },
-
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log('Сообщение об ошибке от сервера: ' + textStatus); // вывод JSON в консоль
-
-                    $("#div_waiting").addClass("hidden");
-                    // $("#button_sendCard").removeAttr("disabled");
-                }
-            });
-        });
-        //reader.readAsBinaryString(file);
-        reader.readAsArrayBuffer(fileItem); // чтение из файла в буфер
-    });
-
-
-     * */
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }, 1000);
 }
 
 
@@ -284,30 +259,8 @@ function februaryValidate() {
             // Ajax send
             wishSend();
 
-            // envelop animations
-            $('.envelop-wrapper').addClass('active');
-            
-            setTimeout(function() {
-                $('.envelop-inverse').css('visibility', 'visible');
-            }, 3000);
-            setTimeout(function() {
-                $('.envelop-typing').addClass('active');
-            }, 3500);
-            setTimeout(function() {
-                $('.envelop-wrapper').addClass('z-index');
-            }, 1000);
-            setTimeout(function() {
-                $('.envelop-wrapper').addClass('sended');
-                $('.mail-box').addClass('opened');
-            }, 4000);
-            setTimeout(function() {
-                $('.mail-box').removeClass('opened');
-                $('.february-final').addClass('active');
-            }, 7000);
-            setTimeout(function() {
-                $('.envelop-letter').css({ 'overflow': 'hidden', 'height': '100px', 'opacity': '0' });
-            }, 300);
-            
+
+
         }
 
         return validate($(this).parents('.envelop-wrapper').find(".js_validate"));
@@ -321,39 +274,39 @@ function setLike() {
     for (i = 0; i < like.length; i++) {
         like[i].addEventListener('click', function(e) {
 
-        	if(!this.classList.contains("active")) {
-        		this.classList.add("active");
-        		
-        		var dreamId = $(this).closest('form').find('.js-dream').val();
-        		var url = "/ru/?ajax";	
-        		var data = {
-        			    typeData: 'addDreamLike',
-        			    dreamId: dreamId
-        			};
+            if (!this.classList.contains("active")) {
+                this.classList.add("active");
 
-        		$.ajax({
-        			url: url,
-        			type: 'POST',
-        			data: {data: data},
-        			dataType: 'json',
-        			success: function(json){
-        				if(json) {
-        					var js = json;
-        					// console.log(js);
-        					if (js.message == 'OK') {
-        						$("#dreams-rating-"+dreamId).val(js.rating);
-        						$("#span-rating-"+dreamId).text(js.rating);
-        					}
-        				};
-        			},
-        		
-        			error: function(jqXHR, textStatus, errorThrown){
-        				// console.log(jqXHR); // вывод JSON в консоль
-        				console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
-        				// console.log(errorThrown); // вывод JSON в консоль
-        			}
-        		});
-        	}
+                var dreamId = $(this).closest('form').find('.js-dream').val();
+                var url = "/ru/?ajax";
+                var data = {
+                    typeData: 'addDreamLike',
+                    dreamId: dreamId
+                };
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: { data: data },
+                    dataType: 'json',
+                    success: function(json) {
+                        if (json) {
+                            var js = json;
+                            // console.log(js);
+                            if (js.message == 'OK') {
+                                $("#dreams-rating-" + dreamId).val(js.rating);
+                                $("#span-rating-" + dreamId).text(js.rating);
+                            }
+                        };
+                    },
+
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        // console.log(jqXHR); // вывод JSON в консоль
+                        console.log('Сообщение об ошибке от сервера: ' + textStatus); // вывод JSON в консоль
+                        // console.log(errorThrown); // вывод JSON в консоль
+                    }
+                });
+            }
         });
     }
 }
