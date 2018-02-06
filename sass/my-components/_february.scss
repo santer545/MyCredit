@@ -1272,7 +1272,18 @@ $black: #0055b8;
             width: 6px;
             display: inline-block;
             margin-left: 5px;
-            vertical-align: baseline;
+            vertical-align: middle;
+        }
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        &:first-of-type {
+            svg {
+                margin-left: 0;
+            margin-right: 5px;
+            }
+            
         }
     }
 }
