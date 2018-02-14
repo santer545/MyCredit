@@ -1968,7 +1968,7 @@ function onclickRefreshProduct() {
  * отправляет данные по карте в CRM при нажатии на кнопку
  * @returns
  */
-function onClickSendCardDetails() {
+function tranzzoSendCardDetails() {
 	
 	$("#button_sendCard").attr('disabled', true);	// дизейблим кнопку отправки
 
@@ -1988,7 +1988,7 @@ function onClickSendCardDetails() {
 		};
 
 	// отправить массив на сервер
-	console.log("Передаем запрос ajax " + url);
+	// console.log("Передаем запрос ajax " + url);
 	console.log(data);
 
 	$.ajax({
@@ -2003,7 +2003,7 @@ function onClickSendCardDetails() {
 				
 				console.log(js);
 				if (js.message == 'OK') {
-					payStep2();	// переходим на второй шаг верификации
+					tranzzoPayStep2();	// переходим на второй шаг верификации
 				}
 			};
 		},
@@ -2468,7 +2468,7 @@ function onKeyUpPhone(idPhone) {
 	var str = $("#" + idPhone).val();
 	var strNum = str.replace(/\D+/g,"");	// оставляем только цифры
 	
-	//console.log('str='+str);
+	// console.log('str='+str);
 	
 	if (strNum.length > 4) {
 		var flag = false; // признак недопустимости номера
@@ -2759,132 +2759,6 @@ function onReCaptchaVerifyAuth(response) {
 	grecaptcha.reset();	// сброс капчи
 	
 	onClickLogin();
-}
-
-/**
- * обрабатывает второй шаг верификации карты
- * @returns
- */
-function payStep2() {
-	console.log('payStep2');
-
-	$("#div_step1").addClass("hidden");
-	$("#div_waiting").removeClass("hidden");
-
-	var cardNumber = $("#card_number").val();
-
-	var url = "/ru/?ajax";	
-
-	var data = {
-		    typeData: 'checkStatusCard',
-		    cardNumber: cardNumber
-		};
-
-	// отправить массив на сервер
-	// console.log("Передаем запрос ajax " + url);
-	console.log(data);
-
-	$.ajax({
-		url: url,
-		type: 'POST',
-		data: {data: data},
-		dataType: 'json',
-		success: function(json){
-			if(json) {
-				//var js = JSON.parse(json);
-				var js = json;
-				
-				console.log(js);
-				if (js.message == 'OK') {
-					$("#div_waiting").addClass("hidden");
-					// если 3ds:
-					if (js.status == 1) {
-						if (js.params ) {
-							// заполняем форму для внешнего поста:
-							console.log(js.params);
-							location.href = js.params.VerifiedURL;
-						}
-						// $("#div_step2_3ds").removeClass("hidden");
-					}
-					// если не 3ds:
-					if (js.status == 2) {
-						$("#div_step2").removeClass("hidden");
-					}
-					// $("#button_sendMe").removeAttr("disabled");
-				}
-			};
-		},
-	
-		error: function(jqXHR, textStatus, errorThrown){
-			// console.log(jqXHR); // вывод JSON в консоль
-			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
-			// console.log(errorThrown); // вывод JSON в консоль
-			
-			$("#div_waiting").addClass("hidden");
-			// $("#button_sendCard").removeAttr("disabled");
-		}
-	});
-
-	return false;
-}
-
-/**
- * обрабатывает второй шаг верификации карты - ввод кода, если карта не 3ds
- * @returns
- */
-function payStep2_SendCode() {
-	console.log('payStep2_SendCode');
-
-	$("#div_step2").addClass("hidden");
-	$("#div_waiting").removeClass("hidden");
-
-	var cardNumber = $("#card_number").val();
-	var sendCode = $("#sendCode").val();
-
-	var url = "/ru/?ajax";	
-
-	var data = {
-		    typeData: 'paySendCode',
-		    cardNumber: cardNumber,
-		    sendCode: sendCode
-		};
-
-	// отправить массив на сервер
-	console.log("Передаем запрос ajax " + url);
-	console.log(data);
-
-	$.ajax({
-		url: url,
-		type: 'POST',
-		data: {data: data},
-		dataType: 'json',
-		success: function(json){
-			if(json) {
-				//var js = JSON.parse(json);
-				var js = json;
-				
-				console.log(js);
-				if (js.message == 'OK') {
-					// $("#div_waiting").addClass("hidden");
-					// $("#div_step2").removeClass("hidden");
-					// $("#button_sendMe").removeAttr("disabled");
-					location.href = js.url;
-				}
-			};
-		},
-	
-		error: function(jqXHR, textStatus, errorThrown){
-			// console.log(jqXHR); // вывод JSON в консоль
-			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
-			// console.log(errorThrown); // вывод JSON в консоль
-			
-			$("#div_waiting").addClass("hidden");
-			// $("#button_sendCard").removeAttr("disabled");
-		}
-	});
-
-	return false;
-
 }
 
 /**
@@ -3821,6 +3695,194 @@ function test_verify_card(id) {
 }
 
 /**
+ * обрабатывает второй шаг верификации карты
+ * @returns
+ */
+function tranzzoPayStep2() {
+	console.log('tranzzoPayStep2');
+
+	$("#div_step1").addClass("hidden");
+	$("#div_waiting").removeClass("hidden");
+
+	var cardNumber = $("#card_number").val();
+
+	var url = "/ru/?ajax";	
+
+	var data = {
+		    typeData: 'checkStatusCard',
+		    cardNumber: cardNumber
+		};
+
+	// отправить массив на сервер
+	// console.log("Передаем запрос ajax " + url);
+	console.log(data);
+
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: {data: data},
+		dataType: 'json',
+		success: function(json){
+			if(json) {
+				//var js = JSON.parse(json);
+				var js = json;
+				
+				console.log(js);
+				if (js.message == 'OK') {
+					$("#div_waiting").addClass("hidden");
+					// если 3ds:
+					if (js.status == 1) {
+						if (js.params ) {
+							// заполняем форму для внешнего поста:
+							console.log(js.params);
+							location.href = js.params.VerifiedURL;
+						}
+						// $("#div_step2_3ds").removeClass("hidden");
+					}
+					// если не 3ds:
+					if (js.status == 2) {
+						$("#div_step2").removeClass("hidden");
+					}
+					// $("#button_sendMe").removeAttr("disabled");
+				}
+			};
+		},
+	
+		error: function(jqXHR, textStatus, errorThrown){
+			// console.log(jqXHR); // вывод JSON в консоль
+			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			// console.log(errorThrown); // вывод JSON в консоль
+			
+			$("#div_waiting").addClass("hidden");
+			// $("#button_sendCard").removeAttr("disabled");
+		}
+	});
+
+	return false;
+}
+
+/**
+ * обрабатывает второй шаг верификации карты - ввод кода, если карта не 3ds
+ * @returns
+ */
+function tranzzoPayStep2_SendCode() {
+	console.log('tranzzoPayStep2_SendCode');
+
+	$("#div_step2").addClass("hidden");
+	$("#div_waiting").removeClass("hidden");
+
+	var cardNumber = $("#card_number").val();
+	var sendCode = $("#sendCode").val();
+
+	var url = "/ru/?ajax";	
+
+	var data = {
+		    typeData: 'paySendCode',
+		    cardNumber: cardNumber,
+		    sendCode: sendCode
+		};
+
+	// отправить массив на сервер
+	console.log("Передаем запрос ajax " + url);
+	console.log(data);
+
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: {data: data},
+		dataType: 'json',
+		success: function(json){
+			if(json) {
+				//var js = JSON.parse(json);
+				var js = json;
+				
+				console.log(js);
+				if (js.message == 'OK') {
+					// $("#div_waiting").addClass("hidden");
+					// $("#div_step2").removeClass("hidden");
+					// $("#button_sendMe").removeAttr("disabled");
+					location.href = js.url;
+				} else {
+					$("#div_waiting").addClass("hidden");
+					$("#div_error").removeClass("hidden");
+					$("#span_error").text(js.message_details);
+					
+				}
+			};
+		},
+	
+		error: function(jqXHR, textStatus, errorThrown){
+			// console.log(jqXHR); // вывод JSON в консоль
+			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			// console.log(errorThrown); // вывод JSON в консоль
+			
+			$("#div_waiting").addClass("hidden");
+			// $("#button_sendCard").removeAttr("disabled");
+		}
+	});
+
+	return false;
+
+}
+
+/**
+ * отправляет данные по карте в CRM при нажатии на кнопку
+ * @returns
+ */
+function tranzzoSendCardDetails() {
+	
+	$("#button_sendCard").attr('disabled', true);	// дизейблим кнопку отправки
+
+	var cardNumber = $("#card_number").val();
+	var cardTime = $("#card_time").val();
+	var cardCvv2 = $("#cvv2").val();
+	var backUrl = $("#backUrl").text();
+	
+	var url = "/ru/?ajax";	
+
+	var data = {
+		    typeData: 'sendCardDetails',
+		    cardNumber: cardNumber,
+		    cardTime: cardTime, 
+		    cardCvv2: cardCvv2,
+		    backUrl: backUrl
+		};
+
+	// отправить массив на сервер
+	// console.log("Передаем запрос ajax " + url);
+	console.log(data);
+
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: {data: data},
+		dataType: 'json',
+		success: function(json){
+			if(json) {
+				//var js = JSON.parse(json);
+				var js = json;
+				
+				console.log(js);
+				if (js.message == 'OK') {
+					tranzzoPayStep2();	// переходим на второй шаг верификации
+				}
+			};
+		},
+	
+		error: function(jqXHR, textStatus, errorThrown){
+			// console.log(jqXHR); // вывод JSON в консоль
+			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			// console.log(errorThrown); // вывод JSON в консоль
+			
+			$("#button_sendCard").removeAttr("disabled");
+		}
+	});
+
+	return false;
+
+}
+
+/**
  * проверяет правильность заполнения полей в "Моих данных", выставляет флаг на соответствующей закладке
  */
 function validateMyData () {
@@ -4163,43 +4225,73 @@ $(".vote-section .star").on("click", function() {
 				
 				FB.api(
 					    // response.authResponse.userID + '/email',
-					    'me?fields=about,email,name,age_range,birthday,context,devices,education,first_name,gender,'
+					    '/me?',
+					    /*
+					    {fields: 'about,email,name,age_range,birthday,context,devices,education,first_name,gender,'
 						+'languages,last_name,link,locale,location,relationship_status,religion,timezone,updated_time,work,'
 						+'verified,'
-						+'accounts,friendlists,friends,family,groups',
+						+'accounts,friendlists,friends,family,groups'},
+						*/
+					    {fields: 'about,email,name,age_range,birthday,context,devices,education,first_name,gender,'
+							+'languages,last_name,link,locale,location,relationship_status,religion,timezone,updated_time,work,'
+							+'verified,'
+							+'accounts,friendlists,friends,family,groups'
+					    },
 					    function (response) {
-					      if (response && !response.error) {
-								console.log(response);
-					        /* handle the result */
-					      } else {
-								console.log(response);
-					      }
-				    }
+					    	if (response && !response.error) {
+								console.log('api_true');
+					    		console.log(response);
+					    	/* handle the result */
+					    	} else {
+								console.log('api_error');
+					    		console.log(response);
+					    	}
+					    }
 				);
 				
-				FB.api(
-					    // response.authResponse.userID + '/friendlists',
-					    response.authResponse.userID + '/friends',
-					    function (response) {
-					      if (response && !response.error) {
-								console.log(response);
-					        /* handle the result */
-					      } else {
-								console.log(response);
-					      }
-				    }
-				);
+//				FB.api(
+//					    // response.authResponse.userID + '/friendlists',
+//					    response.authResponse.userID + '/friends',
+//					    function (response) {
+//					      if (response && !response.error) {
+//								console.log('api_true');
+//								console.log(response);
+//					        /* handle the result */
+//					      } else {
+//								console.log('api_error');
+//								console.log(response);
+//					      }
+//				    }
+//				);
 				
 			} else {
+				console.log('for login');
 				FB.login();
 			}
 		});
 	
-/*	FB.login(function(){
-		  console.log('FB.login');
-		  
-		  
-	  	}, {scope: 'publish_actions'});
-*/
+		/*
+		FB.login(function(response) {
+			if (response.authResponse) {
+				var access_token =   FB.getAuthResponse()['accessToken'];
+				console.log('Access Token = '+ access_token);
+				FB.api('/me', function(response) {
+					console.log('Good to see you, ' + response.name + '.');
+				});
+			} else {
+				console.log('User cancelled login or did not fully authorize.');
+			}
+		}, {scope: ''});
+		*/
+		
+		
+		/*
+		FB.login(function(){
+			  console.log('FB.login');
+			  
+			  
+		  	}, {scope: 'publish_actions'});
+		 */
+
 	}
 

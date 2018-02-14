@@ -32,10 +32,12 @@ $(document).ready(function() {
             $('.rc-anchor-normal-footer smalltext').addClass('hidden');
         }, 1000);
         
+
+        // main.js:37 Uncaught ReferenceError: refreshCounters is not defined
         // запускает обновление счетчика:
-        var timerId = setInterval(function() {
-            refreshCounters();
-        }, 20000);
+        // var timerId = setInterval(function() {
+        //     refreshCounters();
+        // }, 20000);
     }
 
     if ($('#verify').length) {
@@ -979,9 +981,6 @@ function onKeyUpPhone(idPhone) {
     var str = $("#" + idPhone).val();
     var strNum = str.replace(/\D+/g,"");    // оставляем только цифры
     
-    //console.log('str= '+str);
-    //console.log('strNum= '+strNum);
-    
     if (strNum.length > 4) {
         var flag = false; // признак недопустимости номера
         
@@ -1016,12 +1015,15 @@ function onKeyUpPhone(idPhone) {
             $('#buttonGetCode').attr('disabled', true);
             flagReg.phone = false;
         }
-        //console.log(flagReg);
-
     }
     
     return true;
 }
+
+// событие при нажатии в поле телефон формы входа
+$("#phone").keyup(function() {
+    onKeyUpPhone('phone');
+});
 
 
 /**
