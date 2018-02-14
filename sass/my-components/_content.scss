@@ -160,6 +160,7 @@
         }
         
         .calculator-skidka-text {
+            color: #003764;
             @media screen and (max-width: $screen-sm-max) {
                 text-align: left;
             }
@@ -167,7 +168,7 @@
     }
     .calculator-heading--hb,
     .calculator-heading--skidka {
-        padding: 20px 100px 20px 20px;
+        padding: 20px 110px 20px 20px;
         @media screen and (max-width: $screen-md-max) {
             padding-right: 60px;
         }

@@ -1822,9 +1822,9 @@ $.fn.equalizerAnimation = function(speed, barsHeight) {
             $(this).css({ height: randomBetween(barsHeight[i]) + 'px' });
         });
     }, speed);
-    $equalizer.on('click', function() {
+    /*$equalizer.on('click', function() {
         $equalizer.toggleClass('paused');
-    });
+    });*/
 }
 
 var barsHeight = [

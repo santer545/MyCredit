@@ -4,7 +4,12 @@
 	border: 1px solid #dfdfdf;
 	margin-bottom: 40px;	
 	@media screen and (max-width: $screen-sm-max) {
-		margin-bottom: 60px;	
+		margin-bottom: 30px;	
+	}
+	.verify-form-bottom {
+		.btn {
+			padding: 10px 20px;	
+		}
 	}
 	&--second {
 		.verify-header-top {
@@ -13,14 +18,52 @@
 			}
 		}
 		.verify-form-bottom {
+			margin-top: 0;	
 			@media screen and (max-width: $screen-sm-max) {
 				margin-top: 0;	
+			}
+		}
+		.verify-form-bottom {
+			.btn {
+				float: left;
+				margin-left: 20px;	
+				@media screen and (max-width: $screen-xs-max) {
+					float: none;
+				}
+				@media screen and (max-width: 600px) {
+					margin-left: 0;	
+				}
+			}
+		}
+		.verify-info {
+			margin-left: 20px;	
+		}
+		.verify-form {
+			padding: 25px 0 8px;	
+			@media screen and (max-width: $screen-xs-max) {
+				padding-bottom: 25px;	
+			}
+			.form-label {
+				min-width: 0;	
+				@media screen and (max-width: $screen-md-max) {
+					min-width: 120px;	
+				}
+				@media screen and (max-width: $screen-xs-max) {
+					display: inline-block;	
+				}
+				@media screen and (max-width: 340px) {
+					display: block;	
+				}
 			}
 		}
 	}
 }
 
 .verify {
+
+	&-body {
+		background-color: #fff;
+	}
 
 	&-page {
 		padding: 0 0 50px;
@@ -109,7 +152,7 @@
 			
 			.verify-form .form-group-left,
 			.verify-form .form-group-right {
-				@media screen and (max-width: $screen-xs-max) {
+				@media screen and (max-width: 600px) {
 					float: none;
 					width: 100%;	
 					margin-bottom: 20px;
@@ -185,9 +228,7 @@
 		margin: 0 auto;	
 		
 		@media screen and (max-width: $screen-sm-max) {
-			max-width: none;
 			padding: 0 15px;
-			margin: 0;		
 		}
 
 	}
@@ -225,14 +266,26 @@
 		font-family: $font-family-roman;
 		background-color: #eeeeee;
     	&-top {
-    		padding: 30px 0 30px 0;
+    		padding: 30px 0 30px 40px;
+
+    		svg {
+    			width: 40px;
+    			height: 40px;	
+    			display: inline-block;
+    			vertical-align: middle;
+    		}
     		@media screen and (max-width: $screen-md-max) {
-    			padding-left: 125px;	
     			padding-right: 200px;	
     		}
+    		@media screen and (max-width: $screen-sm-max) {
+    			padding-left: 15px;	
+    			font-size: 16px;
+    		}
     		@media screen and (max-width: $screen-xs-max) {
-    			padding: 10px 20px 10px 80px;
-    			font-size: 13px;	
+    			padding-right: 100px;	
+    			padding-top: 15px;	
+    			padding-bottom: 15px;	
+    			font-size: 14px;	
     		}
     	}
 
@@ -242,38 +295,52 @@
 			top: 0;	
 			bottom: 0;	
 			background-color: #fcfbfb;
-			padding: 35px 50px 35px 0;	
+			padding: 35px 40px 35px 0;	
 			min-width: 360px;	
 			text-align: center;
 			color: #878384;
 			line-height: 20px;	
 			z-index: 1;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
 			@media screen and (max-width: $screen-md-max) {
 				padding: 10px;	
 				min-width: 160px;	
 				font-size: 14px;	
 			}
-			@media screen and (max-width: $screen-xs-max) {
-				display: none;	
+			@media screen and (max-width: 600px) {
+				min-width: 0;	
+				display: block;	
 			}
-
-			&:after {
-				position: absolute;	
-				content: '';
-				right: calc(100% - 152px);	
-				top: 0;	
-				bottom: 0;
-				width: 200px;	
-				border-radius: 65px;
-				background-color: #fcfbfb;	
-				z-index: -1;	
-				@media screen and (max-width: $screen-md-max) {
-					width: 150px;	
-					right: calc(100% - 101px);	
-				}
-				@media screen and (max-width: $screen-md-max) {
+			> div {
+				@media screen and (max-width: 600px) {
 					display: none;	
 				}
+			}
+			
+
+			&:after {
+				position: absolute;
+			    content: "";
+			    right: calc(100% - 152px);
+			    top: -24px;
+			    bottom: 0;
+			    width: 200px;
+			    height: 200px;
+			    border-radius: 200px;
+			    background-color: #fcfbfb;
+			    z-index: -1;
+			    @media screen and (max-width: $screen-xs-max) {
+			    	right: calc(100% - 160px);
+				    top: -24px;
+				    bottom: 0;
+				    width: 184px;
+				    height: 157px;
+			    }
+			    @media screen and (max-width: 600px) {
+			    	display: none;	
+			    }
 			}
 
 			img,
@@ -283,6 +350,16 @@
 			}
 			img {
 				margin-left: 15px;	
+				@media screen and (max-width: 600px) {
+					display: block;	
+					margin: 0 auto 10px;	
+				}
+				& + img {
+					@media screen and (max-width: 600px) {
+						margin-bottom: 0;	
+						max-width: 55px;	
+					}
+				}
 			}
 			span {
 				@media screen and (max-width: $screen-md-max) {
@@ -294,19 +371,18 @@
 
     	&-bottom {
     		background-color: #f8f8f8;
-    		padding: 10px 0;	
+    		padding: 10px 0 10px 40px;	
 			@media screen and (max-width: $screen-sm-max) {
-				padding-left: 5px;	
-				padding-right: 260px;	
+				padding-left: 15px;	
 			}
-			@media screen and (max-width: $screen-xs-max) {
-				padding-right: 30px;	
-				text-align: center;
-			}
+			
     		img {
-    			margin-right: 90px;	
+    			margin-right: 40px;	
     			@media screen and (max-width: $screen-sm-max) {
     				margin-right: 20px;
+    			}
+    			@media screen and (max-width: 600px) {
+    				max-width: 45px;	
     			}
     		}
     	}
@@ -340,16 +416,12 @@
     		margin-top: 30px;	
     		.form-group {
     			float: left;
-    			@media screen and (max-width: $screen-sm-max) {
-    				float: none;
-    			}
     		}
     		.btn {
     			width: 225px;	
-    			float: right;	
-    			@media screen and (max-width: $screen-sm-max) {
+    			float: right;
+    			@media screen and (max-width: $screen-xs-max) {
     				float: none;	
-
     			}
     		}
     		.verify-description {
@@ -390,9 +462,14 @@
     			min-width: 120px;
     			padding-right: 6px;
     		}
-			@media screen and (max-width: $screen-xs-max) {
-				width: 100%;	
-				margin: 0 0 10px;	
+    		@media screen and (max-width: $screen-xs-max) {
+    			margin-left: 0;	
+    			display: block;	
+    		}
+			@media screen and (max-width: 600px) {
+				display: inline-block;	
+			}
+			@media screen and (max-width: 340px) {
 				display: block;	
 			}
     	}
@@ -407,11 +484,7 @@
 			@media screen and (max-width: $screen-sm-max) {
 				width: 200px;	
 			}
-			@media screen and (max-width: $screen-xs-max) {
-				width: 100%;	
-				margin: 0;	
-				display: block;	
-			}
+			
 			&--date {
 				width: 90px;	
 			}
@@ -436,7 +509,7 @@
 				display: inline-block;	
 				vertical-align: middle;	
 				margin-left: 20px;	
-				@media screen and (max-width: $screen-xs-max) {
+				@media screen and (max-width: 600px) {
 					margin-left: 0;	
 					margin-top: 10px;	
 					font-size: 12px;	
@@ -446,7 +519,7 @@
     	.form-group-left {
 			float: left;
 			width: 50%;	
-			@media screen and (max-width: $screen-xs-max) {
+			@media screen and (max-width: 600px) {
 				float: none;
 				width: 100%;	
 				margin-bottom: 20px;	
@@ -459,11 +532,20 @@
     		text-align: right;
 			width: 50%;	
 			@media screen and (max-width: $screen-xs-max) {
+				float: left;
+				width: auto;	
+				text-align: left;	
+			}
+			@media screen and (max-width: 600px) {
 				width: 100%;	
 				float: none;	
 				text-align: left;
 			}
     	}
+    }
+    &-info {
+    	display: inline-block;
+    	vertical-align: middle;
     }
 }
 

@@ -1192,9 +1192,7 @@
             }
         }
     }
-    .pay-block-holder {
-        padding-top: 0;
-    }
+    
     .pay-block {
         margin-right: 20px;
         @media screen and (max-width: $screen-md-max) {
@@ -1208,6 +1206,11 @@
             margin-bottom: 0;
             margin-right: 0;
             width: 200px;
+            &--margin {
+                @media screen and (max-width: $screen-xs-max) {
+                    margin-bottom: 20px;    
+                }
+            }
         }
         input {
             width: 150px;
@@ -1224,6 +1227,10 @@
                 margin-left: 0;
                 display: inline;
             }
+        }
+        .caret,
+        .bs-caret {
+            margin-left: 0; 
         }
         .btn-personal {
             padding: 9px 15px;
@@ -1250,6 +1257,11 @@
             text-decoration: underline;
             &:hover {
                 text-decoration: none;
+            }
+        }
+        &-holder {
+            @media screen and (max-width: $screen-xs-max) {
+                padding-bottom: 20px;   
             }
         }
     }
@@ -1391,6 +1403,9 @@
                     margin-left: 0;
                 }
             }
+        }
+        .tab-pane--visible {
+            overflow: visible;
         }
     }
     &-right {
