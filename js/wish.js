@@ -2,9 +2,7 @@ $(document).ready(function() {
     februaryValidate();
     customInput();
     setLike();
-    $('.wish-text').jScrollPane({
-        arrowScrollOnHover: true
-    });
+    overflowWishText();
 });
 
 
@@ -34,7 +32,6 @@ function wishSend() {
             if (json) {
                 var js = json;
                 var lang = document.getElementById('lang').innerText;
-                console.log(js);
                 if (js.message == 'OK') {
                     // envelop animations
                     $('.envelop-wrapper').addClass('active');
@@ -166,7 +163,6 @@ function customInput() {
         });
         fileInput.addEventListener("change", function(event) {
             if (document.getElementById('wish-file').files[0].size > 200000) {
-                console.log('to much!');
                 the_return.classList.remove('file-return');
                 the_return.classList.add('error-text');
                 the_return.innerHTML = 'Ваш файл весит слишком много(рекомендуемый размер не больше 100 килобайт!)';
@@ -242,4 +238,19 @@ function setLike() {
             }
         });
     }
+}
+
+function overflowWishText() {
+    
+
+    var text = $('.wish-text');
+    text.each(function(item, value) {
+        if($(value).height() > 120) {
+            $(value).jScrollPane({
+                arrowScrollOnHover: true
+            });
+        }
+    });
+    
+    
 }

@@ -23,7 +23,7 @@
     left: 0;
     right: 0;
     height: 100px;
-    z-index: 2;
+    z-index: 4;
     -webkit-box-shadow: 25px 0px 127px 12px rgba(154, 91, 206, 1);
     -moz-box-shadow: 25px 0px 127px 12px rgba(154, 91, 206, 1);
     box-shadow: 25px 0px 127px 12px rgba(154, 91, 206, 1);
@@ -1001,24 +1001,34 @@
             &.custom {
                 a,
                 span {
-                    padding: 5px 23px 5px 7px;
+                    padding: 5px 12px 5px 10px;
                 }
             }
         }
     }
 }
 
+.heart-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
 
 
 
 @keyframes xxx {
     0% {
-        transform: translate(0, 0);
+        bottom: -70px;
     }
     100% {
-        transform: translate(0, -1100px);
+        bottom: 1300px;
     }
 }
+
+
 
 @keyframes moveUp {
     100% {
@@ -1197,6 +1207,11 @@ $black: #0055b8;
 }
 .wish {
 
+    &-list {
+        position: relative;
+        z-index: 3;
+    }
+
 
 
     &-item {
@@ -1213,6 +1228,10 @@ $black: #0055b8;
         background-repeat: no-repeat;
         background-position: center;
         border-radius: 5px 0 0 5px;
+
+        &--inverse {
+            background-size: contain;
+        }
     }
     &-info {
         position: relative;
@@ -1256,7 +1275,6 @@ $black: #0055b8;
     }
     &-text {
         max-height: 190px;
-        overflow: hidden;
         font-size: 14px;
         word-break: break-word;
         @media screen and (max-width: $screen-xs-max) {
@@ -1352,6 +1370,8 @@ $black: #0055b8;
 }
 
 .february-pagination {
+    position: relative;
+    z-index: 3;
     padding: 20px 0;
     .news-pagination {
         padding-top: 10px;

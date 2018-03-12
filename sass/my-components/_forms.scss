@@ -220,6 +220,7 @@
         width: 110px;
         display: inline-block;
         vertical-align: top;
+        padding: 0 20px 0 0;
         @media screen and (max-width: $screen-md-max) {
             width: 30%;
         }
@@ -265,6 +266,7 @@
         padding-top: 13px;
         padding-left: 30px;
         margin-bottom: 0;
+        word-break: break-word;
         font: #{$form-label-font-size} / #{$form-label-line-height} $font-family-bold;
         color: $form-label-color;
         @media screen and (max-width: $screen-xs-max) {
@@ -420,15 +422,16 @@
     &-col-4 {
         width: 160px;
         float: left;
+        padding: 0 10px;
         @media screen and (max-width: $screen-xs-max) {
             width: 31%;
         }
-        &:not(:last-child) {
+        /* &:not(:last-child) {
             margin-right: 3%;
             @media screen and (max-width: $screen-xs-max) {
                 margin-right: 3%;
             }
-        }
+        } */
         input {
             width: 100%;
         }
@@ -436,7 +439,7 @@
     &-col-5 {
         width: 50%;
         float: left;
-        padding-right: 10px;
+        padding: 0 10px;
         @media screen and (max-width: $screen-xs-max) {
             width: 100%;
             float: none;
@@ -933,6 +936,8 @@ $file-upload-size: 300px;
 
 
 
+
+
 /*---------------------------------validation-------------------------*/
 
 textarea {
@@ -1000,11 +1005,6 @@ textarea {
     .has-error {
         .form-control {
             border: 1px solid $error-border;
-            @include box-shadow(0 0 0 0 rgba(0,
-            0,
-            0,
-            0));
-            background-color: #f1d4d4;
             &::-webkit-input-placeholder {
                 /* Chrome/Opera/Safari */
                 color: #eb2a32;
@@ -1019,13 +1019,40 @@ textarea {
             }
         }
     }
+    .has-success {
+        .form-control {
+            &::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                color: #393939;
+            }
+            &::-moz-placeholder {
+                /* Firefox 19+ */
+                color: #393939;
+            }
+            &:-ms-input-placeholder {
+                /* IE 10+ */
+                color: #393939;
+            }
+        }
+    }
 }
 
 .form {
     .error_text {
-        padding-top: 7px;
+
+
+        position: relative;
+        padding: 15px;
+        margin-bottom: 0;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        margin-top: 5px;    
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+
+
         display: none;
-        color: #eb2a32;
         text-align: left;
         font: #{$error-font-size} / #{$error-line-height} $font-family-sans-serif;
         @media screen and (max-width: $screen-sm-max) {
@@ -1058,18 +1085,15 @@ textarea {
 .form {
     .has-error {
         .error_text {
-            display: inline-block;
-            width: 100%;
+            display: block;
         }
         &~.error-text {
-            display: inline-block;
-            width: 100%;
+            display: block;
         }
     }
     .jcf-number.has-error+.error_text,
     .bootstrap-select.has-error+.error_text {
-        display: inline-block;
-        width: 100%;
+        display: block;
     }
 }
 
@@ -1139,14 +1163,26 @@ textarea {
 }
 
 .error-text {
-    color: $error-text-color;
     font-size: $error-font-size;
+    display: block;
+
+    position: relative;
+    margin-top: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
 }
 
 .card-error {
     display: inline-block;
     margin-bottom: 20px;
 }
+
+
 
 
 
@@ -1250,6 +1286,8 @@ textarea {
 }
 
 
+
+
 /* Yuk! CSS Hack for IE6 3 pixel bug :( */
 
 * html .jspCorner {
@@ -1263,7 +1301,9 @@ textarea {
 }
 
 
-.password-list {
+
+
+/* .password-list {
     padding: 0;
     margin: 0;
     list-style-type: none;
@@ -1275,6 +1315,110 @@ textarea {
         margin-bottom: 20px;    
         width: 300px;
     }
+} */
+
+.password-wrapper {
+    overflow: hidden;
+    font-size: 15px;
+    @media screen and (max-width: $screen-md-max) {
+        font-size: 13px;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        width: 300px;
+    }
+}
+
+.password-list {
+    margin: 0;
+    padding: 0 25px 0 0;
+    float: left;
+    width: 50%;
+    list-style-type: none;
+}
+
+.password-list li {
+    display: inline-block;
+    position: relative;
+    padding-left: 20px;
+    @media screen and (max-width: $screen-md-max) {
+        padding-left: 14px;
+    }
+    @media screen and (max-width: $screen-sm-max) {
+        padding-left: 20px;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        padding-left: 14px;
+    }
+}
+
+.password-list li:before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    background-color: #0056b8;
+    transition: all .7s;
+}
+
+.password-list li.active:before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 10px;
+    height: 14px;
+    border-radius: 0;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    transform: rotate(45deg);
+    transform-origin: 0% 100%;
+    background-color: transparent;
+    animation: checkbox-check 125ms 250ms cubic-bezier(.4, .0, .23, 1) forwards;
+    @media screen and (max-width: $screen-md-max) {
+        top: 5px;
+    }
+}
+
+.password-list li:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    width: 0;
+    height: 1px;
+    background-color: #ccc;
+    transition: width .7s;
+}
+
+.password-list li.active:after {
+    width: 100%;
+}
+
+.password-wrapper ul:first-child {
+    /* padding-right: 30px; */
+}
+
+@keyframes checkbox-check {
+    0% {
+        width: 0;
+        height: 0;
+        border-color: #45bc75;
+        transform: translate3d(0, 0, 0) rotate(45deg);
+    }
+    33% {
+        width: .2em;
+        height: 0;
+        transform: translate3d(0, 0, 0) rotate(45deg);
+    }
+    100% {
+        width: 6px;
+        height: 12px;
+        border-color: #45bc75;
+        transform: translate3d(0, -.5em, 0) rotate(45deg);
+    }
 }
 
 .has-error {
@@ -1284,19 +1428,24 @@ textarea {
     .password-list li:before {
         background-color: #eb2a32;
     }
+    .password-list li.active:before {
+        background-color: transparent;
+    }
 }
 
-.password-list li {
+
+/* .password-list li {
     position: relative;
     padding-left: 15px;
     display: inline-block;
     vertical-align: top;
-    font-size: 13px;    
+    font-size: 13px;
     width: 50%;
     transition: all 0.7s;
-}
+} */
 
-.password-list li:before {
+
+/* .password-list li:before {
     content: '';
     position: absolute;
     top: 7px;
@@ -1306,33 +1455,35 @@ textarea {
     border-radius: 6px;
     background-color: #0056b8;
     transition: all 0.7s;
-    
-}
+} */
 
 .password-list li:after {
     content: '';
     position: absolute;
-    top: 9px;
-    left: 0;
+    top: 11px;
+    left: 15px;
     width: 0;
     height: 1px;
     background-color: #ccc;
     -webkit-transition: width 0.7s;
     -o-transition: width 0.7s;
     transition: width 0.7s;
-    
+    @media screen and (max-width: $screen-xs-max) {
+        top: 9px;
+    }
 }
 
 .password-list li.active {
     color: #ccc;
 }
 
-.password-list li.active:before {
+
+/* .password-list li.active:before {
     background-color: #ccc;
-}
+} */
 
 .password-list li.active:after {
-    width: 100%;
+    width: calc(100% - 15px);
 }
 
 .mobile-full-width.text-right {

@@ -98,15 +98,13 @@
             }
         }
         &-logo {
+            position: relative; 
             display: block;
             border-bottom: none;
             margin-top: 33px;
             img {
-                max-width: 95%;
-                @include scale(1);
-                @include transition(transform 1s);
                 @media screen and (max-width: $screen-xs-max) {
-                    max-width: 155px;
+                    max-width: 150px;
                 }
                 @media screen and (max-width: 350px) {
                     max-width: 110px;
@@ -120,6 +118,15 @@
             }
             @media screen and (max-width: $screen-xs-max) {
                 margin-top: 16px;   
+            }
+            span {
+                position: absolute;
+                bottom: -3px;
+                right: 7px;
+                font-size: 7px;
+                text-transform: uppercase;
+                letter-spacing: 1.2px;   
+                white-space: nowrap;
             }
         }
         &-container {
@@ -445,7 +452,7 @@
         padding-top: 7px;   
     }
     @media screen and (max-width: $screen-sm-max) {
-        padding-top: 11px;
+        padding-top: 12px;
     }
     @media screen and (max-width: $screen-xs-max) {
         width: 80%;
@@ -901,6 +908,11 @@
 }
 
 .calculator {
+    &-formula {
+        display: block;
+        color: #ccc;
+        text-decoration: line-through;
+    }
     &-hb {
         padding: 5px 10px;
         border-radius: 25px;
@@ -1252,7 +1264,6 @@
             &.calculator-give-sum {
                 font-family: $font-family-bold;
                 color: $second-color;
-                padding-left: 10px;
                 @media screen and (max-width: $screen-xs-max) {
                     padding: 0;
                 }
@@ -1267,6 +1278,11 @@
             @media screen and (max-width: $screen-xs-max) {
                 width: 66.666%;
                 float: left;
+            }
+            & + .text-center {
+                @media screen and (max-width: $screen-md-max) {
+                    text-align: left;   
+                }
             }
             &+.calculator-table--wr {
                 @media screen and (max-width: $screen-xs-max) {
@@ -1295,7 +1311,6 @@
                         }
                         .calculator-give-sum {
                             font-family: $font-family-medium;
-                            padding-left: 5px;
                         }
                     }
                 }
@@ -1362,6 +1377,9 @@
     list-style-type: none;
     padding-top: 20px;
     font-size: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     @media screen and (max-width: $screen-sm-max) {
         padding: 20px 0;
     }
@@ -1370,7 +1388,7 @@
     }
     li {
         display: inline-block;
-        &:not(:last-child) {
+        /* &:not(:last-child) {
             margin-right: 6%;
             @media screen and (max-width: 1200px) {
                 margin-right: 5%;
@@ -1391,12 +1409,12 @@
                 margin-right: 3%;
             }
         }
-
+        
         @media screen and (max-width: $screen-xs-max) {
             margin-right: 10px;
-        }
+        } */
     }
-    img {
+    /* img {
         display: inline-block;
     }
     &:after {
@@ -1409,7 +1427,7 @@
         @media screen and (max-width: $screen-xs-max) {
             display: none;
         }
-    }
+    } */
 }
 
 .panel-body {
@@ -2906,7 +2924,8 @@
         }
         @media screen and (max-width: 1100px) {
             width: auto;
-            left: 20px;
+            left: 0;
+            right: 0;   
         }
         @media screen and (max-width: $screen-sm-max) {
             bottom: 0;
@@ -3283,28 +3302,28 @@
 
 .credit-zero-right {
     position: absolute;
-    right: 0;
-    bottom: 20px;
-    width: 19.53%;
+    right: 50px;
+    bottom: 100px;
+    width: 15%;
     @media screen and (max-width: 1700px) {
         width: 13.5%;
         top: 20px;  
         bottom: auto;
-        right: 30px;      
+        right: 45px;      
     }
     @media screen and (max-width: 1500px) {
         top: 5px;
         bottom: auto;
         width: 11.53%;
+        right: 20px;
     }
     @media screen and (max-width: 1400px) {
         width: 9.53%;
-        right: 20px;
     }
     @media screen and (max-width: 1300px) {
-        top: 0;
+        top: 5px;
         width: 9%;
-        right: 30px;
+        right: 10px;
     }
     @media screen and (max-width: $screen-md-max) {
         bottom: auto;
@@ -3349,19 +3368,30 @@
 .credit-zero-rate {
     position: absolute;
     bottom: 20px;
-    right: 11%;
+    left: 30%;
     font-family: $font-family-roman;
     font-size: 12px;
     color: #363636;
-    @media screen and (max-width: 1400px) {
-        right: 20%;
+    @media screen and (max-width: 1500px) {
+        left: 24%;
     }
     @media screen and (max-width: 1300px) {
-        bottom: 50px;
-        right: 100px;
+        left: 20%;
     }
     @media screen and (max-width: $screen-md-max) {
-        right: 0;
+        left: 30%;
+        bottom: auto;
+        top: 38%;
+    }
+    @media screen and (max-width: $screen-sm-max) {
+        top: 65%;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        left: 20px;
+        top: 110px;
+    }
+    @media screen and (max-width: 500px) {
+        top: 60px;
     }
     &--mobile {
         display: none;
@@ -3378,6 +3408,12 @@
         @media screen and (max-width: 500px) {
             top: 36%;
             bottom: auto;
+        }
+    }
+    &--inverse {
+        color: #fff;
+        @media screen and (max-width: $screen-xs-max) {
+            color: #363636;
         }
     }
 }
@@ -4395,6 +4431,9 @@
 .advantages {
     position: relative;
     padding: $advantages-padding;
+    @media screen and (max-width: $screen-md-max) {
+        padding-top: 100px; 
+    }
     @media screen and (max-width: $screen-sm-max) {
         padding: $advantages-padding-tablet;
     }
@@ -5038,6 +5077,11 @@
                     text-decoration: underline;
                 }
             }
+
+            @media screen and (max-width: $screen-xs-max) {
+                    color: #ed592b;
+                    border-bottom: 1px dashed #ed592b;
+                }
         }
         &--inverse {
             color: #fff;
@@ -5047,7 +5091,8 @@
             a {
                 color: #fff;
                 @media screen and (max-width: $screen-xs-max) {
-                    color: #0055b8;
+                    color: #ed592b;
+                    border-bottom: 1px dashed #ed592b;
                 }
                 &:hover,
                 &:focus {
@@ -5233,6 +5278,7 @@
             }
             @media screen and (max-width: 1100px) {
                 padding-bottom: 45%;
+                min-height: 560px;  
             }
             @media screen and (max-width: $screen-sm-max) {
                 padding-bottom: 50%;
@@ -5267,7 +5313,8 @@
                     background-position: 17% -55px;
                 }
                 @media screen and (max-width: 1100px) {
-                    padding-bottom: 45%;
+                    padding-bottom: 35%;
+                    background-position: 17% -83px;
                 }
                 @media screen and (max-width: $screen-sm-max) {
                     padding-bottom: 50%;
@@ -5972,7 +6019,7 @@ div#fancy_outer {
         bottom: 0;
         left: 0;
         right: 0;
-        font: 35px $font-family-roman;
+        font: 20px $font-family-roman;
         cursor: pointer;
         z-index: 5;
         @media screen and (max-width: $screen-sm-max) {
@@ -5993,6 +6040,9 @@ div#fancy_outer {
             0);
             img {
                 margin-bottom: 0;
+                width: 50px;    
+                height: 50px;   
+                margin-right: 15px; 
             }
             p {
                 display: inline-block;
@@ -6179,6 +6229,7 @@ div#fancy_outer {
 .iframe-relative {
     position: relative;
     overflow: hidden;
+    margin-bottom: 15px;
     &:before {
         content: '';
         position: absolute;
@@ -6188,6 +6239,21 @@ div#fancy_outer {
         width: 2px;
         background-color: #fff;
         z-index: 2;
+    }
+    &:after {
+        content: '';
+        position: absolute; 
+        top: 0; 
+        bottom: 0;  
+        left: 0;    
+        right: 0;   
+        background-color: rgba(56, 138, 182, 0.8);
+        z-index: 3; 
+    }
+    &.active {
+        &:after {
+            display: none;  
+        }
     }
 }
 
@@ -6867,7 +6933,7 @@ div#fancy_outer {
 
     .callback-form {
         position: relative;
-        padding: 0 10px 0 10px;
+        padding: 0 10px 40px 10px;
         border-radius: 5px;
         @media screen and (max-width: $screen-sm-max) {
             margin-bottom: 30px;
@@ -7205,6 +7271,11 @@ div#fancy_outer {
                 padding-top: $footer-phone-padding-mobile;
                 padding-right: 0;
             }
+            ul {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+            }
             a[href^="tel"] {
                 color: $white;
                 font-size: $footer-link-font-size;
@@ -7217,6 +7288,10 @@ div#fancy_outer {
                         opacity: 1;
                     }
                 }
+            }
+            a {
+                color: #fff;
+                text-decoration: none;
             }
             a[href^="tel"].phone-city {
                 font-size: $footer-phone-city-font-size;
@@ -7482,7 +7557,7 @@ div#fancy_outer {
 
 .how-widget {
     position: fixed;
-    bottom: 160px;
+    bottom: 140px;
     right: 75px;
     width: 80px;
     height: 80px;
@@ -7629,7 +7704,6 @@ div#fancy_outer {
                 padding-right: 5px;
             }
             @media screen and (max-width: $screen-sm-max) {
-                width: 50%;
                 display: inline-block;
                 vertical-align: top;
                 margin-bottom: 20px;
@@ -8328,6 +8402,17 @@ div#fancy_outer {
     .form-group--margin {
         @media screen and (max-width: $screen-xs-max) {
             margin-bottom: 10px;
+        }
+    }
+
+    &-linkwrapper {
+        padding: 10px 0 0;
+
+        a {
+            display: inline-block;
+            color: #0758be;
+            font-size: 16px;
+            font-family: $font-family-medium;
         }
     }
 }
@@ -9487,8 +9572,10 @@ input.rating {
                 position: absolute;
                 top: 100%;
                 left: 0;
-                right: 0;
+                right: 20px;
                 color: #fff;
+                background-color: #fff;
+                color: #f50b0b;
             }
             &:nth-of-type(3) {
                 width: 20.96%;

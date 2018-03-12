@@ -160,6 +160,37 @@ $(document).ready(function() {
         }
     });
 
+    $('.js-carousel-speak').owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 7000,
+        nav: true,
+        margin: 20,
+        navText: ['', ''],
+        responsive: {
+            0: {
+                items: 1,
+                margin: 0,
+                nav: false,
+                dots: true,
+                dotsEach: true
+            },
+            768: {
+                items: 2,
+                margin: 20,
+                nav: false,
+                dots: true,
+                dotsEach: true
+            },
+            1280: {
+                items: 4,
+                margin: 20,
+                dots: false,
+                nav: true
+            }
+        }
+    });
+
     $(document).on('click', '.owl-cpa .owl-item', function() {
         n = $(this).index();
         $('.owl-wrapper').trigger('owl.goTo', n);
@@ -551,13 +582,16 @@ $(document).ready(function() {
         $("#passportOld").mask("aa999999", {
             autoclear: false
         });
+        $('.js-card').mask("9999", {
+            autoclear: false
+        });
         $("#colleague-phone").mask("+38099 999 9999", {
             placeholder: " "
         });
         $("#js-number-card").mask("9999 9999 9999 9999", {
             placeholder: " "
         });
-        $("#js-cvv").mask("999", {
+        $("#js-cvv, .js-cvv").mask("999", {
             placeholder: " "
         });
         $("#sms-code").mask("999999");
@@ -1056,6 +1090,7 @@ $(document).ready(function() {
         click: function() {
             $(this).hide();
             $(this).closest('.iframe-relative').children('.numbers-gif').hide();
+            $(this).closest('.iframe-relative').addClass('active');
             $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
         }
     });
@@ -1063,6 +1098,7 @@ $(document).ready(function() {
         click: function() {
             $(this).hide();
             $(this).closest('.iframe-relative').children('.numbers-gif').hide();
+            $(this).closest('.iframe-relative').addClass('active');
             $('#promo1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
         }
     });
@@ -1653,8 +1689,8 @@ function partnersFormOpener1() {
 
 function paswwordChecker() {
     var element = document.getElementById('password');
-    var expBigLetter = /[A-Z]+/,
-        expSmallLetter = /[a-z]+/,
+    var expBigLetter = /[А-ЯЁA-Z]+/,
+        expSmallLetter = /[а-яёa-z]+/,
         expNumber = /\d+/;
     if (element) {
         element.oninput = function() {
@@ -1790,17 +1826,24 @@ function hearts() {
 
         //$('.heart-wrapper').append('<h2>Добавление дочернего элемента</h2>');
 
-        $('.full-height').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;opacity:" + r_bg + ";animation-duration:" + r_time + "s'><img src='assets/images/wishes/heart.svg'></div>");
+        $('.js-heart-wrapper').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;opacity:" + r_bg + ";animation-duration:" + r_time + "s'><img src='assets/images/wishes/heart.svg'></div>");
 
-        $('.full-height').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%'><img src='assets/images/wishes/heart.svg'></div>");
+        $('.js-heart-wrapper').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%'><img src='assets/images/wishes/heart.svg'></div>");
+
+        
 
         $('.heart').each(function() {
-            var top = $(this).css("top").replace(/[^-\d\.]/g, '');
-            var width = $(this).css("width").replace(/[^-\d\.]/g, '');
-            if (top <= -100 || width >= 150) {
-                $(this).detach();
+            var bottom = $(this).css('bottom').replace(/[^-\d\.]/g, '');
+            
+            if(bottom > 900) {
+                $(this).remove();
+                console.log('REmove');
             }
+            
         });
+
+        
+
     }, 500);
 }
 

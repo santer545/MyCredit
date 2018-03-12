@@ -1,0 +1,580 @@
+.repayment-top-info {
+    display: flex;
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 20px;
+    }
+
+    svg {
+        margin-right: 15px;
+        width: 50px;
+        min-width: 50px;
+        height: 35px;
+    }
+}
+
+.new-repayment-data {
+    padding: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 50px;
+
+    @media screen and (max-width: $screen-sm-max) {
+        margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 500px) {
+        padding: 15px;
+    }
+}
+
+.repayment-card {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #acbace;
+    width: 435px;
+    height: 270px;
+
+    background: rgba(232, 235, 244, 1);
+    background: -moz-linear-gradient(top, rgba(232, 235, 244, 1) 0%, rgba(212, 218, 233, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(232, 235, 244, 1)), color-stop(100%, rgba(212, 218, 233, 1)));
+    background: -webkit-linear-gradient(top, rgba(232, 235, 244, 1) 0%, rgba(212, 218, 233, 1) 100%);
+    background: -o-linear-gradient(top, rgba(232, 235, 244, 1) 0%, rgba(212, 218, 233, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(232, 235, 244, 1) 0%, rgba(212, 218, 233, 1) 100%);
+    background: linear-gradient(to bottom, rgba(232, 235, 244, 1) 0%, rgba(212, 218, 233, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8ebf4', endColorstr='#d4dae9', GradientType=0);
+
+    @media screen and (max-width: $screen-md-max) {
+        width: 410px;
+    }
+
+    @media screen and (max-width: $screen-xs-max) {
+        width: 395px;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 100%;
+    }
+
+    .form-label {
+        display: block;
+        width: 100%;
+        float: none;
+        margin: 0 0 10px;
+        padding: 0;
+        font-size: 12px;
+    }
+
+    &--inverse {
+        float: right;
+        margin-top: -190px;
+        z-index: 0;
+        background: rgba(230, 233, 243, 1);
+        background: -moz-linear-gradient(top, rgba(230, 233, 243, 1) 0%, rgba(211, 216, 232, 1) 24%, rgba(211, 216, 232, 1) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(230, 233, 243, 1)), color-stop(24%, rgba(211, 216, 232, 1)), color-stop(100%, rgba(211, 216, 232, 1)));
+        background: -webkit-linear-gradient(top, rgba(230, 233, 243, 1) 0%, rgba(211, 216, 232, 1) 24%, rgba(211, 216, 232, 1) 100%);
+        background: -o-linear-gradient(top, rgba(230, 233, 243, 1) 0%, rgba(211, 216, 232, 1) 24%, rgba(211, 216, 232, 1) 100%);
+        background: -ms-linear-gradient(top, rgba(230, 233, 243, 1) 0%, rgba(211, 216, 232, 1) 24%, rgba(211, 216, 232, 1) 100%);
+        background: linear-gradient(to bottom, rgba(230, 233, 243, 1) 0%, rgba(211, 216, 232, 1) 24%, rgba(211, 216, 232, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6e9f3', endColorstr='#d3d8e8', GradientType=0);
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 28px;
+            height: 70px;
+            background-color: #c8d0de;
+
+            @media screen and (max-width: 500px) {
+                height: 50px;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            height: 225px;
+            margin-top: 10px;
+        }
+    }
+}
+
+.repayment-input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    .form-control {
+        position: relative;
+        text-align: center;
+        width: 85px;
+        padding: 0 10px;
+
+        @media screen and (max-width: 500px) {
+            width: 65px;
+            padding: 0;
+            height: 35px;
+            line-height: 35px;
+        }
+        @media screen and (max-width: 340px) {
+            width: 58px;
+        }
+    }
+}
+
+.repayment-time {
+    display: flex;
+    align-items: center;
+    .form-label {
+        margin-right: 20px;
+        width: auto;
+        display: inline-block;
+        margin-bottom: 0;
+    }
+    .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        width: 80px;
+        margin-right: 20px;
+
+        @media screen and (max-width: 340px) {
+            width: 70px;
+            margin-right: 10px;
+        }
+    }
+}
+
+.cvv-wrapper {
+    padding-top: 100px;
+
+    @media screen and (max-width: 500px) {
+        padding-top: 75px;
+    }
+
+    .form-label {
+        width: auto;
+        margin-right: 15px;
+        text-align: right;
+        margin-bottom: 0;
+
+        span {
+            border-bottom: 1px dashed #000;
+            font-size: 10px;
+        }
+    }
+    .form-control {
+        width: 80px;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .form-group {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 18px;
+        align-items: center;
+    }
+
+    .btn-personal {
+        padding: 9px 35px;
+    }
+}
+
+.repayment-card-info {
+    padding: 20px 30px;
+    background-color: #eaf2f9;
+    position: relative;
+    font-size: 12px;
+    margin-top: 30px;
+
+    &--margin {
+        margin: 20px 0; 
+    }
+
+    p {
+        margin: 0;
+        &:not(:last-of-type) {
+            margin-bottom: 10px;
+        }
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 2px;
+        background-color: #0083ca;
+        font-style: italic;
+    }
+}
+
+.repayment-sidebar {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+
+    @media screen and (max-width: $screen-sm-max) {
+        margin-bottom: 20px;
+    }
+}
+
+.repayment-info-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        position: relative;
+        padding-left: 70px;
+
+        @media screen and (max-width: $screen-sm-max) {
+            padding-left: 0;
+            display: flex;
+        }
+        &:not(:last-of-type) {
+            margin-bottom: 25px;
+        }
+
+        img {
+            margin-top: 10px;
+            display: block;
+        }
+
+        svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 45px;
+            height: 60px;
+
+            @media screen and (max-width: $screen-sm-max) {
+                position: static;
+                margin-right: 20px;
+                margin-left: -5px;
+            }
+        }
+        &:first-of-type {
+            svg {
+                width: 48px;
+                min-width: 48px;
+                height: 48px;
+            }
+        }
+        &:nth-of-type(2) {
+            svg {
+                left: -5px;
+                width: 48px;
+                min-width: 48px;
+                height: 50px;
+            }
+        }
+        &:nth-of-type(3) {
+            svg {
+                min-width: 48px;
+                width: 48px;
+                height: 48px;
+            }
+        }
+        &:nth-of-type(4) {
+            svg {
+                min-width: 48px;
+                width: 48px;
+                height: 54px;
+            }
+        }
+    }
+}
+
+.new-repayment-heading {
+    font-size: 22px;
+    font-family: $font-family-roman;
+    margin-bottom: 15px;
+    color: #0055bc;
+}
+
+.card-sms-wrapper {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+
+    .btn-personal {
+        padding: 9px 23px 8px;
+    }
+}
+
+
+// Here is where the magic happens
+$offset: 187;
+$duration: 1.4s;
+
+.spinner {
+    animation: rotator $duration linear infinite;
+}
+
+@keyframes rotator {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+.path {
+    stroke-dasharray: $offset;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: dash $duration ease-in-out infinite,
+    colors ($duration*4) ease-in-out infinite;
+}
+
+@keyframes colors {
+    0% {
+        stroke: #4285F4;
+    }
+    25% {
+        stroke: #DE3E35;
+    }
+    50% {
+        stroke: #F7C223;
+    }
+    75% {
+        stroke: #1B9A59;
+    }
+    100% {
+        stroke: #4285F4;
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: $offset;
+    }
+    50% {
+        stroke-dashoffset: $offset/4;
+        transform: rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: $offset;
+        transform: rotate(450deg);
+    }
+}
+
+.card-add {
+    width: 210px;
+    height: 130px;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    border: 1px dashed #c9d1df;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-family: $font-family-roman;
+    color: $heading-color;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    &:not(:last-child) {
+        margin-right: 20px; 
+    }
+
+    &:hover {
+        background-color: #e4e1e1;
+    }
+    div {
+        >span {
+            text-align: center;
+            display: block;
+            font-size: 25px;
+        }
+    }
+}
+
+.card-done {
+    position: relative; 
+    cursor: default;    
+    border: 1px solid #b1bed0;
+    background: rgba(228, 231, 242, 1);
+    background: -moz-linear-gradient(top, rgba(228, 231, 242, 1) 0%, rgba(211, 215, 233, 1) 50%, rgba(211, 215, 233, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(228, 231, 242, 1)), color-stop(50%, rgba(211, 215, 233, 1)), color-stop(100%, rgba(211, 215, 233, 1)));
+    background: -webkit-linear-gradient(top, rgba(228, 231, 242, 1) 0%, rgba(211, 215, 233, 1) 50%, rgba(211, 215, 233, 1) 100%);
+    background: -o-linear-gradient(top, rgba(228, 231, 242, 1) 0%, rgba(211, 215, 233, 1) 50%, rgba(211, 215, 233, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(228, 231, 242, 1) 0%, rgba(211, 215, 233, 1) 50%, rgba(211, 215, 233, 1) 100%);
+    background: linear-gradient(to bottom, rgba(228, 231, 242, 1) 0%, rgba(211, 215, 233, 1) 50%, rgba(211, 215, 233, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e7f2', endColorstr='#d3d7e9', GradientType=0);
+
+    @media screen and (max-width: 500px) {
+        margin-bottom: 20px;    
+    }
+}
+
+.card-wrapper {
+    display: flex;  
+    @media screen and (max-width: 500px) {
+        display: block; 
+    }
+}
+
+.card-type {
+    position: absolute; 
+    bottom: 10px;   
+    right: 20px;    
+    max-width: 40px;    
+
+    img {
+        display: none;  
+    }
+
+    &--master {
+        .card-master {
+            display: block; 
+        }
+    }
+}
+
+.card-input {
+    position: relative; 
+
+    input {
+        font-size: 14px;
+        font-family: 'OCR';
+        color: #003864;
+        text-align: right;
+        border: none;   
+        background-color: transparent;
+    }
+}
+
+.card-dots {
+    position: absolute; 
+    left: 0;    
+    bottom: 6px;
+    display: flex;  
+    line-height: 1; 
+    color: #003864;
+
+    span {
+        letter-spacing: 1px;    
+        &:not(:last-of-type) {
+            margin-right: 10px; 
+        }
+    }
+}
+
+.card-section {
+    padding-top: 20px;  
+    padding-bottom: 20px;   
+    padding-right: 40px;    
+    border-right: 1px solid #dbdee9;
+    @media screen and (max-width: $screen-sm-max) {
+        border-right: none; 
+    }
+
+    &--inverse {
+        padding-right: 0;   
+        border-right: none; 
+    }
+}
+
+.card-list {
+    padding-left: 55px; 
+    label {
+        position: relative; 
+        display: block; 
+        padding: 10px;  
+        border: 1px solid #cfd2de;
+        margin-bottom: 20px;    
+        border-radius: 10px;   
+        cursor: pointer;     
+
+        img {
+            max-height: 38px;   
+        }
+
+        input[type="radio"] {
+            display: none;  
+
+            &:checked + .fake-radio {
+                background-color: #0083ca;
+
+                &:before {
+                    content: '';
+                    width: 8px; 
+                    height: 8px;    
+                    background-color: #fff;
+                    position: absolute; 
+                    border-radius: 8px; 
+                    left: 50%;  
+                    top: 50%; 
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+
+        .fake-radio {
+            position: absolute; 
+            top: 50%;   
+            right: calc(100% + 30px);
+            transform: translate(0, -50%);
+            width: 25px;    
+            height: 25px;   
+            border-radius: 25px;    
+            background-color: #f2f2f2;
+            border: 1px solid #d0d3df;
+        }
+
+
+    }
+}
+
+.card-date {
+    font-size: 14px;    
+    color: #7c8295;
+    font-style: italic; 
+    padding-left: 14px; 
+
+    &--warning {
+        color: #f24943;
+    }
+}
+.card-container {
+    display: flex;  
+    align-items: center;
+}
+.card-number {
+    font-size: 20px;    
+    position: relative; 
+    padding-left: 20px; 
+    padding-right: 20px;    
+    min-width: 160px;   
+    text-align: right;  
+    &:after {
+        content: '';
+        position: absolute; 
+        right: 0;   
+        top: 6px;   
+        height: 18px;   
+        width: 1px; 
+        background-color: #cfd2de
+    }
+
+    span {
+        position: absolute; 
+        bottom: 7px;   
+        left: 10px;    
+        padding-right: 10px;    
+    }
+}
+
+.card-buttons {
+    a {
+        margin-left: 20px;  
+        font-family: $font-family-roman;
+        color: #0083ca;
+    }
+}

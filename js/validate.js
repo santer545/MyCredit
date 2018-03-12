@@ -37,9 +37,60 @@ $(document).ready(function() {
             }
         }
     });
+
+    // Common validation
     $('.js_validate [type="submit"]').on("click", function() {
+        /*$('.form-control--wr').addClass('.has-error');*/
+        console.log(validate($(this).parents(".js_validate")));
         return validate($(this).parents(".js_validate"));
+
     });
+
+    // Registration steps
+    $('.js-btn-success').on("click", function() {
+        if (validate($(this).parents(".js_validate"))) {
+            $('.form-control--wr').removeClass('has-error');
+            var formId = $(this).closest('form').attr('id');
+            
+            switch (formId) {
+                case 'js-form-3': 
+                    onClickSubmitReg(formId, "average_main");
+                    break;
+                case 'js-form-1-1':
+                    onClickSubmitReg(formId, "fb");
+                    break;
+                default:
+                    onClickSubmitReg(formId, "");
+                    break;
+            }
+
+
+        } else {
+            var notRequiredElements = $(this).parents(".js_validate").find('.has-error').closest('.form-control--wr').find('input').not('input[required]').not('input[type="hidden"]');
+            $(notRequiredElements).closest('div').addClass('has-success');
+            $('.has-success').closest('.personal-table-data').removeClass('has-error');
+            $(this).parents(".js_validate").find('.has-error').closest('.form-control--wr').addClass('has-error');
+        }
+
+    });
+
+    $('.js-save-data').on("click", function() {
+        if (validate($(this).parents(".js_validate"))) {
+            $('.personal-table-data').removeClass('has-error');
+            var formId = $(this).closest('form').attr('id');
+            onClickSubmitForm(formId);
+            
+        } else {
+            var notRequiredElements = $(this).parents(".js_validate").find('.has-error').closest('.personal-table-data').find('input').not('input[required]').not('input[type="hidden"]');
+            $(notRequiredElements).closest('div').addClass('has-success');
+            $('.has-success').closest('.personal-table-data').removeClass('has-error');
+            $(this).parents(".js_validate").find('.has-error').closest('.personal-table-data').addClass('has-error');
+        }
+    });
+
+
+
+
     $('.btn-show').on("click", function(e) {
         if (validate($(this).closest(".js_validate"))) {
             e.preventDefault();
@@ -71,8 +122,8 @@ function validate(form, paramId) {
     var cyrilic = false;
     var numberNotZero = false;
     var studentId = false;
-    
-    var flagValidInn = false;	// флаг валидности ИНН
+
+    var flagValidInn = false; // флаг валидности ИНН
 
     function mark(object, expression) {
         if (expression) {
@@ -83,9 +134,9 @@ function validate(form, paramId) {
             if (phone && (object.val().length > 0)) {}
             if (card && (object.val().length > 0)) {}
             if (numberNotZero && (object.val().length > 0)) {}
-            if (inn && (object.val().length > 0) && !flagValidInn) {$('#error_check_inn').removeClass('hidden');}
-            
-            $(object.closest(".js-address")).removeClass('hidden');	// если валидация не прошла, открываем поля с адресом
+            if (inn && (object.val().length > 0) && !flagValidInn) { $('#error_check_inn').removeClass('hidden'); }
+
+            $(object.closest(".js-address")).removeClass('hidden'); // если валидация не прошла, открываем поля с адресом
 
             e++;
         } else
@@ -128,25 +179,25 @@ function validate(form, paramId) {
                 passport = false;
                 break;
             case "passportSeries":
-            	passportSeries = true;
+                passportSeries = true;
                 reg = /\W\W/;
                 mark($(this), !reg.test($.trim($(this).val())));
                 passportSeries = false;
                 break;
             case "passportNumber":
-            	passportNumber = true;
+                passportNumber = true;
                 reg = /\d\d\d\d\d\d/;
                 mark($(this), !reg.test($.trim($(this).val())));
                 passportNumber = false;
                 break;
             case "passportReestr":
-            	passportReestr = true;
+                passportReestr = true;
                 reg = /\d\d\d\d\d\d\d\d-\d\d\d\d\d/;
                 mark($(this), !reg.test($.trim($(this).val())));
                 passportReestr = false;
                 break;
             case "passportNumberDoc":
-            	passportNumberDoc = true;
+                passportNumberDoc = true;
                 reg = /\d\d\d\d\d\d\d\d\d/;
                 mark($(this), !reg.test($.trim($(this).val())));
                 passportNumberDoc = false;
@@ -156,14 +207,14 @@ function validate(form, paramId) {
                 reg = /\d\d\d\d\d\d\d\d\d\d/;
                 var innVal = $.trim($(this).val());
                 flagValidInn = isValidInn(innVal);
-                mark($(this), !reg.test(innVal) || !flagValidInn );
+                mark($(this), !reg.test(innVal) || !flagValidInn);
                 inn = false;
                 break;
             case "pass1":
                 mark($(this), (pass_1 !== pass || $.trim($(this).val()).length === 0));
                 break;
             case "number_not_zero":
-            	numberNotZero = true;
+                numberNotZero = true;
                 reg = /[1-9]\d*/;
                 mark($(this), !reg.test($.trim($(this).val())));
                 numberNotZero = false;
@@ -176,7 +227,7 @@ function validate(form, paramId) {
                 cyrilic = false;
                 break;
             case "studentId":
-            	studentId = true;
+                studentId = true;
                 reg = /\S{2,20}/;
                 mark($(this), !reg.test($.trim($(this).val())));
                 studentId = false;

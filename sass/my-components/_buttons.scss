@@ -2,6 +2,7 @@
     font-family: $font-family-sans-serif;
     font-size: $btn-font-size;
     text-decoration: none;  
+    min-width: 165px;
     
     @media screen and (max-width: $screen-sm-max) {
         font-size: $btn-font-size-tablet;
@@ -73,7 +74,6 @@
     }
     @media screen and (max-width: $screen-xs-max) {
         display: inline-block;
-        margin-top: 3px;    
         background-position: 9px 9px;
         background-size: 16px;  
     }
@@ -772,6 +772,43 @@
 
 }
 
+.btn-facebook {
+    position: relative;
+    font-size: 15px;
+    background-color: #4281ca;
+    color: #fff;
+    transition: all 0.3s;
+    padding-left: 30px;
+    line-height: 28px;
+    border: 1px solid rgba(66, 129, 202, 1);
+    [class^="icon"] {
+        color: #fff;
+        font-size: 15px;
+        background-color: rgba(66, 129, 202, 1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 30px;
+        border-radius: 4px 0 0 4px;
+        transition: all 0.3s;
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    
+}
+
 
 .btn-repay {
     padding: 12px 15px; 
@@ -1060,6 +1097,7 @@
 
 .btn-sm {
     font-size: $btn-sm-font-size;
+    padding: 10px 23px;
     span,
     &:before {
         padding: $btn-sm-padding;

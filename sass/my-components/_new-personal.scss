@@ -249,7 +249,7 @@
     .personal-user--data table tr>.personal-table-name {
         font-family: $font-family-roman;
         color: #363636;
-        vertical-align: middle;
+        vertical-align: top;
     }
     .tab-pane--first-step {
         .personal-table-name,
@@ -1123,7 +1123,18 @@
     }
 }
 
+.pay-block-holder {
+    .new-repayment-data {
+        margin-top: 20px;
+    }
+}
 
+.other-card {
+    margin-top: 10px;
+    a {
+        cursor: pointer;
+    }
+}
 
 .personal-redemption {
     .nav-tabs>.pay-tab path,
@@ -1487,6 +1498,12 @@
         border-radius: 5px;
         background-color: #fff;
         margin-bottom: 30px;
+
+        &--inverse {
+            background-color: #fbfbfb;
+            color: #363636;
+            padding: 0 20px;    
+        }
         .btn-width {
             padding: 11px 23px;
         }

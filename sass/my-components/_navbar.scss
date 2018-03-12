@@ -5,7 +5,7 @@
     @include transition(margin-top 1s);
     @media screen and (max-width: 1009px) {
         text-align: center;
-        margin-right: -20%;
+        margin-right: -16%;
     }
     @media screen and (max-width: $screen-xs-max) {
         margin-right: 0;
@@ -208,6 +208,9 @@
                 background-position: 95% 28px;
                 padding-right: 20px;    
             }
+            @media screen and (max-width: 1100px) {
+                background-position: 93% 30px;
+            }
             @media screen and (max-width: $screen-xs-max) {
                 background-position: 97% 16px;
             }
@@ -223,6 +226,9 @@
             @media screen and (max-width: 1300px) {
                 
                 background-position: 95% 28px;
+            }
+            @media screen and (max-width: 1100px) {
+                background-position: 93% 30px;
             }
             @media screen and (max-width: $screen-xs-max) {
                 background-position: 97% 16px;
@@ -319,20 +325,20 @@
                 border: 1px dashed #ef5350;
                 color: #ef5350;
                 border-radius: 30px;
-                padding: 5px 23px 5px 7px;
-                background-image: url(../images/icons/menu-star.png);
+                padding: 5px 12px 5px 10px;
+                /* background-image: url(../images/icons/menu-star.png);
                 background-position: 90% 7px;
-                background-repeat: no-repeat;
+                background-repeat: no-repeat; */
                 line-height: 20px;  
                 transition: background-color 0.3s;
                 @media screen and (max-width: $screen-xs-max) {
                     padding: 10px 40px 10px 15px;
-                    background-position: 80% 9px;
+                    /* background-position: 80% 9px; */
                     display: inline-block;
                 }
-                @media screen and (max-width: 350px) {
+                /* @media screen and (max-width: 350px) {
                     background-position: 80% 11px;
-                }
+                } */
                 &:hover {
                     background-color: #fdebea;
                 }

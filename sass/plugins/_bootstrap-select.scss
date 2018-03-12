@@ -84,6 +84,9 @@ select.selectpicker {
         .btn-default:active:focus, .btn-default:active.focus, .btn-default.active:hover, .btn-default.active:focus, .btn-default.active.focus, .open>.btn-default.dropdown-toggle:hover, .open>.btn-default.dropdown-toggle:focus, .open>.btn-default.dropdown-toggle.focus {
             border-color: #66afe9;
         }
+        &:after {
+            display: none;
+        }
     }
     > select {
         position: absolute !important;

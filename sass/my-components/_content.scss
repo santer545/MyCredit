@@ -400,6 +400,20 @@
         font-size: 16px;
         word-break: normal;
     }
+    &-terminal {
+        margin-bottom: 30px;
+        .pay-heading {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        figure {
+            margin-bottom: 20px;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
     &-calculator {
         border: 1px solid #eaeaea;
         margin-top: 20px;   
@@ -1296,6 +1310,7 @@
 .terminal-marker-wrapper {
     display: block;
     border: none;
+    text-decoration: none;
     @media screen and (max-width: $screen-xs-max) {
         margin-bottom: 20px;
     }

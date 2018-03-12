@@ -167,6 +167,21 @@ $green: #8BC53F;
 
 } // .progress-bar
 
+.facebook-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+.facebook-text {
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 16px;
+    font-style: italic;
+    color: #363636;
+}
+
+
+
+
 .pay-data {
     /* background-color: #f1f1f1; */
     .stepsbar ol {
@@ -237,7 +252,8 @@ $green: #8BC53F;
         padding: 20px 30px;
     }
     .slider-money--label {
-        font-size: 19px;
+        font-size: 18px;
+        width: 58%;
         @media screen and (max-width: $screen-md-max) {
             width: 57%; 
         }
@@ -249,6 +265,8 @@ $green: #8BC53F;
         }
     }
     .slider-control--wr {
+        width: 42%;
+        font-size: 20px;
         @media screen and (max-width: $screen-md-max) {
             width: 43%; 
             font-size: 17px;    
@@ -389,7 +407,7 @@ $green: #8BC53F;
     padding-top: 30px;
 
     .numbers-play {
-        font-size: 25px;
+        font-size: 16px;
         img {
             width: 50px;
             height: 50px;
