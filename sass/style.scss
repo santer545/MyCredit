@@ -1,0 +1,103 @@
+@import "_my-mixins.scss";
+
+
+/*_____________custom variables______________*/
+
+@import "_my-variables.scss";
+
+
+/*_____________bootstrap 3.0_______________*/
+
+@import "_bootstrap.scss";
+
+
+/*_____________default styles______________*/
+
+@import "my-components/_defaults.scss";
+
+
+/*_____________custom buttons styles______________*/
+
+@import "my-components/_buttons.scss";
+
+
+/*_____________all styles______________*/
+
+@import "my-components/_global.scss";
+
+
+/*_____________fonts styles______________*/
+
+@import "my-components/_typography.scss";
+
+
+/*_____________custom navbar styles______________*/
+
+@import "my-components/_navbar.scss";
+
+
+/*_____________all custom navs(tabs) styles______________*/
+
+@import "my-components/_navs.scss";
+
+
+/*_____________personal data styles______________*/
+
+@import "my-components/_personal.scss";
+
+
+/*_____________bootstrap slider styles______________*/
+
+@import "plugins/_bootstrap-slider.scss";
+
+
+/*_____________contacts styles______________*/
+
+@import "my-components/_contacts-data.scss";
+
+
+/*_____________modals styles______________*/
+
+@import "my-components/_modals.scss";
+
+@import "my-components/_speak-about.scss";
+
+
+
+/*_____________contacts styles______________*/
+
+@import "my-components/_forms.scss";
+
+@import "my-components/_new-prolongation.scss";
+
+
+/*_____________repayment styles______________*/
+
+@import "my-components/_repayment.scss";
+
+@import "my-components/_new-personal.scss";
+@import "my-components/_new-year.scss";
+@import "my-components/_new-payment.scss";
+
+/*_____________bootstrap select styles______________*/
+
+@import "plugins/_bootstrap-select.scss";
+
+
+/*_____________faq styles______________*/
+
+@import "my-components/_content.scss";
+
+@import "my-components/_neangelu.scss";
+@import "my-components/_partners.scss";
+@import "my-components/_faq-new.scss";
+@import "my-components/_blog.scss";
+@import "my-components/_february.scss";
+
+@import "plugins/_zebra-datepicker.scss";
+@import "plugins/_video-popap.scss";
+@import "plugins/_pgwSlideShow.scss";
+@import "plugins/_bootstrap-rating.scss";
+@import "plugins/_owl.scss";
+@import "plugins/_colorbox.scss";
+@import "plugins/_lightbox.scss";

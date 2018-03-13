@@ -1,0 +1,101 @@
+.speak-about {
+	padding: 65px 0;
+	background-color: #ebeff9;
+
+	@media screen and (max-width: $screen-sm-max) {
+		padding: 30px 0;	
+	}
+}
+
+.owl-carousel-speak {
+	@media screen and (max-width: 1500px) {
+		max-width: 90%;	
+		margin: 0 auto;	
+	}
+	.owl-item {
+		height: 220px;	
+		padding: 0;	
+		display: flex;	
+		align-items: center;
+		justify-content: center;
+		background-color: #fff;
+		border: 1px solid #dbdee9;
+		border-radius: 5px;
+
+		.speak-wrapper {
+			text-align: center;	
+			width: 100%;	
+		}
+
+		a {
+			width: 100%;	
+			height: 100%;	
+			display: block;	
+			padding: 75px 30px 0;	
+			img {
+				display: inline-block;	
+				width: auto;
+				height: auto !important;	
+				max-height: 45px;	
+			}
+		}
+		
+		span {
+			position: absolute;	
+			bottom: 40px;	
+			left: 50%;	
+			transform: translate(-50%, 0);
+			font-size: 13px;	
+			font-family: $font-family-roman;
+			color: #7c8295;
+		}
+	}
+
+	
+
+	.owl-prev,
+	.owl-next {
+		position: absolute;	
+		top: 50%;	
+		width: 60px;	
+		height: 60px;	
+		transform: translate(0, -50%);
+		border-radius: 50%;	
+		background-size: 60px 60px;
+		background-repeat: no-repeat;	
+	}
+
+	.owl-prev {
+		left: -31px;	
+		float: left;
+		background-image: url('../assets/images/speak/speak-right.png');
+	}
+
+	.owl-next {
+		right: -31px;
+		float: right;	
+		background-image: url('../assets/images/speak/speak-left.png');
+	}
+
+	.owl-dots {
+		display: flex;	
+		width: 100%;	
+		justify-content: center;	
+		padding-top: 10px;	
+	}
+
+	.owl-dot {
+		width: 8px;	
+		height: 8px;	
+		border-radius: 8px;	
+		background-color: #ccc;
+
+		&:not(:last-child) {
+			margin-right: 5px;
+		}
+
+		&.active {
+			background-color: $heading-color;
+		}
+	}
+}

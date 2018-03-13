@@ -1,0 +1,1276 @@
+.btn {
+    font-family: $font-family-sans-serif;
+    font-size: $btn-font-size;
+    text-decoration: none;  
+    min-width: 165px;
+    
+    @media screen and (max-width: $screen-sm-max) {
+        font-size: $btn-font-size-tablet;
+    }
+    &:focus,
+    &:active {
+        outline: none;
+        box-shadow: none;
+    }
+    &:active:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+
+
+/******************************
+ * Autorize button
+ *
+ *
+ ************************************/
+
+
+.btn-authorize {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    @include button-variant($btn-authorize-color, #3068a9, transparent);
+    vertical-align: top;
+    font-size: 18px;
+    font-family: $font-family-roman;
+    border: 0;
+    border-radius: $btn-authorize-radius;
+    
+    
+    padding: 11px 27px 10px 45px;
+    background-image: url(../assets/images/login.svg);
+    background-repeat: no-repeat;
+    background-position: 11px 12px;
+    background-size: 18px;
+
+
+
+
+
+    -webkit-transform: perspective(1px) translateZ(0);
+    -ms-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    text-decoration: none;  
+    /* @media screen and (max-width: $screen-md-max) {
+        font-size: $btn-authorize-font-size-tablet;
+        padding: $btn-authorize-padding-laptop;
+            background-position: $btn-authorize-bg-position-laptop;
+    } */
+    @media screen and (max-width: $screen-sm-max) {
+        font-size: 15px;    
+        margin-bottom: 0;
+        vertical-align: top;
+        padding: 8px 17px 7px 35px;
+        background-position: 9px 9px;
+        background-size: 16px;  
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        display: inline-block;
+        background-position: 9px 9px;
+        background-size: 16px;  
+    }
+    @media screen and (max-width: $screen-xs) {
+        height: 36px;
+        padding: 0; 
+        width: 37px;    
+        font-size: 0;
+        background-image: url(../assets/images/login.svg);
+        background-repeat: no-repeat;
+        background-position: 9px 9px;
+        background-size: 17px;
+    }
+    
+    &:focus,
+    &:hover {
+        outline: none;
+        text-decoration: none;  
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -17px;
+        left: -35px;
+        right: -35px;
+        bottom: -17px;
+        background: $btn-authorize-bg;
+        border-radius: 100%;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+        background-image: url(../assets/images/login.svg);
+        background-repeat: no-repeat;
+        background-position: 45px 29px;
+        background-size: 18px;
+        /* @media screen and (max-width: $screen-md-max) {
+            background-position: 55px 30px;
+            font-size: $btn-authorize-font-size-tablet;
+            padding: $btn-authorize-padding-laptop;
+        } */
+        @media screen and (max-width: $screen-sm-max) {
+            background-position: 43px 26px;
+            background-size: 16px;  
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            background-position: 43px 25px;
+        }
+        @media screen and (max-width: $screen-xs) {
+            display: none;
+        }
+    }
+    &--content {
+        width: 37px;
+        height: 46px;
+        padding: 0;
+        font-size: 0;
+        background-size: 16px;  
+        @media screen and (max-width: 1300px) {
+             
+        }
+        @media screen and (max-width: $screen-md-max) {
+            height: 42px;  
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            background-position: 10px 12px;
+            
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            height: 36px;
+            background-position: 10px 8px;
+        }
+        
+        &:before {
+            background-position: 45px 30px;
+            background-size: 16px;
+            @media screen and (max-width: $screen-sm-max) {
+                background-position: 45px 30px;
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                background-position: 46px 26px;
+            }
+            
+        }
+    }
+    &--get {
+        background-image: none;
+        padding: 11px 10px 10px;
+
+        @media screen and (max-width: $screen-md-max) {
+            font-size: 15px;    
+        }
+        @media screen and (max-width: $screen-md-max) {
+            padding: 11px 4px 10px; 
+        }
+        
+        @media screen and (max-width: $screen-xs-max) {
+            height: 36px;
+            width: 39px;    
+            font-size: 0;
+            background-image: url('../images/icons/card.svg');
+            background-repeat: no-repeat;
+            background-color: $btn-authorize-bg;
+            background-size: 30px;
+            background-position: 5px 3px;
+        }
+        /* @media screen and (max-width: 500px) {
+            width: 160px;
+            padding-left: 20px;
+        }
+        @media screen and (max-width: 350px) {
+            width: 165px;
+            font-size: 14px;
+        } */
+        &:before {
+            background-image: none;
+            @media screen and (max-width: $screen-xs-max) {
+                display: none;
+            }
+        }
+        
+    }
+    &:hover,
+    &:focus,
+    &:active:focus {
+        &:before {
+            -webkit-transform: scale(0);
+            -ms-transform: scale(0);
+            transform: scale(0);
+        }
+    }
+    &.btn-profile {
+        span,
+        &:before {
+            background-image: url("../images/users.svg");
+            background-size: 20px 20px;
+            background-position: 15px 8px;
+            @media screen and (max-width: $screen-xs-max) {
+                background-position: 15px 8px;
+            }
+        }
+    }
+}
+
+.btn-share {
+    font-family: $font-family-medium;
+    color: #fff;
+    padding: 0 20px;
+    height: 55px;
+    line-height: 55px;
+    background-color: #ed592b;
+    border: none;
+    margin-bottom: 10px;    
+    @include transition(background-color 0.3s);
+    
+    @media screen and (max-width: 1500px) {
+        height: 40px;
+        line-height: 40px;
+        font-size: 13px;
+        
+    }
+    @media screen and (max-width: $screen-md-max) {
+        display: inline-block;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        display: none;
+    }
+    &:hover,
+    &:focus {
+        background-color: #d03505;
+        color: #fff;
+    }
+}
+
+.btn-wish {
+    position: absolute; 
+    z-index: 10;    
+    bottom: 40%;   
+    left: 50%;  
+    transform: translate(-50%, 0);
+    color: #fff;
+    background-color: #45bc75;
+    border-color: transparent;
+    border-radius: 5px;
+    border-width: 0;
+    box-shadow: 0 0 1px transparent;
+    transition-property: color;
+    transition-duration: .3s;
+    padding: 15px 23px;
+    @media screen and (max-width: 1400px) {
+        padding: 8px 15px;
+        font-size: 15px;
+        bottom: 35%;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 5px 15px;
+        font-size: 11px;
+        bottom: 50%;
+    }
+    &:hover,
+    &:focus {
+        color: #fff;
+    }
+    &:hover,
+    &:active {
+        color: #fff;
+        background-color: #24864c;
+    }
+}
+
+.btn-moderator {
+    background-color: #0055b8;
+    color: #fff;
+    &:hover {
+        color: #fff;
+    }
+}
+
+
+.btn-like {
+    font-size: 17px;
+    width: 100px;
+    padding: 10px 20px;
+    font-family: $font-family-medium;
+    color: #0082ce;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #fff;
+    border: 1px solid #0082ce;
+    height: 43px;
+    transition: all 0.3s;
+    @media screen and (max-width: $screen-xs-max) {
+        width: 50px;
+        font-size: 14px;
+        padding: 10px 13px;
+    }
+    &:hover,
+    &:focus,
+    &:active:focus {
+        color: #fff;
+        background-color: #0082ce;
+    }
+}
+
+
+/******************************
+ * Primary button
+ *
+ *
+ *
+ **************************/
+
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    @include button-variant($btn-primary-color,
+    $btn-primary-bg,
+    #fff);
+    padding: 0;
+
+    border-radius: $btn-primary-radius;
+    border: none;
+
+    &:hover {
+        &:before {
+            right: 0;
+        }
+        & > span {
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+    }
+    &:before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        right: 100%;
+        bottom: 0;
+        width: 100%;
+        background: $btn-primary-bg-hover;
+        border: 1px solid $btn-primary-bg-hover;
+    }
+    &:before,
+    & > span {
+        padding: $btn-primary-padding;
+        -webkit-transition: right 0.3s, -webkit-transform 0.3s;
+        transition: right 0.3s, transform 0.3s;
+        -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+        transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+        @media screen and (max-width: $screen-xs) {
+            padding: $btn-primary-padding-mobile;
+        }
+    }
+    span {
+        display: block;
+    }
+}
+
+
+
+
+/*********************************
+ * Info button
+ *
+ *
+ *
+ **********************************/
+
+.btn-info {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    @include button-variant($btn-info-color,
+    $btn-info-bg,
+    $btn-info-bg);
+    line-height: $line-height-base;
+    border-radius: $btn-info-radius;
+    &:hover,
+    &:active {
+        &:before {
+            right: 0;
+        }
+        & > span {
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+    }
+    &:before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        right: 100%;
+        bottom: 0;
+        width: 100%;
+        background: $btn-info-bg-hover;
+        border: 1px solid $btn-info-bg-hover;
+    }
+    &:before,
+    & > span {
+        padding: $btn-info-padding;
+        -webkit-transition: right 0.3s, -webkit-transform 0.3s;
+        transition: right 0.3s, transform 0.3s;
+        -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+        transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+    }
+    span {
+        display: block;
+    }
+}
+
+
+
+/***************************************
+ * Success button
+ *
+ *
+ *
+ *
+ ************************************/
+
+.btn-success {
+    @extend .btn-personal;
+    position: relative;
+    overflow: hidden;
+    @include button-variant($btn-personal-color,
+    $btn-personal-bg,
+    transparent);
+    border-radius: $btn-personal-radius;
+    border-width: 0;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    padding: 0;
+    min-width: 190px;
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #4281ca;
+        border-radius: 100%;
+        -webkit-transform: scale(2);
+        transform: scale(2);
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.3s;
+        transition-du2ration: 0.3s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+
+    &:hover {
+        &:before {
+            webkit-transform: scale(0);
+            transform: scale(0);
+        }
+    }
+    &--inverse {
+        @include button-variant($btn-personal-color,
+    $btn-personal-bg,
+    transparent);
+        &:before {
+            background: #4281ca!important;
+        }
+        &:hover {
+            background-color: #45bc75!important;
+        }
+    }
+    span {
+        display: block;
+    }
+    span.icons-btn-arrow {
+        display: inline-block;
+    }
+    &-arrow {
+        
+        span {
+            padding: $btn-success-padding-arrow;
+            background-image: url('../images/long-arrow.svg');
+            background-repeat: no-repeat;
+            background-position: 85% 20px;
+        }
+    }
+}
+
+
+.btn-slider {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 0 25px;
+    height: 49px;
+    line-height: 49px;
+    color: #fff;
+    font-size: 22px;
+    font-family: $font-family-medium;
+    background-color: #00b181;
+    border: none;
+    border-radius: 5px;
+    border-width: 0;
+    @include transition(background-color 0.3s);
+    &:hover {
+        background-color: #06a177;
+        color: #fff;
+    }
+}
+
+
+
+/****************************
+ * Warning button
+ *
+ *
+ *
+ *
+ ******************************************/
+
+.btn-warning {
+    @extend .btn-personal;
+    width: 100%;
+    border-radius: 0!important;
+}
+
+.btn-trp {
+    background-color: rgba(255,255,255, 0.1);
+    color: $heading-color;
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: 1px solid $heading-color;
+    text-transform: none;
+    @media screen and (max-width: 1500px) {
+        padding: 3px 15px;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 3px 10px;
+
+      }
+    @include transition(background-color 0.3s, color 0.3s);
+    &:hover {
+        background-color: #fff;
+        color: $brand-primary;
+        border: 1px solid $heading-color;
+    }
+}
+
+
+.btn-abs {
+    margin-left: 0;
+    vertical-align: middle;
+    &--students {
+        border: 1px solid #fff;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 3px;
+        padding: 11px 33px;
+        margin-top: 3px;
+        &:hover,
+        &:focus {
+            border: 1px solid #fff;
+        }
+        @media screen and (max-width: 1600px) {
+            padding: 6px 25px;  
+        }
+        @media screen and (max-width: 1500px) {
+            font-size: 14px;
+        }
+        @media screen and (max-width: 1300px) {
+            padding: 5px 25px;  
+        }
+    }
+    @media screen and (max-width: 1500px) {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    @media screen and (max-width: 1400px) {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    @media screen and (max-width: 1300px) {
+        margin-left: 15px;
+    }
+}
+
+.btn-call,
+.btn-video {
+    background-color: transparent;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: 1px solid #6da7c6;
+    font-size: 14px;
+    text-transform: none;
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 5px 10px;
+
+      }
+    @include transition(background-color 0.3s);
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        color: #fff;
+    }
+}
+
+.btn-video {
+    font-size: 20px;  
+    background-color: rgba(255, 255, 255, 0.2);  
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+
+
+
+.btn-user-close {
+    position: absolute;
+    right: 10px;    
+    top: 10px;  
+    width: 7px; 
+    height: 7px;    
+    background-image: url('../images/user-close.png');
+    background-repeat: no-repeat;
+    background-size: 7px 7px;
+    background-color: transparent;
+    border: none;   
+    padding: 0;
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+
+/********************************
+ * Next button
+ *
+ *
+ *
+ *
+ ************************************/
+
+.btn-next {
+    position: relative;
+    overflow: hidden;
+    @include button-variant(#fff,
+    #eb5800,
+    #eb5800);
+    padding: 0;
+
+    border-radius: 0;
+    border-width: 0;
+    &:hover,
+    &:active {
+        &:before {
+            right: 0;
+        }
+        & > span {
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+    }
+    &:before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        right: 100%;
+        bottom: 0;
+        width: 100%;
+        padding: 8px 30px;
+        background: #0056b8;
+        border: 1px solid #0056b8;
+    }
+    &:before,
+    & > span {
+        padding: 13px 33px 13px 37px;
+        -webkit-transition: right 0.3s, -webkit-transform 0.3s;
+        transition: right 0.3s, transform 0.3s;
+        -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+        transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+    }
+    span {
+        display: block;
+    }
+    span.icons-white-right {
+        margin: -1px -5px 0 5px;
+        display: inline-block;
+    }
+}
+
+
+
+/********************************
+ * Personal button
+ *
+ *
+ *
+ *
+ ***********************/
+
+.btn-personal {
+    position: relative;
+    overflow: hidden;
+    @include button-variant($btn-personal-color,
+    #45bc75,
+    transparent);
+    border-radius: $btn-personal-radius;
+    border-width: 0;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    padding: 15px 23px;
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -17px;
+        left: -35px;
+        right: -35px;
+        bottom: -17px;
+        background: #45bc75;
+        border-radius: 100%;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.3s;
+        transition-du2ration: 0.3s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+    &:hover {
+        background-color: #3068a9;
+        &:before {
+            webkit-transform: scale(0);
+            transform: scale(0);
+        }
+    }
+
+}
+
+.btn-facebook {
+    position: relative;
+    font-size: 15px;
+    background-color: #4281ca;
+    color: #fff;
+    transition: all 0.3s;
+    padding-left: 30px;
+    line-height: 28px;
+    border: 1px solid rgba(66, 129, 202, 1);
+    [class^="icon"] {
+        color: #fff;
+        font-size: 15px;
+        background-color: rgba(66, 129, 202, 1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 30px;
+        border-radius: 4px 0 0 4px;
+        transition: all 0.3s;
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    
+}
+
+
+.btn-repay {
+    padding: 12px 15px; 
+    font-size: 16px;    
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+    svg {
+        margin-right: 8px;  
+        display: inline-block;  
+        vertical-align: middle; 
+        width: 31px;     
+        height: 24px;   
+        line-height: 24px;   
+    }
+    span {
+        display: inline-block;  
+        vertical-align: middle; 
+    }
+}
+
+.btn-prolongate {
+    padding: 12px 15px; 
+    background-color: transparent;
+    border: 1px solid #0083ca;
+    color: #0083ca;
+    font-size: 16px;    
+    transition: all 0.3s;
+    &:hover {
+        color: #fff;
+        background-color: #0083ca;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 10px 9px;
+        font-size: 13px;
+    }
+}
+
+.btn-faq {
+    font-size: 17px;    
+    color: #fff;
+    background-color: #0082ce;
+    padding: 12px 30px; 
+    transition: background-color 0.3s, color 0.3s;
+    &:hover,
+    &:focus,
+    &:active:focus,
+    &:active {
+        background-color: #0270b0;
+        color: #fff;
+    }
+}
+
+
+/**************************
+ * Cancel button
+ *
+ *
+ *
+ *
+ **********************************/
+
+.btn-cancel {
+    text-decoration: none;
+    border-bottom: 1px solid #00b181;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+
+/*****************************************
+ * Order button
+ *
+ *
+ *
+ *******************************/
+
+
+.btn-order {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    border-width: 0;
+    padding: 13px 30px;
+    color: $btn-order-color;
+
+    border-color: $btn-order-bg;
+    background-color: $btn-order-bg;
+  -moz-animation: animaciya 0.8s ease-in-out 2s infinite alternate;
+  -webkit-animation: animaciya 0.8s ease-in-out 2s infinite alternate;
+  -ms-animation: animaciya 0.8s ease-in-out 2s infinite alternate;
+  &:hover {
+    color: #fff;
+  }
+
+}
+
+
+/**************************
+ * Change button
+ *
+ *
+ *
+ ******************************/
+
+.btn-change {
+    @extend .btn-personal;
+    font: $btn-change-font-size $font-family-roman;
+    background-image: url(../images/pencil.png);
+    background-repeat: no-repeat;
+    background-position: 37px 50%;
+    background-size: 8px;
+    &:before {
+        background-image: url(../images/pencil.png);
+    background-repeat: no-repeat;
+    background-position: 37px 50%;
+    background-size: 8px;
+    }
+}
+
+
+/*******************************
+ * News btn
+ *
+ *
+ */
+
+.btn-news {
+    background-color: #3068a9;
+    &:before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;    
+        bottom: 0;
+        width: 100%;
+        background: $btn-success-bg;
+        border-radius: $btn-personal-radius;
+        border: 1px solid $btn-success-bg;
+    }
+}
+
+
+/*******************************
+ * Login button
+ *
+ *
+ *
+ *
+ **********************************/
+
+.btn-login {
+    font-size: $btn-login-font-size;
+    &:before,
+    span {
+        padding: $btn-login-padding;
+    }
+}
+
+
+
+.btn-arrow-animate {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 30px;
+    @include button-variant($btn-personal-color,
+    $btn-personal-bg,
+    transparent);
+    border-radius: $btn-personal-radius;
+    border-width: 0;
+    @media screen and (max-width: 1600px) {
+        padding: 7px 30px;
+    }
+    &:hover {
+        .icon-arrow-animate {
+            opacity: 1;
+            width: 32px;
+            margin-left: 20px;
+        }
+        background-color: $second-color;
+    }
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .icon-arrow-animate {
+        display: inline-block;
+        opacity: 0;
+        width: 0;
+        height: 24px;
+        background-image: url('../images/fav-32.png');
+        background-repeat: no-repeat;
+        background-size: 32px 24px;
+        @include transition(all 0.3s);
+    }
+    &--inverse {
+        @include button-variant($btn-personal-color,
+    #4281ca,
+    transparent);
+    }
+}
+
+.btn-print {
+    @media screen and (max-width: 1023px) {
+        padding: 7px 30px;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        display: none;
+    }
+    svg {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+}
+
+.btn-pay {
+    @media screen and (max-width: 1023px) {
+        padding: 7px 30px;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 7px 15px 9px;
+        font-size: 16px;
+    }
+    span {
+        display: inline-block;
+        margin-right: 20px;
+        vertical-align: bottom;
+        width: 26px;
+        height: 31px;
+        padding: 0;
+        img {
+            width: 26px;
+            height: 31px;
+        }
+    }
+}
+
+
+
+
+
+
+/*****************************
+ * Button size
+ *
+ *
+ *
+ *
+ ****************************/
+
+.btn-width {
+    min-width: $btn-width;
+}
+
+.btn-medium {
+    span,
+    &:before {
+        padding: $btn-medium-padding;
+    }
+}
+
+.btn-lg {
+    &:before,
+    & > span {
+        padding: $btn-lg-padding;
+        border-radius: 5px;
+        @media screen and (max-width: $screen-md-max) {
+            padding: $btn-lg-padding-laptop;
+        }
+    }
+}
+
+.btn-medium-wide {
+    span,
+    &:before {
+        padding: $btn-medium-wide-padding;
+    }
+}
+
+
+.btn-sm {
+    font-size: $btn-sm-font-size;
+    padding: 10px 23px;
+    span,
+    &:before {
+        padding: $btn-sm-padding;
+    }
+}
+
+.btn-sv {
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: $second-color;
+    color: #fff;
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.btn-lk-enter {
+    color: #fff;
+    padding-left: 50px;
+    background-color: #00b181;
+    background-image: url(../assets/images/lk-enter.png);
+    background-repeat: no-repeat;
+    background-position: 16px 16px;
+    background-size: 20px 26px;
+    padding: 15px 23px 15px 45px;
+    &:before {
+            content: '';
+            background-image: url(../assets/images/lk-enter.png);
+            background-repeat: no-repeat;
+            background-position: 51px 32px;
+            background-size: 20px 26px;
+    }
+}
+
+
+/*********************
+ * Buttons wrappers
+ *
+ *
+ *
+ *
+ *
+ *****************************/
+
+
+.agreement-btn-wr {
+    .btn {
+        margin-right: 20px;
+    }
+}
+
+.btn-holder {
+    padding: 20px 0;
+}
+
+
+
+.modal-btn--wrapper {
+    .btn-primary {
+        &:before {
+            background: #58b4e5;
+            border: 1px solid #58b4e5;
+        }
+    }
+}
+
+
+.numbers-btn--wr {
+     .btn-primary {
+         &:before,
+         & > span {
+            @media screen and (max-width: $screen-md-max) {
+                font-size: 13px;
+            }
+         }
+     }
+}
+
+.btn-credit-wr {
+    @media screen and (max-width: $screen-xs-max) {
+        text-align: center;
+    }
+    button {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+}
+
+.edit-btn-wr {
+    padding-top: 44px;
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    @media screen and (max-width: $screen-xs-max) {
+        display: block;
+        padding-top: 20px;
+        margin: 0;
+    }
+}
+
+.btn-wr {
+    margin-top: -1px;
+    display: none;
+    &--save {
+        display: block;
+    }
+    &--inline{
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 20px;
+        @media screen and (max-width: $screen-xs-max) {
+            display: block;
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.btn-code-wr {
+    padding-top: 14px;
+    text-align: right;
+}
+
+.btn--wr{
+    padding-top: 30px;
+}
+
+
+.btn-personal-wr {
+    padding-top: 20px;
+    margin-bottom: 34px;
+}
+
+.g-recaptcha {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.btn-wr--captcha {
+    width: 100%;    
+    text-align: left;
+    margin-right: 0;
+}
+
+.captcha-wrapper {
+    font-size: 0;
+    padding-top: 0px;  
+}
+
+.grecaptcha-badge {
+    display: none;  
+}
+
+
+
+
+@-moz-keyframes animaciya {
+  from {background-color: #58b4e5;border-color: #58b4e5;}
+  to {background-color: #0056b8;border-color: #0056b8;}
+}
+
+@-webkit-keyframes animaciya {
+  from { background-color: #58b4e5;border-color: #58b4e5;}
+  to { background-color: #0056b8;border-color: #0056b8;}
+}
+
+@-ms-keyframes animaciya {
+  from { background-color: #58b4e5;border-color: #58b4e5;}
+  to {background-color: #0056b8;border-color: #0056b8;}
+}
+
+@keyframes animaciya {
+  from { background-color: #58b4e5;border-color: #58b4e5;}
+  to { background-color: #0056b8;border-color: #0056b8;}
+}

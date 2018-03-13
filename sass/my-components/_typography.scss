@@ -1,0 +1,1241 @@
+@font-face {
+    font-family: 'HelveticaNeueCyr Bold';
+    src: url('fonts/HelveticaNeueCyr-Bold.eot');
+    src: local('☺'), url('fonts/HelveticaNeueCyr-Bold.woff') format('woff'), url('fonts/HelveticaNeueCyr-Bold.ttf') format('truetype'), url('fonts/HelveticaNeueCyr-Bold.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeueCyr Medium';
+    src: url('fonts/HelveticaNeueCyr-Medium.eot');
+    src: local('☺'), url('fonts/HelveticaNeueCyr-Medium.woff') format('woff'), url('fonts/HelveticaNeueCyr-Medium.ttf') format('truetype'), url('fonts/HelveticaNeueCyr-Medium.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeueCyr Thin';
+    src: url('fonts/HelveticaNeueCyr-Thin.eot');
+    src: local('☺'), url('fonts/HelveticaNeueCyr-Thin.woff') format('woff'), url('fonts/HelveticaNeueCyr-Thin.ttf') format('truetype'), url('fonts/HelveticaNeueCyr-Thin.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeueCyr Roman';
+    src: url('fonts/HelveticaNeueCyr-Roman.eot');
+    src: local('☺'), url('fonts/HelveticaNeueCyr-Roman.woff') format('woff'), url('fonts/HelveticaNeueCyr-Roman.ttf') format('truetype'), url('fonts/HelveticaNeueCyr-Roman.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeueCyr Light';
+    src: url('fonts/HelveticaNeueCyr-Light.eot');
+    src: local('☺'), url('fonts/HelveticaNeueCyr-Light.woff') format('woff'), url('fonts/HelveticaNeueCyr-Light.ttf') format('truetype'), url('fonts/HelveticaNeueCyr-Light.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeueCyr Black';
+    src: url('fonts/HelveticaNeueCyr-Black.eot');
+    src: local('☺'), url('fonts/HelveticaNeueCyr-Black.woff') format('woff'), url('fonts/HelveticaNeueCyr-Black.ttf') format('truetype'), url('fonts/HelveticaNeueCyr-Black.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato Medium';
+    src: url('fonts/Lato-Medium.eot');
+    src: local('☺'), url('fonts/Lato-Medium.woff') format('woff'), url('fonts/Lato-Medium.ttf') format('truetype'), url('fonts/Lato-Medium.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('fonts/glyphicons-halflings-regular.eot');
+    src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+@font-face {
+    font-family: 'Helveticaneuecyr Heavy';
+    src: url('fonts/helveticaneuecyr-heavy_0.eot');
+    src: local('☺'), url('fonts/helveticaneuecyr-heavy_0.woff') format('woff'), url('fonts/helveticaneuecyr-heavy_0.ttf') format('truetype'), url('fonts/helveticaneuecyr-heavy_0.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OCR';
+    src: url('fonts/OCRAExtended.eot');
+    src: url('fonts/OCRAExtended.eot?#iefix') format('embedded-opentype'),
+        url('fonts/OCRAExtended.woff2') format('woff2'),
+        url('fonts/OCRAExtended.woff') format('woff'),
+        url('fonts/OCRAExtended.ttf') format('truetype'),
+        url('fonts/OCRAExtended.svg#OCRAExtended') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ux0uig');
+  src:  url('fonts/icomoon.eot?ux0uig#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ux0uig') format('truetype'),
+    url('fonts/icomoon.woff?ux0uig') format('woff'),
+    url('fonts/icomoon.svg?ux0uig#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  fill: currentColor;
+
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.new-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.icon-name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+.icon-status-02-02 {
+  width: 0.890625em;
+}
+
+.icon-ico20 .path1:before {
+  content: "\e93d";
+  color: rgb(29, 29, 27);
+}
+.icon-ico20 .path2:before {
+  content: "\e93e";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-ico20 .path3:before {
+  content: "\e93f";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-ico20 .path4:before {
+  content: "\e940";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-ico23:before {
+  content: "\e941";
+}
+.icon-ico25:before {
+  content: "\e942";
+}
+.icon-icon02 .path1:before {
+  content: "\e900";
+  color: rgb(32, 88, 164);
+}
+.icon-icon02 .path2:before {
+  content: "\e901";
+  margin-left: -0.8427734375em;
+  color: rgb(41, 153, 213);
+}
+.icon-icon02 .path3:before {
+  content: "\e902";
+  margin-left: -0.8427734375em;
+  color: rgb(41, 153, 213);
+}
+.icon-icon03 .path1:before {
+  content: "\e920";
+  color: rgb(32, 88, 164);
+}
+.icon-icon03 .path2:before {
+  content: "\e921";
+  margin-left: -1.2080078125em;
+  color: rgb(41, 153, 213);
+}
+.icon-icon03 .path3:before {
+  content: "\e922";
+  margin-left: -1.2080078125em;
+  color: rgb(41, 153, 213);
+}
+.icon-icon04:before {
+  content: "\e923";
+}
+.icon-icon05:before {
+  content: "\e924";
+}
+.icon-icon06:before {
+  content: "\e925";
+}
+.icon-icon07:before {
+  content: "\e926";
+}
+.icon-icon08:before {
+  content: "\e927";
+}
+.icon-icon09:before {
+  content: "\e928";
+}
+.icon-icon10:before {
+  content: "\e929";
+}
+.icon-icon11 .path1:before {
+  content: "\e903";
+  color: rgb(0, 155, 222);
+}
+.icon-icon11 .path2:before {
+  content: "\e904";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 155, 222);
+}
+.icon-icon11 .path3:before {
+  content: "\e905";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 85, 184);
+}
+.icon-icon11 .path4:before {
+  content: "\e906";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 55, 100);
+}
+.icon-icon11 .path5:before {
+  content: "\e907";
+  margin-left: -1.2314453125em;
+  color: rgb(17, 37, 58);
+}
+.icon-icon11 .path6:before {
+  content: "\e908";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 155, 222);
+}
+.icon-icon11 .path7:before {
+  content: "\e909";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 85, 184);
+}
+.icon-icon11 .path8:before {
+  content: "\e90a";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 55, 100);
+}
+.icon-icon11 .path9:before {
+  content: "\e90b";
+  margin-left: -1.2314453125em;
+  color: rgb(17, 37, 58);
+}
+.icon-icon11 .path10:before {
+  content: "\e90c";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 155, 222);
+}
+.icon-icon11 .path11:before {
+  content: "\e90d";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 85, 184);
+}
+.icon-icon11 .path12:before {
+  content: "\e90e";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 55, 100);
+}
+.icon-icon11 .path13:before {
+  content: "\e90f";
+  margin-left: -1.2314453125em;
+  color: rgb(17, 37, 58);
+}
+.icon-icon11 .path14:before {
+  content: "\e910";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 155, 222);
+}
+.icon-icon11 .path15:before {
+  content: "\e911";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 85, 184);
+}
+.icon-icon11 .path16:before {
+  content: "\e912";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 55, 100);
+}
+.icon-icon11 .path17:before {
+  content: "\e913";
+  margin-left: -1.2314453125em;
+  color: rgb(17, 37, 58);
+}
+.icon-icon11 .path18:before {
+  content: "\e914";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 155, 222);
+}
+.icon-icon11 .path19:before {
+  content: "\e915";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 85, 184);
+}
+.icon-icon11 .path20:before {
+  content: "\e916";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 55, 100);
+}
+.icon-icon11 .path21:before {
+  content: "\e917";
+  margin-left: -1.2314453125em;
+  color: rgb(17, 37, 58);
+}
+.icon-icon11 .path22:before {
+  content: "\e918";
+  margin-left: -1.2314453125em;
+  color: rgb(0, 155, 222);
+}
+.icon-icon11 .path23:before {
+  content: "\e919";
+  margin-left: -1.2314453125em;
+  color: rgb(17, 37, 58);
+}
+.icon-icon12 .path1:before {
+  content: "\e91a";
+  color: rgb(93, 178, 216);
+}
+.icon-icon12 .path2:before {
+  content: "\e91b";
+  margin-left: -1em;
+  color: rgb(32, 88, 164);
+}
+.icon-icon13 .path1:before {
+  content: "\e92a";
+  color: rgb(32, 88, 164);
+}
+.icon-icon13 .path2:before {
+  content: "\e92b";
+  margin-left: -0.646484375em;
+  color: rgb(235, 246, 253);
+}
+.icon-icon13 .path3:before {
+  content: "\e92c";
+  margin-left: -0.646484375em;
+  color: rgb(87, 179, 228);
+}
+.icon-icon13 .path4:before {
+  content: "\e92d";
+  margin-left: -0.646484375em;
+  color: rgb(235, 246, 253);
+}
+.icon-icon14:before {
+  content: "\e92e";
+}
+.icon-icon15:before {
+  content: "\e92f";
+}
+.icon-icon16:before {
+  content: "\e930";
+}
+.icon-icon17 .path1:before {
+  content: "\e91c";
+  color: rgb(35, 89, 163);
+}
+.icon-icon17 .path2:before {
+  content: "\e91d";
+  margin-left: -0.9912109375em;
+  color: rgb(92, 177, 215);
+}
+.icon-icon17 .path3:before {
+  content: "\e91e";
+  margin-left: -0.9912109375em;
+  color: rgb(92, 177, 215);
+}
+.icon-icon17 .path4:before {
+  content: "\e91f";
+  margin-left: -0.9912109375em;
+  color: rgb(92, 177, 215);
+}
+.icon-icon18:before {
+  content: "\e931";
+}
+.icon-star .path1:before {
+  content: "\e932";
+  color: rgb(192, 228, 250);
+}
+.icon-star .path2:before {
+  content: "\e933";
+  margin-left: -0.9931640625em;
+  color: rgb(192, 228, 250);
+}
+.icon-star .path3:before {
+  content: "\e934";
+  margin-left: -0.9931640625em;
+  color: rgb(0, 155, 222);
+}
+.icon-star .path4:before {
+  content: "\e935";
+  margin-left: -0.9931640625em;
+  color: rgb(0, 85, 184);
+}
+.icon-star .path5:before {
+  content: "\e936";
+  margin-left: -0.9931640625em;
+  color: rgb(0, 85, 184);
+}
+.icon-star .path6:before {
+  content: "\e937";
+  margin-left: -0.9931640625em;
+  color: rgb(0, 55, 100);
+}
+.icon-star .path7:before {
+  content: "\e938";
+  margin-left: -0.9931640625em;
+  color: rgb(16, 37, 57);
+}
+.icon-star .path8:before {
+  content: "\e939";
+  margin-left: -0.9931640625em;
+  color: rgb(16, 37, 57);
+}
+.icon-star .path9:before {
+  content: "\e93a";
+  margin-left: -0.9931640625em;
+  color: rgb(192, 228, 250);
+}
+.icon-star .path10:before {
+  content: "\e93b";
+  margin-left: -0.9931640625em;
+  color: rgb(16, 37, 57);
+}
+.icon-star .path11:before {
+  content: "\e93c";
+  margin-left: -0.9931640625em;
+  color: rgb(192, 228, 250);
+}
+
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+
+
+.heading-h1 {
+    position: relative;
+    margin: 0 0 29px;
+    font: #{$heading-h1-fs} / #{$heading-h1-lh} $font-family-roman;
+    color: $heading-color;
+    word-wrap: break-word;
+    z-index: 2;
+    @media screen and (max-width: 1440px) {
+      font-size: 30px;  
+      margin-bottom: 20px;  
+    }
+    @media screen and (max-width: $screen-md-max) {
+        font-size: $heading-h1-fs-laptop;
+        line-height: $heading-h1-lh-laptop;
+        margin: 0 0 40px;
+    }
+    @media screen and (max-width: $screen-sm-max) {
+      margin: 0 0 20px;
+    }
+    &--inverse {
+        color: $white;
+        margin: 0 0 58px;
+        @media screen and (max-width: $screen-xs-max) {
+            margin-bottom: 20px;
+            font-size: $heading-h1-fs-mobile;
+        }
+    }
+    &--text {
+        display: block;
+        margin: 0 0 18px;
+        font-size: 30px;
+        font-family: $font-family-bold;
+        @media screen and (max-width: $screen-sm-max) {
+            font-size: 24px;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            font-size: 23px;
+        }
+    }
+    &--bold{
+        font-family: $font-family-medium;
+    }
+    span{
+        font: 25px $font-family-sans-serif;
+        @media screen and (max-width: $screen-md-max) {
+            font-size: 20px;
+        }
+    }
+    &--share {
+      font-size: 45px;
+      line-height: 40px;
+      color: #fff;
+      display: inline-block;
+      position: relative;
+      @media screen and (max-width: $screen-xs-max) {
+        font-size: 25px;
+        line-height: 25px;
+        padding: 0 15px;
+      }
+      span {
+        padding-top: 25px;
+        font: 32px / 40px $font-family-thin;
+        display: inline-block;
+        @media screen and (max-width: $screen-xs-max) {
+          font-size: 20px;
+          line-height: 22px;
+          padding-top: 10px;
+        }
+      }
+      .period {
+        font: 18px $font-family-thin;
+        display: inline-block;
+        padding-top: 25px;
+        @media screen and (max-width: $screen-xs-max) {
+          font-size: 14px;
+          padding-top: 15px;
+          display: block;
+          margin-bottom: 20px;
+        }
+      }
+    }
+    &--landing {
+      font: 40px / 48px $font-family-roman;
+      margin-bottom: 31px;
+      @media screen and (max-width: $screen-md-max) {
+        font-size: 31px;
+      }
+      @media screen and (max-width: $screen-sm-max) {
+        font-size: 25px;  
+      }
+      span {
+        font: 40px $font-family-roman;
+        color: $second-color;
+        @media screen and (max-width: $screen-md-max) {
+          font-size: 31px;
+        }
+      }
+      img {
+            display: inline-block;
+            margin-top: -8px;
+            margin-right: -3px;
+            margin-left: 5px;
+            @media screen and (max-width: 1300px) {
+                margin-right: -3px;
+            }
+        }
+    }
+    &--landingsecond {
+      color: $brand-primary;
+      margin-left: -15px;
+      @media screen and (max-width: $screen-md-max) {
+        text-align: center;
+        margin-left: 0;
+      }
+    }
+    &--shit,
+    &--inv {
+      font: 42px / 50px $font-family-black;
+      color: $brand-primary;
+      text-transform: uppercase;
+      @media screen and (max-width: 1900px) {
+        font-size: 43px;
+        line-height: 45px;
+      }
+      @media screen and (max-width: 1800px) {
+        font-size: 37px;
+        line-height: 42px;
+      }
+
+      @media screen and (max-width: 1500px) {
+        font-size: 31px;
+        line-height: 28px;
+      }
+      @media screen and (max-width: 1300px) {
+        font-size: 35px;
+        line-height: 35px;
+      }
+      @media screen and (max-width: 1250px) {
+        font-size: 29px;
+        line-height: 28px;
+      }
+      @media screen and (max-width: 900px) {
+        font-size: 25px;
+        line-height: 30px;
+      }
+      @media screen and (max-width: 800px) {
+          font-size: 21px;
+          line-height: 23px;
+      }
+      @media screen and (max-width: 700px) {
+        font-size: 16px;
+        line-height: 18px;
+      }
+      span {
+        font: 35px $font-family-bold;
+        color: $heading-color;
+        letter-spacing: 2px;
+        @media screen and (max-width: 1900px) {
+          font-size: 34px;
+        }
+        @media screen and (max-width: 1800px) {
+          font-size: 31px;
+        }
+        @media screen and (max-width: 1500px) {
+          font-size: 24px;
+        }
+        @media screen and (max-width: 1250px) {
+          font-size: 22px;
+        }
+        @media screen and (max-width: 900px) {
+          font-size: 20px;
+          line-height: 30px;
+        }
+        @media screen and (max-width: 800px) {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        @media screen and (max-width: 700px) {
+          font-size: 12px;
+          line-height: 18px;
+        }
+      }
+      .share-description {
+        width: 39%;
+        font: 25px / 30px $font-family-bold;
+        color: $heading-color;
+        display: inline-block;
+        vertical-align: middle;
+        text-transform: none;
+        letter-spacing: 0;
+        &--students {
+          width: 55%; 
+          @media screen and (max-width: 1500px) {
+            width: 62%;
+          }
+          &-inverse {
+            color: #fff;
+          }
+        }
+        @media screen and (max-width: 1900px) {
+          font-size: 18px;
+          line-height: 23px;
+        }
+        @media screen and (max-width: 1600px) {
+          line-height: 17px;
+        }
+        @media screen and (max-width: 1500px) {
+          font-size: 20px;
+          line-height: 22px;
+        }
+        @media screen and (max-width: 1300px) {
+          font-size: 14px;
+          line-height: 14px;
+        }
+        @media screen and (max-width: 900px) {
+          font-size: 14px;
+          width: 45%;
+        }
+      }
+    }
+
+    
+    
+    &--inv {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 20px;
+      margin-bottom: 0;
+      @media screen and (max-width: 1700px) {
+        vertical-align: top;
+      }
+      @media screen and (max-width: 1500px) {
+        vertical-align: middle;
+      }
+      @media screen and (max-width: 1200px) {
+        display: block; 
+      }
+
+    }
+    &--new {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 20px;
+      margin-bottom: 0;
+        font: 42px / 50px $font-family-roman;
+        color: $brand-primary;
+        text-transform: none;
+        @media screen and (max-width: 1900px) {
+          font-size: 43px;
+          line-height: 45px;
+        }
+        @media screen and (max-width: 1800px) {
+          font-size: 37px;
+          line-height: 36px;
+        }
+
+        @media screen and (max-width: 1500px) {
+          font-size: 31px;
+          line-height: 28px;
+        }
+        @media screen and (max-width: 1300px) {
+          font-size: 35px;
+          line-height: 35px;
+        }
+        @media screen and (max-width: 1250px) {
+          font-size: 29px;
+          line-height: 28px;
+        }
+        @media screen and (max-width: 900px) {
+          font-size: 25px;
+          line-height: 30px;
+        }
+        @media screen and (max-width: 800px) {
+            font-size: 21px;
+            line-height: 23px;
+        }
+        @media screen and (max-width: 700px) {
+          font-size: 16px;
+          line-height: 18px;
+        }
+        span {
+          font-family: $font-family-bold;
+          @media screen and (max-width: 1900px) {
+          font-size: 43px;
+          line-height: 45px;
+        }
+        @media screen and (max-width: 1800px) {
+          font-size: 37px;
+          line-height: 36px;
+        }
+
+        @media screen and (max-width: 1500px) {
+          font-size: 31px;
+          line-height: 28px;
+        }
+        @media screen and (max-width: 1300px) {
+          font-size: 35px;
+          line-height: 35px;
+        }
+        @media screen and (max-width: 1250px) {
+          font-size: 29px;
+          line-height: 28px;
+        }
+        @media screen and (max-width: 900px) {
+          font-size: 25px;
+          line-height: 30px;
+        }
+        @media screen and (max-width: 800px) {
+            font-size: 21px;
+            line-height: 23px;
+        }
+        @media screen and (max-width: 700px) {
+          font-size: 16px;
+          line-height: 18px;
+        }
+          
+        }
+        .share-description {
+          width: 39%;
+          font: 25px / 30px $font-family-bold;
+          color: $heading-color;
+          display: inline-block;
+          vertical-align: middle;
+          text-transform: none;
+          letter-spacing: 0;
+          &--students {
+            width: 55%; 
+            &-inverse {
+              color: #fff;
+            }
+          }
+          @media screen and (max-width: 1900px) {
+            font-size: 18px;
+            line-height: 23px;
+          }
+          @media screen and (max-width: 1600px) {
+            line-height: 17px;
+          }
+          @media screen and (max-width: 1500px) {
+            font-size: 20px;
+            line-height: 22px;
+          }
+          @media screen and (max-width: 1300px) {
+            font-size: 14px;
+            line-height: 14px;
+          }
+          @media screen and (max-width: 900px) {
+            font-size: 14px;
+            width: 45%;
+          }
+      }
+    }
+    &--students {
+      width: calc(100% - 280px);
+      margin-right: 0;
+      float: left;
+      @media screen and (max-width: 1200px) {
+        width: auto;  
+      }
+      &-inverse {
+        color: #fff;
+      }
+      @media screen and (max-width: 1200px) {
+        float: none;
+      }
+    }
+}
+
+.app-heading{
+    color: #58b4e5;
+    font: #{$app-heading-fs} / #{$app-heading-lh} $font-family-roman;
+    margin-bottom: 13px;
+    text-transform: uppercase;
+}
+
+.heading-content-h1{
+    font: $heading-h1-page-font-size $font-family-roman;
+    color: $heading-color;
+    word-wrap: break-word;
+    margin: 10px 0 25px;
+    @media screen and (max-width: $screen-md-max) {
+        font-size: $heading-content-h1-fs-laptop;
+    }
+}
+
+
+
+
+.modal-top-heading{
+    font: #{$modal-top-heading-fs} / #{$modal-top-heading-lh} $font-family-roman;
+    color: $white;
+    margin-bottom: 45px;
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: $modal-top-heading-fs-mobile;
+    }
+    span{
+        font: #{$modal-top-heading-span-fs} / #{$modal-top-heading-span-lh} $font-family-sans-serif;
+    }
+}
+
+.default-heading--h1 {
+    position: relative;
+    margin: 0 0 5px;
+    font: 34px $font-family-bold;
+    color: #003764;
+    word-wrap: break-word;
+    z-index: 2;
+    @media screen and (max-width: $screen-md-max) {
+        font-size: 26px;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: 23px;
+    }
+}
+
+.heading-h2{
+    position: relative;
+    font: $heading-h2-font-size $font-family-roman;
+    color: $heading-color;
+    margin: 0 0 17px;
+    word-wrap: break-word;
+    z-index: 2;
+    @media screen and (max-width: $screen-md-max) {
+        font-size: $heading-h2-laptop;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+      font-size: 18px;
+    }
+    &--inverse {
+      color: #fff;
+    }
+}
+
+.heading-video {
+  font-size: 30px; 
+  font-family: $font-family-roman; 
+  margin-bottom: 38px;  
+  line-height: 40px;  
+  color: #fff;
+}
+
+.small-heading{
+    font: $small-heading $font-family-medium;
+    padding: 8px 10px;
+    background-color: #ecf2fa;
+    display: inline-block;
+    border-radius: 3px;
+    color: #0056b8;
+    margin-bottom: 20px;
+}
+
+.tab-heading {
+    font: $tab-heading $font-family-roman;
+    color: $white;
+    display: block;
+    margin: 0 0 18px;
+    @media screen and (max-width: $screen-md-max) {
+        font-size: $tab-heading-laptop;
+    }
+    &--inverse{
+        color: $heading-color;
+        margin-bottom: 41px;
+    }
+    &--section{
+        font: $tab-heading-section $font-family-bold;
+        text-transform: uppercase;
+        margin: 0 0 23px;
+        padding-top: $tab-heading-section-padding;
+        display: block;
+        @media screen and (max-width: $screen-md-max) {
+            font-size: $tab-heading-section-laptop;
+        }
+    }
+    &--answer{
+        font: $tab-heading-answer $font-family-bold;
+        color: $tab-heading-answer-color;
+        margin: 0 0 17px;
+        @media screen and (max-width: $screen-md-max) {
+            font-size: $tab-heading-answer-laptop;
+        }
+    }
+}
+
+.new-main,
+.new-content {
+.footer-heading {
+    position: relative;
+    padding: 0 0 11px;
+    margin: 0;
+    font-size: $footer-heading;
+    font-family: $font-family-bold;
+    line-height: $footer-heading-lh;
+    color: $footer-heading-color;
+    word-wrap: break-word;
+    text-transform: none;
+
+    @media screen and (min-width: $screen-sm) {
+        cursor: default;
+    }
+    @media screen and (max-width: $screen-md-max) {
+        font-size: $footer-heading-laptop;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: $footer-heading-mobile;
+        margin-bottom: 0;
+        padding: 0 20px;
+    }
+    a {
+        color: $footer-heading-color;
+        cursor: default;
+        border-bottom: none;
+        display: block;
+        text-decoration: none;  
+        @media screen and (max-width: $screen-xs-max) {
+            cursor: pointer;
+        }
+        &:hover,
+        &:focus {
+            color: $footer-heading-color;
+        }
+    }
+    &--full {
+        display: block;
+        text-indent: -9999px;
+        margin: 0 0 20px;
+        border-bottom: 2px solid #595959;
+        &:before {
+            display: none;
+        }
+    }
+}
+}
+
+.application-heading {
+    font: #{$application-heading} / #{$application-heading-lh} $font-family-heavy;
+    color: $white;
+    margin: 8px 0 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-wrap: break-word;
+}
+
+.personal-heading {
+    font: #{$personal-heading} / #{$personal-heading-lh} $font-family-roman;
+    word-wrap: break-word;
+    color: $brand-primary;
+    margin: 0 0 30px;
+}
+
+.repayment-heading {
+    font: #{$repayment-heading} / #{$repayment-heading-lh} $font-family-bold;
+    word-wrap: break-word;
+    color: $brand-primary;
+    margin: 0 0 27px;
+}
+
+.form-heading {
+    position: relative;
+    font: #{$form-heading} / #{$form-heading-lh} $font-family-roman;
+    padding: $form-heading-padding;
+    color: #0056b8;
+    margin: 0;
+    word-wrap: break-word;
+    span.icon-icon12 {
+        margin: -3px 0 0 3px;
+        display: none;
+    }
+    a {
+        display: none;
+    }
+    @media screen and (max-width: $screen-sm-max) {
+        font-size: $form-heading-tablet;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: $form-heading-mobile;
+        padding: 15px 0 21px 0px;
+    }
+}
+
+.card-heading {
+    font: #{$card-heading} / #{$card-heading-lh} $font-family-sans-serif;
+    margin: 0 0 19px;
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: $card-heading-mobile;
+    }
+}
+
+.personal-table-heading {
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+    margin: 0;
+    font: #{$personal-table-heading} / #{$personal-table-heading-lh} $font-family-roman;
+    color: $heading-color;
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: $personal-table-heading-mobile;
+    }
+}
+
+.modal-heading {
+    margin-bottom: 25px;
+    color: $heading-color;
+    font: #{$modal-heading} / #{$modal-heading-lh} $font-family-roman;
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: $modal-heading-mobile;
+    }
+}
+
+.bonus-heading {
+    font: 15px / 1.2 $font-family-roman;
+    margin: 0 0 20px;
+    color: #013765;
+    text-transform: uppercase;
+    &--sm {
+      font-size: 13px;  
+      text-transform: uppercase;  
+      color: #959595;
+      margin-bottom: 10px;  
+    }
+    span {
+      display: inline-block;  
+      vertical-align: middle; 
+    }
+}
+
+.icon-heading {
+  width: 14px;  
+  height: 14px; 
+  background-image: url('../assets/images/info.png');
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+  margin-left: 5px;  
+}
+
+
+.small-slider-heading{
+    font: #{$small-slider-heading} / #{$small-slider-heading-lh} $font-family-bold;
+    margin: 0 0 21px;
+    text-align: center;
+    span{
+        color: #eb5800;
+    }
+}
+
+.faq-new-heading{
+    font-family: $font-family-medium;
+    font-size: 18px;  
+    margin: 25px 0 15px;
+    color: #003466;
+}
+
+.how-heading{
+    font: #{$how-heading-fs} / #{$how-heading-lh} $font-family-roman;
+    color: $heading-color;
+    margin: 0 0 25px;
+    @media screen and (max-width: 1500px) {
+        font-size: $how-heading-fs-laptop;
+        margin-bottom: 15px;
+    }
+     @media screen and (max-width: $screen-sm-max) {
+        text-align: center;
+     }
+}
+
+.blocks-heading{
+    font: 25px / 1.2 $font-family-sans-serif;
+    margin-bottom: 35px;
+    &--inverse{
+        color: $white;
+        font-family: $font-family-roman;
+        margin-bottom: 15px;
+    }
+    span, a{
+        font-family: $font-family-sans-serif;
+        color: $heading-color;
+    }
+    a {
+      border-bottom: 1px solid $heading-color;
+    }
+}
+
+.level-heading{
+    font: 25px / 1.2 $font-family-bold;
+    color: #1f9bde;
+    margin: 0 0 25px;
+    @media screen and (max-width: 1500px) {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    strong{
+        color: $heading-color;
+    }
+}
+
+.heading-current-question{
+  @extend .heading-h2;
+  font-size: 21px;
+  @media screen and (max-width: $screen-xs-max) {
+    font-size: 18px;
+  }
+}
+
+h1{
+  @extend .heading-content-h1;
+  font: $heading-h1-font-size $font-family-roman;
+}
+
+h1, h2 {
+  margin: 35px 0 20px;
+}
+
+.first-heading {
+  margin-top: 0;
+}
+
+h2{
+  @extend .heading-h2;
+  margin-bottom: 20px;
+  @media screen and (max-width: $screen-xs-max) {
+    font-size: 20px;
+  }
+}
+
+h3,
+.heading-h3{
+  font: $heading-h3-font-size $font-family-roman;
+  margin: 35px 0 20px;
+  color: $heading-color;
+  @media screen and (max-width: $screen-sm-max) {
+    margin: 15px 0;
+  }
+  @media screen and (max-width: $screen-xs-max) {
+    font-size: 18px;
+  }
+}
+
+.no-margin {
+    margin-top: 0;  
+}
+
+.heading-padding {
+  padding-left: 35px; 
+  @media screen and (max-width: 1300px) {
+    padding-left: 60px;
+  }
+  @media screen and (max-width: $screen-sm-max) {
+    padding-left: 20px; 
+  }
+}
+
+.attention-status {
+  background-color: #ECF9FE;
+  border: 1px solid #B1DBEE;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+.attention-text {
+  font-size: 17px;
+  font-family: $font-family-medium;
+}
+.attention-info {
+  padding: 0 20px;
+  border: 1px solid #E3E6E6;
+  margin-bottom: 20px;
+  color: #878384;
+  font-family: $font-family-medium;
+  text-align: left;
+  span {
+    font-family: $font-family-roman;
+    color: #003764;
+    margin-left: 10px;
+  }
+}
+
+
+
+
+.status-img {
+  margin-bottom: 30px;
+}
+.warning-header {
+  color: #D60000;
+  margin-bottom: 10px;
+}
+
+.process-heading {
+  color: $heading-color;
+  margin-bottom: 10px;
+}
+
+.done-heading {
+  color: $second-color;
+  margin-bottom: 10px;
+}
+
+.registration-heading {
+  font-family: $font-family-bold;
+  font-size: 20px;  
+  color: #003764;
+  margin-bottom: 11px;  
+}
