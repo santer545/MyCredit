@@ -371,6 +371,7 @@ $duration: 1.4s;
     border-radius: 10px;
     background-color: #fff;
     display: flex;
+    flex-wrap: wrap;
     border: 1px dashed #c9d1df;
     justify-content: center;
     align-items: center;
@@ -411,6 +412,37 @@ $duration: 1.4s;
     @media screen and (max-width: 500px) {
         margin-bottom: 20px;    
     }
+}
+
+.card-date-wrapper {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+    bottom: 30px;
+
+    font-size: 5px;
+    display: flex;
+    align-items: center;
+    color: #d24a45;
+    text-transform: uppercase;
+
+    p {
+        margin: 0;  
+        text-align: right;
+        &:first-child {
+            padding-right: 5px;  
+        }
+        span {
+
+            display: block; 
+        }
+    }
+}
+
+.card-date-info {
+    font-size: 12px;    
+    font-family: 'OCR';
 }
 
 .card-wrapper {

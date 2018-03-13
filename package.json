@@ -19,7 +19,12 @@
     "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
+<<<<<<< HEAD
+    "gulp-ruby-sass": "^2.1.1",
+    "gulp-sass": "^2.3.2",
+=======
     "gulp-sass": "^3.2.0",
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
     "gulp-sourcemaps": "^1.12.1",
     "gulp-svg-sprites": "^4.0.2",
     "gulp-svgmin": "^1.2.3",
