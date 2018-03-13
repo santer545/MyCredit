@@ -102,13 +102,14 @@
             display: block;
             border-bottom: none;
             margin-top: 33px;
+                @media screen and (max-width: $screen-md-max) {
+                    width: 150px;
+                }
+                @media screen and (max-width: 410px) {
+                    width: 100px;
+                }
             img {
-                @media screen and (max-width: $screen-xs-max) {
-                    max-width: 150px;
-                }
-                @media screen and (max-width: 350px) {
-                    max-width: 110px;
-                }
+               width: 100%;
             }
             @media screen and (max-width: 1300px) {
                 margin-top: 16px;   
@@ -121,12 +122,20 @@
             }
             span {
                 position: absolute;
-                bottom: -3px;
-                right: 7px;
+                bottom: -2px;
+                right: 3px;
                 font-size: 7px;
                 text-transform: uppercase;
                 letter-spacing: 1.2px;   
                 white-space: nowrap;
+                color: $brand-primary;
+                @media screen and (max-width: $screen-md-max) {
+                   font-size: 5.5px; 
+                }
+                @media screen and (max-width: 410px) {
+                   font-size: 3px;
+                   right: 2px;
+                }
             }
         }
         &-container {
