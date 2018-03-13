@@ -2,7 +2,7 @@
     font-family: $font-family-sans-serif;
     font-size: $btn-font-size;
     text-decoration: none;  
-    min-width: 165px;
+    
     
     @media screen and (max-width: $screen-sm-max) {
         font-size: $btn-font-size-tablet;
@@ -743,6 +743,7 @@
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
     padding: 15px 23px;
+    min-width: 165px;
     &:before {
         content: "";
         position: absolute;

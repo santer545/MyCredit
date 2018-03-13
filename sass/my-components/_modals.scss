@@ -1,8 +1,20 @@
 .modal {
+<<<<<<< HEAD
     background-color: rgba(0, 0, 0, 0.6);
     .help-tooltip-data {
         bottom: calc(100% + 30px);
     }
+=======
+    .help-tooltip-data {
+        bottom: calc(100% + 30px);
+    }
+    &-heading {
+        margin-bottom: 15px;
+        @media screen and (max-width: $screen-xs) {
+            margin-bottom: 0;
+        }
+    }
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
     &-video {
         background-color: rgba(0,0,0,0.6);
         .modal-dialog {
@@ -20,6 +32,16 @@
             width: 100%;
             position: fixed;
         }
+<<<<<<< HEAD
+=======
+        & .wrapper {
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+        }
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
     }
     &-dialog {
         width: 645px;
@@ -61,7 +83,11 @@
     &-content {
         border: none;
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+<<<<<<< HEAD
         border-radius: 0;
+=======
+        border-radius: 5px;
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
         .big-slider{
             margin: 0;
         }
@@ -71,10 +97,22 @@
 
     }
     &-footer {
+<<<<<<< HEAD
         padding: 30px 0;
         background-color: #f0f2f7;
         text-align: center;
         border-top: 1px solid #dbdeea;
+=======
+        padding: 25px 0;
+        background-color: #f0f2f7;
+        text-align: center;
+        border-top: 1px solid #dbdeea;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        @media screen and (max-width: $screen-xs-max) {
+                padding: 20px 0;
+            }
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
         .password-change {
             vertical-align: middle;
             margin: 0;
@@ -104,11 +142,23 @@
                 height: 15px;
             }
         }
+<<<<<<< HEAD
+=======
+        @media screen and (max-width: $screen-xs-max) {
+            padding-top: 20px;
+        }
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
     }
     &-body {
         max-width: 375px;
         margin: 0 auto;
         padding: 20px 0;
+<<<<<<< HEAD
+=======
+        @media screen and (max-width: $screen-xs-max) {
+            padding: 20px 30px;
+        }
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
         /* padding: 15px 90px 4px;
         @media screen and (max-width: $screen-md-max) {
             padding: 15px 60px;
@@ -122,6 +172,19 @@
         .form-group {
             &:not(:last-of-type) {
                 margin-bottom: 28px;
+<<<<<<< HEAD
+=======
+                @media screen and (max-width: $screen-xs-max) {
+                     margin-bottom: 15px;
+                }
+            }
+            &--large {
+                margin-bottom: 17px;
+                margin-top: -8px;
+                @media screen and (max-width: $screen-xs-max) {
+                     margin:0 0 10px;
+                }   
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
             }
         }
         .form-label {
@@ -129,7 +192,11 @@
             display: block;
             padding: 0;
             margin-bottom: 10px;
+<<<<<<< HEAD
             margin-left: 30px;
+=======
+            margin-left: 25px;
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
             &--default {
                 width: 100%;
                 padding: 0;
@@ -138,11 +205,27 @@
             }
             @media screen and (max-width: $screen-xs-max) {
                 width: 100%;
+<<<<<<< HEAD
                 margin: 0 0 5px 20px;
             }
         }
         .form-info {
             top: -22px;
+=======
+                margin: 0 0 5px 22px;
+            }
+        }
+        .modal-label-left {
+            @media screen and (max-width: $screen-xs-max) {
+                margin: 0 0 5px 0;
+            }
+        }
+        .form-info {
+            top: -27px;
+            @media screen and (max-width: $screen-xs-max){
+                top: -22px;
+            }
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
         }
         .form-control--wr {
             width: 100%;
@@ -157,6 +240,12 @@
             width: 100%;
             height: 55px;
             line-height: 55px;
+<<<<<<< HEAD
+=======
+            @media screen and (max-width: $screen-xs-max) {
+                height: 45px;
+            }
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
         }
         .form-group--radio {
             display: inline-block;
@@ -551,7 +640,18 @@
 .remember-holder{
     @include clearfix;
     margin-bottom: 20px;
+<<<<<<< HEAD
 
+=======
+    &__img {
+        border-radius: 1px;
+        border: 1px solid #e2e2e2;
+        padding: 0;
+    }
+     @media screen and (max-width: $screen-xs-max) {
+       margin-bottom: 15px;
+    }
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
 }
 
 .remember-block{
@@ -565,15 +665,28 @@
     }
     @media screen and (max-width: $screen-xs-max) {
         font-size: 12px;
+<<<<<<< HEAD
+=======
+        margin: 15px 0 0;
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
     }
     input{
         margin-top: 2px;
         display: none;
     }
+<<<<<<< HEAD
     .checkbox-emulator{
         position: relative;
         display: inline-block;
         vertical-align: middle;
+=======
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .checkbox-emulator{
+        position: relative;
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
         width: 17px;
         height: 17px;
         border: 1px solid #dedfe1;
@@ -586,7 +699,11 @@
             position: absolute;
             left: 3px;
             top: 3px;
+<<<<<<< HEAD
             border: 1px solid #00b181;
+=======
+            border: 1px solid #fff;
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
             border-top: none;
             border-right: none;
             @include rotate(-45deg);
@@ -594,6 +711,11 @@
         }
     }
     input:checked + span{
+<<<<<<< HEAD
+=======
+        background-color: #0659b3;
+        border-right-color: #0659b3;
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
         &:before{
             opacity: 1;
         }
@@ -607,15 +729,27 @@
     margin: 22px 0 0;
     border: none;
     font: 14px 'HelveticaNeueCyr Light', Arial, sans-serif;
+<<<<<<< HEAD
     color: $brand-primary;
     text-decoration: underline;
     display: block;
     &:hover{
         color: $brand-primary;
+=======
+    color: #0659b3;
+    text-decoration: underline;
+    display: block;
+    &:hover{
+        color: #0659b3;
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
         text-decoration: none;
     }
     @media screen and (max-width: $screen-xs-max) {
         font-size: 12px;
+<<<<<<< HEAD
+=======
+        margin: 15px 0 0;
+>>>>>>> 84c38bd8e1992b98ee12fd0a25918f96d94f91b9
     }
 }
 
