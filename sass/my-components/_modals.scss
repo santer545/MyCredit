@@ -604,6 +604,9 @@
         border-radius: 1px;
         border: 1px solid #e2e2e2;
         padding: 0;
+        img {
+            width: 100%;
+        }
     }
      @media screen and (max-width: $screen-xs-max) {
        margin-bottom: 15px;
