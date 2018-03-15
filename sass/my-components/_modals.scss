@@ -200,6 +200,10 @@
             line-height: 55px;
             @media screen and (max-width: $screen-xs-max) {
                 height: 45px;
+                line-height: 45px;  
+                font-size: 14px;    
+                padding-top: 0;
+                padding-bottom: 0;
             }
         }
         .form-group--radio {
