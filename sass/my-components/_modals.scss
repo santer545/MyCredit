@@ -280,8 +280,13 @@
         color: #fff;
     }
     .modal-dialog {
+        width: 800px;   
         border-radius: 5px;
         border: none;
+        @media screen and (max-width: $screen-sm-max) {
+            width: 90%;
+            margin: 30px auto;
+        }
     }
     .close-info {
         padding-left: 30px;

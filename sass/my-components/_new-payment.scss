@@ -186,8 +186,9 @@
     padding: 20px 30px;
     background-color: #eaf2f9;
     position: relative;
-    font-size: 12px;
     margin-top: 30px;
+    color: #003764;
+    font-family: $font-family-roman;
 
     &--margin {
         margin: 20px 0; 
@@ -377,8 +378,8 @@ $duration: 1.4s;
     align-items: center;
     font-size: 14px;
     font-family: $font-family-roman;
-    color: $heading-color;
     cursor: pointer;
+    color: #003764;
     transition: background-color 0.3s;
     &:not(:last-child) {
         margin-right: 20px; 
@@ -424,8 +425,12 @@ $duration: 1.4s;
     font-size: 5px;
     display: flex;
     align-items: center;
-    color: #d24a45;
+    
     text-transform: uppercase;
+
+    &.error {
+        color: #d24a45;
+    }
 
     p {
         margin: 0;  
@@ -441,8 +446,7 @@ $duration: 1.4s;
 }
 
 .card-date-info {
-    font-size: 12px;    
-    font-family: 'OCR';
+    font-size: 12px; 
 }
 
 .card-wrapper {
@@ -467,6 +471,12 @@ $duration: 1.4s;
             display: block; 
         }
     }
+
+    &--visa {
+        .card-visa {
+            display: block; 
+        }
+    }
 }
 
 .card-input {
@@ -474,7 +484,6 @@ $duration: 1.4s;
 
     input {
         font-size: 14px;
-        font-family: 'OCR';
         color: #003864;
         text-align: right;
         border: none;   
@@ -493,7 +502,7 @@ $duration: 1.4s;
     span {
         letter-spacing: 1px;    
         &:not(:last-of-type) {
-            margin-right: 10px; 
+            margin-right: 8px; 
         }
     }
 }

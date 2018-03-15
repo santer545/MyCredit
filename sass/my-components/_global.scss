@@ -3287,20 +3287,23 @@
 .credit-zero-left {
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 39.06%;
+    left: 80px;
+    width: 25%;
+    // @media screen and (max-width: 1500px) {
+    //     width: 37%;
+    // }
     @media screen and (max-width: 1500px) {
-        width: 37%;
+        left: 20px;
     }
     @media screen and (max-width: 1300px) {
-        width: 34.5%;
+        left: 0;
     }
     @media screen and (max-width: $screen-md-max) {
         bottom: auto;
-        top: 12%;
+        top: 2%;
     }
     @media screen and (max-width: $screen-sm-max) {
-        width: 45%;
+        // width: 45%;
     }
     @media screen and (max-width: $screen-xs-max) {
         display: none;
@@ -3316,17 +3319,17 @@
 .credit-zero-right {
     position: absolute;
     right: 50px;
-    bottom: 100px;
+    bottom: 0;
     width: 15%;
     @media screen and (max-width: 1700px) {
         width: 13.5%;
-        top: 20px;  
-        bottom: auto;
+        // top: 20px;  
+        // bottom: auto;
         right: 45px;      
     }
     @media screen and (max-width: 1500px) {
-        top: 5px;
-        bottom: auto;
+        // top: 5px;
+        // bottom: auto;
         width: 11.53%;
         right: 20px;
     }
@@ -3337,15 +3340,17 @@
         top: 5px;
         width: 9%;
         right: 10px;
+        display: none;
     }
     @media screen and (max-width: $screen-md-max) {
+        display: block;
         bottom: auto;
         top: 20px;
         width: 16%;
     }
-    @media screen and (max-width: $screen-sm-max) {
-        width: 9%;
-    }
+    // @media screen and (max-width: $screen-sm-max) {
+    //     width: 9%;
+    // }
     @media screen and (max-width: $screen-xs-max) {
         display: none;
     }
