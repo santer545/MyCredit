@@ -2091,7 +2091,9 @@ function onClickSendMe() {
  */
 function onClickStartVerify() {
 	$("#div_card_list").addClass("hidden");
+	$(".new-repayment-data").removeClass("hidden");
 	$("#div_step1").removeClass("hidden");
+	$(".new-repayment").removeClass("hidden");
 
 }
 
@@ -2344,6 +2346,10 @@ function onClickSubmitReg(form, prefix) {
 			
 			$("#sms-phone").val($("#phone").val());
 
+			console.log("js-form-1-1 submit");
+			console.log($("#sms-phone").val());
+			//setTimeout("window.document.forms["js-form-1-1"].submit();", 500);
+			
 			window.document.forms["js-form-1-1"].submit();
 		}
 		if (form === 'js-form-1-2') {
@@ -3331,7 +3337,8 @@ function sendCodeReg(phone, captcha) {
 					$("#div_auth").removeClass("hidden");	// показать поля ввода пароля на вход
 				} else {
 					$("#errorCaptcha").removeClass("hidden");
-					grecaptcha.reset();	// сброс капчи
+					if ($("#isReCaptcha_enabled").text() == "1")
+						grecaptcha.reset();	// сброс капчи
 					// $('#buttonGetCode').attr('disabled', true);
 					flagReg.reCaptcha = false;
 					console.log(js.message_details);
@@ -3660,6 +3667,100 @@ function test_verify_card(id) {
 }
 
 /**
+ * отправляет данные по карте в CRM при нажатии на кнопку
+ * @returns
+ */
+function tranzzoPayAnotherCard() {
+
+	// $("#button_sendCard").attr('disabled', true);	// дизейблим кнопку отправки
+
+	$(".new-repayment-data").removeClass("hidden");
+	$("#div_step1").addClass("hidden");
+	$("#div_waiting").removeClass("hidden");
+	$('#wait-modal').modal('show'); // Ожидание через modal
+	$("#div_error").addClass("hidden");
+	$('#data-error').modal('hide'); // Error через modal
+
+	var cardNumber = $("#card_number_1").val().trim() + $("#card_number_2").val().trim() + $("#card_number_3").val().trim() + $("#card_number_4").val().trim();
+	var cardDateMonth = + $("#card_month").val();
+	var cardDateYear = + $("#card_year").val();
+	var cardCvv2 = + $("#cvv2").val();
+	var amount = + $("#js-repayment-sum").val();
+	var backUrl = $("#backUrl").text();
+	
+	var url = "/ru/?ajax";	
+
+	var data = {
+		    typeData: 'payAnotherCard',
+		    cardNumber: cardNumber,
+		    cardDateMonth: cardDateMonth, 
+		    cardDateYear: cardDateYear, 
+		    cardCvv2: cardCvv2,
+		    amount: amount,
+		    backUrl: backUrl
+		};
+
+	// отправить массив на сервер
+	// console.log("Передаем запрос ajax " + url);
+	// console.log(data);
+
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: {data: data},
+		dataType: 'json',
+		success: function(json){
+			if(json) {
+				//var js = JSON.parse(json);
+				var js = json;
+				
+				console.log(js);
+				if (js.message == 'OK') {
+					// если карта 3Ds:
+					if (js.data.CardType == 1 ) {
+						if (js.data.Url ) {
+							// заполняем форму для внешнего поста:
+							// console.log(js.data);
+							location.href = js.data.Url;
+						}
+					// если не 3Ds, просто уходим по ссылке на наш сайт:
+					} else {
+						location.href = $("#backUrl").text();
+					}
+
+				} else {
+					$("#div_waiting").addClass("hidden");
+					$('#wait-modal').modal('hide'); // Ожидание через modal
+					$("#div_error").removeClass("hidden");
+					$("#span_error").text(js.message_details);
+					$('#data-error').modal('show'); // Error через modal
+					
+					$("#div_card_list").removeClass("hidden");
+					$("#div_btn_pay").removeClass("hidden");
+					$("#div_btn_pay_another").removeClass("hidden");
+					
+					$("#div_step1").addClass("hidden");
+				}
+			};
+		},
+	
+		error: function(jqXHR, textStatus, errorThrown){
+			// console.log(jqXHR); // вывод JSON в консоль
+			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			// console.log(errorThrown); // вывод JSON в консоль
+			
+			$("#div_waiting").addClass("hidden");
+			$('#wait-modal').modal('hide'); // Ожидание через modal
+			$("#div_error").removeClass("hidden");
+			$('#data-error').modal('show'); // Error через modal
+			//$("#div_step1").removeClass("hidden");
+			$("#button_sendCard").removeAttr("disabled");
+		}
+	});
+	return false;
+}
+
+/**
  * обрабатывает второй шаг верификации карты
  * @returns
  */
@@ -3669,7 +3770,8 @@ function tranzzoPayStep2() {
 	// $("#div_step1").addClass("hidden");
 	// $("#div_waiting").removeClass("hidden");
 
-	var cardNumber = $("#card_number").val();
+	// var cardNumber = $("#card_number").val();
+	var cardNumber = $("#card_number_1").val().trim() + $("#card_number_2").val().trim() + $("#card_number_3").val().trim() + $("#card_number_4").val().trim();
 
 	var url = "/ru/?ajax";	
 
@@ -3695,6 +3797,7 @@ function tranzzoPayStep2() {
 				console.log(js);
 				if (js.message == 'OK') {
 					$("#div_waiting").addClass("hidden");
+					$('#wait-modal').modal('hide'); // Ожидание через modal
 					// если 3ds:
 					if (js.status == 1) {
 						if (js.params ) {
@@ -3702,17 +3805,20 @@ function tranzzoPayStep2() {
 							console.log(js.params);
 							location.href = js.params.VerifiedURL;
 						}
-						// $("#div_step2_3ds").removeClass("hidden");
 					}
 					// если не 3ds:
 					if (js.status == 2) {
 						$("#div_waiting").addClass("hidden");
+						$('#wait-modal').modal('hide'); // Ожидание через modal
 						$("#div_step2").removeClass("hidden");
 					}
 				} else {
+					$("#div_card_list").removeClass("hidden");
 					$("#div_waiting").addClass("hidden");
+					$('#wait-modal').modal('hide'); // Ожидание через modal
 					$("#div_error").removeClass("hidden");
 					$("#span_error").text(js.message_details);
+					$('#data-error').modal('show'); // Error через modal
 				}
 			};
 		},
@@ -3723,7 +3829,9 @@ function tranzzoPayStep2() {
 			// console.log(errorThrown); // вывод JSON в консоль
 			
 			$("#div_waiting").addClass("hidden");
+			$('#wait-modal').modal('hide'); // Ожидание через modal
 			$("#div_error").removeClass("hidden");
+			$('#data-error').modal('show'); // Error через modal
 			// $("#button_sendCard").removeAttr("disabled");
 		}
 	});
@@ -3740,8 +3848,12 @@ function tranzzoPayStep2_SendCode() {
 
 	$("#div_step2").addClass("hidden");
 	$("#div_waiting").removeClass("hidden");
+	$('#wait-modal').modal('show'); // Ожидание через modal
+	$("#div_error").addClass("hidden");
+	$('#data-error').modal('hide'); // Error через modal
 
-	var cardNumber = $("#card_number").val();
+	// var cardNumber = $("#card_number").val();
+	var cardNumber = $("#card_number_1").val().trim() + $("#card_number_2").val().trim() + $("#card_number_3").val().trim() + $("#card_number_4").val().trim();
 	var sendCode = $("#sendCode").val();
 
 	var url = "/ru/?ajax";	
@@ -3775,8 +3887,11 @@ function tranzzoPayStep2_SendCode() {
 					location.reload(true);
 				} else {
 					$("#div_waiting").addClass("hidden");
+					$('#wait-modal').modal('hide'); // Ожидание через modal
 					$("#div_error").removeClass("hidden");
 					$("#span_error").text(js.message_details);
+					$('#data-error').modal('show'); // Error через modal
+					$("#div_card_list").removeClass("hidden");
 					
 				}
 			};
@@ -3788,7 +3903,9 @@ function tranzzoPayStep2_SendCode() {
 			// console.log(errorThrown); // вывод JSON в консоль
 			
 			$("#div_waiting").addClass("hidden");
+			$('#wait-modal').modal('hide'); // Ожидание через modal
 			$("#div_error").removeClass("hidden");
+			$('#data-error').modal('show'); // Error через modal
 			// $("#button_sendCard").removeAttr("disabled");
 		}
 	});
@@ -3802,6 +3919,82 @@ function tranzzoPayStep2_SendCode() {
  * @returns
  */
 function tranzzoSendCardDetails() {
+	
+	$(".new-repayment").addClass("hidden");
+	$("#div_step1").addClass("hidden");
+	$("#div_waiting").removeClass("hidden");
+	$('#wait-modal').modal('show'); // Ожидание через modal
+	$("#div_error").addClass("hidden");
+	$('#data-error').modal('hide'); // Error через modal
+	
+	var cardNumber = $("#card_number_1").val().trim() + $("#card_number_2").val().trim() + $("#card_number_3").val().trim() + $("#card_number_4").val().trim();
+	var cardDateMonth = + $("#card_month").val();
+	var cardDateYear = + $("#card_year").val();
+	var cardCvv2 = + $("#cvv2").val();
+	var backUrl = $("#backUrl").text();
+	
+	var url = "/ru/?ajax";	
+
+	var data = {
+		    typeData: 'sendCardDetails',
+		    cardNumber: cardNumber,
+		    cardDateMonth: cardDateMonth, 
+		    cardDateYear: cardDateYear, 
+		    cardCvv2: cardCvv2,
+		    backUrl: backUrl
+		};
+
+	// отправить массив на сервер
+	// console.log("Передаем запрос ajax " + url);
+	console.log(data);
+
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: {data: data},
+		dataType: 'json',
+		success: function(json){
+			if(json) {
+				//var js = JSON.parse(json);
+				var js = json;
+				
+				console.log(js);
+				if (js.message == 'OK') {
+					tranzzoPayStep2();	// переходим на второй шаг верификации
+				} else {
+					$("#div_waiting").addClass("hidden");
+					$('#wait-modal').modal('hide'); // Ожидание через modal
+					$("#div_error").removeClass("hidden");
+					$("#span_error").text(js.message_details);
+					$('#data-error').modal('show'); // Error через modal
+					$("#div_card_list").removeClass("hidden");
+				}
+			};
+		},
+	
+		error: function(jqXHR, textStatus, errorThrown){
+			// console.log(jqXHR); // вывод JSON в консоль
+			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			// console.log(errorThrown); // вывод JSON в консоль
+			
+			$("#div_waiting").addClass("hidden");
+			$('#wait-modal').modal('hide'); // Ожидание через modal
+			$("#div_error").removeClass("hidden");
+			$('#data-error').modal('show'); // Error через modal
+			//$("#div_step1").removeClass("hidden");
+			$("#button_sendCard").removeAttr("disabled");
+		}
+	});
+
+	return false;
+
+}
+
+/**
+ * отправляет данные по карте в CRM при нажатии на кнопку (старая верстка, удалить)
+ * @returns
+ */
+function tranzzoSendCardDetails_old() {
 	
 	$("#button_sendCard").attr('disabled', true);	// дизейблим кнопку отправки
 
@@ -3824,8 +4017,8 @@ function tranzzoSendCardDetails() {
 		};
 
 	// отправить массив на сервер
-	// console.log("Передаем запрос ajax " + url);
-	console.log(data);
+	console.log("Передаем запрос ajax " + url);
+	// console.log(data);
 
 	$.ajax({
 		url: url,
@@ -3855,12 +4048,29 @@ function tranzzoSendCardDetails() {
 			
 			$("#div_waiting").addClass("hidden");
 			$("#div_error").removeClass("hidden");
-			//$("#div_step1").remoteClass("hidden");
+			//$("#div_step1").removeClass("hidden");
 			$("#button_sendCard").removeAttr("disabled");
 		}
 	});
 
 	return false;
+
+}
+
+/**
+ * открывает форму начала оплаты другой картой
+ * @returns
+ */
+function tranzzoStartPayAnotherCard() {
+
+	$("#div_card_list").addClass("hidden");
+	$("#div_btn_pay").addClass("hidden");
+	$("#div_btn_pay_another").addClass("hidden");
+	$("#div_error").addClass("hidden");
+	$('#data-error').modal('hide'); // Error через modal
+
+	$(".new-repayment-data").removeClass("hidden");
+	$("#div_step1").removeClass("hidden");
 
 }
 
@@ -4212,83 +4422,73 @@ $(".vote-section .star").on("click", function() {
 
 // это для тестирования:
 
-	// Only works after `FB.init` is called
-	function myFacebookLogin() {
+// Only works after `FB.init` is called
+function myFacebookLogin() {
 
-		FB.getLoginStatus(function(response) {
-			if (response.status === 'connected') {
-				console.log('Logged in.');
-				console.log(response);
-				
-				FB.api(
-					    // response.authResponse.userID + '/email',
-					    '/me?',
-					    /*
-					    {fields: 'about,email,name,age_range,birthday,context,devices,education,first_name,gender,'
-						+'languages,last_name,link,locale,location,relationship_status,religion,timezone,updated_time,work,'
-						+'verified,'
-						+'accounts,friendlists,friends,family,groups'},
-						*/
-					    {fields: 'about,email,name,age_range,birthday,context,devices,education,first_name,gender,'
-							+'languages,last_name,link,locale,location,relationship_status,religion,timezone,updated_time,work,'
-							+'verified,'
-							+'accounts,friendlists,friends,family,groups'
-					    },
-					    function (response) {
-					    	if (response && !response.error) {
-								console.log('api_true');
-					    		console.log(response);
-					    	/* handle the result */
-					    	} else {
-								console.log('api_error');
-					    		console.log(response);
-					    	}
-					    }
-				);
-				
-//				FB.api(
-//					    // response.authResponse.userID + '/friendlists',
-//					    response.authResponse.userID + '/friends',
-//					    function (response) {
-//					      if (response && !response.error) {
-//								console.log('api_true');
-//								console.log(response);
-//					        /* handle the result */
-//					      } else {
-//								console.log('api_error');
-//								console.log(response);
-//					      }
-//				    }
-//				);
-				
-			} else {
-				console.log('for login');
-				FB.login();
-			}
-		});
-	
-		/*
-		FB.login(function(response) {
-			if (response.authResponse) {
-				var access_token =   FB.getAuthResponse()['accessToken'];
-				console.log('Access Token = '+ access_token);
-				FB.api('/me', function(response) {
-					console.log('Good to see you, ' + response.name + '.');
-				});
-			} else {
-				console.log('User cancelled login or did not fully authorize.');
-			}
-		}, {scope: ''});
-		*/
+	FB_api = function () {
 		
-		
-		/*
-		FB.login(function(){
-			  console.log('FB.login');
-			  
-			  
-		  	}, {scope: 'publish_actions'});
-		 */
+		FB.api(
+	    // response.authResponse.userID + '/email',
+	    '/me?',
+	    {fields: 'id,significant_other,domains,about,email,name,age_range,birthday,context,devices,education,first_name,gender,'
+			+'languages,last_name,link,locale,location,relationship_status,religion,timezone,updated_time,work,'
+			+'verified,'
+			+'accounts,friendlists,friends,family,groups'
+	    },
+	    function (response) {
+	    	if (response && !response.error) {
+				//console.log('api_true');
+	    		// console.log(response);
+	    		console.log(response.link);
+	    		$("#facebook").val(response.link);
+	    	/* handle the result */
+	    	} else {
+				console.log('api_error');
+	    		console.log(response);
+	    	}
+	    }
+	)};
 
-	}
+	FB.getLoginStatus(function(response) {
+		if (response.status === 'connected') {
+			console.log('Logged in.');
+			// console.log(response);
+
+			$("#facebook_userID").val(response.authResponse.userID);
+			$("#facebook_accessToken").val(response.authResponse.accessToken);
+
+			FB_api();
+			
+		} else {
+			console.log('for login');
+			// FB.login();
+
+			FB.login(function(response) {
+				if (response.authResponse) {
+					// var access_token = FB.getAuthResponse()['accessToken'];
+					//console.log('Access Token = '+ access_token);
+					// console.log('response = ');
+					// console.log(response);
+
+					$("#facebook_userID").val(response.authResponse.userID);
+					$("#facebook_accessToken").val(response.authResponse.accessToken);
+
+					FB_api();
+
+				} else {
+					console.log('User cancelled login or did not fully authorize.');
+				}
+			}, {scope: ''});
+		}
+	});
+
+	/*
+	FB.login(function(){
+		  console.log('FB.login');
+		  
+		  
+	  	}, {scope: 'publish_actions'});
+	 */
+
+}
 
