@@ -1833,6 +1833,7 @@
         .btn-personal {
             width: 100%;
             padding: 9px 10px;
+            min-width: 0;   
         }
         &.active {
             .ticket-top {
