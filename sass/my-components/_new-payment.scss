@@ -524,6 +524,12 @@ $duration: 1.4s;
 
 .card-list {
     padding-left: 55px; 
+    @media screen and (max-width: $screen-sm-max) {
+        display: inline-block;  
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        padding-left: 30px; 
+    }
     label {
         position: relative; 
         display: block; 
@@ -535,6 +541,9 @@ $duration: 1.4s;
 
         img {
             max-height: 38px;   
+            @media screen and (max-width: 340px) {
+                max-width: 35px;    
+            }
         }
 
         input[type="radio"] {
@@ -567,6 +576,10 @@ $duration: 1.4s;
             border-radius: 25px;    
             background-color: #f2f2f2;
             border: 1px solid #d0d3df;
+
+            @media screen and (max-width: $screen-xs-max) {
+                right: calc(100% + 10px);
+            }
         }
 
 
@@ -578,6 +591,10 @@ $duration: 1.4s;
     color: #7c8295;
     font-style: italic; 
     padding-left: 14px; 
+
+    @media screen and (max-width: $screen-xs-max) {
+        padding-left: 10px; 
+    }
 
     &--warning {
         color: #f24943;
@@ -594,6 +611,13 @@ $duration: 1.4s;
     padding-right: 20px;    
     min-width: 160px;   
     text-align: right;  
+
+    @media screen and (max-width: 340px) {
+        font-size: 16px;    
+        min-width: 130px;  
+        padding-left: 19px;
+        padding-right: 15px; 
+    }
     &:after {
         content: '';
         position: absolute; 
@@ -601,7 +625,11 @@ $duration: 1.4s;
         top: 6px;   
         height: 18px;   
         width: 1px; 
-        background-color: #cfd2de
+        background-color: #cfd2de;
+
+        @media screen and (max-width: $screen-xs-max) {
+            top: 2px;   
+        }
     }
 
     span {
@@ -609,6 +637,10 @@ $duration: 1.4s;
         bottom: 7px;   
         left: 10px;    
         padding-right: 10px;    
+
+        @media screen and (max-width: 340px) {
+            bottom: 4px;    
+        }
     }
 }
 
@@ -617,5 +649,18 @@ $duration: 1.4s;
         margin-left: 20px;  
         font-family: $font-family-roman;
         color: #0083ca;
+
+        @media screen and (max-width: 340px) {
+            font-size: 11px;    
+            margin-left: 9px;   
+        }
+    }
+
+    .btn-sm {
+        @media screen and (max-width: $screen-xs-max) {
+            font-size: 14px;    
+            padding: 9px 14px;
+        }
+        
     }
 }

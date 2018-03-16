@@ -200,16 +200,16 @@
             line-height: 55px;
             @media screen and (max-width: $screen-xs-max) {
                 height: 45px;
-                line-height: 45px;  
-<<<<<<< HEAD
+                line-height: 45px; 
+
                 font-size: 14px;    
                 padding-top: 0;
                 padding-bottom: 0;
-=======
+
                 padding-top: 0; 
                 padding-bottom: 0;  
                 font-size: 14px;    
->>>>>>> 2805d2543adbdb7ae2ab49ae0d4402a8b995640c
+
             }
         }
         .form-group--radio {
