@@ -108,6 +108,9 @@
                 @media screen and (max-width: 410px) {
                     width: 140px;
                 }
+                @media screen and (max-width: 340px) {
+                    width: 110px;   
+                }
             img {
                width: 100%;
             }
@@ -139,6 +142,9 @@
 
                 @media screen and (max-width: $screen-xs) {
                     font-size: 5px;
+                }
+                @media screen and (max-width: 340px) {
+                    font-size: 4px; 
                 }
             }
         }
@@ -1129,6 +1135,9 @@
             @media screen and (max-width: 1700px) {
             max-width: 100px;
             right: 30px;
+            img {
+                border-radius: 50%; 
+            }
         }
             @media screen and (max-width: $screen-md-max) {
                 max-width: 100px;

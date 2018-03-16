@@ -54,15 +54,13 @@
     }
     @media screen and (max-width: $screen-xs-max) {
         width: 325px;
-        bottom: 30px;
+        bottom: 0;
         height: auto;
     }
 
     @media screen and (max-width: 340px) {
-        position: relative;
         width: 100%;
         @include clearfix;
-        margin-top: 10px;
     }
 
     &--inverse {
@@ -657,6 +655,8 @@
     }
     @media screen and (max-width: $screen-xs-max) {
         font-size: 18px;
+        top: 65px;  
+        transform: translate(-50%, 0);
     }
     &.active {
         opacity: 1;
@@ -668,9 +668,9 @@
         padding-top: 30px;
         line-height: 22px;
         @media screen and (max-width: $screen-xs-max) {
-            padding-top: 20px;
-            font-size: 14px;
-            line-height: 18px;
+            padding-top: 4px;
+            font-size: 12px;
+            line-height: 15px;
         }
     }
     a {
@@ -682,6 +682,11 @@
         @media screen and (max-width: $screen-xs-max) {
             padding-top: 20px;
             line-height: 22px;
+        }
+    }
+    img {
+        @media screen and (max-width: $screen-xs-max) {
+            max-width: 60px;    
         }
     }
 }
@@ -937,9 +942,10 @@
         }
         @media screen and (max-width: 700px) {
             width: 65%;
+            padding-top: 3px;
         }
         @media screen and (max-width: $screen-xs) {
-            padding-top: 0;
+            
             float: right;
         }
         @media screen and (max-width: 340px) {

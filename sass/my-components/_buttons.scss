@@ -823,7 +823,9 @@
         display: inline-block;
         vertical-align: middle;
     }
-    
+    &:hover {
+        color: #fff;
+    }
     
 }
 
