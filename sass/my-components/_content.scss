@@ -3803,6 +3803,12 @@
         }
         img {
             border-radius: 7px;
+            @media screen and (max-width: $screen-sm-max) {
+                width: 100%;
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                width: auto;
+            }
             @media screen and (max-width: $screen-xs) {
                 width: 100%;
             }    
