@@ -2838,8 +2838,8 @@
     text-decoration: none;
     color: #7b7b7b;
 }
-
-.slider-tooltip {
+.slider-tooltip,
+.cvv-tooltip {
     position: absolute;
     opacity: 0;
     visibility: hidden;
@@ -2882,9 +2882,12 @@
     }
 }
 
-.slider-label {
+.slider-label,
+.cvv-label
+ {
     &:hover {
-        .slider-tooltip {
+        .slider-tooltip,
+        .cvv-tooltip {
             opacity: 1;
             visibility: visible;
         }
