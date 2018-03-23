@@ -124,27 +124,24 @@
                 margin-top: 16px;   
             }
             span {
-                position: absolute;
+                 position: absolute;
                 bottom: -2px;
                 right: 3px;
-                font-size: 7px;
+                font-size: 8.4px;
                 font-family: $font-family-roman;
-                text-transform: uppercase;
                 letter-spacing: 1.2px;   
                 white-space: nowrap;
                 color: $brand-primary;
-                @media screen and (max-width: $screen-md-max) {
-                   font-size: 5.5px; 
-                }
-                @media screen and (max-width: $screen-xs-max) {
-                   right: 2px;
-                }
+                @media screen and (max-width: 1200px) {
 
-                @media screen and (max-width: $screen-xs) {
-                    font-size: 5px;
+                }
+                @media screen and (max-width: $screen-md-max) {
+                   font-size: 6.9px;
+                   right: 0px; 
                 }
                 @media screen and (max-width: 340px) {
-                    font-size: 4px; 
+                    font-size: 4.3px; 
+                    right: 1px;
                 }
             }
         }
@@ -4548,7 +4545,7 @@
         border: 1px solid #eeeeee;
         border-radius: 5px;
         text-align: left;
-        padding-bottom: 120px;  
+        padding-bottom: 120px; 
         @media screen and (max-width: $screen-xs-max) {
             padding-bottom: 80px;   
         }
@@ -4567,8 +4564,13 @@
             li {
                 font-size: 0;
                 margin-bottom: 35px;
+                min-height: 54px;
+                @media screen and (max-width: 1200px) {
+                    min-height: 50px;
+                }
                 @media screen and (max-width: $screen-xs) {
                     margin-bottom: 20px;
+                    min-height: 40px;
                 }
                 &:last-of-type {
                     margin-bottom: 0;
@@ -7334,7 +7336,7 @@ div#fancy_outer {
             span {
                 display: inline-block;
                 margin-bottom: 20px;
-                padding: 0 8px;
+                max-width: 230px; 
                 color: #a2c0da;
                 font-size: $footer-phone-span-font-size;
             }
