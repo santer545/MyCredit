@@ -336,6 +336,9 @@
                     /* background-position: 80% 9px; */
                     display: inline-block;
                 }
+                @media screen and (max-width: $screen-xs) {
+                    padding: 5px 15px;
+                }
                 /* @media screen and (max-width: 350px) {
                     background-position: 80% 11px;
                 } */
