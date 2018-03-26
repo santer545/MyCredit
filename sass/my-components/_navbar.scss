@@ -326,22 +326,15 @@
                 color: #ef5350;
                 border-radius: 30px;
                 padding: 5px 12px 5px 10px;
-                /* background-image: url(../images/icons/menu-star.png);
-                background-position: 90% 7px;
-                background-repeat: no-repeat; */
+                
                 line-height: 20px;  
                 transition: background-color 0.3s;
                 @media screen and (max-width: $screen-xs-max) {
-                    padding: 10px 40px 10px 15px;
-                    /* background-position: 80% 9px; */
+                    padding: 5px 15px;
+                   
                     display: inline-block;
                 }
-                @media screen and (max-width: $screen-xs) {
-                    padding: 5px 15px;
-                }
-                /* @media screen and (max-width: 350px) {
-                    background-position: 80% 11px;
-                } */
+                
                 &:hover {
                     background-color: #fdebea;
                 }
