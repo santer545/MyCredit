@@ -472,6 +472,7 @@
     }
     @media screen and (max-width: $screen-xs-max) {
         width: 80%;
+        padding-top: 11px;
     }
     @media screen and (max-width: 700px) {
         width: 65%;
@@ -5302,6 +5303,7 @@
             }
             @media screen and (max-width: 1400px) {
                 /* min-height: 550px;    */
+                height: 560px;
             }
             @media screen and (max-width: 1350px) {
                 min-height: 0;

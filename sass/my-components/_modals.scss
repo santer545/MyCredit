@@ -1237,7 +1237,8 @@ td#fancy_title_right {
         .close {
             opacity: 1;
             width: 10px;
-            height: 10px;
+            float: none;
+            font-size: 0;
         }
 
         .btn-personal {
