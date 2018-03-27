@@ -32,7 +32,7 @@
 	}
 
 	@media screen and (max-width: $screen-xs) {
-		bottom: 30px;	
+		bottom: 60px;	
 	}
 
 	&:after,
@@ -46,62 +46,97 @@
 	}
 }
 
-.egg {
-	@media screen and (max-width: $screen-xs) {
-		display: inline-block;
-		max-width: 50%;	
-	}
-}
 
 .egg {
 	transform-origin: 50% 60%;
 	animation: wiggle 0.8s infinite;
+	cursor: pointer;	
+
+	@media screen and (max-width: $screen-xs) {
+		display: inline-block;
+		max-width: 50%;	
+	}
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
  }
 
-@-webkit-keyframes wiggle {
-	0% {-webkit-transform:rotate(4deg);}
-	50% {-webkit-transform:rotate(-4deg);}
-	100% {-webkit-transform:rotate(4deg);}
-}
- 
-@-moz-keyframes wiggle {
-	0% {-moz-transform:rotate(4deg);}
-	50% {-moz-transform:rotate(-4deg);}
-	100% {-moz-transform:rotate(4deg);}
-}
  
 @keyframes wiggle {
 	0% {transform:rotate(4deg);}
 	50% {transform:rotate(-4deg);}
 	100% {transform:rotate(4deg);}
 }
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	40% {transform: translateY(-30px);}
+	60% {transform: translateY(-15px);}
+}
  
 .egg-item:nth-of-type(2) .egg {
 	animation-delay: 0.2s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
 }
 
 .egg-item:nth-of-type(4) .egg {
 	animation-delay: 0.4s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
 }
 
 .egg-item:nth-of-type(6) .egg {
 	animation-delay: 0.6s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
 }
 
 .egg-item:nth-of-type(8) .egg {
 	animation-delay: 0.8s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
 }
 
 .egg-item:nth-of-type(5) .egg {
 	animation-delay: 1.4s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
 }
 
 .egg-item:nth-of-type(7) .egg {
 	animation-delay: 1.6s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
 }
 
 .egg-item:nth-of-type(3) .egg {
 	animation-delay: 1.8s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
 }
 
 .egg-item {
@@ -153,7 +188,7 @@
 	text-align: center;
 	top: 25%;	
 	@media screen and (max-width: $screen-xs) {
-		top: 15%;	
+		top: 11%;	
 	}
 
 	img,
@@ -213,6 +248,9 @@
 		margin-bottom: 0;	
 		padding-top: 0;	
 	}
+	@media screen and (max-width: $screen-xs) {
+		font-size: 15px;	
+	}
 }
 
 .easter-try-img {
@@ -222,6 +260,10 @@
 	img {
 		display: inline-block;	
 		padding: 0 5px;	
+
+		@media screen and (max-width: $screen-xs) {
+			max-width: 25px;	
+		}
 	}
 }
 
