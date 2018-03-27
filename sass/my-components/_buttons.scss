@@ -797,6 +797,10 @@
     font-size: 18px;    
     font-family: $font-family-medium;
 
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 10px 45px; 
+    }
+
     &:hover,
     &:focus {
         color: #fff;
