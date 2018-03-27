@@ -126,8 +126,8 @@ function createWidget(config) {
 
 	var options = Util.extendObject({
 		sat_id: 0,
-		// domain: "dev.mycredit.com.ua/ru/satellites/registration",
-		domain: "mycredit.ua/ru/satellites/registration",
+		 domain: "dev.mycredit.ua/ru/satellites/registration",
+		// domain: "mycredit.ua/ru/satellites/registration",
 		// bg_color: "FFFFFF",
 		container_id: '',
 		money: 51,

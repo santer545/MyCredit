@@ -790,6 +790,19 @@
 
 }
 
+.btn-start {
+    padding: 18px 45px; 
+    background-color: #0054bc;
+    color: #fff;
+    font-size: 18px;    
+    font-family: $font-family-medium;
+
+    &:hover,
+    &:focus {
+        color: #fff;
+    }
+}
+
 .btn-facebook {
     position: relative;
     font-size: 15px;
