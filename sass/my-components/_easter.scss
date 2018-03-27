@@ -160,7 +160,11 @@
 	z-index: 3;	
 	background-image: url(../assets/images/easter/bottom-bg.png);
 	background-repeat: no-repeat;
-
+		
+	@media screen and (max-width: $screen-md-max) {
+		height: 190px;	
+		background-size: cover;
+	}
 	@media screen and (max-width: $screen-sm-max) {
 		height: 220px;	
 	}
@@ -218,7 +222,7 @@
 	background-color: #a1b0f6;
 	z-index: 3;	
 
-	@media screen and (max-width: $screen-sm-max) {
+	@media screen and (max-width: $screen-md-max) {
 		right: 20px;	
 		top: 25px;	
 	}
