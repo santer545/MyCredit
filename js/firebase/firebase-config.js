@@ -3,13 +3,13 @@
  * используются в app-firebase.js
  */
 
-var firebaseConfig = {
-    apiKey: "AIzaSyAcyS-sCYoiSOi6dCxb_d4cMrkhdP5njyM",
-    authDomain: "mycredit-test.firebaseapp.com",
-    databaseURL: "https://mycredit-test.firebaseio.com",
-    projectId: "mycredit-test",
-    storageBucket: "mycredit-test.appspot.com",
-    messagingSenderId: "241910458732"
+var  firebaseConfig = {
+    apiKey: "AIzaSyCCKVQ_XIcDw7iKTF2uM_X4Lr-8redZGug",
+    authDomain: "bankservise-b7b19.firebaseapp.com",
+    databaseURL: "https://bankservise-b7b19.firebaseio.com",
+    projectId: "bankservise-b7b19",
+    storageBucket: "bankservise-b7b19.appspot.com",
+    messagingSenderId: "833494063387"
 };
-var firebaseVapidKey = "BPL_jVyZSa_SNHDL73TCNq3QVxj4V18lhOUokLQ2JJ7mxHGrCuGlBuLychtNsfpDwOKYIepPBvNCJ4mldgVFfbA";
+var firebaseVapidKey = "BJLW-vvZA5XeDY3AK5dQJ8jZDVROtwCfUPPaoJgZd6Yu5OcM2OfgJcpuvX3btoZyVoP9odS1YsCsET1fgU-MDGM";
 

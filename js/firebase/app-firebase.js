@@ -1,28 +1,49 @@
-// инициализация приложения
-firebase.initializeApp(firebaseConfig);
-var messaging = firebase.messaging();
-// const messaging = firebase.messaging();
+$(window).load(function() {
 
-messaging.usePublicVapidKey(firebaseVapidKey);
+	// инициализация приложения
+	firebase.initializeApp(firebaseConfig);
+	var messaging = firebase.messaging();
+	// const messaging = firebase.messaging();
+	
+	messaging.usePublicVapidKey(firebaseVapidKey);
+	
+	// проверяем возможность разрешения подписки и если еще не подписан, то сразу автоматом подписываем
+	messaging.requestPermission().then(function () {
+	    // запрашиваем токен устройства из farebase
+	    messaging.getToken()
+	        .then(function (currentToken) {
+	            //console.log('currentToken - ' + currentToken);
+	            // проверяем есть ли такой токен в нашей базе,если нет - пишем к нам в бд
+	            checkToken(currentToken);
+	        })
+	        .catch(function (err) {
+	            //console.log('get Token' + err);
+	            //TODO выводить сообщение об ошибке пользователю
+	        })
+	}).catch(function (err) {
+	    //console.log('error request permission ' + err);
+	    //TODO выводить сообщение об ошибке пользователю
+	});
+	
+	//отображаем сообщение, если не в фоновом режиме
+	messaging.onMessage(function (payload) {
+	    //console.log(payload);
+	    // готовим данные уведомления
+	    var options = {
+	        body: payload.data.body,
+	        icon: '/images/firebase-logo.png',
+	    };
+	    // инициализируем и отображаем уведомление
+	    var n = new Notification(payload.data.title, options);
+	    // обрабатываем клик по уведомлению
+	    n.onclick =function(event) {
+	        event.preventDefault(); // prevent the browser from focusing the Notification's tab
+	        window.open( payload.data.click_action , '_blank');
+	    };
+	});
 
-// проверяем возможность разрешения подписки и если еще не подписан, то сразу автоматом подписываем
-messaging.requestPermission().then(function () {
-    // запрашиваем токен устройства из farebase
-    messaging.getToken()
-        .then(function (currentToken) {
-            console.log('currentToken - ' + currentToken);
-            // проверяем есть ли такой токен в нашей базе,если нет - пишем к нам в бд
-            checkToken(currentToken);
-        })
-        .catch(function (err) {
-            console.log('get Token' + err);
-            //TODO выводить сообщение об ошибке пользователю
-        })
-}).catch(function (err) {
-    console.log('error request permission ' + err);
-    //TODO выводить сообщение об ошибке пользователю
 });
-
+	
 // при загрузке страницы сверяем полученный токен устройства для уведомлений на наличие в нашей бд
 function checkToken(currentToken){
     var url = "/ru/?ajax";
@@ -40,39 +61,22 @@ function checkToken(currentToken){
             //console.log( 'результат проверки токена у нас в бд ' + res.message);
             if(res) {
                 if (res.message === 'do not exists') {
-                    console.log('еще не подписывался или обновился токен');
+                    //console.log('еще не подписывался или обновился токен');
 		    // сохраняем токен устройства
 		    sendTokenToServer(currentToken);
                 } else {
-                    console.log('уже подписался');
+                    //console.log('уже подписался');
                 }
             }
         },
 
         error: function(jqXHR, textStatus){
-            console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+            //console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
 		
         }
     });
 }
 
-
-// отображаем сообщение, если не в фоновом режиме
-messaging.onMessage(function (payload) {
-    console.log(payload);
-    // готовим данные уведомления
-    var options = {
-        body: payload.data.body,
-        icon: '/images/firebase-logo.png',
-    };
-    // инициализируем и отображаем уведомление
-    var n = new Notification(payload.data.title, options);
-    // обрабатываем клик по уведомлению
-    n.onclick =function(event) {
-        event.preventDefault(); // prevent the browser from focusing the Notification's tab
-        window.open( payload.data.click_action , '_blank');
-    };
-});
 
 // отсылаем токен устройства подписавшегося пользователя к нам в бд
 function sendTokenToServer(currentToken) {
@@ -91,14 +95,14 @@ function sendTokenToServer(currentToken) {
         success: function(json){
             if(json) {
                 if (json.message === 'success') {
-                    console.log('токен сохранен успешно');
+                    //console.log('токен сохранен успешно');
                 } else {
-                    console.log(json.message);
+                    //console.log(json.message);
                 }
             }
         },
         error: function(jqXHR, textStatus){
-            console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+            //console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
         }
     });
 }
@@ -139,20 +143,20 @@ function pushSend(){
 			//console.log(json);
 			if(json) {
 				if (json.save === 'success') {
-					console.log('сообщение отправлено успешно');
+					//console.log('сообщение отправлено успешно');
 				} else {
-					console.log('ошибка - ' + json.save);
+					//console.log('ошибка - ' + json.save);
 				}
 				if (json.send === 'success') {
-					console.log('сообщение сохранено успешно');
+					//console.log('сообщение сохранено успешно');
 				} else {
-					console.log('ошибка - ' + json.send);
+					//console.log('ошибка - ' + json.send);
 				}
 			}
 		},
 
 		error: function(jqXHR, textStatus){
-			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			//console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
 		}
 	});
 }
@@ -166,19 +170,19 @@ function unSubscribe() {
                 .then(function () {
                     localStorage.setItem('subscribe', 'out');
                     subscribeButton.disabled = false;
-                    console.log('Token deleted.');
+                    //console.log('Token deleted.');
 
 
                     // убиваем ключ в бд  пока не задействовано
                     //sendTokenToServer('-', 'delete');
                 })
                 .catch(function (err) {
-                    console.log('Unable to delete token. ', err);
+                    //console.log('Unable to delete token. ', err);
                     subscribeButton.disabled = false;
                 });
         })
         .catch(function (err) {
-            console.log(err);
+            //console.log(err);
         });
 }
 */

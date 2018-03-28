@@ -48,9 +48,11 @@
 
 
 .egg {
+	position: relative;	
 	transform-origin: 50% 60%;
 	animation: wiggle 0.8s infinite;
 	cursor: pointer;	
+	transition: transform 0.3s;
 
 	@media screen and (max-width: $screen-xs) {
 		display: inline-block;
@@ -61,7 +63,28 @@
 		animation: bounce 1.3s ease infinite;
 		animation-delay: 0!important;
 	}
+
+	.crack {
+		position: absolute;	
+		left: 50%;	
+		top: 5px;	
+		transform: translate(-50%, 0);
+		max-height: 95%;
+		opacity: 0;	
+	}
+
+	&.active {
+		animation: none;
+		transform: rotate(70deg);
+
+		.crack {
+			opacity: 1;	
+		}
+	}
  }
+
+
+
 
  
 @keyframes wiggle {
@@ -83,6 +106,10 @@
 		animation: bounce 1.3s ease infinite;
 		animation-delay: 0!important;
 	}
+
+	&.active:hover {
+		animation: none;
+	}
 }
 
 .egg-item:nth-of-type(4) .egg {
@@ -91,6 +118,10 @@
 	&:hover {
 		animation: bounce 1.3s ease infinite;
 		animation-delay: 0!important;
+	}
+
+	&.active:hover {
+		animation: none;
 	}
 }
 
@@ -101,6 +132,10 @@
 		animation: bounce 1.3s ease infinite;
 		animation-delay: 0!important;
 	}
+
+	&.active:hover {
+		animation: none;
+	}
 }
 
 .egg-item:nth-of-type(8) .egg {
@@ -109,6 +144,10 @@
 	&:hover {
 		animation: bounce 1.3s ease infinite;
 		animation-delay: 0!important;
+	}
+
+	&.active:hover {
+		animation: none;
 	}
 }
 
@@ -119,6 +158,10 @@
 		animation: bounce 1.3s ease infinite;
 		animation-delay: 0!important;
 	}
+
+	&.active:hover {
+		animation: none;
+	}
 }
 
 .egg-item:nth-of-type(7) .egg {
@@ -128,6 +171,10 @@
 		animation: bounce 1.3s ease infinite;
 		animation-delay: 0!important;
 	}
+
+	&.active:hover {
+		animation: none;
+	}
 }
 
 .egg-item:nth-of-type(3) .egg {
@@ -136,6 +183,10 @@
 	&:hover {
 		animation: bounce 1.3s ease infinite;
 		animation-delay: 0!important;
+	}
+
+	&.active:hover {
+		animation: none;
 	}
 }
 
@@ -160,10 +211,13 @@
 	z-index: 3;	
 	background-image: url(../assets/images/easter/bottom-bg.png);
 	background-repeat: no-repeat;
-		
-	@media screen and (max-width: $screen-md-max) {
-		height: 190px;	
+	
+	@media screen and (max-width: 1400px) {
+		height: 185px;	
 		background-size: cover;
+	}	
+	@media screen and (max-width: $screen-md-max) {
+		height: 190px;
 	}
 	@media screen and (max-width: $screen-sm-max) {
 		height: 220px;	
@@ -171,7 +225,6 @@
 
 	@media screen and (max-width: $screen-xs-max) {
 		height: 145px;	
-		background-size: cover;
 	}
 
 	@media screen and (max-width: 570px) {
@@ -191,6 +244,15 @@
 	right: 0;	
 	text-align: center;
 	top: 25%;	
+	@media screen and (max-width: 1400px) {
+		top: 10%;	
+	}
+	@media screen and (max-width: $screen-md-max) {
+		top: 30%;	
+	}
+	@media screen and (max-width: $screen-xs-max) {
+		top: 20%;	
+	}
 	@media screen and (max-width: $screen-xs) {
 		top: 11%;	
 	}
@@ -204,12 +266,54 @@
 	img {
 		margin: 0 20px;	
 		max-width: 39.5%;	
+
+		@media screen and (max-width: 1400px) {
+			width: 22%;	
+		}
+
+		@media screen and (max-width: $screen-xs) {
+			width: 45%;	
+		}
 	}
 
 	svg {
+		animation: bird 1s linear alternate infinite;
 		@media screen and (max-width: $screen-xs-max) {
 			display: none;	
 		}
+
+		&:nth-of-type(2) {
+			animation-delay: 0.5s;
+
+			.wing {
+				transform-origin: 0 100%;
+			}
+		}
+	}
+}
+
+.wing {
+	transform-box: fill-box;
+	transform-origin: 100% 100%;
+	animation: bird-wings 0.2s linear alternate infinite;
+}
+
+@keyframes bird {
+	from {
+		transform: translate(0, -20px);
+	}
+
+	to{
+		transform: translate(0, 20px);
+	}
+}
+
+@keyframes bird-wings {
+	from {
+		transform: rotate(-10deg);
+	}
+	to {
+		transform: rotate(10deg);
 	}
 }
 
@@ -221,6 +325,11 @@
 	top: 60px;	
 	background-color: #a1b0f6;
 	z-index: 3;	
+
+	@media screen and (max-width: 1400px) {
+		top: 17px;	
+		right: 50px;	
+	}
 
 	@media screen and (max-width: $screen-md-max) {
 		right: 20px;	
@@ -268,12 +377,22 @@
 		@media screen and (max-width: $screen-xs) {
 			max-width: 25px;	
 		}
+		&.active {
+			filter: url('../js/filters.svg#grayscale');
+            /* Firefox 3.5+ */
+            filter: gray;
+            /* IE6-9 */
+            -webkit-filter: grayscale(1);
+            /* Webkit Nightlies, Google Chrome Canary and Microsoft Edge*/
+            opacity: .7;
+		}
 	}
 }
 
 .easter-toolbar-left {
 	padding-left: 15px;	
 	float: left;
+	width: 84%;	
 	padding-right: 10px;	
 	border-right: 1px solid #b8c2f0;
 
@@ -461,6 +580,13 @@
 	position: relative;	
 	padding-top: 50px;	
 	padding-left: 20px;	
+
+	@media screen and (max-width: $screen-xs-max) {
+		padding-top: 10px;	
+		padding-left: 0;	
+		max-width: 50%;	
+		margin: 0 auto;	
+	}
 }
 
 .discount-img {
@@ -468,6 +594,11 @@
 	bottom: -50px;	
 	left: 53%;	
 	transform: translate(-50%, 0);
+
+	@media screen and (max-width: $screen-xs-max) {
+		bottom: -10px;	
+		max-width: 50%;	
+	}
 }
 
 .modal-discount-header {
@@ -484,6 +615,12 @@
 	text-align: left;
 	font-size: 21px;	
 	font-family: $font-family-medium;
+
+	@media screen and (max-width: $screen-xs-max) {
+		padding-top: 20px;	
+		padding-right: 20px;	
+		font-size: 16px;	
+	}
 }
 
 .discount-small {
@@ -506,6 +643,11 @@
 	padding: 28px 20px;	
 	font-size: 25px;	
 	text-align: center;	
+
+	@media screen and (max-width: $screen-xs-max) {
+		padding: 10px 20px;	
+		font-size: 18px;	
+	}
 }
 
 .rabbit-text {
@@ -517,6 +659,10 @@
 	padding: 30px;	
 	font-size: 21px;	
 	font-family: $font-family-medium;
+
+	@media screen and (max-width: $screen-xs-max) {
+		font-size: 13px;	
+	}
 }
 
 .discount-bottom {

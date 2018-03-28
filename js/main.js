@@ -1103,8 +1103,6 @@ $(document).ready(function() {
         }
     });
 
-
-
     $(".issue-play--holder").on({
         click: function() {
             $(this).hide();
@@ -1830,19 +1828,19 @@ function hearts() {
 
         $('.js-heart-wrapper').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%'><img src='assets/images/wishes/heart.svg'></div>");
 
-        
+
 
         $('.heart').each(function() {
             var bottom = $(this).css('bottom').replace(/[^-\d\.]/g, '');
-            
-            if(bottom > 900) {
+
+            if (bottom > 900) {
                 $(this).remove();
                 console.log('REmove');
             }
-            
+
         });
 
-        
+
 
     }, 500);
 }
@@ -1900,3 +1898,8 @@ function wishMusic() {
     }
 
 }
+
+
+
+
+
