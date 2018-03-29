@@ -7283,6 +7283,10 @@ div#fancy_outer {
 
 .sticky-calc {
     display: none;
+
+    .calculator-table td.calculator-give-sum, .calculator-table td.calculator-take-sum {
+        padding-left: 10px;
+    }
 }
 
 

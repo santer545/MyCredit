@@ -976,6 +976,7 @@
     img {
         width: 100%;
         transition: transform 0.3s;
+        border-radius: 5px;
     }
     .embed-responsive-item {
         @media screen and (max-width: $screen-xs-max) {
