@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    pressHover();
     mobileMenuClose();
     faqAnchor();
     prolongationBlockAnimate();
@@ -1899,7 +1900,14 @@ function wishMusic() {
 
 }
 
-
-
-
-
+function pressHover() {
+    $(".js-speak-about__item").mouseover(function() {
+        
+        $(".speak-about img").css({ 'filter': 'grayscale(100%)', 'opacity': '.2' });
+        $(this).children("a").css({ "color": "#0056b8", "text-decoration": "underline" });
+        $(this).children("img").css({ 'filter': 'grayscale(0)', 'opacity': '1' });
+    }).mouseout(function() {
+        $(".speak-about img").css({ 'filter': '', 'opacity': '1' });
+        $(this).children("a").css({ "color": "", "text-decoration": "" });
+    });
+}
