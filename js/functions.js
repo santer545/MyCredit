@@ -810,6 +810,21 @@ function getUserLocation_old() {
 }
 
 /**
+ * динамически подключает скрипт 
+ * @param string url
+ * @returns
+ */
+function includeScript(url) {
+
+	var script = document.createElement('script');
+    script.src = url;
+
+    console.log(script);
+    
+    document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+/**
  * проверяет правильность ввода ИНН
  * @param inn
  * @returns boolean

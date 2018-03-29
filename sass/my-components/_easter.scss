@@ -5,6 +5,10 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: 0 0;
+
+	@media screen and (max-width: 1300px) {
+		height: calc(100vh - 62px);
+	}
 }
 
 .egg-row {
@@ -13,6 +17,23 @@
 	right: 0;	
 	bottom: 130px;	
 	z-index: 2;
+
+	@media screen and (max-width: $screen-sm-max) {
+		bottom: 210px;	
+	}
+
+	@media screen and (max-width: $screen-xs-max) {
+		bottom: 130px;	
+		z-index: 3;	
+	}
+
+	@media screen and (max-width: 570px) {
+		bottom: 105px;	
+	}
+
+	@media screen and (max-width: $screen-xs) {
+		bottom: 60px;	
+	}
 
 	&:after,
 	&:before {
@@ -25,10 +46,160 @@
 	}
 }
 
+
+.egg {
+	position: relative;	
+	transform-origin: 50% 60%;
+	animation: wiggle 0.8s infinite;
+	cursor: pointer;	
+	transition: transform 0.3s;
+
+	@media screen and (max-width: $screen-xs) {
+		display: inline-block;
+		max-width: 50%;	
+	}
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
+
+	.crack {
+		position: absolute;	
+		left: 50%;	
+		top: 5px;	
+		transform: translate(-50%, 0);
+		max-height: 95%;
+		opacity: 0;	
+	}
+
+	&.active {
+		animation: none;
+		transform: rotate(70deg);
+
+		.crack {
+			opacity: 1;	
+		}
+	}
+ }
+
+
+
+
+ 
+@keyframes wiggle {
+	0% {transform:rotate(4deg);}
+	50% {transform:rotate(-4deg);}
+	100% {transform:rotate(4deg);}
+}
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	40% {transform: translateY(-30px);}
+	60% {transform: translateY(-15px);}
+}
+ 
+.egg-item:nth-of-type(2) .egg {
+	animation-delay: 0.2s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
+
+	&.active:hover {
+		animation: none;
+	}
+}
+
+.egg-item:nth-of-type(4) .egg {
+	animation-delay: 0.4s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
+
+	&.active:hover {
+		animation: none;
+	}
+}
+
+.egg-item:nth-of-type(6) .egg {
+	animation-delay: 0.6s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
+
+	&.active:hover {
+		animation: none;
+	}
+}
+
+.egg-item:nth-of-type(8) .egg {
+	animation-delay: 0.8s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
+
+	&.active:hover {
+		animation: none;
+	}
+}
+
+.egg-item:nth-of-type(5) .egg {
+	animation-delay: 1.4s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
+
+	&.active:hover {
+		animation: none;
+	}
+}
+
+.egg-item:nth-of-type(7) .egg {
+	animation-delay: 1.6s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
+
+	&.active:hover {
+		animation: none;
+	}
+}
+
+.egg-item:nth-of-type(3) .egg {
+	animation-delay: 1.8s;
+
+	&:hover {
+		animation: bounce 1.3s ease infinite;
+		animation-delay: 0!important;
+	}
+
+	&.active:hover {
+		animation: none;
+	}
+}
+
 .egg-item {
 	float: left;
 	padding: 0 25px;
 	width: 12.5%;	
+
+	@media screen and (max-width: $screen-xs) {
+		width: 50%;	
+		margin-bottom: 10px;	
+		text-align: center;	
+	}
 }
 
 .egg-bottom {
@@ -40,6 +211,31 @@
 	z-index: 3;	
 	background-image: url(../assets/images/easter/bottom-bg.png);
 	background-repeat: no-repeat;
+	
+	@media screen and (max-width: 1400px) {
+		height: 185px;	
+		background-size: cover;
+	}	
+	@media screen and (max-width: $screen-md-max) {
+		height: 190px;
+	}
+	@media screen and (max-width: $screen-sm-max) {
+		height: 220px;	
+	}
+
+	@media screen and (max-width: $screen-xs-max) {
+		height: 145px;	
+	}
+
+	@media screen and (max-width: 570px) {
+		height: 115px;	
+	}
+
+	@media screen and (max-width: $screen-xs) {
+		background-image: url(../assets/images/easter/bottom-bg-mobile.png);
+		height: 60%;
+		z-index: 2;	
+	}
 }
 
 .easter-heading {
@@ -48,6 +244,18 @@
 	right: 0;	
 	text-align: center;
 	top: 25%;	
+	@media screen and (max-width: 1400px) {
+		top: 10%;	
+	}
+	@media screen and (max-width: $screen-md-max) {
+		top: 30%;	
+	}
+	@media screen and (max-width: $screen-xs-max) {
+		top: 20%;	
+	}
+	@media screen and (max-width: $screen-xs) {
+		top: 11%;	
+	}
 
 	img,
 	svg {
@@ -58,17 +266,105 @@
 	img {
 		margin: 0 20px;	
 		max-width: 39.5%;	
+
+		@media screen and (max-width: 1400px) {
+			width: 22%;	
+		}
+
+		@media screen and (max-width: $screen-xs) {
+			width: 45%;	
+		}
+	}
+
+	svg {
+		animation: bird 1s linear alternate infinite;
+		@media screen and (max-width: $screen-xs-max) {
+			display: none;	
+		}
+
+		&:nth-of-type(2) {
+			animation-delay: 0.5s;
+
+			.wing {
+				transform-origin: 0 100%;
+			}
+		}
+	}
+
+	span {
+		font-family: 'Amatic SC', cursive;
+		font-size: 100px;	
+		display: inline-block;	
+		vertical-align: middle;	
+		margin: 0 20px;	
+		text-transform: uppercase;	
+		color: #0054bc;
+
+		@media screen and (max-width: 1400px) {
+			font-size: 50px;	
+		}
+
+		@media screen and (max-width: $screen-xs) {
+			font-size: 30px;	
+		}
+	}
+}
+
+.wing {
+	transform-box: fill-box;
+	transform-origin: 100% 100%;
+	animation: bird-wings 0.2s linear alternate infinite;
+}
+
+@keyframes bird {
+	from {
+		transform: translate(0, -20px);
+	}
+
+	to{
+		transform: translate(0, 20px);
+	}
+}
+
+@keyframes bird-wings {
+	from {
+		transform: rotate(-10deg);
+	}
+	to {
+		transform: rotate(10deg);
 	}
 }
 
 .easter-toolbar {
 	position: absolute;	
-	width: 345px;	
+	width: 350px;	
 	border-radius: 40px;	
 	right: 80px;	
 	top: 60px;	
 	background-color: #a1b0f6;
 	z-index: 3;	
+
+	@media screen and (max-width: 1400px) {
+		top: 17px;	
+		right: 50px;	
+	}
+
+	@media screen and (max-width: $screen-md-max) {
+		right: 20px;	
+		top: 25px;	
+	}
+
+	@media screen and (max-width: $screen-xs-max) {
+		left: 5px;	
+		right: 5px;
+		width: calc(100% - 10px);	
+		top: 0;	
+		border-radius: 7px;	
+		display: flex;	
+	}
+	@media screen and (max-width: $screen-xs) {
+		top: 5px;	
+	}
 }
 
 .easter-try-count {
@@ -77,6 +373,15 @@
 	color: #fff;
 	margin-bottom: 15px;	
 	padding-top: 20px;	
+
+	@media screen and (max-width: $screen-xs-max) {
+		margin-right: 10px;	
+		margin-bottom: 0;	
+		padding-top: 0;	
+	}
+	@media screen and (max-width: $screen-xs) {
+		font-size: 15px;	
+	}
 }
 
 .easter-try-img {
@@ -86,24 +391,55 @@
 	img {
 		display: inline-block;	
 		padding: 0 5px;	
+
+		@media screen and (max-width: $screen-xs) {
+			max-width: 25px;	
+		}
+		&.active {
+			filter: url('../js/filters.svg#grayscale');
+            /* Firefox 3.5+ */
+            filter: gray;
+            /* IE6-9 */
+            -webkit-filter: grayscale(1);
+            /* Webkit Nightlies, Google Chrome Canary and Microsoft Edge*/
+            opacity: .7;
+		}
 	}
 }
 
 .easter-toolbar-left {
 	padding-left: 15px;	
 	float: left;
+	width: 84%;	
 	padding-right: 10px;	
 	border-right: 1px solid #b8c2f0;
+
+	@media screen and (max-width: $screen-xs-max) {
+		float: none;	
+		width: 90%;	
+		display: flex;	
+		padding-top: 13px;	
+		padding-bottom: 10px;	
+	}
 	> img {
 		float: left;
 		margin-right: 10px;	
 		margin-top: -15px;	
+
+		@media screen and (max-width: $screen-xs-max) {
+			display: none;	
+		}
 	}
 }
 
 .easter-toolbar-info {
 	float: left;
 	text-align: center;
+	@media screen and (max-width: $screen-xs-max) {
+		display: flex;	
+		float: none;	
+		text-align: center;	
+	}
 }
 
 .easter-toolbar-right {
@@ -111,6 +447,12 @@
 	float: left;	
 	padding: 20px 13px;	
 	text-align: center;	
+
+	@media screen and (max-width: $screen-xs-max) {
+		display: flex;	
+		float: none;	
+		padding: 10px 13px;	
+	}
 }
 
 .easter-sound {
@@ -124,11 +466,19 @@
 	background-color: #fff;
 	margin-bottom: 10px;	
 	cursor: pointer;
+
+	@media screen and (max-width: $screen-xs-max) {
+		display: none;	
+	}
 }
 
 .easter-question {
 	@extend .easter-sound;
 	margin-bottom: 0;	
+
+	@media screen and (max-width: $screen-xs-max) {
+		display: flex;	
+	}
 }
 
 .modal-easter-start {
@@ -136,12 +486,20 @@
 		background-color: transparent;
 		max-width: 780px;
 		width: auto;	
+
+		@media screen and (max-width: 1300px) {
+			width: 90%;	
+		}
 	}
 
 	.modal-content {
 		background-image: url(../assets/images/easter/modal-start-bg.jpg);
 		background-repeat: no-repeat;	
 		background-color: transparent;
+
+		@media screen and (max-width: $screen-xs-max) {
+			background-size: cover;
+		}
 	}
 
 	.modal-title {
@@ -149,6 +507,11 @@
 		font-family: $font-family-roman;
 		color: #0055bc;
 		margin-bottom: 30px;	
+
+		@media screen and (max-width: $screen-xs-max) {
+			font-size: 22px;	
+			margin-bottom: 20px;	
+		}
 	}
 
 	.modal-body {
@@ -157,12 +520,21 @@
 		font-size: 21px;		
 		background-color: #fff;
 		border-radius: 5px;	
+
+		@media screen and (max-width: $screen-xs-max) {
+			font-size: 16px;	
+			max-width: 80%;	
+		}
 	}
 
 	.modal-footer {
 		background-color: transparent;
 		border: none;
 		padding: 50px 0 70px;	
+
+		@media screen and (max-width: $screen-xs-max) {
+			padding: 30px 0 35px;	
+		}
 	}
 }
 
@@ -222,3 +594,95 @@
 	position: absolute;	
 }
 
+.discount-left {
+	position: relative;	
+	padding-top: 50px;	
+	padding-left: 20px;	
+
+	@media screen and (max-width: $screen-xs-max) {
+		padding-top: 10px;	
+		padding-left: 0;	
+		max-width: 50%;	
+		margin: 0 auto;	
+	}
+}
+
+.discount-img {
+	position: absolute;	
+	bottom: -50px;	
+	left: 53%;	
+	transform: translate(-50%, 0);
+
+	@media screen and (max-width: $screen-xs-max) {
+		bottom: -10px;	
+		max-width: 50%;	
+	}
+}
+
+.modal-discount-header {
+	font-size: 28px;	
+	font-family: $font-family-roman;
+	color: #0055bc;
+	margin-bottom: 10px;	
+}
+
+.discount-right {
+	padding-top: 50px;	
+	padding-right: 30px;	
+	padding-left: 30px;	
+	text-align: left;
+	font-size: 21px;	
+	font-family: $font-family-medium;
+
+	@media screen and (max-width: $screen-xs-max) {
+		padding-top: 20px;	
+		padding-right: 20px;	
+		font-size: 16px;	
+	}
+}
+
+.discount-small {
+	font-size: 12px;	
+	font-family: $font-family-bold;
+	color: #202020;
+	margin: 10px 0;	
+
+	&--inverse {
+		color: #003466;
+		font-family: $font-family-roman;
+	}
+}
+
+.discount-promo {
+	background-color: #fff;
+	border-radius: 5px;	
+	color: #0055bc;
+	border: 1px dashed #0055bc;
+	padding: 28px 20px;	
+	font-size: 25px;	
+	text-align: center;	
+
+	@media screen and (max-width: $screen-xs-max) {
+		padding: 10px 20px;	
+		font-size: 18px;	
+	}
+}
+
+.rabbit-text {
+	background-color: rgba(142, 197, 109, 0.8);
+	color: #fff;
+	border-radius: 80px 80px 0 80px;	
+	max-width: 400px;	
+	display: inline-block;
+	padding: 30px;	
+	font-size: 21px;	
+	font-family: $font-family-medium;
+
+	@media screen and (max-width: $screen-xs-max) {
+		font-size: 13px;	
+	}
+}
+
+.discount-bottom {
+	padding-top: 40px;	
+}
