@@ -132,7 +132,13 @@ return  gulp.src([
            sourceDir + '/client.min.js',
            sourceDir + '/grayscale.js',
            sourceDir + '/wish.js',
-           sourceDir + '/main.js'
+           sourceDir + '/easter.js',
+           sourceDir + '/main.js',
+
+           // подключение функционала пуш уведомлений:
+         // sourceDir + '/firebase/firebase-config.js', - подключается отдельно
+         sourceDir + '/firebase/firebase-api.js',
+         sourceDir + '/firebase/app-firebase.js'
     ])
 
     //.pipe(browserify(components.scripts.options))

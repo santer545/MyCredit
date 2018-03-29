@@ -1794,6 +1794,8 @@ function onClickGetCode() {
 	
 	if (!flagReg.phone || !flagReg.reCaptcha) return false;
 	
+	$('#buttonGetCode').attr('disabled', true);
+
 	// ga('send', 'pageview', '/poluchit-kod-na-telefon');	// аналитика
 	ga('send', 'event', 'SMS', 'Click');	// аналитика Google
 
@@ -1801,6 +1803,101 @@ function onClickGetCode() {
 	//sendCodeReg($("#phone").val(), $("#captcha").val());	// отправляем код (устаревшее)
 	sendCodeReg($("#phone").val(), $("#g-recaptcha-response").val());	// отправляем код
 }
+
+/**
+ * Обрабатывает Click для ввода промокода на калькуляторе
+ * @returns
+ */
+function onClickGetPromocode(typeSlider) {
+	
+	// console.log("onClickGetPromocode");
+	
+	$('#promo-modal-calc').modal('hide');
+	
+	var promocode = $("#calc_promocode").val();
+
+	var prefix = '_' + typeSlider;
+	
+	var url = "/ru/?ajax";	
+
+	var data = {
+		    typeData: 'setPromocode',
+		    promocode: promocode
+		};
+
+	// отправить массив на сервер
+	// console.log("Передаем запрос ajax " + url);
+	// console.log(data);
+
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: {data: data},
+		dataType: 'json',
+		success: function(json){
+			if(json) {
+				//var js = JSON.parse(json);
+				var js = json;
+				
+				console.log(js);
+				
+				if (js.message == 'OK') {
+
+					// заполняем калькулятор:
+
+					// если есть новый продукт:
+					if (js.dataNew !== undefined) {
+
+						$("#maxDay" + prefix).val(js.dataNew.maxDay);
+						$("#minDay" + prefix).val(js.dataNew.minDay);
+						$("#maxSum" + prefix).val(js.dataNew.maxSum);
+						$("#minSum" + prefix).val(js.dataNew.minSum);
+
+						$("#js-money" + prefix).slider({min:js.dataNew.minSum, max:js.dataNew.maxSum});
+						$("#js-days" + prefix).slider({min:js.dataNew.minDay, max:js.dataNew.maxDay});
+
+						$("#minSumLabel" + prefix).text(js.dataNew.minSum);
+						$("#minDayLabel" + prefix).text(js.dataNew.minDay);
+						
+						// получаем процентную ставку на основании дочерних кредитных продуктов:
+						$("#ChildProducts" + prefix).text((js.dataNew.ChildProducts !== undefined) ? js.dataNew.ChildProducts : '');
+						$("#percent-value" + prefix).val(js.dataNew.percent);
+					}
+
+					// если есть "старый" продукт:
+					if (js.dataNormal !== undefined) {
+
+						// получаем процентную ставку на основании дочерних кредитных продуктов:
+						$("#ChildProductsNormal" + prefix).text((js.dataNormal.ChildProducts !== undefined) ? js.dataNormal.ChildProducts : '');
+						$("#percent-valueNormal" + prefix).val(js.dataNormal.percent);
+					}
+					
+					reloadCred('large_main');
+					
+				} else if (js.errorCode === 1)  {
+					$('#promo-modal-calc-sign').modal('show'); // Вам необходимо войти в личный кабинет
+				} else if (js.errorCode === 2)  {
+					$('#promo-modal-calc-error').modal('show'); // Промокод не действителен или время его действия истекло
+				} else {
+					$("#span_error").text(js.message_details);
+					$('#data-error').modal('show'); // Error через modal
+				}
+			};
+		},
+	
+		error: function(jqXHR, textStatus, errorThrown){
+			// console.log(jqXHR); // вывод JSON в консоль
+			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			// console.log(errorThrown); // вывод JSON в консоль
+			
+			$('#data-error').modal('show'); // Error через modal
+		}
+	});
+
+	return false;
+
+
+};
 
 /**
  * Обрабатывает Click на GoogleStars, отправляет результат на сервер
@@ -2323,7 +2420,7 @@ function onClickSubmitPartner(event) {
  */
 function onClickSubmitReg(form, prefix) {
 	
-	// console.log('form = ' + form); 
+	 console.log('form = ' + form); 
 
 	sendPageInputType();	// высылает на сервер способ введения информации
 	setTimeout(commitForm, 500);	// задержка, без нее возвращается ошибка (ответ от ajax)
@@ -2359,6 +2456,8 @@ function onClickSubmitReg(form, prefix) {
 		}
 		if (form == 'js-form-2') {
 			
+			$("#btn-js-form-2").attr('disabled', true);
+
 			ga('send', 'event', 'Dalee2', 'Click');	// аналитика Google
 			// yaCounter37666645.reachGoal('clickPersonalData');	// аналитика Yandex
 			// eval("yaCounter" + YandexMetrikaId + ".reachGoal('clickPersonalData');");	// аналитика Yandex
@@ -2367,6 +2466,8 @@ function onClickSubmitReg(form, prefix) {
 		}
 		if (form == 'js-form-3') {
 			
+			$("#buttonCreateCredit").attr('disabled', true);
+
 			ga('send', 'event', 'Dalee3', 'Click');	// аналитика Google
 			// yaCounter37666645.reachGoal('clickEmployment');	// аналитика Yandex
 			// eval("yaCounter" + YandexMetrikaId + ".reachGoal('clickEmployment');");	// аналитика Yandex
@@ -3079,7 +3180,7 @@ function reloadCred(typeSlider) {
 	var minDay = parseInt(document.getElementById("minDay" + prefix).value);
 	var maxSum = parseInt(document.getElementById("maxSum" + prefix).value);
 	var minSum = parseInt(document.getElementById("minSum" + prefix).value);
-	
+
 	var money = parseInt(document.getElementById("money-value" + prefix).value);
 	var day = parseInt(document.getElementById("day-value" + prefix).value);
 	
@@ -3111,8 +3212,21 @@ function reloadCred(typeSlider) {
 
 	// получаем процентную ставку на основании дочерних кредитных продуктов:
 	var ChildProducts = $("#ChildProducts" + prefix).text();
-	var percent = document.getElementById("percent-value" + prefix).value;
+	var percent = $("#percent-value" + prefix).val();
 	percent = getPercent(money, day, maxDay, minDay, maxSum, minSum, percent, ChildProducts);
+
+	// "старый" продукт:
+	var ChildProductsNormal = $("#ChildProductsNormal" + prefix).text();
+	var percentNormal = $("#percent-valueNormal" + prefix).val();
+	// если нет "старых" процентов, то не показываем
+	if (percentNormal == -1) {
+		$(".calculator-formula").addClass("hidden");
+	} else {
+		$(".calculator-formula").removeClass("hidden");
+	}
+		
+	percentNormal = getPercent(money, day, maxDay, minDay, maxSum, minSum, percentNormal, ChildProductsNormal);
+	
 	if (percent <= 0.04) {
 		$(".slider-selection").css('background-color', '#fc7f2b');
 		$(".slider-handle").css('background-color', '#fc7f2b');
@@ -3148,6 +3262,9 @@ function reloadCred(typeSlider) {
 	if ($("span").is("#span_amount_all" + prefix)) document.getElementById("span_amount_all" + prefix).innerHTML = credCalculation(money, day, percent) + '';
 	if ($("span").is("#span_amount_all_end" + prefix)) document.getElementById("span_amount_all_end" + prefix).innerHTML = ' '+ lastDay + '.' + lastMonth + '.' + lastYear;
 	if ($("span").is("#span_get_money" + prefix)) document.getElementById("span_get_money" + prefix).innerHTML = ' <strong>' + hour + ':' + minute + '</strong>';
+	// заполняем комиссию:
+	if ($("span").is("#span_commission" + prefix)) document.getElementById("span_commission" + prefix).innerHTML = (credCalculation(money, day, percent) - money) + '';
+	if ($("span").is("#span_commission_old" + prefix)) document.getElementById("span_commission_old" + prefix).innerHTML = (credCalculation(money, day, percentNormal) - money) + '';
 	// заполняем дня - день - дней:
 	if ($("span").is("#dayMinDay" + prefix)) document.getElementById("dayMinDay" + prefix).innerHTML = getDayLang(minDay.toString()); // "дней" в minDay
 	if ($("span").is("#dayMaxDay" + prefix)) document.getElementById("dayMaxDay" + prefix).innerHTML = getDayLang(maxDay.toString()); // "дней" в maxDay
@@ -3331,6 +3448,7 @@ function sendCodeReg(phone, captcha) {
 					$('#buttonGetCode').addClass('hidden', true);
 					$('#phone').attr('disabled', true);
 				} else if (js.message == 'existPhone') {
+					$("#errorCaptcha").addClass("hidden");
 					$('#phone').attr('disabled', true);
 					$('#buttonGetCode').addClass("hidden");
 					$('#login').val($('#phone').val());
@@ -3340,8 +3458,9 @@ function sendCodeReg(phone, captcha) {
 					if ($("#isReCaptcha_enabled").text() == "1")
 						grecaptcha.reset();	// сброс капчи
 					// $('#buttonGetCode').attr('disabled', true);
+					$('#buttonGetCode').removeAttr('disabled');
 					flagReg.reCaptcha = false;
-					console.log(js.message_details);
+					// console.log(js.message_details);
 				}
 				// console.log(js);
 			};
@@ -3714,7 +3833,7 @@ function tranzzoPayAnotherCard() {
 				//var js = JSON.parse(json);
 				var js = json;
 				
-				console.log(js);
+				// console.log(js);
 				if (js.message == 'OK') {
 					// если карта 3Ds:
 					if (js.data.CardType == 1 ) {
@@ -3765,7 +3884,8 @@ function tranzzoPayAnotherCard() {
  * @returns
  */
 function tranzzoPayStep2() {
-	console.log('tranzzoPayStep2');
+	
+	// console.log('tranzzoPayStep2');
 
 	// $("#div_step1").addClass("hidden");
 	// $("#div_waiting").removeClass("hidden");
@@ -3794,7 +3914,7 @@ function tranzzoPayStep2() {
 				//var js = JSON.parse(json);
 				var js = json;
 				
-				console.log(js);
+				// console.log(js);
 				if (js.message == 'OK') {
 					$("#div_waiting").addClass("hidden");
 					$('#wait-modal').modal('hide'); // Ожидание через modal
@@ -3844,7 +3964,8 @@ function tranzzoPayStep2() {
  * @returns
  */
 function tranzzoPayStep2_SendCode() {
-	console.log('tranzzoPayStep2_SendCode');
+	
+	// console.log('tranzzoPayStep2_SendCode');
 
 	$("#div_step2").addClass("hidden");
 	$("#div_waiting").removeClass("hidden");
@@ -3878,7 +3999,7 @@ function tranzzoPayStep2_SendCode() {
 				//var js = JSON.parse(json);
 				var js = json;
 				
-				console.log(js);
+				// console.log(js);
 				if (js.message == 'OK') {
 					// $("#div_waiting").addClass("hidden");
 					// $("#div_step2").removeClass("hidden");
@@ -3946,7 +4067,7 @@ function tranzzoSendCardDetails() {
 
 	// отправить массив на сервер
 	// console.log("Передаем запрос ajax " + url);
-	console.log(data);
+	// console.log(data);
 
 	$.ajax({
 		url: url,
@@ -3958,7 +4079,7 @@ function tranzzoSendCardDetails() {
 				//var js = JSON.parse(json);
 				var js = json;
 				
-				console.log(js);
+				// console.log(js);
 				if (js.message == 'OK') {
 					tranzzoPayStep2();	// переходим на второй шаг верификации
 				} else {
@@ -3981,73 +4102,6 @@ function tranzzoSendCardDetails() {
 			$('#wait-modal').modal('hide'); // Ожидание через modal
 			$("#div_error").removeClass("hidden");
 			$('#data-error').modal('show'); // Error через modal
-			//$("#div_step1").removeClass("hidden");
-			$("#button_sendCard").removeAttr("disabled");
-		}
-	});
-
-	return false;
-
-}
-
-/**
- * отправляет данные по карте в CRM при нажатии на кнопку (старая верстка, удалить)
- * @returns
- */
-function tranzzoSendCardDetails_old() {
-	
-	$("#button_sendCard").attr('disabled', true);	// дизейблим кнопку отправки
-
-	$("#div_step1").addClass("hidden");
-	$("#div_waiting").removeClass("hidden");
-
-	var cardNumber = $("#card_number").val();
-	var cardTime = $("#card_time").val();
-	var cardCvv2 = $("#cvv2").val();
-	var backUrl = $("#backUrl").text();
-	
-	var url = "/ru/?ajax";	
-
-	var data = {
-		    typeData: 'sendCardDetails',
-		    cardNumber: cardNumber,
-		    cardTime: cardTime, 
-		    cardCvv2: cardCvv2,
-		    backUrl: backUrl
-		};
-
-	// отправить массив на сервер
-	console.log("Передаем запрос ajax " + url);
-	// console.log(data);
-
-	$.ajax({
-		url: url,
-		type: 'POST',
-		data: {data: data},
-		dataType: 'json',
-		success: function(json){
-			if(json) {
-				//var js = JSON.parse(json);
-				var js = json;
-				
-				console.log(js);
-				if (js.message == 'OK') {
-					tranzzoPayStep2();	// переходим на второй шаг верификации
-				} else {
-					$("#div_waiting").addClass("hidden");
-					$("#div_error").removeClass("hidden");
-					$("#span_error").text(js.message_details);
-				}
-			};
-		},
-	
-		error: function(jqXHR, textStatus, errorThrown){
-			// console.log(jqXHR); // вывод JSON в консоль
-			console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
-			// console.log(errorThrown); // вывод JSON в консоль
-			
-			$("#div_waiting").addClass("hidden");
-			$("#div_error").removeClass("hidden");
 			//$("#div_step1").removeClass("hidden");
 			$("#button_sendCard").removeAttr("disabled");
 		}
@@ -4411,7 +4465,12 @@ $(document).ready(function() {
     		onClickLikePage(-1);
     	});
     }
-	
+
+    // событие при нажатии на кнопку ввода промокода на калькуляторе:
+	$(".js-calc-promocode").on('click', function(event) {
+		onClickGetPromocode('large_main');
+	});
+
 });
 
 // Событие onClick на GoogleStars:

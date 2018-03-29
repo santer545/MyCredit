@@ -48,10 +48,11 @@ $(document).ready(function() {
 
     // Registration steps
     $('.js-btn-success').on("click", function() {
-        if (validate($(this).parents(".js_validate"))) {
+    	
+    	if (validate($(this).parents(".js_validate"))) {
             $('.form-control--wr').removeClass('has-error');
             var formId = $(this).closest('form').attr('id');
-            
+
             switch (formId) {
                 case 'js-form-3': 
                     onClickSubmitReg(formId, "average_main");
@@ -66,7 +67,7 @@ $(document).ready(function() {
 
 
         } else {
-            var notRequiredElements = $(this).parents(".js_validate").find('.has-error').closest('.form-control--wr').find('input').not('input[required]').not('input[type="hidden"]');
+        	var notRequiredElements = $(this).parents(".js_validate").find('.has-error').closest('.form-control--wr').find('input').not('input[required]').not('input[type="hidden"]');
             $(notRequiredElements).closest('div').addClass('has-success');
             $('.has-success').closest('.personal-table-data').removeClass('has-error');
             $(this).parents(".js_validate").find('.has-error').closest('.form-control--wr').addClass('has-error');

@@ -1,6 +1,6 @@
 /**
  * Файл с набором функций на JavaScript для работы с Google,
- * используется для взаимодействия фронтенда с API CRM KLT CREDIT
+ * используется для взаимодействия фронтенда с API CRM 
  * 
  * @author Игорь Стебаев <Stebaev@mail.ru>
  * @copyright Copyright (c) 2017 Artjoker Company
