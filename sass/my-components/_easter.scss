@@ -512,6 +512,10 @@
 			font-size: 22px;	
 			margin-bottom: 20px;	
 		}
+		@media screen and (max-width: 340px) {
+			font-size: 19px;	
+			line-height: 21px;	
+		}
 	}
 
 	.modal-body {
@@ -525,6 +529,11 @@
 			font-size: 16px;	
 			max-width: 80%;	
 		}
+
+		@media screen and (max-width: 340px) {
+			font-size: 14px;	
+			padding: 15px;	
+		}
 	}
 
 	.modal-footer {
@@ -534,6 +543,10 @@
 
 		@media screen and (max-width: $screen-xs-max) {
 			padding: 30px 0 35px;	
+		}
+
+		@media screen and (max-width: 340px) {
+			padding: 20px 0;	
 		}
 	}
 }
