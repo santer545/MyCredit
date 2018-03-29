@@ -1,5 +1,14 @@
 $(function() {
 
+
+    // if ($('.crack').length > 0) {
+    //     var els = document.querySelectorAll('.crack-path');
+    //     Array.prototype.slice.call(els).forEach(function(el) {
+    //         el.setAttribute('stroke', 'white');
+    //         el.setAttribute('fill', 'transparent');
+    //     });
+    // }
+
     randomModalId();
 
     easterMusic();
@@ -26,7 +35,7 @@ $(function() {
     var counterEgs = $('.easter-try-img img');
 
     for (i = 0; i < counterEgs.length; i++) {
-        
+
         switch (tryCount) {
             case 2:
                 $(counterEgs[0]).addClass('active');
@@ -45,7 +54,7 @@ $(function() {
                 });
                 break;
             default:
-                
+
         }
     }
 
@@ -53,10 +62,10 @@ $(function() {
 
     $('.egg').one('click', function() {
 
-    	// звук битого яйца
+        // звук битого яйца
 
-    	var crackAudio = $("#crack-music")[0];
-    	crackAudio.play();
+        var crackAudio = $("#crack-music")[0];
+        crackAudio.play();
 
         // кол-во попыток на табло
         tryCount--;
@@ -80,7 +89,7 @@ $(function() {
                     $(counterEgs[2]).addClass('active');
                     break;
                 default:
-                    
+
             }
         }
 
@@ -101,14 +110,18 @@ $(function() {
 
         var currentId = $(this).find('.crack').attr('id');
 
+        console.log(currentId);
+
 
         if ($('.crack').length > 0) {
 
-            var els = document.querySelectorAll('.crack-path');
+
+            var els = $('#'+ currentId+ ' .crack-path');
             Array.prototype.slice.call(els).forEach(function(el) {
                 el.setAttribute('stroke', 'white');
                 el.setAttribute('fill', 'transparent');
-            })
+            });
+
 
             var SVGcrown = new Vivus(currentId, {
                     duration: 100,
@@ -119,7 +132,6 @@ $(function() {
                         $('.crack-path').attr('fill', 'white');
 
                         myVivus.stop();
-                        myVivus.destroy();
                     }
 
                 })
@@ -133,7 +145,7 @@ $(function() {
                     $('#easter-final').modal('show');
                 }
             });
-        }, 2000);
+        }, 500);
 
 
         $('#easter-empty').on('hidden.bs.modal', function(e) {
@@ -155,7 +167,7 @@ $(function() {
                         $('#easter-final').modal('show');
                     }
                 });
-            }, 2000);
+            }, 500);
         }
 
         var url = "/ru/?ajax";
@@ -171,7 +183,7 @@ $(function() {
             data: { data: data },
             dataType: 'json',
             success: function(json) {
-                
+
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 // console.log(jqXHR); // вывод JSON в консоль
