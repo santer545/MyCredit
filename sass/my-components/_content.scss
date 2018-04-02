@@ -245,6 +245,10 @@
         }
     }
 
+    .calculator-table td.calculator-give-sum, .calculator-table td.calculator-take-sum {
+        padding-left: 10px;
+    }
+
     .btn-slider {
         /* @media screen and (max-width: $screen-md-max) {
             width: 94%; 
@@ -3814,4 +3818,25 @@
             }    
         }
     } 
+}
+
+.figcaption-content {
+    display: flex;
+    justify-content: space-between;
+
+    figure {
+        margin: 0;
+        padding: 0 20px;
+        text-align: center;
+        figcaption {
+            font-size: 13px;
+            font-family: $font-family-roman;
+        }
+
+        img {
+            width: 115px;
+            height: 115px;
+            margin-bottom: 10px;
+        }
+    }
 }
