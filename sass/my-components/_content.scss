@@ -405,16 +405,56 @@
         word-break: normal;
     }
     &-terminal {
-        margin-bottom: 30px;
         .pay-heading {
             text-align: left;
             margin-bottom: 20px;
+            .pay-img {
+                height: 50px;
+                width: 100px;
+                line-height: 50px;
+                margin: 0 auto;
+                @media screen and (max-width:991px) {
+                    margin-left: 125px;
+                }
+                @media screen and (max-width:767px) {
+                    width: 80px;
+                    margin-left: 0;
+                    margin-bottom: 10px;  
+                }
+                img {
+                    display: inline-block;
+                    width: 100%;
+                    vertical-align: bottom;
+                }
+                .pay-img__time {
+                    height: 100%;
+                    width: auto;
+                }
+            }
         }
         figure {
             margin-bottom: 20px;
 
             img {
                 width: 100%;
+            }
+        }
+        &-2 .content-terminal__block {
+            border-top: 1px solid rgba(48, 104, 169, .2);
+            @media screen and (max-width:991px) {
+                border-top: 1px solid rgba(48, 104, 169, .2);
+            }
+        }
+        &__block:nth-child(2n) {
+            border-left: 1px solid rgba(48, 104, 169, .2);
+            @media screen and (max-width:991px) {
+                border-left: none;
+            }
+        }
+        &__block {
+            padding: 15px 10px;
+            @media screen and (max-width:991px) {
+                 border-top: 1px solid rgba(48, 104, 169, .2);
             }
         }
     }

@@ -928,7 +928,7 @@
     &-formula {
         color: #ccc;
         text-decoration: line-through;
-        @media screen and(max-width: 800px) {
+        @media screen and(max-width: 768px) {
             display: block;
         }
     }
@@ -1265,12 +1265,12 @@
             width: 100%;
         }
         .komission {
-            @media screen and (max-width: $screen-xs-max) {
+            @media screen and (max-width: 840px) {
                 text-transform: capitalize;
             }
         }
         .your {
-            @media screen and (max-width: $screen-xs-max) {
+            @media screen and (max-width: 840px) {
                 display: none;
             }
         }
@@ -1351,6 +1351,9 @@
     }
     &-td-heading {
         min-width: 155px;
+        @media screen and (max-width: 840px) {
+            min-width: 125px;
+        }
         @media screen and (max-width: $screen-xs-max) {
             min-width: 100px;
         }
@@ -2643,7 +2646,7 @@
                 position: absolute;
                 left: 0;
                 right: 0;
-                background-image: url(../assets/images/calc-limit-bg.png);
+                background-image: url('../assets/images/calc-limit-bg.png');
                 background-size: 100% 10px;
                 background-position: 0 0px;
                 background-repeat: no-repeat;
@@ -2695,7 +2698,7 @@
                 position: absolute;
                 left: 0;
                 right: 0;
-                background-image: url(../assets/images/calc-limit-bg.png);
+                background-image: url('../assets/images/calc-limit-bg.png');
                 background-size: 100% 10px;
                 background-position: 0 0px;
                 background-repeat: no-repeat;
@@ -2822,10 +2825,13 @@
 
 .repeated-loan {
     .slider.slider-horizontal {
-        width: 100%;
+        width: 65%;
     }
-    .slider-wrapper:before,
-    .slider-wrapper:after {
+    .slider-days .slider.slider-horizontal {
+        width: 100%
+    }
+    .slider-days .slider-wrapper:before,
+    .slider-days .slider-wrapper:after {
         display: none;
     }
     .slider-track-high,
