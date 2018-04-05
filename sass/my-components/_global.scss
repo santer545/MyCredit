@@ -926,9 +926,11 @@
 
 .calculator {
     &-formula {
-        display: block;
         color: #ccc;
         text-decoration: line-through;
+        @media screen and(max-width: 800px) {
+            display: block;
+        }
     }
     &-hb {
         padding: 5px 10px;
@@ -1201,9 +1203,9 @@
     &-right {
         padding-top: 20px;
         display: table-cell;
-        width: 59%;
+        width: 56%;
         vertical-align: top;
-        padding-left: 40px;
+        padding-left: 15px;
         @media screen and (max-width: 1600px) {
             padding-left: 20px;
         }
@@ -1227,27 +1229,27 @@
     }
     &-right {
         padding-bottom: 20px;
-        padding-left: 30px;
-        padding-right: 30px;
-        width: 41%;
-        @media screen and (max-width: 1600px) {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 44%;
+       /* @media screen and (max-width: 1600px) {
             padding-left: 20px;
             width: 40%;
-        }
+        }*/
         @media screen and (max-width: 1400px) {
             padding-top: 20px;
         }
         @media screen and (max-width: $screen-sm-max) {
             width: 100%;
             display: block;
-            padding-left: 40px;
+            /*padding-left: 20px;*/
             padding-bottom: 0;
         }
         @media screen and (max-width: $screen-xs-max) {
-            padding-left: 20px;
+            padding-left: 15px;
             padding-bottom: 0;
             padding-top: 15px;
-            padding-right: 20px;
+            padding-right: 15px;
         }
         .btn-arrow-animate {
             @media screen and (max-width: $screen-xs-max) {
@@ -1261,6 +1263,16 @@
         @media screen and (max-width: $screen-xs-max) {
             @include clearfix;
             width: 100%;
+        }
+        .komission {
+            @media screen and (max-width: $screen-xs-max) {
+                text-transform: capitalize;
+            }
+        }
+        .your {
+            @media screen and (max-width: $screen-xs-max) {
+                display: none;
+            }
         }
         tr {
             @media screen and (max-width: $screen-xs-max) {
@@ -1338,7 +1350,7 @@
         }
     }
     &-td-heading {
-        min-width: 160px;
+        min-width: 155px;
         @media screen and (max-width: $screen-xs-max) {
             min-width: 100px;
         }
@@ -2597,7 +2609,7 @@
         }
     }
     &-days {
-        padding: 20px 45px 20px 30px;
+        padding: 20px 20px 20px 30px;
 
         @media screen and (max-width: $screen-xs-max) {
             padding: 15px 0 10px;
@@ -2656,7 +2668,7 @@
     }
     &-money {
         position: relative;
-        padding: 30px 45px 80px 30px;
+        padding: 30px 20px 80px 30px;
         border-bottom: 1px solid #eaeaea;
         .slider-track-low,
         .slider-track-high {
