@@ -3863,11 +3863,18 @@
 .figcaption-content {
     display: flex;
     justify-content: space-between;
-
+     @media screen and (max-width: $screen-sm-max) {
+        flex-direction: column;
+        align-items: center;
+     }
     figure {
         margin: 0;
         padding: 0 20px;
         text-align: center;
+        @media screen and (max-width: $screen-sm-max) {
+            display: flex;
+            align-items: center;
+        }
         figcaption {
             font-size: 13px;
             font-family: $font-family-roman;
@@ -3877,6 +3884,12 @@
             width: 115px;
             height: 115px;
             margin-bottom: 10px;
+            @media screen and (max-width: $screen-sm-max) {
+                width: 80px;
+                height: 80px;
+                margin-right: 20px;
+                margin-bottom: 20px;
+            }
         }
     }
 }
