@@ -20,6 +20,7 @@ var	flagRunQuery = false,
 	//globalTimeStopSlider = new Date().getTime(),	// дата/время после reloadCred()
 	// интервал простоя в милисекундах (сек. / 1000) калькулятора, после которого требуется запись состояния:
 	intervalStopSlider,
+	timerId,
 	// массив префиксов мобильных телефонов:
 	arrPrefix = ['39','50','63', '66', '67', '68', '73', '91','92', '93', '95', '96', '97', '98', '99'],
 
@@ -98,6 +99,7 @@ function analysisSlider(money, day, prefix, changed) {
  * тестовая пока. отправка данных по адресу
  * @param url
  */
+/*
 function ajax(url) {
 	
 	//url = url + "?ajax";	
@@ -139,9 +141,8 @@ function ajax(url) {
 			// console.log(errorThrown); // вывод JSON в консоль
 		}
 	});
-	
-
 }
+*/
 
 /**
  * Проверяет необходимость перезагрузки страницы, при необходимости - перегружает
@@ -819,7 +820,7 @@ function includeScript(url) {
 	var script = document.createElement('script');
     script.src = url;
 
-    console.log(script);
+    // console.log(script);
     
     document.getElementsByTagName('head')[0].appendChild(script);
 }
@@ -1772,6 +1773,19 @@ function onClickAnotherNumber() {
 }
 
 /**
+ * обрабатывает кнопки выбора дополнительных карт
+ * @returns
+ */
+function onClickCardsAdditional(action) {
+
+	$("#radio-action").val(action);
+	
+	console.log("onClickCardsAdditional " + action);
+	
+	window.document.forms['form-cardsAdditional'].submit();
+}
+
+/**
  * обрабатывает кнопку (x) "Закрыть форму посылки email"
  */
 function onClickCloseEmail() {
@@ -2021,6 +2035,17 @@ function onClickForSearch(event) {
 			$('#js_zero').addClass('hidden');
 			$('#js_found').removeClass('hidden');
 		}
+		
+		// отправляем в аналитику введенные данные запроса:
+		if (timerId) clearTimeout(timerId);	// если уже есть таймер - удаляем
+		timerId = setTimeout(function(forSearch) { 
+			if (forSearch === $("#search_faq").val()) {
+				// ga('send', 'pageview', '/search_results/?q=' + forSearch);
+				ga('send', 'pageview', encodeURI('/search_results/?q=' + forSearch));
+				// console.log("'send', 'pageview', '" + encodeURI('/search_results/?q=' + forSearch));
+			}
+		}, 2000, forSearch);
+		
 	} else {
 		
 		$('#accordion').removeClass('hidden');
@@ -3677,8 +3702,6 @@ function submit_credits_form(href, cred_id) {
 		
 	if(window.document.forms['credits_form'] != null) window.document.forms['credits_form'].submit();
 
-	if(window.document.forms['credits_form'] != null) window.document.forms['credits_form'].submit();
-
 	// console.log('credits_form submit');
 	
 	return false;
@@ -3821,6 +3844,7 @@ function tranzzoPayAnotherCard() {
 	var cardCvv2 = + $("#cvv2").val();
 	var amount = + $("#js-repayment-sum").val();
 	var backUrl = $("#backUrl").text();
+	var lang = document.getElementById('lang').innerHTML;
 	
 	var url = "/ru/?ajax";	
 
@@ -3831,7 +3855,8 @@ function tranzzoPayAnotherCard() {
 		    cardDateYear: cardDateYear, 
 		    cardCvv2: cardCvv2,
 		    amount: amount,
-		    backUrl: backUrl
+		    backUrl: backUrl,
+		    lang: lang
 		};
 
 	// отправить массив на сервер
@@ -3991,13 +4016,15 @@ function tranzzoPayStep2_SendCode() {
 	// var cardNumber = $("#card_number").val();
 	var cardNumber = $("#card_number_1").val().trim() + $("#card_number_2").val().trim() + $("#card_number_3").val().trim() + $("#card_number_4").val().trim();
 	var sendCode = $("#sendCode").val();
+	var lang = document.getElementById('lang').innerHTML;
 
 	var url = "/ru/?ajax";	
 
 	var data = {
 		    typeData: 'paySendCode',
 		    cardNumber: cardNumber,
-		    sendCode: sendCode
+		    sendCode: sendCode,
+		    lang: lang
 		};
 
 	// отправить массив на сервер
@@ -4068,6 +4095,7 @@ function tranzzoSendCardDetails() {
 	var cardDateYear = + $("#card_year").val();
 	var cardCvv2 = + $("#cvv2").val();
 	var backUrl = $("#backUrl").text();
+	var lang = document.getElementById('lang').innerHTML;
 	
 	var url = "/ru/?ajax";	
 
@@ -4077,11 +4105,12 @@ function tranzzoSendCardDetails() {
 		    cardDateMonth: cardDateMonth, 
 		    cardDateYear: cardDateYear, 
 		    cardCvv2: cardCvv2,
-		    backUrl: backUrl
+		    backUrl: backUrl,
+		    lang: lang
 		};
 
 	// отправить массив на сервер
-	// console.log("Передаем запрос ajax " + url);
+	 console.log("Передаем запрос ajax " + url);
 	// console.log(data);
 
 	$.ajax({
@@ -4478,6 +4507,20 @@ $(document).ready(function() {
         // событие при нажатии на кнопку отрицательного отзыва:
     	$("#btn_like_negative").on('click', function(event) {
     		onClickLikePage(-1);
+    	});
+    }
+
+    // если есть элементы для выбора доп. карт:
+    if ($("#btn-cardsAdditional-select").length > 0) {
+
+        // событие при нажатии на кнопку "Сделать основной":
+    	$("#btn-cardsAdditional-select").on('click', function(event) {
+    		onClickCardsAdditional('main');
+    	});
+
+        // событие при нажатии на кнопку отрицательного отзыва:
+    	$("#btn-cardsAdditional-delete").on('click', function(event) {
+    		onClickCardsAdditional('delete');
     	});
     }
 

@@ -4,7 +4,7 @@
     padding: 10px;
     display: block;
     margin: 0 auto;
-    word-wrap: break-word;
+    word-aap: break-word;
 }
 
 
@@ -926,9 +926,11 @@
 
 .calculator {
     &-formula {
-        display: block;
         color: #ccc;
         text-decoration: line-through;
+        @media screen and(max-width: 768px) {
+            display: block;
+        }
     }
     &-hb {
         padding: 5px 10px;
@@ -1201,9 +1203,9 @@
     &-right {
         padding-top: 20px;
         display: table-cell;
-        width: 59%;
+        width: 56%;
         vertical-align: top;
-        padding-left: 40px;
+        padding-left: 15px;
         @media screen and (max-width: 1600px) {
             padding-left: 20px;
         }
@@ -1227,27 +1229,27 @@
     }
     &-right {
         padding-bottom: 20px;
-        padding-left: 30px;
-        padding-right: 30px;
-        width: 41%;
-        @media screen and (max-width: 1600px) {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 44%;
+       /* @media screen and (max-width: 1600px) {
             padding-left: 20px;
             width: 40%;
-        }
+        }*/
         @media screen and (max-width: 1400px) {
             padding-top: 20px;
         }
         @media screen and (max-width: $screen-sm-max) {
             width: 100%;
             display: block;
-            padding-left: 40px;
+            /*padding-left: 20px;*/
             padding-bottom: 0;
         }
         @media screen and (max-width: $screen-xs-max) {
-            padding-left: 20px;
+            padding-left: 15px;
             padding-bottom: 0;
             padding-top: 15px;
-            padding-right: 20px;
+            padding-right: 15px;
         }
         .btn-arrow-animate {
             @media screen and (max-width: $screen-xs-max) {
@@ -1261,6 +1263,16 @@
         @media screen and (max-width: $screen-xs-max) {
             @include clearfix;
             width: 100%;
+        }
+        .komission {
+            @media screen and (max-width: 840px) {
+                text-transform: capitalize;
+            }
+        }
+        .your {
+            @media screen and (max-width: 840px) {
+                display: none;
+            }
         }
         tr {
             @media screen and (max-width: $screen-xs-max) {
@@ -1338,7 +1350,10 @@
         }
     }
     &-td-heading {
-        min-width: 160px;
+        min-width: 155px;
+        @media screen and (max-width: 840px) {
+            min-width: 125px;
+        }
         @media screen and (max-width: $screen-xs-max) {
             min-width: 100px;
         }
@@ -2597,7 +2612,7 @@
         }
     }
     &-days {
-        padding: 20px 45px 20px 30px;
+        padding: 20px 20px 20px 30px;
 
         @media screen and (max-width: $screen-xs-max) {
             padding: 15px 0 10px;
@@ -2631,7 +2646,7 @@
                 position: absolute;
                 left: 0;
                 right: 0;
-                background-image: url(../assets/images/calc-limit-bg.png);
+                background-image: url('../assets/images/calc-limit-bg.png');
                 background-size: 100% 10px;
                 background-position: 0 0px;
                 background-repeat: no-repeat;
@@ -2656,7 +2671,7 @@
     }
     &-money {
         position: relative;
-        padding: 30px 45px 80px 30px;
+        padding: 30px 20px 80px 30px;
         border-bottom: 1px solid #eaeaea;
         .slider-track-low,
         .slider-track-high {
@@ -2683,7 +2698,7 @@
                 position: absolute;
                 left: 0;
                 right: 0;
-                background-image: url(../assets/images/calc-limit-bg.png);
+                background-image: url('../assets/images/calc-limit-bg.png');
                 background-size: 100% 10px;
                 background-position: 0 0px;
                 background-repeat: no-repeat;
@@ -2810,10 +2825,13 @@
 
 .repeated-loan {
     .slider.slider-horizontal {
-        width: 100%;
+        width: 65%;
     }
-    .slider-wrapper:before,
-    .slider-wrapper:after {
+    .slider-days .slider.slider-horizontal {
+        width: 100%
+    }
+    .slider-days .slider-wrapper:before,
+    .slider-days .slider-wrapper:after {
         display: none;
     }
     .slider-track-high,
@@ -9961,6 +9979,7 @@ input.rating {
     display: inline-block !important;
     vertical-align: middle !important;
 }
+/*----------------facts-------------------*/
 .facts {
     padding: 60px 0;
     background-color: #4bba78;
@@ -10032,6 +10051,70 @@ input.rating {
         }
         @media screen and (max-width: 480px) {
             margin-bottom: 15px;
+        }
+    }
+}
+/**********Mai-banner *********/
+.maiActia {
+    .banner-heading strong {
+        color: #df592b;
+        line-height: normal;
+    }
+    .btn-share {
+        background-color: #df592b;
+        &:hover {
+            background-color: #c13505;
+        }
+    }
+    .credit-zero-right {
+        width: 10%;
+        bottom: 30px;
+        right: 10%;
+        @media screen and (max-width: 1800px) {
+           right: 5%; 
+        }
+        @media screen and (max-width: 1500px) {
+            right: 1%;
+        }
+        @media screen and (max-width: $screen-md-max) {
+          right: 5%;
+          bottom: 0;
+          height: 80%;  
+        }
+    }
+    .credit-zero-left {
+        left: 8%;
+        bottom:-90px;
+        width: 30%;
+        @media screen and (max-width: $screen-md-max) {
+            bottom: 0;
+            left: 8%;
+            top:7%;
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            top:6%;
+        }
+         @media screen and (max-width: 820px) {
+            top:17%;
+        }
+    }
+    .credit-zero-left-1 {
+        left: 2%;
+        width: 17%;
+        bottom: 30px;
+        @media screen and (max-width: $screen-md-max) {
+            left: 0;
+            top: 0;
+            width: 15%;
+        }
+         @media screen and (max-width: $screen-sm-max) {
+            width: 11%;
+            left: 2%;
+            top: 2%;
+        }
+        @media screen and (max-width: 820px) {
+            width: 14%;
+            top: 5%;
         }
     }
 }
