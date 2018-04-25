@@ -3823,11 +3823,22 @@
 .figcaption-content {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 30px;
+    @media screen and (max-width: $screen-xs-max) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
     figure {
+        max-width: 20%;
         margin: 0;
         padding: 0 20px;
         text-align: center;
+
+        @media screen and (max-width: $screen-xs-max) {
+            max-width: none;
+            width: 33.3%;
+        }
         figcaption {
             font-size: 13px;
             font-family: $font-family-roman;

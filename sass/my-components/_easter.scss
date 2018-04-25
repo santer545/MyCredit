@@ -15,8 +15,8 @@
 	position: absolute;	
 	left: 0;	
 	right: 0;	
-	bottom: 130px;	
-	z-index: 2;
+	bottom: 145px;	
+	z-index: 3;
 
 	@media screen and (max-width: $screen-sm-max) {
 		bottom: 210px;	
@@ -205,16 +205,16 @@
 .egg-bottom {
 	position: absolute;	
 	bottom: 0;	
-	height: 250px;	
+	height: 200px;	
 	left: 0;	
 	right: 0;	
-	z-index: 3;	
+	z-index: 2;	
 	background-image: url(../assets/images/easter/bottom-bg.png);
 	background-repeat: no-repeat;
+	background-size: cover;
 	
 	@media screen and (max-width: 1400px) {
-		height: 185px;	
-		background-size: cover;
+		height: 185px;
 	}	
 	@media screen and (max-width: $screen-md-max) {
 		height: 190px;
@@ -246,6 +246,9 @@
 	top: 25%;	
 	@media screen and (max-width: 1400px) {
 		top: 10%;	
+	}
+	@media screen and (max-width: 1300px) {
+		top: 20%;
 	}
 	@media screen and (max-width: $screen-md-max) {
 		top: 30%;	
