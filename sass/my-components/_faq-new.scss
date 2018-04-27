@@ -94,6 +94,13 @@
             color: #363636;
             box-shadow: none;
 
+            @media screen and (max-width: $screen-xs-max) {
+                font-size: 14px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                line-height: 1.4;
+            }
+
             &::-webkit-input-placeholder {
                 /* Chrome/Opera/Safari */
                 color: #363636;

@@ -2460,7 +2460,9 @@ function onClickSubmitPartner(event) {
  */
 function onClickSubmitReg(form, prefix) {
 	
-	 console.log('form = ' + form); 
+	// console.log('form = ' + form); 
+
+	$(".js-btn-success").attr('disabled', true);	// если нажата кнопка сабмита, дизейблим ее
 
 	sendPageInputType();	// высылает на сервер способ введения информации
 	setTimeout(commitForm, 500);	// задержка, без нее возвращается ошибка (ответ от ajax)
@@ -2483,8 +2485,8 @@ function onClickSubmitReg(form, prefix) {
 			
 			$("#sms-phone").val($("#phone").val());
 
-			console.log("js-form-1-1 submit");
-			console.log($("#sms-phone").val());
+			// console.log("js-form-1-1 submit");
+			// console.log($("#sms-phone").val());
 			//setTimeout("window.document.forms["js-form-1-1"].submit();", 500);
 			
 			window.document.forms["js-form-1-1"].submit();
@@ -3841,7 +3843,7 @@ function tranzzoPayAnotherCard() {
 	var cardNumber = $("#card_number_1").val().trim() + $("#card_number_2").val().trim() + $("#card_number_3").val().trim() + $("#card_number_4").val().trim();
 	var cardDateMonth = + $("#card_month").val();
 	var cardDateYear = + $("#card_year").val();
-	var cardCvv2 = + $("#cvv2").val();
+	var cardCvv2 = $("#cvv2").val();
 	var amount = + $("#js-repayment-sum").val();
 	var backUrl = $("#backUrl").text();
 	var lang = document.getElementById('lang').innerHTML;
@@ -3942,7 +3944,7 @@ function tranzzoPayStep2() {
 
 	// отправить массив на сервер
 	// console.log("Передаем запрос ajax " + url);
-	console.log(data);
+	// console.log(data);
 
 	$.ajax({
 		url: url,
@@ -3962,7 +3964,7 @@ function tranzzoPayStep2() {
 					if (js.status == 1) {
 						if (js.params ) {
 							// заполняем форму для внешнего поста:
-							console.log(js.params);
+							// console.log(js.params);
 							location.href = js.params.VerifiedURL;
 						}
 					}
@@ -4029,7 +4031,7 @@ function tranzzoPayStep2_SendCode() {
 
 	// отправить массив на сервер
 	// console.log("Передаем запрос ajax " + url);
-	console.log(data);
+	// console.log(data);
 
 	$.ajax({
 		url: url,
@@ -4093,7 +4095,7 @@ function tranzzoSendCardDetails() {
 	var cardNumber = $("#card_number_1").val().trim() + $("#card_number_2").val().trim() + $("#card_number_3").val().trim() + $("#card_number_4").val().trim();
 	var cardDateMonth = + $("#card_month").val();
 	var cardDateYear = + $("#card_year").val();
-	var cardCvv2 = + $("#cvv2").val();
+	var cardCvv2 = $("#cvv2").val();
 	var backUrl = $("#backUrl").text();
 	var lang = document.getElementById('lang').innerHTML;
 	
@@ -4110,7 +4112,7 @@ function tranzzoSendCardDetails() {
 		};
 
 	// отправить массив на сервер
-	 console.log("Передаем запрос ajax " + url);
+	// console.log("Передаем запрос ajax " + url);
 	// console.log(data);
 
 	$.ajax({

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    pressHover();   
+    pressHover();
     mobileMenuClose();
     faqAnchor();
     prolongationBlockAnimate();
@@ -8,6 +8,7 @@ $(document).ready(function() {
     parallax();
     hearts();
     wishMusic();
+    
     //customInput();
 
     // Detect ios 11_0_x affected 
@@ -1902,7 +1903,7 @@ function wishMusic() {
 
 function pressHover() {
     $(".js-speak-about__item").mouseover(function() {
-        
+
         $(".speak-about img").css({ 'filter': 'grayscale(100%)', 'opacity': '.2' });
         $(this).children("a").css({ "color": "#0056b8", "text-decoration": "underline" });
         $(this).children("img").css({ 'filter': 'grayscale(0)', 'opacity': '1' });
@@ -1911,3 +1912,61 @@ function pressHover() {
         $(this).children("a").css({ "color": "", "text-decoration": "" });
     });
 }
+
+
+
+
+function mayPromo() {
+
+    var sum = '',
+        finalLetter = 'MAYQPROMOR';
+    $('.may-input__wrapper input').each(function(index, value) {
+        sum += $(value).val();
+        sum = sum.toUpperCase();
+        console.log(sum);
+
+    })
+
+    if (sum === finalLetter) {
+        $('.js-may-result').addClass('active');
+        $('.promo-wrapper').addClass('no-active');
+    } else {
+        $('.promo-wrapper').addClass('no-active');
+        $('.js-may-error').addClass('active');
+    }
+
+
+
+}
+
+
+$('.js-may-check').click(function() {
+    mayPromo();
+
+});
+
+$('.js-may__close').click(function() {
+   $(this).closest('.js-may-error').removeClass('active');
+   $('.promo-wrapper').removeClass('no-active');
+});
+
+$('.may-input__wrapper input').keyup(function(e) {
+    if (this.value.length == this.maxLength) {
+      $(this).next('.may-input__wrapper input').focus();
+    }
+    console.log(e.keyCode);
+
+    switch (e.keyCode) {
+      case 8:
+        $(this).prev('.may-input__wrapper input').focus();
+        break;
+      case 39:
+        $(this).next('.may-input__wrapper input').focus();
+        break;
+      case 37:
+        $(this).prev('.may-input__wrapper input').focus();
+        break;
+      default:
+        
+    }
+});

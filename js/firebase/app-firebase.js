@@ -17,11 +17,11 @@ $(window).load(function() {
 	            checkToken(currentToken);
 	        })
 	        .catch(function (err) {
-	            //console.log('get Token' + err);
+	            console.log('get Token' + err);
 	            //TODO выводить сообщение об ошибке пользователю
 	        })
 	}).catch(function (err) {
-	    //console.log('error request permission ' + err);
+	    console.log('request permission ' + err);
 	    //TODO выводить сообщение об ошибке пользователю
 	});
 	
@@ -71,7 +71,7 @@ function checkToken(currentToken){
         },
 
         error: function(jqXHR, textStatus){
-            //console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+            console.log('Проверка токена: '+textStatus); // вывод JSON в консоль
 		
         }
     });
@@ -97,12 +97,12 @@ function sendTokenToServer(currentToken) {
                 if (json.message === 'success') {
                     //console.log('токен сохранен успешно');
                 } else {
-                    //console.log(json.message);
+                    console.log(json.message);
                 }
             }
         },
         error: function(jqXHR, textStatus){
-            //console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+            console.log('Запись токена: '+textStatus); // вывод JSON в консоль
         }
     });
 }
@@ -142,10 +142,23 @@ function pushSend(){
 		success: function(json){
 			//console.log(json);
 			if(json) {
+				// выборка абзаца для сообщений
+                		var p = document.getElementById("result-send");
 				if (json.save === 'success') {
-					//console.log('сообщение отправлено успешно');
+				    p.classList.add("text-success");
+				    p.innerHTML='Сообщение отправленно успешно';
+				    setTimeout(function(){
+				        p.innerHTML='';
+				        p.classList.remove("text-successs");
+					location.reload();
+				    },5000);
 				} else {
-					//console.log('ошибка - ' + json.save);
+					p.classList.add("text-danger");
+				    p.innerHTML='Сообщение НЕ отправленно';
+				    setTimeout(function(){
+					p.innerHTML='';
+					p.classList.remove("text-danger");
+				    },5000);
 				}
 				if (json.send === 'success') {
 					//console.log('сообщение сохранено успешно');
@@ -156,7 +169,7 @@ function pushSend(){
 		},
 
 		error: function(jqXHR, textStatus){
-			//console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+			console.log('Отправка сообщения: '+textStatus); // вывод JSON в консоль
 		}
 	});
 }
