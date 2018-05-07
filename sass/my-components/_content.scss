@@ -1470,6 +1470,9 @@
         position: relative;
         list-style-type: none;
         margin-bottom: 40px;
+        @media screen and (max-width: $screen-sm-max) {
+            display: table;
+        }
         &:before {
             counter-increment: list;
             content: counter(list) "";
@@ -1491,8 +1494,16 @@
                 left: 0;
                 right: auto;
             }
+            @media screen and (max-width: $screen-sm-max) {
+                left: 15px;
+            }
             @media screen and (max-width: 600px) {
                 display: none;  
+            }
+        }
+        .heading-padding {
+            @media screen and (min-width: 600px) and (max-width: $screen-sm-max) {
+                padding-left: 70px;
             }
         }
         .btn-personal {
@@ -1568,7 +1579,19 @@
             float: none;
             width: 100%;
         }
-        
+        &.fadeInRight {
+            display: table-footer-group;
+            p {
+                @media screen and (max-width: $screen-sm-max) {
+                    padding: 0 15px;  
+                }
+            }
+            a {
+                @media screen and (max-width: $screen-sm-max) {
+                    margin-left: 15px;  
+                }
+            }
+        }
     }
 }
 
@@ -2189,8 +2212,8 @@
     transform: translateX(-400px);
 }
 .fadeInLeft.go { 
-    -webkit-animation-name: D; 
-    animation-name: D; 
+    -webkit-animation-name: fadeInLeft; 
+    animation-name: fadeInLeft; 
 }
 
 
