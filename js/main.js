@@ -1038,6 +1038,11 @@ $(document).ready(function() {
     boxesInWindow.addClass("visible");
     elementToTop();
 
+    if ($(window).width() > 1025) {
+        $(".fixed-bar").stick_in_parent({
+            offset_top: 100
+        })
+    }
 
     // Grayscale images on Safari and Opera browsers
     // if (getBrowser() == 'opera' || getBrowser() == 'safari') {
