@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Шар_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="59px" height="59px" viewBox="0 0 59 59" style="enable-background:new 0 0 59 59;" xml:space="preserve">
+<g>
+	<polygon style="fill:#003764;" points="4.414,4.414 29.497,4.414 29.497,0 0,0 0,29.5 4.414,29.5 	"/>
+	<polygon style="fill:#61B4E4;" points="4.414,54.586 4.414,29.5 0,29.5 0,59 29.504,59 29.504,54.586 	"/>
+	<polygon style="fill:#0055B8;" points="54.586,29.5 54.586,54.586 29.504,54.586 29.504,59 59,59 59,29.5 	"/>
+	<polygon style="fill:#009BDE;" points="29.504,0 29.504,4.414 54.586,4.414 54.586,29.5 59,29.5 59,0 	"/>
+	<g>
+		<path style="fill:#009BDE;" d="M36.203,21.868h-9.188l-1.054,5.927c1.186-1.251,2.635-1.646,4.347-1.646
+			c4.281,0,7.146,3.029,7.146,7.541c0,4.873-3.392,8.265-8.232,8.265c-4.544,0-7.606-2.732-7.804-6.98h3.721
+			c0.198,2.371,1.845,3.886,4.183,3.886c2.732,0,4.28-1.812,4.28-4.973c0-3.063-1.613-4.84-4.347-4.84
+			c-1.712,0-2.864,0.593-3.853,2.074l-3.293-0.099l2.206-12.414h11.888V21.868z"/>
+	</g>
+</g>
+</svg>

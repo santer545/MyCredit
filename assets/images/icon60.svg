@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Шар_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="125px" height="125px" viewBox="0 0 125 125" style="enable-background:new 0 0 125 125;" xml:space="preserve">
+<g>
+	<polygon style="fill:none;" points="62.509,62.5 62.509,0 62.5,0 62.493,0 62.493,62.5 	"/>
+	<path style="fill:#61B4E4;" d="M62.502,119.681c-31.579,0-57.181-25.602-57.181-57.181H0C0,97.016,27.983,125,62.5,125
+		c0.002,0,0.007,0,0.009,0v-5.319C62.507,119.681,62.505,119.681,62.502,119.681z"/>
+	<path style="fill:#003764;" d="M62.493,5.319V0C27.979,0.004,0,27.984,0,62.5h5.321C5.321,30.923,30.919,5.323,62.493,5.319z"/>
+	<path style="fill:#009BDE;" d="M62.509,0v5.319c31.572,0.004,57.169,25.604,57.169,57.181H125C125,27.984,97.022,0.004,62.509,0z"
+		/>
+	<path style="fill:#0055B8;" d="M119.678,62.5c0,31.577-25.598,57.177-57.169,57.181V125C97.022,124.996,125,97.016,125,62.5
+		H119.678z"/>
+</g>
+</svg>

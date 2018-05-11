@@ -417,11 +417,11 @@ function getMonthLang(month) {
 	return monthStr;
 }
 
-/**
+/*
  * парсит строку адреса при помощи Яндекса, и раскладывает по полям
  * @param address
  * @param prefix 'fact' | ''
- */
+ *
 function getParserAddress(address, prefix) {
 
 	var url = "https://geocode-maps.yandex.ru/1.x/?format=json&geocode=";	
@@ -519,6 +519,7 @@ function getParserAddress(address, prefix) {
 	});
 	
 }
+*/
 
 /**
  * Возвращает процент на основе анализа дочерних продуктов
@@ -1654,14 +1655,15 @@ function onchangePassportType(passportType) {
 }
 
 
-/**
+/*
  * пересчитывает список городов в зависимости от измененной области
  * 
  * @param string
  *            idSelect - id select-а области
  * @param string
  *            url - адрес CRM
- */
+ *
+/*
 function onChangeRegion(idSelect, url) {
 	
 	var selectedArea = $("#" + idSelect).val();
@@ -1724,6 +1726,7 @@ function onChangeRegion(idSelect, url) {
 	});
 
 }
+*/
 
 /**
  * Показывает поле "Основной источник дохода mainSource" и "Месячный доход" GrossMonthlyIncome в зависимости от SourceIncome 
@@ -1825,7 +1828,6 @@ function onClickGetCode() {
 	
 	$('#buttonGetCode').attr('disabled', true);
 
-	// ga('send', 'pageview', '/poluchit-kod-na-telefon');	// аналитика
 	ga('send', 'event', 'SMS', 'Click');	// аналитика Google
 
 	$("#mobile-phone").val($("#phone").val());
@@ -1928,9 +1930,9 @@ function onClickGetPromocode(typeSlider) {
 
 };
 
-/**
+/*
  * Обрабатывает Click на GoogleStars, отправляет результат на сервер
- */
+ *
 function onClickGoogleStars(mark) {
 	
 	// готовим данные для отправке:
@@ -1971,6 +1973,7 @@ function onClickGoogleStars(mark) {
 	//console.log("Передаем запрос ajax 'userInfo'");
 	//sendAjax(data);
 }
+*/
 
 /**
  * обрабатывает Click на "Выгодных тарифах" на главной
@@ -2040,11 +2043,10 @@ function onClickForSearch(event) {
 		if (timerId) clearTimeout(timerId);	// если уже есть таймер - удаляем
 		timerId = setTimeout(function(forSearch) { 
 			if (forSearch === $("#search_faq").val()) {
-				// ga('send', 'pageview', '/search_results/?q=' + forSearch);
 				ga('send', 'pageview', encodeURI('/search_results/?q=' + forSearch));
 				// console.log("'send', 'pageview', '" + encodeURI('/search_results/?q=' + forSearch));
 			}
-		}, 2000, forSearch);
+		}, 10000, forSearch);
 		
 	} else {
 		
@@ -2242,6 +2244,7 @@ function onClickSubmitConfirmDog() {
 	var credit_id = $("#credid").val();
 	var amount = $("#amount").val();
 	
+	/*
 	var data = {
 		"ecommerce": {
 			"currencyCode": "UAH",
@@ -2262,7 +2265,8 @@ function onClickSubmitConfirmDog() {
 				]
 			}
 		}
-	};	
+	};
+	*/
 	
 	// console.log(data);
 	
@@ -2362,7 +2366,6 @@ function onClickSubmitForm(form, prefix) {
 	function commitForm() {
 		if (form === 'myData') {
 			
-			// ga('send', 'event', 'Dalee1', 'Click');	// аналитика Google
 			// eval("yaCounter" + YandexMetrikaId + ".reachGoal('clickContacts');");	// аналитика Yandex
 	
 			window.document.forms["myData"].submit();
@@ -2370,7 +2373,6 @@ function onClickSubmitForm(form, prefix) {
 		
 		if (form === 'myData2') {
 			
-			// ga('send', 'event', 'Dalee1', 'Click');	// аналитика Google
 			// eval("yaCounter" + YandexMetrikaId + ".reachGoal('clickContacts');");	// аналитика Yandex
 	
 			window.document.forms["myData2"].submit();
@@ -2379,7 +2381,6 @@ function onClickSubmitForm(form, prefix) {
 		/*
 		if (form == 'js-form-3') {
 				
-			ga('send', 'event', 'Dalee3', 'Click');	// аналитика Google
 			// yaCounter37666645.reachGoal('clickEmployment');	// аналитика Yandex
 			// eval("yaCounter" + YandexMetrikaId + ".reachGoal('clickEmployment');");	// аналитика Yandex
 			
@@ -2390,7 +2391,6 @@ function onClickSubmitForm(form, prefix) {
 		if (form === 'form_prolongation') {
 			
 			ga('send', 'event', 'LKextend', 'Click');	// аналитика Google
-			// ga('send', 'event', 'Dalee1', 'Click');	// аналитика Google
 			// eval("yaCounter" + YandexMetrikaId + ".reachGoal('clickContacts');");	// аналитика Yandex
 	
 			window.document.forms["form_prolongation"].submit();
@@ -2541,7 +2541,6 @@ function onClickSubmitSlider(prefix) {
 	// анализ переключений калькулятора:
 	// analysisSlider(globalMoney, globalDay, prefix);
 
-	// ga('send', 'pageview', '/poluchit-dengi');	// аналитика
 	ga('send', 'event', 'calculator', 'Click');	// аналитика Google
 
 	window.document.forms['form_slider_' + prefix].submit();
@@ -2703,10 +2702,10 @@ function onKeyUpToEnter(id, event) {
 	}
 }
 
-/**
+/*
  * запускает работу подсказку ввода адреса от Яндекса
  * @param ymaps
- */
+ *
 function onLoad (ymaps) {
 
 	var boundedBy = [[45.23, 22.12], [52.20, 40.11]],	//  // Украина
@@ -2736,11 +2735,9 @@ function onLoad (ymaps) {
 		// suggestView2.events.add('select', function(e) {funcSelect(e)});	// Украина 2 часть
 		// suggestView3.events.add('select', function(e) {funcSelect(e)});	// Украина 3 часть
 
-		/*
-	    suggestView.events.add('optionschange', function (e) {
-	        console.log('optionschange');
-		});
-	    */
+	    // suggestView.events.add('optionschange', function (e) {
+	    //    console.log('optionschange');
+		// });
 	}
 
 	if ($("input").is("#fact_suggest")) {
@@ -2763,13 +2760,12 @@ function onLoad (ymaps) {
 		// suggestViewFact2.events.add('select', function (e) {funcSelectFast(e)});	// Украина 2 часть
 		// suggestViewFact3.events.add('select', function (e) {funcSelectFast(e)});	// Украина 3 часть
 	    
-	    /*
-		suggestViewFact.events.add('optionschange', function (e) {
-	        console.log('optionschange');
-		});
-		*/
+		// suggestViewFact.events.add('optionschange', function (e) {
+	    //    console.log('optionschange');
+		// });
 	}
 }
+*/
 
 /**
  * запускает обновление всех калькуляторов на  странице, при надобности - анимацию.
@@ -3108,10 +3104,10 @@ function recordEmailSiteOnline() {
 	
 }
 
-/**
+/*
  * редиректит пользователя в BankID
  * @returns {Boolean}
- */
+ *
 function redirectToBankID() {
 	
 	var url = "/ru/?ajax";	
@@ -3150,6 +3146,7 @@ function redirectToBankID() {
 
 	return false;
 }
+*/
 
 /**
  * Запрашивает состояние счетчика заявок, и обновляет его
@@ -3780,10 +3777,10 @@ function submitSlider(prefix) {
 	//$(".change-button").removeClass("hidden");
 }
 
-/**
+/*
  * тестовая функция для проверки WFP
  * @param id
- */
+ *
 function test_verify_card(id) {
     var wayforpay = new Wayforpay();
     //var themeWfp = '<!DOCTYPE html><html lang="ru"><head></head><body><div>qqqqqqqq</div></body></html>';
@@ -3824,6 +3821,7 @@ function test_verify_card(id) {
         }
     );
 }
+*/
 
 /**
  * отправляет данные по карте в CRM при нажатии на кнопку
@@ -4214,6 +4212,11 @@ function verify_card(id) {
 	return false;
 }
 
+/**
+ * запускает виджет WayForPay
+ * @param data
+ * @returns
+ */
 function widgetW4p(data) {
 	console.log('on widget');
     var wayforpay = new Wayforpay();
@@ -4232,7 +4235,6 @@ function widgetW4p(data) {
         	console.log('on pending or in processing');
         }
     );
-
 }
 
 //возвращает cookie с именем name, если есть, если нет, то undefined
@@ -4312,20 +4314,27 @@ $('.selectpicker').selectpicker({
 
 // запускаем переход на следующее поле по Enter и Tab
 $(function() {
+
 	//var a = $("input, select, button");
 	//var a = $("input, button").closest(div:not(".hidden"));
 	//var a = $("input, button").parents(":not(.hidden)").not(".hidden");
 	
 	var a = $("input, button, textarea");
+	// var a = $("input:visible, button:visible, textarea:visible");
+	// console.log(a);
 	
 	$('.selectpicker').selectpicker({
 		// "dropupAuto": false,
-		"selectOnTab": true,
-		
+		//"selectOnTab": true
+ 
 		// "liveSearch": true,
 		// "liveSearchNormalize": true,
 		// "liveSearchPlaceholder": "eeeeeee"
+	}).on('loaded.bs.select', function (e) {
+		  $('.btn.dropdown-toggle').attr('tabindex', '0');
 	});
+
+	// $('.selectpicker').selectpicker('refresh');
 
 	//var parents = $("input, button").parents(".hidden").find("input, button").attr('disabled', 'disabled');
 	//console.log(parents);
@@ -4341,7 +4350,8 @@ $(function() {
 			// console.log(a);
 			// console.log(a.currentTarget);
 			// console.log('id='+a.currentTarget.id);
-			
+			// console.log('this.id='+this.id);
+			// console.log(document.activeElement);			
 			// ничего не делать на определенных id:
 			if (a.currentTarget.id === 'message') {
 				return;
@@ -4353,10 +4363,12 @@ $(function() {
 				if (validate($(this).parents(".js_validate"), this.id )) {
 
 					var nextElement = $(this);
-					var Elements = $("input:visible, button:visible, textarea:visible");
-					var countElement = $("input:visible, button:visible, textarea:visible").length;
+					// var Elements = $("input:visible, button:visible, textarea:visible");
+					var Elements = $("input:visible, button:visible, textarea:visible, a[role='button']").not('.btn-user-close, .slider-money--control');
+					var countElement = $("input:visible, button:visible, textarea:visible, a[role='button']").not('.btn-user-close, .slider-money--control').length;
+					// console.log('Elements=');console.log(Elements);
 
-					var flagThis = false;
+					 var flagThis = false;
 					//console.log('Elements.length= '+Elements.length)+' this.attr='+$(this).attr('data-id');
 
 					for (var i=0; i<countElement; i++) {
@@ -4383,7 +4395,10 @@ $(function() {
 					a.preventDefault(), 
 					//d.select(), 
 					d.focus();
-					$(d).closest('.bootstrap-select').addClass('open');	// проставляем на следующем элементе
+					
+					// console.log(document.activeElement);
+					
+					//$(d).closest('.bootstrap-select').addClass('open');	// проставляем на следующем элементе
 					$(d).attr('aria-expanded', true);	// проставляем на следующем элементе
 					b.closest('.bootstrap-select').removeClass('open');	// отменяем на данном элементе
 					b.attr('aria-expanded', false);	// отменяем на данном элементе
@@ -4417,11 +4432,11 @@ $(function() {
 	
 });
 
-// запускаем плагин Google Stars:
-$('#input-1').rating({
-    step: 1,
-    animation: true
-});
+//// запускаем плагин Google Stars:
+//$('#input-1').rating({
+//    step: 1,
+//    animation: true
+//});
 
 
 $(document).ready(function() {
@@ -4487,7 +4502,7 @@ $(document).ready(function() {
     		onClickForSearch(event);
     	});
 
-		// событие при нажатии в поле телефон:
+		// событие при нажатии в поле поиск:
     	$("#search_faq").keyup(function(event) {
     		onClickForSearch(event);
     	});
@@ -4530,14 +4545,90 @@ $(document).ready(function() {
 	$(".js-calc-promocode").on('click', function(event) {
 		onClickGetPromocode('large_main');
 	});
+	
+    // если есть элементы modal для перехода на другую страницу:
+    if ($("#div-beforeunload").length > 0) {
 
+    	// событие при нажатии на ссылку:
+		$('body').on('click', 'a[href^="http"][id!="a-beforeunload"], a[href^="/"]:not(.confirm), a.lang-link', function(e) {
+			e.preventDefault();	// отключить обработчик
+		    // console.log('click!');
+		    // console.log(e);
+		    var href = e.currentTarget.attributes.href.value;
+		    $('#a-beforeunload').attr('href', href);
+		    $('#span-beforeunload').text($('#span_beforeunload_text').text());
+		    $('#div-beforeunload').modal('show');
+		});
+    }
+	// console.log($('a[href^="http"]'));
+	
+    // если есть признак выводить модалку от PHP:
+    if (($("#span-flag-showMessage").length > 0) && ($("#span-flag-showMessage").text() === 'error')) {
+    	$('#registration-error').modal('show');
+    }
+
+    
+    
+	//================================================================================================================    
+    /*   
+	function Unloader(){
+		 
+	    var o = this;
+	 
+	    this.unload = function(evt)
+	    {
+	        var message = "Вы уверены, что хотите покинуть страницу оформления заказа?";
+	        if (typeof evt == "undefined") {
+	            evt = window.event;
+	        }
+	        if (evt) {
+	            evt.returnValue = message;
+	        }
+			return message;
+	    }
+	 
+	    this.resetUnload = function()
+	    {
+	        $(window).off('beforeunload', o.unload);
+	 
+	         setTimeout(function(){
+	            $(window).on('beforeunload', o.unload);
+	        }, 2000);
+	    }
+	 
+	    this.init = function()
+	    {
+	         
+	        $(window).on('beforeunload', o.unload);
+	 
+	        $('a').on('click', function(){o.resetUnload});
+	        $(document).on('submit', 'form', function(){o.resetUnload});
+	        $(document).on('keydown', function(event){
+	            if((event.ctrlKey && event.keyCode == 116) || event.keyCode == 116){
+	                o.resetUnload;
+	            }
+	        });
+	    }
+	    this.init();
+	}
+	 
+	$(function(){
+	    if(typeof window.obUnloader != 'object')
+	    {
+	        window.obUnloader = new Unloader();
+	    }
+	})
+	*/
+    //================================================================================================================    
+    
+    
 });
 
 // Событие onClick на GoogleStars:
-$(".vote-section .star").on("click", function() {
-	var _mark = parseInt($(this).index()) + 1;
-	onClickGoogleStars(_mark);
-})
+//$(".vote-section .star").on("click", function() {
+//	var _mark = parseInt($(this).index()) + 1;
+//	onClickGoogleStars(_mark);
+//})
 
 // это для тестирования:
 

@@ -1,0 +1,12 @@
+﻿{
+	"firebaseConfig":
+		{
+		    "apiKey": "AIzaSyAJPFA-iuTjixGuqFSlJpmzwyjTUsKXdqU",
+		    "authDomain": "bankservise-dev.firebaseapp.com",
+		    "databaseURL": "https://bankservise-dev.firebaseio.com",
+		    "projectId": "bankservise-dev",
+		    "storageBucket": "bankservise-dev.appspot.com",
+		    "messagingSenderId": "965438758632"
+		},
+	"firebaseVapidKey": "BGiGXYjLtKxfUye8RF8kU7-Fcll4TP1lYcxHVEmwv8hjJ-wK6PmhkuJ7PZS-yv-_zgUJsAbAVTIEmB_Q__swKmU"
+}

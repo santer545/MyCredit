@@ -1,15 +1,24 @@
 // window.addEventListener("load", function(event) {
-    
+
 // });
 
 $(document).ready(function() {
-    $('.lazy').Lazy();
+    renameImageForBrowsers();
+    $('.lazy').Lazy({
+        scrollDirection: 'vertical',
+        effect: 'fadeIn',
+        chainable: true,
+        visibleOnly: true,
+        onError: function(element) {
+            console.log('error loading ' + element.data('src'));
+        }
+    });
     pressHover();
     mobileMenuClose();
     faqAnchor();
     prolongationBlockAnimate();
     anchorLink();
-    giftAnchor();
+    // giftAnchor();
     parallax();
     hearts();
     wishMusic();
@@ -685,7 +694,12 @@ $(document).ready(function() {
         var that = this;
         setTimeout(function() {
             var res = /[^ІіЇїЄєЁёҐґа-яА-Я0-9 - ` , . " "]/g.exec(that.value);
-            that.value = that.value.replace(res, '');
+            // если пытались вводить запрещенные символы, например, латинские буквы:
+            if (res) {
+            	$("#span_error").text($("#span_error_cyrilic").text());
+            	$("#data-error").modal('show');
+            	that.value = that.value.replace(res, '');
+            }
         }, 0);
     });
     $('.form-number').on('keypress', function() {
@@ -857,7 +871,10 @@ $(document).ready(function() {
             $(this).hide();
             $(this).closest('.iframe-relative').children('.numbers-gif').hide();
             $(this).closest('.iframe-relative').addClass('active');
-            $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+            if($('#promo').length) {
+                $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+            }
+            
         }
     });
     $("#numbers-play-1").on({
@@ -865,9 +882,14 @@ $(document).ready(function() {
             $(this).hide();
             $(this).closest('.iframe-relative').children('.numbers-gif').hide();
             $(this).closest('.iframe-relative').addClass('active');
-            $('#promo1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+            if($('#promo1').length) {
+                $('#promo1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+            }
+            
         }
     });
+
+    var vid = document.getElementById('main-page-video');
 
     $(".issue-play--holder").on({
         click: function() {
@@ -876,7 +898,14 @@ $(document).ready(function() {
             $('.issue-step--holder').show();
             $('.issue-list').addClass('issue-hidden');
             $('.issue-step--holder').addClass('issue-visible');
-            $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+            if(vid) {
+                vid.play();
+            }
+            
+            if($('#promo').length) {
+                $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+            }
+            
         }
     });
     $('.issue-step--holder').click(function() {
@@ -884,17 +913,26 @@ $(document).ready(function() {
         $(this).hide();
         $(this).closest('.issue-video').children('.numbers-gif').show();
         $(".issue-play--holder").show();
-        $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+        if($('#promo').length) {
+            $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+        }
+        if(vid) {
+            vid.pause();
+        }
+        
     });
     $(".issue-play--holder").on({
         click: function() {
             $(this).hide();
             $(this).closest('.iframe-relative').children('.numbers-gif').hide();
-            $('#promo1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+            if($('#promo1').length) {
+                $('#promo1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+            }
         }
     });
 
     $('.modal').on('hidden.bs.modal', function(e) {
+
         $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
         $('#promo2')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
     });
@@ -1002,102 +1040,102 @@ $(document).ready(function() {
 
 
     // Grayscale images on Safari and Opera browsers
-    if (getBrowser() == 'opera' || getBrowser() == 'safari') {
-        var $images = $(".container-img img"),
-            imageCount = $images.length,
-            counter = 0;
+    // if (getBrowser() == 'opera' || getBrowser() == 'safari') {
+    //     var $images = $(".container-img img"),
+    //         imageCount = $images.length,
+    //         counter = 0;
 
-        // One instead of on, because it need only fire once per image
-        $images.one("load", function() {
-            // increment counter every time an image finishes loading
-            counter++;
-            if (counter == imageCount) {
-                // do stuff when all have loaded
-                grayscale($('.container-img img'));
-                $(".container-img img").hover(
-                    function() {
-                        grayscale.reset($(this));
-                    },
-                    function() {
-                        grayscale($(this));
-                    }
-                );
-            }
-        }).each(function() {
-            if (this.complete) {
-                // manually trigger load event in
-                // event of a cache pull
-                $(this).trigger("load");
-            }
-        });
-    };
+    //     // One instead of on, because it need only fire once per image
+    //     $images.one("load", function() {
+    //         // increment counter every time an image finishes loading
+    //         counter++;
+    //         if (counter == imageCount) {
+    //             // do stuff when all have loaded
+    //             grayscale($('.container-img img'));
+    //             $(".container-img img").hover(
+    //                 function() {
+    //                     grayscale.reset($(this));
+    //                 },
+    //                 function() {
+    //                     grayscale($(this));
+    //                 }
+    //             );
+    //         }
+    //     }).each(function() {
+    //         if (this.complete) {
+    //             // manually trigger load event in
+    //             // event of a cache pull
+    //             $(this).trigger("load");
+    //         }
+    //     });
+    // };
 
 
     // Grayscale images only on browsers IE10+ since they removed support for CSS grayscale filter
-    if (getInternetExplorerVersion() >= 10) {
-        $('.container-img img').each(function() {
-            var el = $(this);
-            el.css({ "position": "absolute" }).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({ "position": "absolute", "z-index": "5", "opacity": "0" }).insertBefore(el).queue(function() {
-                var el = $(this);
-                el.parent().css({ "width": this.width, "height": this.height });
-                el.dequeue();
-            });
-            this.src = grayscaleIE10(this.src);
-        });
+    // if (getInternetExplorerVersion() >= 10) {
+    //     $('.container-img img').each(function() {
+    //         var el = $(this);
+    //         el.css({ "position": "absolute" }).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({ "position": "absolute", "z-index": "5", "opacity": "0" }).insertBefore(el).queue(function() {
+    //             var el = $(this);
+    //             el.parent().css({ "width": this.width, "height": this.height });
+    //             el.dequeue();
+    //         });
+    //         this.src = grayscaleIE10(this.src);
+    //     });
 
 
 
-        // Quick animation on IE10+ 
-        $('.container-img img').hover(
-            function() {
-                $(this).parent().find('img:first').stop().animate({ opacity: 1 }, 200);
-            },
-            function() {
-                $('.img_grayscale').stop().animate({ opacity: 0 }, 200);
-            }
-        );
+    //     // Quick animation on IE10+ 
+    //     $('.container-img img').hover(
+    //         function() {
+    //             $(this).parent().find('img:first').stop().animate({ opacity: 1 }, 200);
+    //         },
+    //         function() {
+    //             $('.img_grayscale').stop().animate({ opacity: 0 }, 200);
+    //         }
+    //     );
 
 
 
-        $('.no-active img').each(function() {
-            var el = $(this);
-            el.css({ "position": "absolute" }).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({ "position": "absolute", "z-index": "5", "opacity": "0" }).insertBefore(el).queue(function() {
-                var el = $(this);
-                el.parent().css({ "width": this.width, "height": this.height });
-                el.dequeue();
-            });
-            this.src = grayscaleIE10(this.src);
-        });
-
-
-
-
+    //     $('.no-active img').each(function() {
+    //         var el = $(this);
+    //         el.css({ "position": "absolute" }).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({ "position": "absolute", "z-index": "5", "opacity": "0" }).insertBefore(el).queue(function() {
+    //             var el = $(this);
+    //             el.parent().css({ "width": this.width, "height": this.height });
+    //             el.dequeue();
+    //         });
+    //         this.src = grayscaleIE10(this.src);
+    //     });
 
 
 
 
-    };
+
+
+
+
+    // };
 
     // This block simply ads a corresponding class to the body tag so that we can target browsers with CSS classes
-    if (getBrowser() == 'mozilla') {
-        // Mozilla
-        $('body').addClass('mozilla');
-    } else if (getBrowser() == 'ie') {
-        // IE Favourite
-        $('body').addClass('ie');
-    } else if (getBrowser() == 'opera') {
-        // Opera
-        $('body').addClass('opera');
-    } else if (getBrowser() == 'safari') { // safari
-        // Safari
-        $('body').addClass('safari');
-    } else if (getBrowser() == 'chrome') {
-        // Chrome
-        $('body').addClass('chrome');
-    };
-    if (getInternetExplorerVersion() >= 10) {
-        $('body').addClass('ie11');
-    };
+    // if (getBrowser() == 'mozilla') {
+    //     // Mozilla
+    //     $('body').addClass('mozilla');
+    // } else if (getBrowser() == 'ie') {
+    //     // IE Favourite
+    //     $('body').addClass('ie');
+    // } else if (getBrowser() == 'opera') {
+    //     // Opera
+    //     $('body').addClass('opera');
+    // } else if (getBrowser() == 'safari') { // safari
+    //     // Safari
+    //     $('body').addClass('safari');
+    // } else if (getBrowser() == 'chrome') {
+    //     // Chrome
+    //     $('body').addClass('chrome');
+    // };
+    // if (getInternetExplorerVersion() >= 10) {
+    //     $('body').addClass('ie11');
+    // };
 
     // Detection function to tell what kind of browser is used
 
@@ -1131,20 +1169,21 @@ function grayscaleIE10(src) {
     return canvas.toDataURL();
 };
 
-function getBrowser() {
-    var userAgent = navigator.userAgent.toLowerCase();
-    $.browser.chrome = /chrome/.test(userAgent);
-    $.browser.safari = /webkit/.test(userAgent);
-    $.browser.opera = /opera/.test(userAgent);
-    $.browser.msie = /msie/.test(userAgent) && !/opera/.test(userAgent);
-    $.browser.mozilla = /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent) || /firefox/.test(userAgent);
+// function getBrowser() {
+//     var userAgent = navigator.userAgent.toLowerCase();
+//     console.log($.browser.chrome);
+//     $.browser.chrome = /chrome/.test(userAgent);
+//     $.browser.safari = /webkit/.test(userAgent);
+//     $.browser.opera = /opera/.test(userAgent);
+//     $.browser.msie = /msie/.test(userAgent) && !/opera/.test(userAgent);
+//     $.browser.mozilla = /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent) || /firefox/.test(userAgent);
 
-    if ($.browser.chrome) return "chrome";
-    if ($.browser.mozilla) return "mozilla";
-    if ($.browser.opera) return "opera";
-    if ($.browser.safari) return "safari";
-    if ($.browser.msie) return "ie";
-};
+//     if ($.browser.chrome) return "chrome";
+//     if ($.browser.mozilla) return "mozilla";
+//     if ($.browser.opera) return "opera";
+//     if ($.browser.safari) return "safari";
+//     if ($.browser.msie) return "ie";
+// };
 
 // Since IE11 can not be detected like this because the new user agent on IE11 is trying to hide as Mozilla
 // we detect IE11 with this function
@@ -1782,4 +1821,43 @@ function addIframeTitle() {
 
 function addNoopener() {
     $("a[target='_blank']").attr('rel', 'noopener');
+}
+
+function get_name_browser() {
+    // получаем данные userAgent
+    var ua = navigator.userAgent;
+    // с помощью регулярок проверяем наличие текста,
+    // соответствующие тому или иному браузеру
+    if (ua.search(/Chrome/) > 0) return 'Google Chrome';
+    if (ua.search(/Firefox/) > 0) return 'Firefox';
+    if (ua.search(/Opera/) > 0) return 'Opera';
+    if (ua.search(/Safari/) > 0) return 'Safari';
+    if (ua.search(/MSIE/) > 0) return 'Internet Explorer';
+    // условий может быть и больше.
+    // сейчас сделаны проверки только 
+    // для популярных браузеров
+    return 'Не определен';
+}
+
+
+function renameImageForBrowsers() {
+    if (get_name_browser() != 'Google Chrome') {
+        $('.students-banner').each(function(item) {
+            var style = $(this).attr('style');
+
+            if (~style.indexOf("webp")) {
+              var newStyle= style.substr(-7);
+              var arr = style.split('');
+
+              for(var i = 0; i < newStyle.length; i++) {
+                arr.pop();
+              }
+
+              var str = arr.join('');
+              var finalStr = str + '.jpg\')';
+              
+              $(this).attr('style', finalStr);
+            }
+        })
+    }
 }
