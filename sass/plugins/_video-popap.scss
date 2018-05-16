@@ -18,11 +18,11 @@
 .lg-actions .lg-next:before{content:"\e095"}
 .lg-actions .lg-prev{left:20px}
 .lg-actions .lg-prev:after{content:"\e094"}
-@-webkit-keyframes "lg-right-end"{0%,
+@-webkit-keyframes lg-right-end{0%,
 100%{left:0;}
 50%{left:-30px;}
 }
-@-moz-keyframes "lg-right-end"{0%,
+@-moz-keyframes lg-right-end{0%,
 100%{left:0;}
 50%{left:-30px;}
 }
@@ -30,15 +30,15 @@
 100%{left:0}
 50%{left:-30px}
 }
-@keyframes "lg-right-end"{0%,
+@keyframes lg-right-end{0%,
 100%{left:0;}
 50%{left:-30px;}
 }
-@-webkit-keyframes "lg-left-end"{0%,
+@-webkit-keyframes lg-left-end{0%,
 100%{left:0;}
 50%{left:30px;}
 }
-@-moz-keyframes "lg-left-end"{0%,
+@-moz-keyframes lg-left-end{0%,
 100%{left:0;}
 50%{left:30px;}
 }
@@ -46,7 +46,7 @@
 100%{left:0}
 50%{left:30px}
 }
-@keyframes "lg-left-end"{0%,
+@keyframes lg-left-end{0%,
 100%{left:0;}
 50%{left:30px;}
 }

@@ -69,7 +69,7 @@ gulp.task('purgecss', () => {
             content: ["dist/**/*.html"]
         }))
         .pipe(gulp.dest('build/css'))
-})
+});
 
 
 

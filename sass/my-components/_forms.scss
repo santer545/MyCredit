@@ -480,6 +480,10 @@ fieldset[disabled] .form-control {
     border: none;
     box-shadow: none;
 }
+.form-control.form-control-white {
+    background-color: #fff;
+    border: 1px solid $form-control-border;
+}
 
 
 #autocomplete {
