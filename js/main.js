@@ -13,6 +13,14 @@ $(document).ready(function() {
             console.log('error loading ' + element.data('src'));
         }
     });
+      
+    $('#button_sendMe').click(function() {
+        $('.call-img>.lazy').lazy({
+            bind: "event",
+            delay: 0
+        });
+    });
+    
     pressHover();
     mobileMenuClose();
     faqAnchor();

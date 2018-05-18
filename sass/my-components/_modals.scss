@@ -325,6 +325,14 @@
     &-wrapper {
         text-align: center;
     }
+    &.modal-red {
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        .modal-title  {
+            color: #721c24;
+            background-color: #f8d7da;
+        }
+    }
 }
 
 .thanks-modal {
@@ -1281,3 +1289,11 @@ td#fancy_title_right {
 #aboutVideo .modal-body {
     max-width: none;
 }
+#registration-error {
+    .close {
+        right: 5px;
+        opacity: .8;
+        top: 10px;
+    }
+}
+
