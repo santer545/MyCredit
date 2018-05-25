@@ -1,0 +1,202 @@
+.new-header {
+	height: 100%;
+	&>.row {
+		height: 100%;
+	}
+	.pop-up_navBlock {
+		padding: 0 10px;
+		background-color: #fff;
+		border: 1px solid #e2e2e2;
+		clear: both;
+		position: relative;
+		z-index: 2;
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		@media screen and (min-width: $screen-xs-max) {
+			&>.row {
+				display: flex;
+				flex-wrap: wrap;
+				flex:1 0 auto;
+			}
+		}
+		h2 {
+			font-family: $font-family-medium;
+			@media screen and (max-width: $screen-xs-max) {
+				margin-bottom: 10px;
+			}
+		}
+		&_text {
+			padding: 30px 60px;
+			font-family: $font-family-roman;
+			font-size: 14px;
+			@media screen and (max-width: $screen-sm-max) {
+				padding: 15px;
+			}
+			a {
+				display: inline-block;
+				margin-top: 20px;
+				font-family: $font-family-medium;
+				@media screen and (max-width: $screen-xs-max) {
+					margin-top: 10px;
+				}
+			}
+		}
+		&_menu {
+			border-left: 1px solid #e2e2e2;
+			border-right: 1px solid #e2e2e2;
+			padding: 35px 0;
+			@media screen and (max-width: $screen-sm-max) {
+				padding: 10px 0;
+			}
+			@media screen and (max-width: $screen-xs-max) {
+				border:none;
+				border-top: 1px solid #e2e2e2;
+				border-bottom: 1px solid #e2e2e2;
+			}
+			ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			a {
+				text-decoration: none;
+    			display: block;
+    			padding:10px 40px 10px 50px;
+    			font-size: 16px;
+    			font-family: $font-family-medium;
+    			border-top: 1px solid transparent;
+    			border-bottom: 1px solid transparent;
+    			@media screen and (max-width: $screen-sm-max) {
+    				padding: 10px 60px;
+    			}
+    			@media screen and (max-width: $screen-xs-max) {
+    				padding: 10px;
+    				text-align: center;
+    				font-size: 14px;
+    			}
+    			&:hover {
+    				background-color: #ebf1fa;
+    				color: #003764;
+    				border-color: #d6dce5;
+    			}
+			}
+		}
+		
+	}
+	.carousel-nav {
+		padding: 0;
+		.owl-dots {
+			position: absolute;
+			padding-left: 0;
+		    bottom: 0;
+		    left: 50%;
+		    text-align: center;
+		    transform: translate(-50%);
+		    @media screen and (min-width: $screen-xs-max) {
+		    	padding-left: 15px;
+		    	bottom: 20px;
+		    	transform: none;
+		    }
+		}
+		.owl-dot {
+			display: inline-block;
+		    vertical-align: middle;
+		    width: 10px;
+		    height: 10px;
+		    border-radius: 50%;
+		    background-color: #abbbce;
+		    @media screen and (max-width: $screen-xs-max) {
+		    	width: 8px;
+		    	height: 8px;
+		    }
+			&.active {
+				background-color: #0083d1;
+			}
+			&:not(:last-child) {
+			    margin-right: 8px;
+			}
+		}
+	}
+	.nav-banner {
+		@media screen and (min-width: $screen-sm-max) {
+			min-height: 245px;
+		}
+		@media screen and (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
+
+		}
+		a {
+			font-family: $font-family-roman;
+			font-size: 18px;
+			padding: 10px 23px;
+			margin-top: 20px;
+			background-color: #00b181;
+			&:before {
+				background-color: #00b181;
+			}
+			@media screen and (max-width: $screen-md-max) {
+				font-size: 17px;
+				padding: 8px 20px;
+			}
+			&:hover {
+				background-color: #45bc75;
+			}
+		}
+		&-heading {
+			font-size: 22px;
+			font-family: $font-family-bold;
+			padding: 50px 0 60px;
+			color: #0054bc;
+			@media screen and (max-width: $screen-md-max) {
+				font-size: 18px;
+			}
+			@media screen and (max-width: $screen-xs-max){
+				padding: 15px 0 20px;
+				text-align: center;
+			}
+		}
+		.credit-zero-left {
+		    left: 0;
+		    bottom: 0;
+		    top: auto;
+		    width: 60%;
+		    @media screen and (max-width: $screen-sm-max) {
+		    	width: 35%;
+		    }
+		}
+		&-favorite,
+		&-50-50 {
+				background-position: 0 50%;
+	    		background-size: auto 110%;
+			@media screen and (max-width: $screen-sm-max) {
+	    		background-size: auto 180%;
+	    	}
+	    	@media screen and (max-width: 500px) {
+	    		background-position: 15% 50%;
+    			background-size: auto 110%;
+	    	}
+		}
+		&-50-50 {
+			span {
+				display: inline-block;
+				&::first-letter {
+					text-transform: uppercase;
+				}
+			}
+			@media screen and (max-width: 600px) {
+	    		background-position: 50%;
+	    	}
+		}
+	}
+	.header-error {
+		position: absolute;
+	    z-index: 1000;
+	    width: 80%;
+	    margin: auto;
+	    top:100px;
+	    left: 0;
+	    right: 0;
+	    .error-text {
+	    	margin-top: 0;
+	    }
+	}
+}

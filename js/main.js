@@ -20,6 +20,13 @@ $(document).ready(function() {
             delay: 0
         });
     });
+
+    $('.js-programms').click(function() {
+        $('.js-programms .lazy').lazy({
+            bind: "event",
+            delay: 0
+        });
+    });
     
     pressHover();
     mobileMenuClose();
@@ -220,6 +227,16 @@ $(document).ready(function() {
         $('.owl-wrapper').trigger('owl.goTo', n);
     });
 
+    $('.owl-carousel-nav').owlCarousel({
+        margin: 0,
+        items: 1,
+        loop: true,
+        nav: false,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true
+    });
 
     $('.js-programms').owlCarousel({
         margin: 40,

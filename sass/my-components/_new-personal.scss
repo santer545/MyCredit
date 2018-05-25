@@ -54,6 +54,10 @@
             float: none;
             max-width: 100%;
             margin-bottom: 15px;
+            .icon-warning {
+                top: 7px;
+                right:  30px;
+            }
             .caret {
                 position: absolute;
                 top: 50%;
@@ -303,6 +307,9 @@
                     text-decoration: none;
                 }
             }
+            .text-success {
+                white-space: nowrap;
+            }
         }
     }
     .dogovor-wrapper {
@@ -353,6 +360,15 @@
     margin: 0 0 20px;
     border-radius: 5px;
     @include clearfix;
+
+    .icon-warning {
+        position: absolute;
+        top: 2px;
+        right:  2px;
+        font-size: 15px;
+        width: 22px;
+        height: 22px;
+    }
     li {
         float: left;
         border: 1px solid #dbdee9;
@@ -393,6 +409,7 @@
         }
         a {
             display: block;
+            position: relative;
             color: #363636;
             border: none;
             background-color: #fff;
@@ -1352,8 +1369,8 @@
         }
     }
     .terminal-item-grid {
-        margin-left: -15px;
-        margin-right: -15px;
+        /*margin-left: -15px;
+        margin-right: -15px;*/
         @media screen and (max-width: $screen-xs-max) {
             margin-left: 0;
             margin-right: 0;
