@@ -20,7 +20,7 @@
         @media screen and (max-width: $screen-xs-max) {
             padding: $form-wr-padding-mobile;
         }
-        a {
+        a:not(.btn-facebook) {
             border: none;
             color: #0056b8;
             font-family: $font-family-roman;

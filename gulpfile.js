@@ -199,7 +199,7 @@ gulp.task('watch', function() {
     gulp.watch('js/**/*.js', ['scripts', browserSync.reload]);
 
     // Watch image files
-    gulp.watch('assets/images/**/*', ['images', browserSync.reload]);
+    //gulp.watch('assets/images/**/*', ['images', browserSync.reload]);
 
     //gulp.watch('assets/svg/**/*', ['svgSprite', browserSync.reload]);
     gulp.watch('template/*.html', ['rigger', browserSync.reload]);

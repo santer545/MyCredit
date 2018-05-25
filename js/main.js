@@ -13,6 +13,21 @@ $(document).ready(function() {
             console.log('error loading ' + element.data('src'));
         }
     });
+      
+    $('#button_sendMe').click(function() {
+        $('.call-img>.lazy').lazy({
+            bind: "event",
+            delay: 0
+        });
+    });
+
+    $('.js-programms').click(function() {
+        $('.js-programms .lazy').lazy({
+            bind: "event",
+            delay: 0
+        });
+    });
+    
     pressHover();
     mobileMenuClose();
     faqAnchor();
@@ -212,6 +227,16 @@ $(document).ready(function() {
         $('.owl-wrapper').trigger('owl.goTo', n);
     });
 
+    $('.owl-carousel-nav').owlCarousel({
+        margin: 0,
+        items: 1,
+        loop: true,
+        nav: false,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true
+    });
 
     $('.js-programms').owlCarousel({
         margin: 40,
@@ -1614,6 +1639,8 @@ function prolongationBlockAnimate() {
     var animateTimePhone = 500;
     $('.js-prolongation-btn').click(function() {
         var phoneWr = $(this).closest('.prolongation-item').find('.js-prolongation-height');
+        $(this).closest('.prolongation-item').removeClass('no-active');
+        $('.prolongation-item').addClass('no-active');
 
         if (phoneWr.height() === 0) {
 
