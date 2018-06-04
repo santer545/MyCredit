@@ -1183,6 +1183,13 @@ textarea {
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
+.message_blue {
+    @extend .error-text;
+    color: #0053c0;
+    background-color: #c8dffa;
+    border-color: #9bc8fa;
+    margin: 0;
+}
 
 .card-error {
     display: inline-block;

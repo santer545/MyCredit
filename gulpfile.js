@@ -151,10 +151,10 @@ gulp.task('scripts', function() {
             sourceDir + '/main.js',
 
             //подключение функционала пуш уведомлений:
-            sourceDir + '/firebase/firebase-config.js', //- подключается отдельно
-            sourceDir + '/firebase/firebase-get-param.js',
-            sourceDir + '/firebase/firebase-api.js',
-            sourceDir + '/firebase/app-firebase.js'
+            //sourceDir + '/firebase/firebase-config.js', //- подключается отдельно
+            //sourceDir + '/firebase/firebase-get-param.js',
+            //sourceDir + '/firebase/firebase-api.js',
+            //sourceDir + '/firebase/app-firebase.js'
         ])
 
         //.pipe(browserify(components.scripts.options))

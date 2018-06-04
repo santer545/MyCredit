@@ -157,7 +157,7 @@
     }
     > li {
         float: none;
-        position: relative;
+        position: static!important;
         display: inline-block;
         vertical-align: middle;
         &:not(:last-child) {
@@ -199,39 +199,39 @@
         [aria-expanded="false"] {
             background-image: url(../assets/images/icons/caret-bottom.png);
             background-repeat: no-repeat;   
-            background-position: 91% 47px;
+            background-position: 91% 50%;
             padding-right: 25px;
             @media screen and (max-width: 1500px) {
                 padding-right: 20px;    
             }
             @media screen and (max-width: 1300px) {
-                background-position: 95% 28px;
+                background-position: 92% 50%;
                 padding-right: 20px;    
             }
             @media screen and (max-width: 1100px) {
-                background-position: 93% 30px;
+                background-position: 93% 50%;
             }
             @media screen and (max-width: $screen-xs-max) {
-                background-position: 97% 16px;
+                background-position: 97% 50%;
             }
         }
         [aria-expanded="true"] {
             background-image: url(../assets/images/icons/caret-top.png);
             background-repeat: no-repeat;   
-            background-position: 93% 47px;
+            background-position: 93% 50%;
             padding-right: 25px;
             @media screen and (max-width: 1500px) {
                 padding-right: 20px;    
             }
             @media screen and (max-width: 1300px) {
                 
-                background-position: 95% 28px;
+                background-position: 95% 50%;
             }
             @media screen and (max-width: 1100px) {
-                background-position: 93% 30px;
+                background-position: 93% 50%;
             }
             @media screen and (max-width: $screen-xs-max) {
-                background-position: 97% 16px;
+                background-position: 97% 50%;
             }
         }
 
@@ -278,7 +278,6 @@
             }
         }
 
-
         a,
         span {
             font: 16px $font-family-medium;
@@ -289,7 +288,7 @@
             @include transition(color 0.3s);
 
             @media screen and (max-width: 1300px) {
-                padding: 22px 15px; 
+                padding: 20px 15px; 
                 line-height: 20px;  
             }
             @media screen and (max-width: $screen-md-max) {
@@ -316,6 +315,54 @@
                 display: block;
             }
         }
+        &.navLink_rounded {
+            margin: 0 10px;
+            @media screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+                margin: 0 5px;
+            }
+            >a,
+            >span {
+                border-radius: 30px;
+                padding: 5px 12px 5px 10px;
+                line-height: 20px; 
+                @media screen and (max-width: $screen-xs-max) {
+                    padding: 5px 15px;
+                    display: inline-block;
+                }
+            }
+        }
+        &.navLink_blue {
+            padding: 0;
+            @media screen and (min-width: $screen-sm-max) {
+                padding: 15px 0;
+            }
+            @media screen and (min-width: 1300px) {
+                padding: 35px 0;
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                padding-left: 20px;
+                padding-bottom: 10px;
+            }
+            >a,
+            >span {
+                border: 1px solid #0053c0;
+                padding-right: 45px;
+                position: relative;
+            }
+            >a {
+                &::after {
+                    content: '';
+                    display: inline-block;
+                    width: 1px;
+                    height: 100%;
+                    background-color: #0053c0;
+                    position: absolute;
+                    right: 30px;
+                    top: 0;
+                }
+            }
+        }
+
         &.custom {
             @media screen and (max-width: $screen-xs-max) {
                 padding-left: 20px;
@@ -323,18 +370,8 @@
             a,
             span {
                 border: 1px dashed #ef5350;
-                color: #ef5350;
-                border-radius: 30px;
-                padding: 5px 12px 5px 10px;
-                
-                line-height: 20px;  
+                color: #ef5350;  
                 transition: background-color 0.3s;
-                @media screen and (max-width: $screen-xs-max) {
-                    padding: 5px 15px;
-                   
-                    display: inline-block;
-                }
-                
                 &:hover {
                     background-color: #fdebea;
                 }

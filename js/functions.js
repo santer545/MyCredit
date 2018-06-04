@@ -24,6 +24,7 @@ var	flagRunQuery = false,
 	// массив префиксов мобильных телефонов:
 	arrPrefix = ['39','50','63', '66', '67', '68', '73', '91','92', '93', '95', '96', '97', '98', '99'],
 
+	pwdInputCount = 0,	// количество введенных символов
 	userLocation = {};	// геолокация пользователя
 
 /**
@@ -143,6 +144,27 @@ function ajax(url) {
 	});
 }
 */
+
+/**
+ * проверяет, совпадает ли количество введенных символов в пароле с длиной пароля
+ * @returns
+ */
+function checkPwdInputCount() {
+	
+	pwdInputCount ++;	// количество введенных символов 
+	var pwdLength = $("#password-1-auth").val().length;	// длина введенного пароля
+	
+	if (pwdInputCount > pwdLength) {
+		pwdInputCount = pwdLength;	// удаляли символы
+	}
+	if (pwdInputCount < pwdLength) {
+		$("#password-1-auth").val('');	// введено больше одного символа за раз
+		pwdInputCount = 0;
+	}
+	// console.log('pwdInputCount = '+pwdInputCount);
+
+	return false;
+}
 
 /**
  * Проверяет необходимость перезагрузки страницы, при необходимости - перегружает
@@ -2016,17 +2038,43 @@ function onClickForSearch(event) {
 		
 		$('#accordion').addClass('hidden');
 		
+		// получаем список слов поиска:
+		var words = forSearch.split(' ');	// слова из поиска
+		var minMatchedwords = 2;	// минимальное количество совпадений слов, требуемое для нахождения элемента
+		var minWordLength = 3;		// минимальная длина учитываемого в поиске слова 
+		
 		// var contains = $('div.js_faq_search:contains("' + forSearch + '")');	// удовлетворяющие условию элементы
 		var divCount = 0;
+	    // регулярное выражение для поиска:
+		var reg = new RegExp(forSearch, "i");
 		$('.js_faq_search').each(function(key, value) {
-		    // регулярное выражение для поиска:
-			var reg = new RegExp(forSearch, "i");
 		    // Если есть удовлетворяющие условию элементы:
 		    if (reg.test($(value).html())) {
 				$(value).removeClass('hidden');
 				divCount ++;
 		    } else {
-				$(value).addClass('hidden');
+				
+				// поиск результата по нескольким словам:
+				var numberMatchedwords = 0;	// количество найденных слов
+				$(words).each(function(wordKey, word) {
+					if (word.length >= minWordLength) {
+						var wordReg = new RegExp(word, "i");
+					    // Если есть удовлетворяющие условию элементы:
+					    if (wordReg.test($(value).html())) {
+							numberMatchedwords ++;
+					    }
+					}
+				});
+			    if (numberMatchedwords >= minMatchedwords) {
+					$(value).removeClass('hidden');
+					divCount ++;
+			    } else {
+					$(value).addClass('hidden');
+			    }
+			    // console.log(words);				
+			    // console.log('numberMatchedwords = ' + numberMatchedwords);				
+				// конец поиск результата по нескольким словам:
+				
 		    }
 		});
 
@@ -3515,6 +3563,37 @@ function sendCodeReg(phone, captcha) {
 }
 
 /**
+ * отправляет на сервер команду послать письмо подтверждения почтового ящика
+ * @returns
+ */
+function sendConfirmEmail() {
+
+	var url = "/ru/?ajax";
+	var data = {
+		typeData: 'sendConfirmEmail'
+	};
+
+	$.ajax({
+
+		url: url,
+		type: 'POST',
+		data: {data: data},
+		dataType: 'json',
+		success: function(json){
+			// console.log(json);
+			if(json.message){
+				$("#confirm-success").modal();
+			} else {
+				$("#confirm-error").modal();
+			}
+		},
+		error: function(jqXHR, textStatus){
+			console.log('Отправка сообщения: '+textStatus); // вывод JSON в консоль
+		}
+	});
+}
+
+/**
  * высылает на сервер способ введения информации
  */
 function sendPageInputType() {
@@ -3643,6 +3722,17 @@ function setDatepicker(idDatepicker, dateBegin, dateEnd) {
 	    */
 
 	});
+}
+
+
+/**
+ * открывает модальное окно авторизации
+ */
+function showModalAuth (login) {
+	$("[name=\'auth[login]\']").val(login);
+	$("#modal_auth").modal("show");
+	
+	// console.log('login = ', login);
 }
 
 /**
@@ -4552,7 +4642,6 @@ $(document).ready(function() {
     	// событие при нажатии на ссылку:
 		$('body').on('click', 'a[href^="http"][id!="a-beforeunload"], a[href^="/"]:not(.confirm), a.lang-link', function(e) {
 			e.preventDefault();	// отключить обработчик
-		    // console.log('click!');
 		    // console.log(e);
 		    var href = e.currentTarget.attributes.href.value;
 		    $('#a-beforeunload').attr('href', href);
@@ -4563,11 +4652,30 @@ $(document).ready(function() {
 	// console.log($('a[href^="http"]'));
 	
     // если есть признак выводить модалку от PHP:
-    if (($("#span-flag-showMessage").length > 0) && ($("#span-flag-showMessage").text() === 'error')) {
+    if (($("#span-flag-showMessage").length > 0) && ($("#span-flag-showMessage").text() !== '')) {
     	$('#registration-error').modal('show');
     }
 
-    
+    // если есть поле для ввода пароля при входе:
+    if ($("#password-1-auth").length > 0) {
+    	$("#password-1-auth").on('input', function(event) {
+    		checkPwdInputCount();
+    	});
+    }
+
+    // если есть кнопка подтверждения почтового ящика:
+    if ($("#confirmEmail").length > 0) {
+		$("#confirmEmail").on('click', function(event){
+			if (event.preventDefault()){
+				event.preventDefault();
+			} else {
+				event.returnValue = false;
+			}
+			sendConfirmEmail();	// даем команду тклендеру послать письмо подтверждения почтового ящика 
+		});
+    }
+
+        
     
 	//================================================================================================================    
     /*   

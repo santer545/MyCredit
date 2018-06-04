@@ -1,8 +1,11 @@
+
+
 // window.addEventListener("load", function(event) {
 
 // });
 
 $(document).ready(function() {
+    
     renameImageForBrowsers();
     $('.lazy').Lazy({
         scrollDirection: 'vertical',
@@ -13,7 +16,7 @@ $(document).ready(function() {
             console.log('error loading ' + element.data('src'));
         }
     });
-      
+
     $('#button_sendMe').click(function() {
         $('.call-img>.lazy').lazy({
             bind: "event",
@@ -27,14 +30,15 @@ $(document).ready(function() {
             delay: 0
         });
     });
-    
+
+
     pressHover();
     mobileMenuClose();
     faqAnchor();
     prolongationBlockAnimate();
     anchorLink();
     // giftAnchor();
-    parallax();
+    //parallax();
     hearts();
     wishMusic();
 
@@ -227,16 +231,9 @@ $(document).ready(function() {
         $('.owl-wrapper').trigger('owl.goTo', n);
     });
 
-    $('.owl-carousel-nav').owlCarousel({
-        margin: 0,
-        items: 1,
-        loop: true,
-        nav: false,
-        dots: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true
-    });
+
+
+
 
     $('.js-programms').owlCarousel({
         margin: 40,
@@ -259,7 +256,6 @@ $(document).ready(function() {
             }
         }
     });
-
 
 
 
@@ -323,6 +319,9 @@ $(document).ready(function() {
             }
         }
     });
+
+
+
 
     owlAdvantages();
 
@@ -569,95 +568,95 @@ $(document).ready(function() {
             'display': 'block'
         });
     });
-    $(function($) {
-        $("#card-number").mask("9999 9999 9999 9999", {
-            autoclear: false
-        });
-        $("#card-number1").mask("9999 9999 9999 9999", {
-            autoclear: false
-        });
-        $("#card-number2").mask("9999 9999 9999 9999", {
-            autoclear: false
-        });
-        $("#card-number3").mask("9999 9999 9999 9999", {
-            autoclear: false
-        });
-        $("#phone").mask("+38099 999 9999", {
-            autoclear: false
-        });
-        $('[type="tel"]').mask("+38099 999 9999", {
-            autoclear: false
-        });
-        $(".gift-section input[type='tel']").mask("+38099 999 9999", {
-            autoclear: false
-        });
-        $('#login').mask("+38099 999 9999", {
-            autoclear: false
-        });
-        $("#tel1").mask("+38999 999 9999", {
-            autoclear: false
-        });
-        $("#work_tell").mask("+38999 999 9999", {
-            autoclear: false
-        });
-        $("#tel2").mask("+38999 999 9999", {
-            autoclear: false
-        });
-        $("#second-phone").mask("+38 999 999 9999", {
-            autoclear: false
-        });
-        $("#inn").mask("9999999999", {
-            autoclear: false
-        });
-        $("#passport").mask("aa999999", {
-            autoclear: false
-        });
-        $("#passportSeries").mask("aa", {
-            autoclear: false
-        });
-        $("#passportNumber").mask("999999", {
-            autoclear: false
-        });
-        $("#passportReestr").mask("99999999-99999", {
-            autoclear: false
-        });
-        $("#passportNumberDoc").mask("999999999", {
-            autoclear: false
-        });
-        $("#passportOld").mask("aa999999", {
-            autoclear: false
-        });
-        $('.js-card').mask("9999", {
-            autoclear: false
-        });
-        $("#colleague-phone").mask("+38099 999 9999", {
-            placeholder: " "
-        });
-        $("#js-number-card").mask("9999 9999 9999 9999", {
-            placeholder: " "
-        });
-        $("#js-cvv, .js-cvv").mask("999", {
-            placeholder: " "
-        });
-        $("#sms-code").mask("999999");
-        $("#GrossMonthlyIncome").mask("9?99999999", {
-            placeholder: " "
-        });
-        $("#Apartment").mask("9?999", {
-            placeholder: " "
-        });
-        $("#fact_Apartment").mask("9?999", {
-            placeholder: " "
-        });
-        $('#wayforpay-card').mask("9999 9999 9999 9999");
-        $('#wayforpay-date').mask("99");
-        $('#wayforpay-date1').mask("99");
-        $('#wayforpay-cvv').mask("999");
 
-        $('.js-input-card').mask("9999 9999 9999 9999");
-        $('.js-input-time').mask("99/99");
-        $('.js-input-cvv').mask("999");
+    $("#card-number").mask("9999 9999 9999 9999", {
+        autoclear: false
     });
+    $("#card-number1").mask("9999 9999 9999 9999", {
+        autoclear: false
+    });
+    $("#card-number2").mask("9999 9999 9999 9999", {
+        autoclear: false
+    });
+    $("#card-number3").mask("9999 9999 9999 9999", {
+        autoclear: false
+    });
+    $("#phone").mask("+38099 999 9999", {
+        autoclear: false
+    });
+    $('[type="tel"]').mask("+38099 999 9999", {
+        autoclear: false
+    });
+    $(".gift-section input[type='tel']").mask("+38099 999 9999", {
+        autoclear: false
+    });
+    $('#login').mask("+38099 999 9999", {
+        autoclear: false
+    });
+    $("#tel1").mask("+38999 999 9999", {
+        autoclear: false
+    });
+    $("#work_tell").mask("+38999 999 9999", {
+        autoclear: false
+    });
+    $("#tel2").mask("+38999 999 9999", {
+        autoclear: false
+    });
+    $("#second-phone").mask("+38 999 999 9999", {
+        autoclear: false
+    });
+    $("#inn").mask("9999999999", {
+        autoclear: false
+    });
+    $("#passport").mask("aa999999", {
+        autoclear: false
+    });
+    $("#passportSeries").mask("aa", {
+        autoclear: false
+    });
+    $("#passportNumber").mask("999999", {
+        autoclear: false
+    });
+    $("#passportReestr").mask("99999999-99999", {
+        autoclear: false
+    });
+    $("#passportNumberDoc").mask("999999999", {
+        autoclear: false
+    });
+    $("#passportOld").mask("aa999999", {
+        autoclear: false
+    });
+    $('.js-card').mask("9999", {
+        autoclear: false
+    });
+    $("#colleague-phone").mask("+38099 999 9999", {
+        placeholder: " "
+    });
+    $("#js-number-card").mask("9999 9999 9999 9999", {
+        placeholder: " "
+    });
+    $("#js-cvv, .js-cvv").mask("999", {
+        placeholder: " "
+    });
+    $("#sms-code").mask("999999");
+    $("#GrossMonthlyIncome").mask("9?99999999", {
+        placeholder: " "
+    });
+    $("#Apartment").mask("9?999", {
+        placeholder: " "
+    });
+    $("#fact_Apartment").mask("9?999", {
+        placeholder: " "
+    });
+    $('#wayforpay-card').mask("9999 9999 9999 9999");
+    $('#wayforpay-date').mask("99");
+    $('#wayforpay-date1').mask("99");
+    $('#wayforpay-cvv').mask("999");
+
+    $('.js-input-card').mask("9999 9999 9999 9999");
+    $('.js-input-time').mask("99/99");
+    $('.js-input-cvv').mask("999");
+
     // if ($.browser.mozilla) {
     //     if ($.browser.version < '34') {
     //         $('#old-browser').modal('show');
@@ -721,9 +720,9 @@ $(document).ready(function() {
             var res = /[^ІіЇїЄєЁёҐґа-яА-Я0-9 - ` , . " "]/g.exec(that.value);
             // если пытались вводить запрещенные символы, например, латинские буквы:
             if (res) {
-            	$("#span_error").text($("#span_error_cyrilic").text());
-            	$("#data-error").modal('show');
-            	that.value = that.value.replace(res, '');
+                $("#span_error").text($("#span_error_cyrilic").text());
+                $("#data-error").modal('show');
+                that.value = that.value.replace(res, '');
             }
         }, 0);
     });
@@ -889,17 +888,16 @@ $(document).ready(function() {
 
     // скрытие элемнтов
     overflowBlock();
-
     menuOverflow();
     $("#numbers-play").on({
         click: function() {
             $(this).hide();
             $(this).closest('.iframe-relative').children('.numbers-gif').hide();
             $(this).closest('.iframe-relative').addClass('active');
-            if($('#promo').length) {
+            if ($('#promo').length) {
                 $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
             }
-            
+
         }
     });
     $("#numbers-play-1").on({
@@ -907,10 +905,10 @@ $(document).ready(function() {
             $(this).hide();
             $(this).closest('.iframe-relative').children('.numbers-gif').hide();
             $(this).closest('.iframe-relative').addClass('active');
-            if($('#promo1').length) {
+            if ($('#promo1').length) {
                 $('#promo1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
             }
-            
+
         }
     });
 
@@ -923,14 +921,14 @@ $(document).ready(function() {
             $('.issue-step--holder').show();
             $('.issue-list').addClass('issue-hidden');
             $('.issue-step--holder').addClass('issue-visible');
-            if(vid) {
+            if (vid) {
                 vid.play();
             }
-            
-            if($('#promo').length) {
+
+            if ($('#promo').length) {
                 $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
             }
-            
+
         }
     });
     $('.issue-step--holder').click(function() {
@@ -938,19 +936,19 @@ $(document).ready(function() {
         $(this).hide();
         $(this).closest('.issue-video').children('.numbers-gif').show();
         $(".issue-play--holder").show();
-        if($('#promo').length) {
+        if ($('#promo').length) {
             $('#promo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
         }
-        if(vid) {
+        if (vid) {
             vid.pause();
         }
-        
+
     });
     $(".issue-play--holder").on({
         click: function() {
             $(this).hide();
             $(this).closest('.iframe-relative').children('.numbers-gif').hide();
-            if($('#promo1').length) {
+            if ($('#promo1').length) {
                 $('#promo1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
             }
         }
@@ -1004,7 +1002,7 @@ $(document).ready(function() {
         // console.log('paste');
         pageInputType.paste = true;
         pageInputType.lastTime = Date.now();
-    })
+    });
 
     // Событие input на Input:
     $("input").on("input", function(event) {
@@ -1012,7 +1010,7 @@ $(document).ready(function() {
         pageInputType.input = true;
         pageInputType.lastTime = Date.now();
         return false;
-    })
+    });
 
     // Событие keydown на Input:
     $("input").on("keydown", function(event) {
@@ -1056,7 +1054,7 @@ $(document).ready(function() {
     })
     $('#reg-slider').on('hidden.bs.collapse', function() {
         $('#slider_collapse').show(500);
-    })
+    });
 
     var boxesInWindow = inWindow(".user-data-table tr");
 
@@ -1068,114 +1066,120 @@ $(document).ready(function() {
             offset_top: 100
         })
     }
-
-    // Grayscale images on Safari and Opera browsers
-    // if (getBrowser() == 'opera' || getBrowser() == 'safari') {
-    //     var $images = $(".container-img img"),
-    //         imageCount = $images.length,
-    //         counter = 0;
-
-    //     // One instead of on, because it need only fire once per image
-    //     $images.one("load", function() {
-    //         // increment counter every time an image finishes loading
-    //         counter++;
-    //         if (counter == imageCount) {
-    //             // do stuff when all have loaded
-    //             grayscale($('.container-img img'));
-    //             $(".container-img img").hover(
-    //                 function() {
-    //                     grayscale.reset($(this));
-    //                 },
-    //                 function() {
-    //                     grayscale($(this));
-    //                 }
-    //             );
-    //         }
-    //     }).each(function() {
-    //         if (this.complete) {
-    //             // manually trigger load event in
-    //             // event of a cache pull
-    //             $(this).trigger("load");
-    //         }
-    //     });
-    // };
-
-
-    // Grayscale images only on browsers IE10+ since they removed support for CSS grayscale filter
-    // if (getInternetExplorerVersion() >= 10) {
-    //     $('.container-img img').each(function() {
-    //         var el = $(this);
-    //         el.css({ "position": "absolute" }).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({ "position": "absolute", "z-index": "5", "opacity": "0" }).insertBefore(el).queue(function() {
-    //             var el = $(this);
-    //             el.parent().css({ "width": this.width, "height": this.height });
-    //             el.dequeue();
-    //         });
-    //         this.src = grayscaleIE10(this.src);
-    //     });
-
-
-
-    //     // Quick animation on IE10+ 
-    //     $('.container-img img').hover(
-    //         function() {
-    //             $(this).parent().find('img:first').stop().animate({ opacity: 1 }, 200);
-    //         },
-    //         function() {
-    //             $('.img_grayscale').stop().animate({ opacity: 0 }, 200);
-    //         }
-    //     );
-
-
-
-    //     $('.no-active img').each(function() {
-    //         var el = $(this);
-    //         el.css({ "position": "absolute" }).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({ "position": "absolute", "z-index": "5", "opacity": "0" }).insertBefore(el).queue(function() {
-    //             var el = $(this);
-    //             el.parent().css({ "width": this.width, "height": this.height });
-    //             el.dequeue();
-    //         });
-    //         this.src = grayscaleIE10(this.src);
-    //     });
-
-
-
-
-
-
-
-
-    // };
-
-    // This block simply ads a corresponding class to the body tag so that we can target browsers with CSS classes
-    // if (getBrowser() == 'mozilla') {
-    //     // Mozilla
-    //     $('body').addClass('mozilla');
-    // } else if (getBrowser() == 'ie') {
-    //     // IE Favourite
-    //     $('body').addClass('ie');
-    // } else if (getBrowser() == 'opera') {
-    //     // Opera
-    //     $('body').addClass('opera');
-    // } else if (getBrowser() == 'safari') { // safari
-    //     // Safari
-    //     $('body').addClass('safari');
-    // } else if (getBrowser() == 'chrome') {
-    //     // Chrome
-    //     $('body').addClass('chrome');
-    // };
-    // if (getInternetExplorerVersion() >= 10) {
-    //     $('body').addClass('ie11');
-    // };
-
-    // Detection function to tell what kind of browser is used
-
-
-
-
-
-
-
 });
+// Grayscale images on Safari and Opera browsers
+// if (getBrowser() == 'opera' || getBrowser() == 'safari') {
+//     var $images = $(".container-img img"),
+//         imageCount = $images.length,
+//         counter = 0;
+
+//     // One instead of on, because it need only fire once per image
+//     $images.one("load", function() {
+//         // increment counter every time an image finishes loading
+//         counter++;
+//         if (counter == imageCount) {
+//             // do stuff when all have loaded
+//             grayscale($('.container-img img'));
+//             $(".container-img img").hover(
+//                 function() {
+//                     grayscale.reset($(this));
+//                 },
+//                 function() {
+//                     grayscale($(this));
+//                 }
+//             );
+//         }
+//     }).each(function() {
+//         if (this.complete) {
+//             // manually trigger load event in
+//             // event of a cache pull
+//             $(this).trigger("load");
+//         }
+//     });
+// };
+
+
+// Grayscale images only on browsers IE10+ since they removed support for CSS grayscale filter
+// if (getInternetExplorerVersion() >= 10) {
+//     $('.container-img img').each(function() {
+//         var el = $(this);
+//         el.css({ "position": "absolute" }).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({ "position": "absolute", "z-index": "5", "opacity": "0" }).insertBefore(el).queue(function() {
+//             var el = $(this);
+//             el.parent().css({ "width": this.width, "height": this.height });
+//             el.dequeue();
+//         });
+//         this.src = grayscaleIE10(this.src);
+//     });
+
+
+
+//     // Quick animation on IE10+ 
+//     $('.container-img img').hover(
+//         function() {
+//             $(this).parent().find('img:first').stop().animate({ opacity: 1 }, 200);
+//         },
+//         function() {
+//             $('.img_grayscale').stop().animate({ opacity: 0 }, 200);
+//         }
+//     );
+
+
+
+//     $('.no-active img').each(function() {
+//         var el = $(this);
+//         el.css({ "position": "absolute" }).wrap("<div class='img_wrapper' style='display: inline-block'>").clone().addClass('img_grayscale').css({ "position": "absolute", "z-index": "5", "opacity": "0" }).insertBefore(el).queue(function() {
+//             var el = $(this);
+//             el.parent().css({ "width": this.width, "height": this.height });
+//             el.dequeue();
+//         });
+//         this.src = grayscaleIE10(this.src);
+//     });
+
+
+
+
+
+
+
+
+// };
+
+// This block simply ads a corresponding class to the body tag so that we can target browsers with CSS classes
+// if (getBrowser() == 'mozilla') {
+//     // Mozilla
+//     $('body').addClass('mozilla');
+// } else if (getBrowser() == 'ie') {
+//     // IE Favourite
+//     $('body').addClass('ie');
+// } else if (getBrowser() == 'opera') {
+//     // Opera
+//     $('body').addClass('opera');
+// } else if (getBrowser() == 'safari') { // safari
+//     // Safari
+//     $('body').addClass('safari');
+// } else if (getBrowser() == 'chrome') {
+//     // Chrome
+//     $('body').addClass('chrome');
+// };
+// if (getInternetExplorerVersion() >= 10) {
+//     $('body').addClass('ie11');
+// };
+
+// Detection function to tell what kind of browser is used
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function grayscaleIE10(src) {
     var canvas = document.createElement('canvas');
@@ -1287,12 +1291,13 @@ function scrollBarHeight() {
 
 
 $(window).resize(function() {
+    navigationDown();
     if ($(window).width() > 1025) {
         $(".fixed-bar").stick_in_parent({
             offset_top: 100
         })
     }
-
+    
     menuOverflow();
     stickyCalcHeight();
     $('.btn-authorize--get').click(function() {
@@ -1322,7 +1327,6 @@ $(window).resize(function() {
             navText: ['', '']
         });
     }
-
 });
 
 function stickyCalcHeight() {
@@ -1683,12 +1687,6 @@ function faqAnchor() {
     });
 }
 
-function parallax() {
-
-}
-
-
-
 
 
 function hearts() {
@@ -1740,9 +1738,6 @@ $.fn.equalizerAnimation = function(speed, barsHeight) {
             $(this).css({ height: randomBetween(barsHeight[i]) + 'px' });
         });
     }, speed);
-    /*$equalizer.on('click', function() {
-        $equalizer.toggleClass('paused');
-    });*/
 }
 
 var barsHeight = [
@@ -1868,28 +1863,73 @@ function get_name_browser() {
     // условий может быть и больше.
     // сейчас сделаны проверки только 
     // для популярных браузеров
-    return 'Не определен';
+    return 'not defined';
 }
 
 
 function renameImageForBrowsers() {
+    
     if (get_name_browser() != 'Google Chrome') {
-        $('.students-banner').each(function(item) {
+        $('.students-banner, .nav-banner').each(function(item) {
             var style = $(this).attr('style');
 
             if (~style.indexOf("webp")) {
-              var newStyle= style.substr(-7);
-              var arr = style.split('');
+                var newStyle = style.substr(-7);
+                var arr = style.split('');
 
-              for(var i = 0; i < newStyle.length; i++) {
-                arr.pop();
-              }
+                for (var i = 0; i < newStyle.length; i++) {
+                    arr.pop();
+                }
 
-              var str = arr.join('');
-              var finalStr = str + '.jpg\')';
-              
-              $(this).attr('style', finalStr);
+                var str = arr.join('');
+                var finalStr;
+                if (get_name_browser() == 'not defined' || get_name_browser() == 'Internet Explorer') {
+                    finalStr = str + 'jpg';
+                } else {
+                    finalStr = str + '.jpg\')';    
+                }
+                
+
+                $(this).attr('style', finalStr);
             }
-        })
+        });
     }
+}
+
+$(document).ready(function() {
+    navigationDown();
+})
+
+$(window).resize(function() {
+    navigationDown();
+});
+
+
+function navigationDown() {
+    console.log('Hover after init');
+    $('.navbar-nav>li').mouseenter(function(e) {
+
+        $(this).find('>a').addClass('down');
+        $(this).find('.pop-up_navBlock').slideDown(300);
+        $(this).stop();
+        $(this).find('.owl-carousel-nav').owlCarousel({
+            margin: 0,
+            toggle: true,
+            items: 1,
+            loop: true,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true
+        });
+        $('.navBlock-shadow').addClass("open");
+    });
+    $('.navbar-nav>li').mouseleave(function(e) {
+        $(this).find('.pop-up_navBlock').slideUp(10);
+        $(this).find('>a').removeClass('down');
+        $('.pop-up_navBlock .owl-carousel-nav').trigger('destroy.owl.carousel').removeClass('owl-carousel owl-loaded');
+        $('.pop-up_navBlock .owl-carousel-nav').find('.owl-stage-outer').children().unwrap();
+        $('.navBlock-shadow').removeClass("open");
+    });
 }
