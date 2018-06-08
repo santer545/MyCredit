@@ -28,6 +28,9 @@
                 background-color: #0081c6;
             }
         }
+        .restructurization & {
+            background-color: #efd36f;
+        }
     }
     &-labe {
         background-color: #00bc71;
@@ -54,6 +57,9 @@
         padding: 4px 25px;
         background-color: #fff;
         margin-bottom: 15px;
+        .restructurization & {
+            color: #00bc71;
+        }
     }
     &-cost {
         &-noactive {
@@ -65,6 +71,9 @@
         }
         span {
             font-size: 13px;
+        }
+        .restructurization & {
+            color: #595b5a;
         }
     }
     &-share {
@@ -86,6 +95,10 @@
                 margin-left: -3px;
             }
         }
+        .restructurization & {
+            text-transform: uppercase;
+            line-height: 14px;
+        }
     }
     &-body {
 
@@ -101,6 +114,12 @@
             display: block;
             font-size: 16px;
             margin-bottom: 15px;
+            .restructurization & {
+                display: inline-block;
+                @media screen and (min-width: $screen-xs-max) and (max-width: 1100px) {
+                    font-size: 15px;
+                }
+            }
         }
         .btn-personal {
             font-size: 15px;
@@ -117,6 +136,37 @@
             @media screen and (max-width: $screen-sm-max) {
                 font-size: 13px;
             }
+            .restructurization & {
+                @media screen and (min-width: 450px) and (max-width: $screen-xs-max) {
+                    width: auto;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+            }
+        }
+        .restructurization & {
+            background-color: #faf4db;
+            border: 1px solid #efd36f;
+            color:  #595b5a;
+            .btn-personal:hover {
+                background-color: #0b9771;
+            }
+            @media screen and (min-width: $screen-sm-min){
+                min-height: 485px;
+            }
+            @media screen and (min-width: $screen-xs-max) and (max-width: 1100px) {
+                padding-left: 9px;
+                padding-right: 9px;
+                font-size: 13px;
+            }
+        }
+        a::selection,
+        label::selection, 
+        span::selection {
+            background-color: transparent;
         }
     }
     &-checkbox {
@@ -177,6 +227,14 @@
     	@media screen and (max-width: $screen-xs-max) {
     		margin-bottom: 20px;	
     	}
+        &.hidden_labe {
+            .prolongation-top {
+                margin-top: 35px;
+            }
+            .prolongation-labe {
+                display: none;
+            }
+        }
         &.no-active {
             .prolongation-labe {
                 position: absolute;
@@ -202,6 +260,9 @@
                 @media screen and (max-width: $screen-xs-max) {
 		        	margin-top: 0;	
 		        }
+                .restructurization & {
+                    background-color: #faf4db;
+                }
                 .btn-success {
                     display: inline-block;
                 }
@@ -234,7 +295,8 @@
         }
     }
     &-list {
-    	min-height: 530px;	
+    	min-height: 530px;
+            padding: 0 20px;	
     	@media screen and (max-width: $screen-md-max) {
     		min-height: 500px;	
     	}
@@ -245,8 +307,9 @@
     }
 }
 
-.prolongation-infowrapper {
-    padding: 30px 0;
+.prolongation-infowrapper,
+.restructurization-infowrapper {
+    padding: 30px 20px;
     font-size: 13px;
     color: #7d8295;
     @media screen and (max-width: $screen-xs-max) {

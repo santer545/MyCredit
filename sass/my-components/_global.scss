@@ -3361,7 +3361,7 @@
     .summer-banner & {
         left: 0;
         width: 36%;
-        @media screen and (min-width: 1200px) and (max-width: 1299px) {
+        /*@media screen and (min-width: 1200px) and (max-width: 1299px) {
             width: 30%;
         }
         @media screen and (min-width: 1300px) {
@@ -3372,6 +3372,15 @@
         }
         @media screen and (min-width: 1600px) {
             width: 37%;
+        }
+        @media screen and (min-width: 1800px) {
+            width: 39%;
+        }*/
+        @media screen and (min-width: 1200px) and (max-width: 1299px) {
+            width: 48%;
+        }
+        @media screen and (min-width: 1300px) {
+            width: 50%;
         }
         @media screen and (min-width: 1800px) {
             width: 39%;
@@ -3529,6 +3538,17 @@
 
     @media screen and (max-width: 570px) {
         top: 60px;
+    }
+    .summer-banner & {
+        @media screen and (min-width: 1200px) and (max-width: 1499px){
+            bottom: 5px;
+        }
+        @media screen and (min-width: 1500px) {
+            left: 28%;
+        }
+        @media screen and (min-width: 1800px) {
+            left: 22%;
+        }
     }
     &--mobile {
         display: none;

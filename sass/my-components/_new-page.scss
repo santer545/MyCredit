@@ -15,6 +15,9 @@ header {
 	&>.row {
 		height: 100%;
 	}
+	.navbar-nav>li {
+		position: static!important;
+	}
 
 	/***shadow***/
 
@@ -64,8 +67,8 @@ header {
 	/***POP-UP***/
 	.pop-up_navBlock {
   		display: none;
-		position: absolute;
-    	top: 100%;
+  		position: absolute;
+  		top: 100%;
     	right: 0;
     	left: 0;
     	padding: 0 10px;
@@ -158,25 +161,26 @@ header {
 	
 	/***  navAbout  ***/
 
-	.navAboutBlock {
+	.navAboutBlock,
+	& .nav-banner {
 		overflow: hidden;
 		@media screen and (min-width: $screen-lg-min) {
-			max-height: 418px;
+			height: 418px;
 		}
 		@media screen and (min-width: $screen-md-min) {
-			max-height: 402px;
+			height: 402px;
 		}
 		@media screen and (max-width: $screen-sm-max) {
-			max-height: 550px;
+			height: 550px;
 		}
 		@media screen and (min-width: 580px) and (max-width: $screen-xs-max) {
-			max-height: 590px;
+			height: 590px;
 		}
 		@media screen and (min-width: 430px) and (max-width: 579px) {
-			max-height: 609px;
+			height: 609px;
 		}
 		@media screen and (max-width: 429px) {
-			max-height: 647px;
+			height: 647px;
 		}
 		.pop-up_navBlock_menu a {
 			@media screen and (min-width: $screen-sm-max) and (min-width: $screen-sm-max) {
@@ -186,7 +190,8 @@ header {
 	}
 
 	/***  navTake  ***/
-	.navTakeBlock {
+	.navTakeBlock,
+	& .nav-banner {
 		overflow: hidden;
 		@media screen and (min-width: $screen-lg-min) {
 			height: 276px;
@@ -216,25 +221,26 @@ header {
 
 	/***  navAnsver  ***/
 	
-	.navAnsverBlock {
+	.navAnsverBlock,
+	& .nav-banner {
 		overflow: hidden;
 		@media screen and (min-width: $screen-lg-min) {
-			max-height: 486px;
+			height: 486px;
 		}
 		@media screen and (max-width: $screen-md-max) {
-			max-height: 459px;
+			height: 459px;
 		}
 		@media screen and (max-width: $screen-sm-max) {
-			max-height: 629px;
+			height: 629px;
 		}
 		@media screen and (max-width: $screen-xs-max) {
-			max-height: 690px;
+			height: 690px;
 		}
 		@media screen and (min-width: 375px) and (max-width: 500px) {
-			max-height: 709px;
+			height: 709px;
 		}
 		@media screen and (max-width: 429px) {
-			max-height: 728px;
+			height: 728px;
 		}
 		.pop-up_navBlock_menu a {
 			@media screen and (min-width: $screen-sm-max) {
@@ -344,7 +350,7 @@ header {
 		    top: auto;
 		    width: 60%;
 		    @media screen and (max-width: $screen-sm-max) {
-		    	width: 35%;
+		    	width: 30%;
 		    }
 		}
 		&-favorite,
@@ -368,12 +374,11 @@ header {
 	    	}
 		}
 	}
-
-	#navAboutBlock .credit-zero-left,
-	#navAnsverBlock .credit-zero-left {
-		@media screen and (min-width: $screen-md-min) {
-			width: 100%;
-		}
+	.navAnsverBlock .credit-zero-left,
+    .navAboutBlock .credit-zero-left {
+    	@media screen and (min-width: $screen-sm-max) {
+	    	width: 95%;
+	    }
 	}
 	/***  error-TEXT  ***/
 	.header-error {
@@ -415,4 +420,44 @@ header {
             background-position: 93% 50%;
         }
     }
+    .navbar-nav {
+	    [aria-expanded="false"] {
+	        background-image: url(../assets/images/icons/caret-bottom.png);
+	        background-repeat: no-repeat;   
+	        background-position: 91% 50%;
+	        padding-right: 25px;
+	        @media screen and (max-width: 1500px) {
+	            padding-right: 20px;    
+	        }
+	        @media screen and (max-width: 1300px) {
+	            background-position: 92% 50%;
+	            padding-right: 20px;    
+	        }
+	        @media screen and (max-width: 1100px) {
+	            background-position: 93% 50%;
+	        }
+	        @media screen and (max-width: $screen-xs-max) {
+	            background-position: 97% 50%;
+	        }
+	    }
+	    [aria-expanded="true"] {
+	        background-image: url(../assets/images/icons/caret-top.png);
+	        background-repeat: no-repeat;   
+	        background-position: 93% 50%;
+	        padding-right: 25px;
+	        @media screen and (max-width: 1500px) {
+	            padding-right: 20px;    
+	        }
+	        @media screen and (max-width: 1300px) {
+	            
+	            background-position: 95% 50%;
+	        }
+	        @media screen and (max-width: 1100px) {
+	            background-position: 93% 50%;
+	        }
+	        @media screen and (max-width: $screen-xs-max) {
+	            background-position: 97% 50%;
+	        }
+	    }
+	}
 }

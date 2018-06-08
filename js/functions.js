@@ -3355,6 +3355,8 @@ function reloadCred(typeSlider) {
 	// заполняем дня - день - дней:
 	if ($("span").is("#dayMinDay" + prefix)) document.getElementById("dayMinDay" + prefix).innerHTML = getDayLang(minDay.toString()); // "дней" в minDay
 	if ($("span").is("#dayMaxDay" + prefix)) document.getElementById("dayMaxDay" + prefix).innerHTML = getDayLang(maxDay.toString()); // "дней" в maxDay
+	if ($("span").is("#dayMaxDayManual" + prefix)) document.getElementById("dayMaxDayManual" + prefix).innerHTML = getDayLang(document.getElementById("span_dayMaxDayManual" + prefix).innerHTML); // "дней" в maxDayManual (ручная верстка)
+
 	if ($("span").is("#daySelectDay" + prefix)) document.getElementById("daySelectDay" + prefix).innerHTML = dayStr; // "дней" выбрано
 	if ($("span").is("#dayLargeDay" + prefix)) document.getElementById("dayLargeDay" + prefix).innerHTML = dayStr; // "дней" всего
 
@@ -3432,7 +3434,7 @@ function reloadCred(typeSlider) {
 	$("[id^=span_get_money]").html(' <strong>' + hour + ':' + minute + '</strong>');
 	// заполняем дня - день - дней:
 	$("[id^=dayMinDay]").text(getDayLang(minDay.toString()));
-	$("[id^=dayMaxDay]").text(getDayLang(maxDay.toString()));
+	$("[id^=dayMaxDay_]").text(getDayLang(maxDay.toString()));
 	$("[id^=daySelectDay]").text(dayStr);
 	$("[id^=dayLargeDay]").text(dayStr);
 
