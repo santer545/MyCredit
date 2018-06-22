@@ -300,9 +300,9 @@
             }
             @media screen and (max-width: $screen-xs-max) {
                 padding: $navbar-item-padding;
-                display: inline-block;  
-                
+                display: inline-block;      
             }
+
             &:hover,
             &:focus {
                 background-color: transparent;
@@ -317,6 +317,14 @@
         }
         &.navLink_rounded {
             margin: 0 10px;
+            @media screen and (min-width: 768px) and (max-width: 900px) {
+                margin-right: 2px;
+                margin-left: 4px;
+            }
+            @media screen and (min-width: 901px) and (max-width: $screen-sm-max) {
+                margin-right: 0px;
+                margin-left: 10px;
+            }
             @media screen and (max-width: $screen-sm-max) {
                 padding-left: 0;
             }
@@ -327,42 +335,59 @@
                 line-height: 20px; 
                 @media screen and (max-width: $screen-xs-max) {
                     padding: 5px 15px;
-                    display: inline-block;
+                    display: block;
                 }
             }
         }
         &.navLink_blue {
-            padding: 0;
             padding: 15px 0;
             @media screen and (min-width: 1300px) {
                 padding: 35px 0;
             }
+
             @media screen and (max-width: $screen-xs-max) {
                 padding-bottom: 10px;
                 padding-top: 0;
             }
-            >a,
-            >span {
-                border: 1px solid #0053c0;
-                padding-right: 45px;
-                position: relative;
-            }
-            >a {
-                &::after {
-                    content: '';
-                    display: inline-block;
-                    width: 1px;
-                    height: 100%;
-                    background-color: #0053c0;
-                    position: absolute;
-                    right: 30px;
-                    top: 0;
+            @media screen and (min-width: $screen-sm-min) {
+                >a,
+                >span,
+                >[aria-expanded=true],
+                >[aria-expanded=false] {
+                    border: 1px solid #0053c0;
+                    padding-right: 45px;
+                    position: relative;
+                    display: block;
+                    @media screen and (min-width: $screen-md-min) and (max-width: 1500px) {
+                        padding-left: 10px !important;
+                    }
+                    @media screen and (min-width: 768px) and (max-width: 1050px) {
+                        padding-right: 25px;
+                    }
+                }
+                >a {
+                    &::after {
+                        content: '';
+                        display: inline-block;
+                        width: 1px;
+                        height: 100%;
+                        background-color: #0053c0;
+                        position: absolute;
+                        right: 30px;
+                        top: 0;
+                        @media screen and (max-width: 1300px) {
+                            right: 25px;
+                        }
+                        @media screen and (min-width: 768px) and (max-width: 1050px) {
+                            right: 22px;
+                        }
+                    }
                 }
             }
         }
 
         &.custom {
-            @media screen and (max-width: $screen-sm-max) {
+            @media screen and (max-width: $screen-xs-max) {
                 margin-left: 0;
             }
             a,
@@ -430,7 +455,7 @@
     @media screen and (max-width: $screen-sm-max) {
         padding: 0;
     }
-    @media screen and (max-width: $screen-xs-max) {
+    @media screen and (max-width: 767px) {
 
         padding-left: 0;
         background-color: #F8F7FC;

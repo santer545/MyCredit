@@ -64,7 +64,7 @@
             height: 62px;   
         }
         @media screen and (max-width: 1024px) {
-            position: static!important;
+            position: relative !important;
         }
         @media screen and (max-width: $screen-xs-max) {
             position: relative !important;
@@ -920,9 +920,9 @@
  * Calculator table
  */
 
-.calculator-hb-text {
+/*.calculator-hb-text {
     display: none;
-}
+}*/
 
 .calculator {
     &-formula {
@@ -956,13 +956,9 @@
             font-size: 20px;
             margin-bottom: 5px;
         }
-        &--top {
-            position: relative;
-            border-radius: 6px 6px 0 0;
-            text-align: left;
+        &_item {
             padding: 20px;
-            background-color: #f1f1f1;
-            font: 22px / 1.2 "HelveticaNeueCyr Medium", Arial, sans-serif;
+            border-radius: 6px 6px 0 0;
             @media screen and (max-width: 1800px) {
                 padding: 15px 30px;
             }
@@ -974,6 +970,16 @@
             }
             @media screen and (max-width: 480px) {
                 padding: 10px 110px 10px 20px;
+            }
+        }
+        &--top {
+            padding: 0;
+            position: relative;
+            border-radius: 6px 6px 0 0;
+            text-align: left;
+            background-color: #f1f1f1;
+            font: 22px / 1.2 "HelveticaNeueCyr Medium", Arial, sans-serif;
+            @media screen and (max-width: 480px) {
                 font-size: 15px;
             }
             @media screen and (max-width: 374px) {
@@ -1049,37 +1055,35 @@
             @media screen and (max-width: $screen-sm-max) {
                 padding: 10px 20px;
             }
-            .small-slider-title {
+            /*.small-slider-title {
                 display: none;
-            }
+            }*/
             .neangelu-labe {
                 right: -60px;
+                border-radius: 50%;
+                -webkit-box-shadow: 10px 10px 54px -16px rgba(126, 87, 194, 1);
+                -moz-box-shadow: 10px 10px 54px -16px rgba(126, 87, 194, 1);
+                box-shadow: 10px 10px 54px -16px rgba(126, 87, 194, 1);
                 @media screen and (max-width: 1440px) {
                     right: -30px;
                 }
                 @media screen and (max-width: $screen-md-max) {
                     right: 0;
                 }
+                 @media screen and (max-width: $screen-sm-max) {
+                    display: none;
+                }
             }
 
-            .calculator-banner-text {
+            /*.calculator-banner-text {
                 display: none;
-            }
+            }*/
             background-color: #7e57c2;
             .calculator-hb-text {
                 display: block;
                 color: #fff;
                 @media screen and (max-width: $screen-sm-max) {
                     text-align: center;
-                }
-            }
-            .neangelu-labe {
-                border-radius: 50%;
-                -webkit-box-shadow: 10px 10px 54px -16px rgba(126, 87, 194, 1);
-                -moz-box-shadow: 10px 10px 54px -16px rgba(126, 87, 194, 1);
-                box-shadow: 10px 10px 54px -16px rgba(126, 87, 194, 1);
-                @media screen and (max-width: $screen-sm-max) {
-                    display: none;
                 }
             }
         }
@@ -7431,6 +7435,9 @@ div#fancy_outer {
 
 .new-main,
 .new-content {
+    .inspections span {
+        white-space: nowrap;
+    }
     .footer {
         display: table-footer-group;
         background-color: $footer-bg;
@@ -7503,6 +7510,46 @@ div#fancy_outer {
                 margin-left: 13px;
             }
         }
+        /*&-inspection {
+            text-align: left;
+            color: $white;
+            padding-top: 20px;
+            @media screen and (max-width: $screen-md-max) {
+                padding-right: 15px;
+                margin-bottom: 20px;
+            }
+            @media screen and (max-width: $screen-sm-max) {
+                width: 300px;
+                margin-left: auto;
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                text-align: center;
+                width: auto;
+                margin-bottom: 0;
+                padding-left: 15px;
+            }
+            ul {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+                li:first-child {
+                    margin-bottom: 20px;
+                }
+                p {
+                    margin: 0;
+                    font: 13px HelveticaNeueCyr Light,Arial,sans-serif;
+                    span {
+                        font-size: 12px;
+                        display: block;
+                    }
+                    span:first-child {
+                        margin-bottom: 5px;
+                        font-size: 13px; 
+                    }
+                }
+            }
+        }*/
+
         &-top {
             @include clearfix;
             padding: $footer-top-padding;

@@ -119,6 +119,11 @@
 		@media screen and (max-width: $screen-xs) {
 			bottom: 29px;	
 		}
+		img {
+			display: inline-block;
+			max-width: 100px;
+			padding-left: 5px;
+		}
 	}
 	&-steps {
 		@include clearfix;
@@ -705,9 +710,9 @@
 	}
 }
 
-.neangelau-slider-text {
+/*.neangelau-slider-text {
 	display: none;
-}
+}*/
 
 .calculator-heading--neangelu {
 	.calculator-banner-text {

@@ -328,9 +328,11 @@ function getDeviceInfo(param) {
 			}
 
 			if (gl) {
-			  debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-			  vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
-			  renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+				debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+				if (debugInfo != null) {
+					vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+					renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+				}
 			}
 			if (renderer != undefined)
 				result = renderer;
@@ -4677,6 +4679,42 @@ $(document).ready(function() {
 		});
     }
 
+    // если есть секция пролонгации, или реструктуризации:
+    if ($(".prolongation-item").length > 0) {
+		
+    	// получаем url без якоря:
+    	var indexAnchor = location.href.indexOf("#");
+    	if (indexAnchor === -1) {
+        	locationHref = location.href;
+    	} else {
+    		locationHref = location.href.substring(0, indexAnchor);
+    	}
+    	
+    	// обработка кнопки "Продлить":
+    	$(".js-to-prolongation").on('click', function(event){
+
+    		$(".prolongation").removeClass("hidden");
+    		location.href = locationHref + '#prolongation-anchor';
+		});
+    	
+    	$(".js-checkbox-prolong").on('click', function(event){
+
+			var btn = $(this).closest('.prolongation-body').find('.btn-personal');
+			if (this.checked) {
+				$(btn).removeAttr('disabled');
+			} else {
+				$(btn).attr('disabled', true);
+			}
+		});
+	};
+
+    // если есть кнопка/ссылка просмотра доп.соглашения:
+    if ($(".js-btn-dopdogovor").length > 0) {
+		$(".js-btn-dopdogovor").on('click', function(event){
+
+			$(this).closest('form')[0].submit();
+		});
+	};
         
     
 	//================================================================================================================    
