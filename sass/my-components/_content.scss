@@ -987,30 +987,57 @@
     }
     &-rekvizits{
         @include clearfix;
-        padding: 44px 50px;
-        background-color: #ecf9ff;
+        padding: 35px;
+        background-color: #f3f3f3;
+        border: 1px solid #f3f3f3;
+        border-radius: 5px;
+        /*background-color: #ecf9ff;
         border: 1px solid #5eb3d9;
         margin-bottom: 31px;
+        padding: 44px 50px;*/
         @media screen and (max-width: $screen-md-max) {
             width: 100%;
             padding: 20px;
         }
         &-left,
         &-right{
-            width: 70%;
+            width: 75%;
             float: left;
-            @media screen and (max-width: $screen-xs) {
+            @media screen and (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
+                width: 100%;
+            }
+            @media screen and (max-width: $screen-xs-max) {
                 width: 100%;
                 float: none;
             }
         }
         &-right{
-            width: 30%;
-            padding-top: 70px;
+            width: 25%;
             text-align: center;
+            /*padding-top: 70px;            
             @media screen and (max-width: $screen-md-max) {
                 padding-top: 20px;
+            }*/
+            img {
+                opacity: 0.6;
+                margin-top: 10px;
+                width: 100%;
+                max-width: 175px;
             }
+            @media screen and (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
+                width: 100%;
+                text-align: left;
+                img {
+                    max-width: 100px;
+                }
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                width: 100%;
+                text-align: left;
+                img {
+                    max-width: 50px;
+                }
+            }   
         }
         &--pay {
             border: none;
@@ -1056,20 +1083,25 @@
     font: 18px / 1.5 'HelveticaNeueCyr Light', Arial, sans-serif;
     &-name{
         float: left;
-        width: 35%;
-        font: 15px / 1.5 'HelveticaNeueCyr Medium', Arial, sans-serif;
+        width: 25%;
+        /*width: 35%;*/
+        font: 16px / 1.5 'HelveticaNeueCyr Bold', Arial, sans-serif;
+        /*font: 15px / 1.5 'HelveticaNeueCyr Medium', Arial, sans-serif;
         @media screen and (max-width: $screen-lg-max) {
             width: 35%;
-        }
+            width: 25%;
+        }*/
         @media screen and (max-width: $screen-xs-max) {
             width: 100%;
             display: block;
         }
     }
     &-value{
-        width: 65%;
+        width: 75%;
         float: right;
-        font: 15px / 1.5 'HelveticaNeueCyr Light', Arial, sans-serif;
+        font: 16px / 1.5 'HelveticaNeueCyr Light', Arial, sans-serif;
+        /*width: 65%;
+        font: 15px / 1.5 'HelveticaNeueCyr Light', Arial, sans-serif;*/
         @media screen and (max-width: $screen-xs-max) {
             float: none;
             width: 100%;
@@ -1108,7 +1140,7 @@
 }
 
 .feedback{
-    width: 80%; 
+    width: 80%;
     @media screen and (max-width: $screen-md-max) {
         width: 100%;
     }
@@ -1141,7 +1173,357 @@
         }
     }
 }
-
+/*-------------------------NEW-our contacts 06-2018----------------------------*/
+ @media screen and (max-width: $screen-sm-max) {
+    .contact .row > .pull-right {
+        float: none !important;
+    }
+}
+.contacts-wrapper {
+    padding: 10px;
+    @media screen and (max-width: $screen-xs-max) {
+        padding: 0;
+    }
+}
+.contactsMain {
+    background-color: #f3f3f3;
+    padding: 0 20px 30px;
+    border-radius: 5px;
+    &>.row>div {
+        @media screen and (min-width: $screen-sm-min) {
+            margin-top: 30px;
+        }
+    }
+    &-item {
+        min-height: 142px;
+        background-color: #fff;
+        padding: 35px 20px 30px;
+        border-radius: 5px;
+        text-align: center;
+        @media screen and (max-width: $screen-xs-max) {
+            height: auto;
+            margin-top: 30px;
+        }
+        &-top{
+            height: 44px;
+            width: 44px;
+            position: absolute;
+            top: -22px;
+            left: calc(50% - 22px);
+            border-radius: 50%;
+            background-color: #00b181;
+            color: #fff;
+            font-size: 26px;
+            text-align: center;
+            line-height: 26px;
+            padding-top: 9px;
+            padding-bottom: 9px;
+            box-shadow: 5px 5px 20px -10px rgb(0,0,0);
+            img {
+                display: inline-block;
+                vertical-align: baseline;
+            }
+        }
+        &-heading {
+            font-size: 16px; 
+            color: #003764;
+            font-family: $font-family-bold;
+            margin-bottom: 5px;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            li {
+                list-style: none;
+                line-height: normal;
+                a {
+                    font-size: 16px;
+                    line-height: 16px;
+                    font-family: $font-family-roman;
+                    display: inline-block;
+                    margin-bottom: 6px;
+                    text-decoration: none;
+                    color: #0056b8;
+                    svg,
+                    img,
+                    span {
+                        vertical-align: middle;
+                    }
+                    svg,
+                    img {
+                        margin-right: 5px;
+                        opacity: 0.5;
+                        transition: opacity 0.2s ease;
+                    }
+                    &:hover {
+                        svg,
+                        img {
+                            opacity: 1;
+                        }
+                    }
+                }
+                .phone-city {
+                    margin-bottom: 0;
+                }
+                .phone-free {
+                    font-family: $font-family-roman;
+                    font-size: 12px;
+                    font-weight: bold;
+                    display: inline-block;
+                    margin-bottom: 15px;
+                    @media screen and (max-width: $screen-xs-max) {
+                        display: block;
+                    }
+                }
+            }
+            li:last-child a {
+                margin-bottom: 0;
+            }
+        }
+        .contact-email {
+            font-size: 16px;
+            line-height: 16px;
+            font-family: $font-family-roman;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #0056b8;
+            img {
+                vertical-align: middle;
+                margin-right: 5px;
+                opacity: 0.5;
+                transition: opacity 0.2s ease;
+                @media screen and (max-width: $screen-xs-max) {
+                    margin-bottom: 5px;
+                }
+            }
+            &:hover {
+                img {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    &-heading {
+        font-size: 22px;
+        font-family: $font-family-medium;
+        color: #0055bc;
+        padding-bottom: 15px;
+        span {
+            font-family: $font-family-bold;
+            color: #1f9bde;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            font-size: 18px;
+            padding-bottom: 10px;
+            padding-top: 20px;
+            text-align: center;
+            span {
+                display: block;
+                font-size: 16px;
+            }
+        }
+    }
+    .contactsMain-description {
+        padding-top: 10px;
+        @media screen and (max-width: $screen-xs-max) {
+            padding-top: 20px;
+        }
+        >div {
+            padding-top: 20px;
+            text-align: right;
+            font-size: 18px;
+            line-height: 1.3;
+            font-family: $font-family-roman;
+            letter-spacing: 0;
+            @media screen and (max-width: $screen-xs-max) {
+                font-size: 14px;
+                text-align: left;
+                padding-top: 0;
+            }
+        }
+        img {
+            float: right;
+            margin-left: 20px;
+            @media screen and (max-width: $screen-xs-max) {
+                margin-left: 5px;
+            }
+        }
+    }
+}
+.feedBack {
+    @media screen and (min-width: $screen-xs-max) {
+        padding-bottom: 35px;
+    }
+    .form-control--wr {
+        width: 100%;
+    }
+    .feedBack-text {
+        margin-bottom: 20px;
+    }
+    .bootstrap-select.btn-group .dropdown-toggle {
+        &:hover {
+            border-color: #d4d4d4;
+        }
+        .filter-option {
+            color: #cacaca;
+            color: #393939;
+            font-size: 17px;
+            @media screen and (max-width: $screen-xs-max) {
+                font-size: 14px;
+            }
+        }
+    }
+    .bootstrap-select.btn-group .dropdown-menu li a {
+        padding: 0 10px;
+        font: 17px/1.2 HelveticaNeueCyr Roman,Arial,sans-serif;
+        color: #777;
+        @media screen and (max-width: $screen-xs-max) {
+            font-size: 14px;
+        }
+        &:hover,
+        &:focus {
+            background-color: transparent;
+            color: #393939;
+            outline: none;
+        }
+        span.text {
+            @media screen and (max-width: $screen-md-max) {
+                font-size: 14px;
+            }
+        }
+    }
+    .bootstrap-select.open>.dropdown-toggle.bs-placeholder, 
+    .bootstrap-select.open>.dropdown-toggle.bs-placeholder:hover {
+        border-color: #e2e2e2;
+    }
+    .bootstrap-select.btn-group .dropdown-menu li.disabled a {
+        display: none;
+    }
+    .bootstrap-select > .dropdown-toggle[title="Вопрос - кому?"] .filter-option,
+    .bootstrap-select > .dropdown-toggle[title="Вопрос - кому?"]:hover .filter-option,
+    .bootstrap-select > .dropdown-toggle[title="Вопрос - кому?"]:focus .filter-option,
+    .bootstrap-select > .dropdown-toggle[title="Вопрос - кому?"]:active .filter-option { 
+        color: #cacaca;
+        @media screen and (max-width: $screen-xs-max) {
+            font-size: 14px;
+        }
+    }
+    .bootstrap-select>select.mobile-device {
+        display: none !important;
+    }
+    button {
+        min-width: 220px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 17px;
+        font-family: $font-family-medium;
+        @media screen and (max-width: 500px) {
+            width: 100%;
+            margin-bottom: 0;
+        }
+    }
+    textarea.form-control.write-us {
+        @media screen and (min-width: $screen-sm-min) {
+            height: 170px;
+        }
+    }
+}
+.contactsDepartment {
+    &-item {
+        font-size: 16px;
+        font-family: $font-family-roman;
+        color: #003764;
+        border: solid 1px #4c88cd;
+        border-radius: 5px;
+        text-align: center;
+        padding-bottom: 30px;
+        a {
+            display: block;
+            text-decoration: none;
+            font-family: $font-family-medium;
+            font-size: 16px;
+            img {
+                margin-right: 7px;
+            }
+        }
+        @media screen and (max-width: $screen-md-max) {
+            margin-bottom: 20px;
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            a {
+                font-size: 14px;
+            }
+        }
+    }
+    &-head {
+        height: 70px;
+        padding: 20px 10px;
+        background-color: #4c88cd;
+        color: #fff;
+        font-family: $font-family-bold;
+        &.marceting {
+            padding: 15px 45px 10px;
+        }
+        @media screen and (max-width: $screen-md-max) {
+            height: 50px;
+            padding: 16px;
+            &.marceting {
+                padding: 16px;
+            }
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            font-size: 14px;
+            &.marceting {
+                padding: 16px 0;
+            }
+        }
+    }
+    &-body {
+        padding: 30px 20px 0;
+        height: 120px;
+        a {
+            display: inline-block;
+            text-decoration: underline;
+        }
+        span {
+            display: inline-block;
+            margin-top: 10px;
+        }
+        @media screen and (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
+            padding: 20px 90px 0;
+            height: 80px;
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            height: 100px;
+            font-size: 14px;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            height: auto;
+        }
+    }
+    .contact-email {
+        @media screen and (min-width: $screen-sm-max) {
+            margin-top: 10px;
+        }
+    }
+}
+.contactsMap {
+    position: relative;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    padding-bottom: 36.25%;
+    &-item {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+}
 /*--------------------------------credit operations---------------------------*/
 
 .how-extend-top{

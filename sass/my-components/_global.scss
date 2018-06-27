@@ -1087,6 +1087,64 @@
                 }
             }
         }
+        &--blue {
+            background-color: #0090e3;
+            color: #fff;
+            font-size: 19px;
+            font-family: $font-family-bold;
+            padding: 15px 20px;
+            @media screen and (max-width: $screen-sm-max) {
+                padding-right: 90px;
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                font-size: 14px;
+            }
+            @media screen and (max-width: 480px) {
+                padding: 10px 90px 10px 20px;
+            }
+            a {
+                font-family: $font-family-roman;
+                color: #fec545;
+                display: block;
+                float: right;
+                padding-right: 65px;
+                @media screen and (max-width: $screen-md-max) {
+                    padding-right: 110px;
+                }
+                @media screen and (max-width: $screen-sm-max) {
+                    display: inline;
+                    float: none;
+                    padding-right: 0;
+                }
+               &:hover {
+                color: #fbb422;
+               }
+            }
+            .first-letter::first-letter {
+                text-transform: capitalize;
+            }
+        }
+        &--labe {
+            position: absolute;
+            right: -25px;
+            bottom: 10px;
+            font-size: 0;
+            border-radius: 50%;
+            box-shadow: 0 6px 70px -8px #999, 
+                        0 6px 60px -8px #ff454b;
+            @media screen and (max-width: $screen-md-max) {
+                right: 8px;
+            }
+
+            img {
+                display: inline-block;
+                max-width: 100px;
+                vertical-align: bottom;
+                @media screen and (max-width: $screen-sm-max) {
+                    max-width: 70px;
+                }
+            }
+        }
     }
     &-skidka-text {
         display: none;

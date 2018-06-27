@@ -1954,3 +1954,295 @@
         }
     }
 }
+/****************  Congrats-personal   *************/
+.congrats {
+    &_item {
+        display: flex;
+        position: relative;
+        padding: 20px 0;
+        margin-bottom:20px;
+        font-family: $font-family-medium;
+        color: #fff;
+        background-size: cover;
+        background-position: 0 50%;
+        background-repeat: no-repeat;
+        @media screen and (min-width: $screen-md-max) {
+            margin-right: -15px;
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            background-position: 50% 0;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            display: block;
+            padding-top: 10px;
+        }
+        .img-labe {
+            flex-basis: 18%;
+            padding:0 20px;
+            img {
+                width: 100%;
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                float: left;
+                max-width: 110px;
+                padding:0 10px;
+            }
+        }
+        .close {
+            width: 15px;
+            height: 15px;
+            top: 15px;
+            right: 15px;
+            background-image: url('/assets/images/personalization/Exit.png');
+            background-repeat: no-repeat;
+            opacity: 1;
+            @media screen and (max-width: $screen-xs-max) {
+                top: 10px;
+                right: 10px;
+                background-image: url('/assets/images/personalization/MobileExit.svg');
+            }
+        }
+    }
+    &-violet {
+        background-image:url('/assets/images/personalization/LKCongrats-violet.jpg');
+        @media screen and (max-width: $screen-xs-max) {
+            background-image:url('/assets/images/personalization/MobileCredits.png');
+        }
+    }
+    &-orange {
+        background-image:url('/assets/images/personalization/LKCongrats-orange.jpg');
+        @media screen and (max-width: $screen-xs-max) {
+            background-image:url('/assets/images/personalization/MobileYears.png');
+        }
+    }
+    &--content {
+        flex-basis: 57%;
+    }
+    &--heading {
+        font-size: 28px;
+        margin-top: 10px;
+        @media screen and (max-width: $screen-md-max) {
+            font-size: 26px;
+            margin-top: 0;
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            font-size: 24px;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    }
+    &--text {
+        font-size: 16px;
+        font-family: $font-family-roman;
+        padding: 10px 0 15px 0;
+        @media screen and (max-width: $screen-md-max) {
+            font-size: 14px;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            padding: 5px 5px 10px 110px;
+            min-height: 70px;
+        }
+    }
+    &--buttons {
+        text-align: right;
+        .btn {
+            font-size: 14px;
+            font-family: $font-family-medium;
+        }
+        .btn-congrats {
+            padding: 8px 15px;
+            background-color: transparent;
+            border: 1px solid #fff;
+            transition: all 0.2s ease-out;
+            &:hover {
+                opacity: .8;
+                color: #fff
+            }
+        }
+        .btn-congrats-ok {
+            margin-right: 10px;
+            background-color: #fff;
+            padding: 8px 30px; 
+            color: #8100b2;
+            transition: all 0.2s ease-out;
+            .congrats-orange & {
+                color: #dd0b32;
+            }
+            .congrats-violet &:hover {
+                background-color: #ff5d46;
+                color: #fff;
+            }
+            .congrats-orange &:hover {
+                background-color: #0055bc;
+                color: #fff;
+            }
+        }
+        @media screen and (max-width: $screen-sm-max) {
+            text-align: left;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            padding-top: 10px;
+            text-align: center;
+            .congrats-violet & {
+                border-top: 1px dashed #ef6000;
+            }
+            .congrats-orange & {
+                border-top: 1px dashed #fec75a;
+            }
+        }
+    }
+    &--promo-box {
+        flex-basis: 25%;
+        padding: 25px  40px 0;
+        font-size: 18px;
+        text-transform: uppercase;
+        text-align: center;
+        span {
+            display: inline-block;
+        }
+        .congrats-orange & {
+            color: #dd0b32;
+        }
+        @media screen and (max-width: $screen-sm-max) {
+           padding: 25px  20px 0; 
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            display: none;
+        }
+    }
+    &--promo-mobile {
+        display: none;
+        justify-content: space-around;
+        text-transform: uppercase;
+        text-align: center;
+         @media screen and (max-width: $screen-xs-max) {
+            display: flex;
+        }
+        .congrats-violet & {
+            border-top: 1px dashed #ef6000;
+        }
+        .congrats-orange & {
+            border-top: 1px dashed #fec75a;
+        }
+        &>div {
+            padding: 15px;
+            &:first-child {
+                text-align: left;
+            }
+        }
+        .header--promo {
+            color:  #fec75a; 
+        }
+        .congrats--promo {
+            display: inline-block;
+            margin: 0;
+        }
+    }
+    &--promo {
+    font-size: 18px;
+    font-family: $font-family-roman;
+    padding: 10px 15px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    background-color: #fff;
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: 14px;
+    }
+        .congrats-violet & {
+            color: #ef6000;
+        }
+        .congrats-orange & {
+            color: #023665;
+        }
+    }
+}
+.copy--promo {
+    font-size: 12px;
+    font-family: $font-family-roman;
+    text-transform: none;
+    text-decoration: underline;
+    &:hover {
+        text-decoration: none;
+    }
+}
+/************* Personal-Pop-Up**************/
+.personalization-popup {
+    position: fixed;
+    width: 315px;
+    min-height: 140px;
+    left: 50px;
+    bottom: 85px;
+    padding: 17px 20px 17px 60px;
+    background-color: #f6f6f6;
+    font-family: $font-family-roman;
+    font-size: 14px;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    box-shadow: 0 12px 32px 0px rgba(0, 0, 0, .15);
+    z-index: 999;
+    transform: translate(-400px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s;
+    line-height: 1.4;
+    @media screen and (max-width: 1500px) {
+        bottom: 70px;
+    }
+    @media screen and (max-width: $screen-sm-max) {
+        
+    }
+    &.active {
+        transform: translate(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    &--header {
+        font-family: $font-family-medium;
+        color: #0055b8;
+    }
+    &--text {
+        padding: 8px 0;
+    }
+    a {
+        color: #0055b8;
+        float: right;
+        &::after {
+            content: '';
+            display: inline-block;
+            height: 15px;
+            vertical-align: middle;
+            opacity: 0;
+            width: 0;
+            font-weight: bold;
+            background-image: url('/assets/images/personalization/Arrow.png');
+            background-repeat: no-repeat;
+            transition: all .5s;
+        }
+        &:hover::after {
+            width: 15px;
+            opacity: 1;
+            margin-left: 5px;
+        }
+    }
+    &-img {
+        position: absolute;
+        height: 100px;
+        width: 85px;
+        top: 20px;
+        left: -42px;
+        /*top: 50%;
+        transform: translateY(-50%);*/
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+    .btn-user-close {
+        width: 10px;
+        height: 10px;
+        background-size: 10px 10px;
+    }
+}

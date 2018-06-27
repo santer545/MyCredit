@@ -315,6 +315,11 @@ $(document).ready(function() {
             }
         }
     });
+    $('.modal-theme-slider').owlCarousel({
+        loop:true,
+        items: 3,
+        margin: 5
+    });
 
 
 

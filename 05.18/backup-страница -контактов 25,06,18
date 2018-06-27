@@ -1,0 +1,124 @@
+{{HEAD}}
+
+<div class="wrapper new-main">
+	{{HEADER}}
+
+	<div class="contact blog">
+
+		<div class="container-fluid">
+			<p class="heading-content-h1">[#204#]</p>
+			<div class="row">
+				<div class="col-md-8 col-lg-9 pull-right">
+					<div class="content blog-content" itemscope itemtype="http://schema.org/Organization">
+						<ul class="contact-list" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+							<li class="contact-item text-center">
+								<div class="contact-svg">
+									<img src="/assets/images/icon42.svg" alt="">
+								</div>
+								<p>[#192#]
+									<br><span itemprop="telephone" class="contact-phone"><a href="tel:[(contact_phone)]">[(contact_phone)]</a></span>
+
+								</p>
+							</li>
+							<li class="contact-item text-center">
+								<div class="contact-svg">
+									<img src="/assets/images/icon43.svg" alt="">
+								</div>
+								<p>[#29#]
+									<br><span itemprop="email"><a href="mailto:[(contact_email)]" class="contact-email">[(contact_email)]</a></span></p>
+							</li>
+							<li class="contact-item text-center">
+								<div class="contact-svg">
+									<img src="/assets/images/icon44.svg" alt="">
+								</div>
+								<p>[#205#]
+									<br><span class="contact-adress" itemprop="addressRegion">[(contact_adress)]</span></p>
+							</li>
+						</ul>
+						<div class="contact-rekvizits">
+							<div class="contact-rekvizits-left">
+								<p class="faq-heading">[#206#]</p>
+								<p class="rekvizit-item"><span class="rekvizit-item-name">[#682#]</span><span class="rekvizit-item-value" itemprop="name">[#683#]</span></p>
+								<p class="rekvizit-item"><span class="rekvizit-item-name">[#684#]</span><span class="rekvizit-item-value">[(ergpu_number)]</span></p>
+								<p class="rekvizit-item"><span class="rekvizit-item-name">[#685#] </span><span class="rekvizit-item-value"> № 26504052600258 в ПАО КБ "ПРИВАТБАНК"</span></p>
+								<!--<p class="rekvizit-item"><span>[(bank)]</span>[(bank_name)]</p>-->
+								<p class="rekvizit-item"><span class="rekvizit-item-name">[(mfo)]</span><span class="rekvizit-item-value">[(mfo_number)]</span></p>
+							</div>
+							<div class="contact-rekvizits-right">
+								[!if?&is=`[(lang)]:=:ru`&then=`
+								<img src="assets/images/logo_last.svg" alt="logo" width="210" height="40" itemprop="url image">
+								`!]
+								[!if?&is=`[(lang)]:=:ua`&then=`
+								<img src="assets/images/logo_last_UKR.svg" alt="logo" width="210" height="40" itemprop="url image">
+								`!]
+							</div>
+						</div>
+						<div class="callback">
+							[*content*]
+						</div>
+						<div class="feedback">
+							<div class="faq-heading">[#207#]</div>
+
+							<form name="sendMail" id="sendMail" action="[~~9~~]" method="POST" class="form js_validate" onclick="onClickFormSendMail();">
+								<div class="form-group">
+
+									<div class="form-control--wr">
+										<input type="text" class="form-control" id="sername" name="sendMail[sername]" required placeholder="[#663#]">
+									</div>
+								</div>
+								<div class="form-group">
+
+									<div class="form-control--wr">
+										<input type="email" class="form-control" id="email" name="sendMail[email]" required data-validate="email" placeholder="Email"
+											   onKeyUp="onKeyUpToEnter('email', event);">
+										<span class="icons-sprite icons-valide-icon form-control-feedback"></span>
+										<span class="icons-sprite icons-icon-error form-control-feedback"></span>
+										<span class="error_text">[#490#]</span>
+									</div>
+								</div>
+								<div class="form-group">
+
+									<div class="form-control--wr">
+										<textarea name="sendMail[message]" id="message" class="write-us form-control" required placeholder="[#7#]"></textarea>
+										<span class="icons-sprite icons-valide-icon form-control-feedback"></span>
+										<span class="icons-sprite icons-icon-error form-control-feedback"></span>
+										<span class="error_text">[#208#]</span>
+									</div>
+								</div>
+								<div class="form-group text-right">
+									<button type="button" class="btn btn-personal" data-text="[#8#]" onclick="if (validate($(this).parents('.js_validate'))) onClickSubmitEmail();"><span>[#8#]</span></button>
+								</div>
+
+							</form>
+							[[if?&is=`[*emailOK*]:=:1`&then=`
+							<span id="span_emailOK">[#291#]</span>
+							`]]
+
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 pull-right">
+					<div class="faq-bar">
+						[[Ditto?
+						&startID  = `[[UP?&get=`id`]]`
+						&tpl      = `tpl_sidebar_wrap`
+						&orderBy  = `menuindex ASC`
+						&debug 			= `0`
+						&showInMenuOnly = `1`
+						]]
+					</div>
+					[[slider?  &type='small' &prefix='main']]
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	{{FOOTER}}
+</div>
+{{SCRIPTS}}
+<script>
+	$(document).ready(function(){
+		onLoadSlider();
+	})
+</script>
