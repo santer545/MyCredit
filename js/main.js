@@ -315,11 +315,30 @@ $(document).ready(function() {
             }
         }
     });
-    $('.modal-theme-slider').owlCarousel({
-        loop:true,
-        items: 3,
-        margin: 5
-    });
+    $('#js-theme-content').on('shown.bs.modal', function (e) {
+            setTimeout(function() {
+            $('.modal-theme-slider').owlCarousel({
+            loop:true,
+            items: 3,
+            margin: 5,
+            nav: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            navText: ['', ''],
+            responsive: {
+                0: {
+                     items: 1
+                },
+                768: {
+                     items: 2
+                },
+                992: {
+                     items: 3
+                }
+            }
+        });
+        }, 10);   
+    })
 
 
 
@@ -1918,7 +1937,22 @@ $(document).ready(function() {
 
 
     }
-})
+        
+        //  Copy promocod in LK 
+        $(".promo-1").click(function(){
+            var range = document.getSelection().getRangeAt(0);
+            range.selectNode(document.getElementsByClassName("congrats--promo")[0]);
+            window.getSelection().addRange(range);
+            document.execCommand("copy")
+        });
+        $(".promo-2").click(function(){
+            var range = document.getSelection().getRangeAt(0);
+            range.selectNode(document.getElementsByClassName("congrats--promo")[1]);
+            window.getSelection().addRange(range);
+            document.execCommand("copy")
+        });
+        //end
+});
 
 $(window).resize(function() {
     menuOverflow();

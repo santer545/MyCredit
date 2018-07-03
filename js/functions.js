@@ -889,6 +889,40 @@ function isValidInn(inn) {
 }
 
 /**
+ * обрабатывает нажатиие кнопок на нотификациях
+ * @param event
+ * @returns
+ */
+function notifyOnClick(event) {
+	
+	var button = event.target;
+	var btnType = '';
+	
+	$('.js_div_notify').addClass('hidden');
+
+	if (!$(button).hasClass('js_btn_notify_close')) {
+	
+		if ($(button).hasClass('js_btn_notify_ok')) {
+			btnType = 'OK';
+		} else if ($(button).hasClass('js_btn_notify_recall')) {
+			btnType = 'recall';
+		}
+		
+		var data = {
+			    typeData: "notifyClick",
+			    btnType: btnType,
+			    notifyId: $(".js-notifyId").first().text()
+		};
+		
+		// отправить массив на сервер
+		// console.log("Передаем запрос ajax 'notifyClick'");
+		// console.log(data);
+		sendAjax(data);
+	}
+	
+}
+
+/**
  * делает активной кнопку "Оформить кредит" при постановке галочки "согласен"
  */
 function onChangeAgree() {
@@ -3485,9 +3519,8 @@ function sendAjax(data) {
 		//dataType: 'html',
 		success: function(json){
 			if(json) {
-				//var js = JSON.parse(json);
+				// var js = JSON.parse(json);
 				var js = json;
-				
 				// console.log(js);
 			};
 		},
@@ -4665,6 +4698,11 @@ $(document).ready(function() {
     	$("#password-1-auth").on('input', function(event) {
     		checkPwdInputCount();
     	});
+    	
+    	// удаление атрибута readonly:
+    	$("#password-1-auth, #login_auth").on('focus click', function(event) {
+    		$("#password-1-auth").removeAttr('readonly');
+    	});
     }
 
     // если есть кнопка подтверждения почтового ящика:
@@ -4716,6 +4754,64 @@ $(document).ready(function() {
 		});
 	};
         
+    // если есть секции нотификации с кнопками:
+    if ($(".js_div_notify").length > 0) {
+		
+    	$(".js_btn_notify_close, .js_btn_notify_ok, .js_btn_notify_recall").on('click', function(event){
+			notifyOnClick(event);	// обрабатывает кнопки нотифмкаций 
+		});
+    }
+    
+    // если есть секции нотификации с popup:
+    if ($(".js_div_notify_popup").length > 0) {
+		
+    	$(".js_btn_notify_popup").on('click', function(event){
+			
+    		// обрабатываем кнопку "закрыть" (крестик) 
+			var button = event.target;
+			// console.log(button);
+	    	$(button).closest('.js_div_notify_popup').removeClass('active');
+	    	
+			var data = {
+				    typeData: "notifyClosed",
+				    notifyId: $(button).closest('.js_div_notify_popup').children(".js_notifyId").first().text()
+			};
+			
+			// отправить массив на сервер
+			// console.log("Передаем запрос ajax 'notifyClosed'");
+			// console.log(data);
+			sendAjax(data);
+		});
+    }
+    
+    // если есть секции нотификации с Modal:
+    if ($(".js_div_notify_modal").length > 0) {
+    	
+    	var notifyModal = $(".js_div_notify_modal").first();	// модалка
+    	
+    	setTimeout(function() { 
+    		$(notifyModal).modal('show'); 
+    	}, 5000);
+    	
+    	$(".js_btn_notify_modal").on('click', function(event){
+			
+    		// обрабатываем кнопку "закрыть" (крестик) 
+			// var button = event.target;
+			// console.log(button);
+	    	$(notifyModal).modal('hide');
+	    	
+			var data = {
+				    typeData: "notifyClick",
+				    btnType: "OK",
+				    notifyId: $(notifyModal).find(".js_notifyId").first().text()
+			};
+			
+			// отправить массив на сервер
+			// console.log("Передаем запрос ajax 'notifyClick'");
+			// console.log(data);
+			sendAjax(data);
+		});
+    }
     
 	//================================================================================================================    
     /*   
