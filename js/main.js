@@ -1968,26 +1968,6 @@ $(document).ready(function() {
         })
     }
     //end
-     //  Copy promocod in Promopush 
-    function domRangeCreate() {
-        $('.js-promocode').on('click', function() {
-            var target = $(this).closest('.js-promocode-area').find('.js-promocode-text').get(0);
-            var rng, sel;
-            if (document.createRange) {
-                rng = document.createRange();
-                rng.selectNode(target)
-                sel = window.getSelection();
-                sel.removeAllRanges();
-                sel.addRange(rng);
-                document.execCommand("copy");
-            } else {
-                var rng = document.body.createTextRange();
-                rng.moveToElementText(target);
-                rng.select();
-            }
-        })
-    }
-    //end
 });
 
 
