@@ -2004,10 +2004,24 @@
         }
     }
     &-violet {
-        background-image:url('/assets/images/personalization/LKCongrats-violet.jpg');
+       /* background-image:url('/assets/images/personalization/LKCongrats-violet.jpg');
         @media screen and (max-width: $screen-xs-max) {
             background-image:url('/assets/images/personalization/MobileCredits.png');
-        }
+        }*/
+        background-color: #7e00b2;
+        background: linear-gradient(to right, #6500ae 15%,#7d00b2,#8700b3, #9700b6 60%);
+        .decor {
+            position: absolute;
+            top: 0;
+            right: 25%;
+            @media screen and (max-width: $screen-sm-max) {
+                width: 25%
+            }
+            @media screen and (max-width: $screen-xs-max) {
+                right: 10%;
+                width: 35%;
+            }
+        } 
     }
     &-orange {
         background-image:url('/assets/images/personalization/LKCongrats-orange.jpg');
@@ -2041,7 +2055,7 @@
             font-size: 14px;
         }
         @media screen and (max-width: $screen-xs-max) {
-            padding: 5px 5px 10px 110px;
+            padding: 5px 5px 10px 100px;
             min-height: 70px;
         }
     }
@@ -2164,6 +2178,7 @@
     font-family: $font-family-roman;
     text-transform: none;
     text-decoration: underline;
+    cursor: pointer;
     &:hover {
         text-decoration: none;
     }
@@ -2191,8 +2206,10 @@
     @media screen and (max-width: 1500px) {
         bottom: 70px;
     }
-    @media screen and (max-width: $screen-sm-max) {
-        
+    @media screen and (max-width: 320px) {
+        width: 295px;
+        left: 20px;
+        padding-left: 75px;
     }
     &.active {
         transform: translate(0);
@@ -2238,6 +2255,9 @@
         img {
             display: block;
             width: 100%;
+        }
+        @media screen and (max-width: 320px) {
+            left: -20px;
         }
     }
     .btn-user-close {

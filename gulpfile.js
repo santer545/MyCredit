@@ -127,6 +127,7 @@ gulp.task('scripts', function() {
             //sourceDir + '/lg-fullscreen.min.js',
             //sourceDir + '/lg-thumbnail.min.js',
             sourceDir + '/zebra_datepicker.js',
+            sourceDir + '/main.js',
             sourceDir + '/star-raiting.js',
             sourceDir + '/device.min.js',
             sourceDir + '/functions.js',
@@ -148,7 +149,6 @@ gulp.task('scripts', function() {
             //sourceDir + '/grayscale.js',
             sourceDir + '/wish.js',
             sourceDir + '/easter.js',
-            sourceDir + '/main.js',
 
             //подключение функционала пуш уведомлений:
             //sourceDir + '/firebase/firebase-config.js', //- подключается отдельно

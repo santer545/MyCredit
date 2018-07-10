@@ -328,10 +328,13 @@ function getDeviceInfo(param) {
 			}
 
 			if (gl) {
-				debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-				if (debugInfo != null) {
-					vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
-					renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+				try {
+					debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+					if (debugInfo != null) {
+						vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+						renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+					}
+				} catch (e) {
 				}
 			}
 			if (renderer != undefined)
@@ -900,6 +903,7 @@ function notifyOnClick(event) {
 	
 	$('.js_div_notify').addClass('hidden');
 
+	// если не кнопка "крестик"
 	if (!$(button).hasClass('js_btn_notify_close')) {
 	
 		if ($(button).hasClass('js_btn_notify_ok')) {
@@ -916,6 +920,19 @@ function notifyOnClick(event) {
 		
 		// отправить массив на сервер
 		// console.log("Передаем запрос ajax 'notifyClick'");
+		// console.log(data);
+		sendAjax(data);
+
+	// если кнопка "крестик"
+	} else {
+		
+		var data = {
+			    typeData: "notifyClosed",
+			    notifyId: $(".js-notifyId").first().text()
+		};
+		
+		// отправить массив на сервер
+		// console.log("Передаем запрос ajax 'notifyClosed'");
 		// console.log(data);
 		sendAjax(data);
 	}
@@ -974,7 +991,7 @@ function onChangeBusynessType(fromElement) {
 			
 			$("#mainSource").trigger("chosen:updated");
 			// метод для обновления select с классом selectpicker
-			$("#mainSource").selectpicker('refresh');
+			if ($("#mainSource").length) $("#mainSource").selectpicker('refresh');
 		} else {
 			$("#tr_mainSource").addClass("hidden");
 		}
@@ -1638,11 +1655,11 @@ function onchangePassportType(passportType) {
 		//console.log('selectedOption=' + selectedOption);
 		$("#PassportRegistrationYear [value='" + selectedOption + "']").attr("selected", "selected");
 		// устанавливаем selected методом из bootstrap
-		$('#PassportRegistrationYear').selectpicker('val', selectedOption);
+		if ($('#PassportRegistrationYear').length) $('#PassportRegistrationYear').selectpicker('val', selectedOption);
 	
 		$("#PassportRegistrationYear").trigger("chosen:updated");
 		// метод для обновления select с классом selectpicker
-		$("#PassportRegistrationYear").selectpicker('refresh');
+		if ($("#PassportRegistrationYear").length) $("#PassportRegistrationYear").selectpicker('refresh');
 	}
 	
 	switch (selectedType) {
@@ -4450,16 +4467,18 @@ $(function() {
 	// var a = $("input:visible, button:visible, textarea:visible");
 	// console.log(a);
 	
-	$('.selectpicker').selectpicker({
-		// "dropupAuto": false,
-		//"selectOnTab": true
- 
-		// "liveSearch": true,
-		// "liveSearchNormalize": true,
-		// "liveSearchPlaceholder": "eeeeeee"
-	}).on('loaded.bs.select', function (e) {
-		  $('.btn.dropdown-toggle').attr('tabindex', '0');
-	});
+	if ($('.selectpicker').length) {
+		$('.selectpicker').selectpicker({
+			// "dropupAuto": false,
+			//"selectOnTab": true
+	 
+			// "liveSearch": true,
+			// "liveSearchNormalize": true,
+			// "liveSearchPlaceholder": "eeeeeee"
+		}).on('loaded.bs.select', function (e) {
+			  $('.btn.dropdown-toggle').attr('tabindex', '0');
+		});
+	}
 
 	// $('.selectpicker').selectpicker('refresh');
 
@@ -4568,8 +4587,12 @@ $(function() {
 
 $(document).ready(function() {
 	
+	// перенесено с главной
+	getSessionData();
+	onLoadSlider();
+	
 	var score = Math.round(Number($("#ratingScore").text()));
-	$('#input-1').rating('update', score);
+	// $('#input-1').rating('update', score);
 	// $('#input-1').rating('refresh', {disabled: false});
 	
 	if (($('button').is('#buttonGetCode')) && ((($('#phone').val() !== undefined) ? $('#phone').val().length : 0) < 10)) {
@@ -4744,6 +4767,14 @@ $(document).ready(function() {
 				$(btn).attr('disabled', true);
 			}
 		});
+    	
+    	// обработка кнопки "Реструктурировать":
+    	$(".js-to-restructuring").on('click', function(event){
+
+    		$(".restructurization").removeClass("hidden");
+    		location.href = locationHref + '#restructuring-anchor';
+		});
+    	
 	};
 
     // если есть кнопка/ссылка просмотра доп.соглашения:
