@@ -1431,6 +1431,16 @@ td#fancy_title_right {
                 margin-left: 25px;
                 color: #0056b8;
                 font-size: 14px;
+                text-decoration: none;
+                    >img {
+                        opacity: 0.6;
+                    }
+                &:hover {
+                    text-decoration: underline;
+                    >img {
+                        opacity: 1;
+                    }
+                }
                 &:first-child {
                     margin-left: 0;
                 }

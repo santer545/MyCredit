@@ -1,0 +1,247 @@
+.visa {
+	&-modal{
+		.close {
+		    width: 20px;
+		    height: 20px;
+		    top: -25px;
+		    right: -25px;
+		    opacity: 1;
+		    vertical-align: baseline;
+		    font-size: 10px;
+		    @media screen and (max-width:  830px) {
+		        top: 5px;
+		        right: 5px;
+		        width: 10px;
+		   		height: 10px;
+		    }
+		}
+		.modal-dialog {
+    		width: 780px;
+    		background-image: url('../assets/images/VISA-aktia/Pop-upBg.png');
+    		background-repeat: no-repeat;   
+            background-size: cover;
+            background-position: 100% 100%;
+            padding: 35px 110px 20px;
+            @media screen and (max-width: $screen-sm-max) {
+				padding: 35px 60px 20px;
+				width: 650px;
+            }
+            @media screen and (max-width:  830px) {
+				max-width: 550px;
+				padding: 15px 20px;
+				margin-top: 15px;
+            }
+            @media screen and (max-width:  600px) {
+				max-width: 300px;
+				margin-top:  10px;
+				padding: 10px 15px;
+				background-position: 80% 0;
+            }
+    	}
+    	.modal-content {
+			background-color: transparent;
+			.visa-title {
+				color: #fff;
+				font-size: 30px;
+				text-transform: uppercase;
+				margin-bottom: 25px;
+				padding-left: 50px;
+				@media screen and (max-width:  830px) {
+					font-size: 24px;
+					margin-bottom: 10px;
+				}
+				@media screen and (max-width:  600px) {
+					font-size: 17px;
+					text-align: center;
+					margin-top: 0;
+					margin-bottom: 5px;
+					padding: 0;
+					font-weight: bold;
+				}
+				span {
+					font-weight: bold;
+				}
+			}
+			ul {
+				list-style: none;
+				font-size: 18px;
+				color: #003466;
+				font-family: $font-family-roman;
+				padding: 0;
+				@media screen and (max-width: 830px) {
+					font-size: 16px;
+					margin-bottom: 0;
+				}
+				li {
+					padding: 12px 0 12px 50px;
+					position: relative;
+					    line-height: 1.2;
+					a {
+						color: #fff;
+					}
+					span {
+						font-weight: bold;
+					}
+				}
+				img {
+					position: absolute;
+					top: 3px;
+					left: 0;
+				}
+				@media screen and (max-width:  600px) {
+					li {
+						padding: 5px 0 5px 40px;
+						font-size: 14px;
+					}
+					img {
+						display: inline-block;
+						width: 30px;
+					}	
+				}
+			}	
+
+    	}
+    	.visa-link {
+    		display: inline-block;
+    		padding: 12px 36px 12px 20px;
+    		margin-left: 50px;
+    		width: 225px;
+    		background-color: #ffc21e;
+    		color: #003466;
+    		font-size: 16px;
+    		font-family: $font-family-medium;
+    		text-decoration: none;
+    		border-radius: 5px;
+    		transition: all 0.3s ease-in-out;
+    		position: relative;
+    		margin-bottom: 55px;
+    		&::after {
+    			content: "»";
+    			display: inline-block;
+    			font-size: 35px;
+    			position: absolute;
+    			top: 12px;
+    			right: 18px;
+    			line-height: 16px;
+    		}
+    		&:hover {
+    			background-color: #daa414;
+    			&::after {
+    				right: 8px;
+    			}
+    		}
+    		@media screen and (max-width:  830px) {
+    			margin-bottom: 15px;
+    			padding: 10px 36px 10px 20px;
+    		}
+    		@media screen and (max-width:  600px) {
+				margin: 5px auto 10px;
+				width: 100%;
+				text-align: center;
+				&::after {
+					top: 10px;
+					right: 45px;
+				}
+				&:hover {
+	    			&::after {
+	    				right: 25px;
+	    			}
+	    		}
+    		}
+    	}
+    	.description {
+    		font-size: 14px;
+    		font-weight: bold;
+    		@media screen and (max-width: 830px) {
+    			font-size: 13px;
+    		}
+    		@media screen and (max-width:  600px) {
+    			font-size: 11px;
+    			line-height: 12px;
+    			max-width: 70%;
+    		}
+    		a {
+				color: #003466;
+				&:hover {
+					color: #003466;	
+				}
+    		}
+    	}
+	}
+	&-modal_first {
+		font-size: 22px;
+		font-family: $font-family-roman;
+		@media screen and (max-width: $screen-sm-max) {
+			font-size: 20px;
+		}
+		@media screen and (max-width: 830px) {
+			font-size: 18px;
+		}
+		.modal-dialog {
+			padding:30px 15px 20px;
+			line-height: 1.1;
+			@media screen and (max-width: 830px) {
+				padding-top: 20px;
+			}
+		}
+		.personal-text {
+			color: #0056b8;
+			margin:30px 0 15px;
+			@media screen and (max-width: 830px) {
+				margin-top: 20px;
+			}
+		}
+		.visa_discount {
+			font-weight: bold;
+		}
+		.visa-link {
+			display: block;
+			width: 190px;
+			margin: 20px 0 100px;
+			&::after {
+				top: 10px;
+			}
+			@media screen and (max-width: 830px) {
+				margin-bottom: 50px;
+			}
+			@media screen and (max-width:  600px) {
+				margin: 25px auto;
+				&::after {
+					top: 9px;
+					right: 20px;
+				}
+				&:hover::after {
+					right: 15px;
+				}
+			}
+		}
+		.visa-title {
+			padding: 0;
+			text-align: center;
+			line-height: 1.5;
+			span {
+				font-weight: bold;
+			}
+		}
+		.bg-img {
+			position: absolute;
+			top: 18%;
+			left: 0;
+			right: 0;
+			@media screen and (max-width: $screen-sm-max) {
+				width: 55%;
+				top: 20%;
+			}
+			@media screen and (max-width:  600px) {
+				display: none;
+			}
+		}
+		.modal-content>div {
+			padding-left: 48%;
+			@media screen and (max-width:  600px) {
+				padding: 0;
+			}
+
+		}
+	}
+}

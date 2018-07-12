@@ -1424,6 +1424,7 @@
         }
     }
     textarea.form-control.write-us {
+        resize: none;
         @media screen and (min-width: $screen-sm-min) {
             height: 170px;
         }

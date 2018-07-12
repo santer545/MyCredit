@@ -4748,6 +4748,10 @@ $(document).ready(function() {
     	if (indexAnchor === -1) {
         	locationHref = location.href;
     	} else {
+    		var anchor = location.href.substring(indexAnchor);
+    		console.log(anchor);
+    		if (anchor === '#restructuring-anchor') $(".restructurization").removeClass("hidden");
+    		if (anchor === '#prolongation-anchor') $(".prolongation").removeClass("hidden");
     		locationHref = location.href.substring(0, indexAnchor);
     	}
     	
@@ -4768,12 +4772,12 @@ $(document).ready(function() {
 			}
 		});
     	
-    	// обработка кнопки "Реструктурировать":
-    	$(".js-to-restructuring").on('click', function(event){
+    	// обработка кнопки "Реструктурировать": Сказать Игорю
+  //   	$(".js-to-restructuring").on('click', function(event){
 
-    		$(".restructurization").removeClass("hidden");
-    		location.href = locationHref + '#restructuring-anchor';
-		});
+  //   		$(".restructurization").removeClass("hidden");
+  //   		location.href = locationHref + '#restructuring-anchor';
+		// });
     	
 	};
 
