@@ -1299,6 +1299,9 @@ td#fancy_title_right {
 /************************   Theme-content  ********************/
 .theme-content {
     font-family: $font-family-roman;
+    &.fade {
+        transition: opacity 1s ease-in-out;
+    }
     &.in {
         display: block;
         opacity: 1;
@@ -1357,7 +1360,6 @@ td#fancy_title_right {
             background-color: #eceef8;
             text-align: center;
             font-size: 18px;
-            color: #073b63;
             p {
                 padding:0 40px 20px;
                 margin: 0;
@@ -1461,9 +1463,12 @@ td#fancy_title_right {
         }
     }
     .theme-item {
+        display: none;
+        opacity: 0;
         height: 230px;
         width: 220px;
         margin: auto;
+        transition: opacity 1s ease-in-out;
         @media screen and (max-width: $screen-sm-max) {
              height: 220px;
              margin: auto;
@@ -1479,6 +1484,14 @@ td#fancy_title_right {
             @media screen and (min-width: $screen-sm-max) {
                 height: 240px;
             }
+        }
+        &.hide {
+            display: block;
+        }
+        &.active {
+            display: block;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
         }
     }
     .theme-link {
@@ -1559,6 +1572,16 @@ td#fancy_title_right {
         }
     }
     .modal-theme-slider {
+        min-height: 230px;
+        @media screen and (max-width: $screen-sm-max) {
+            min-height: 220px;
+        }
+         @media screen and (max-width: 220px) {
+            min-height: 208px;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            min-height: 190px;
+        }
         .owl-prev, .owl-next  {
             width: 15px;
             height: 15px;

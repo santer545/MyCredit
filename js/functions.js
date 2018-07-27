@@ -1,10 +1,10 @@
 /**
- * Файл с набором функций на JavaScript для работы с API KLT CREDIT,
- * используется для взаимодействия фронтенда с API CRM KLT CREDIT
+ * Файл с набором функций на JavaScript для работы с MyCredit,
+ * используется для взаимодействия фронтенда с API CRM MyCredit
  * 
  * @author Игорь Стебаев <Stebaev@mail.ru>
- * @copyright Copyright (c) 2016 Artjoker Company
- * @version 1.0
+ * @copyright Copyright (c) 2016- Artjoker Company
+ * @version 2.0
  * @package DesignAPI
  * @link http://www
  */
@@ -3635,10 +3635,16 @@ function sendConfirmEmail() {
 		dataType: 'json',
 		success: function(json){
 			// console.log(json);
+			var link = $('#confirmEmail');
+			var alreadyMessage = $('#already-send');
 			if(json.message){
 				$("#confirm-success").modal();
+	            link.addClass('hidden').prev().addClass('hidden');
+	            alreadyMessage.removeClass('hidden');
 			} else {
 				$("#confirm-error").modal();
+				link.removeClass('hidden').prev().removeClass('hidden');
+                alreadyMessage.addClass('hidden');
 			}
 		},
 		error: function(jqXHR, textStatus){
@@ -4026,9 +4032,15 @@ function tranzzoPayAnotherCard() {
 							// console.log(js.data);
 							location.href = js.data.Url;
 						}
-					// если не 3Ds, просто уходим по ссылке на наш сайт:
+					// если не 3Ds, заполняем форму для внешнего поста, или просто уходим по ссылке на наш сайт:
 					} else {
-						location.href = $("#backUrl").text();
+						if (js.data.Url ) {
+							// заполняем форму для внешнего поста:
+							// console.log(js.data);
+							location.href = js.data.Url;
+						} else {
+							location.href = $("#backUrl").text();
+						}
 					}
 
 				} else {
@@ -4313,7 +4325,6 @@ function tranzzoStartPayAnotherCard() {
 
 	$(".new-repayment-data").removeClass("hidden");
 	$("#div_step1").removeClass("hidden");
-
 }
 
 /**
@@ -4421,6 +4432,12 @@ function deleteCookie(name) {
 	setCookie(name, "", {
 		expires: -1
 	})
+}
+
+function ajaxError(jqXHR, textStatus, errorThrown) {
+    // console.log(jqXHR); // вывод JSON в консоль
+    console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+    // console.log(errorThrown); // вывод JSON в консоль
 }
 
 /*
@@ -4700,14 +4717,44 @@ $(document).ready(function() {
     if ($("#div-beforeunload").length > 0) {
 
     	// событие при нажатии на ссылку:
-		$('body').on('click', 'a[href^="http"][id!="a-beforeunload"], a[href^="/"]:not(.confirm), a.lang-link', function(e) {
+		$('body').on('click', 'a[href^="http"][id!="a-beforeunload"], a:not([transport]), a[href^="/"]:not(.confirm), a.lang-link', function(e) {
 			e.preventDefault();	// отключить обработчик
 		    // console.log(e);
 		    var href = e.currentTarget.attributes.href.value;
+                    
 		    $('#a-beforeunload').attr('href', href);
 		    $('#span-beforeunload').text($('#span_beforeunload_text').text());
 		    $('#div-beforeunload').modal('show');
 		});
+                
+                
+        $('.js-leaving-page-interview').on('click', function(e) {
+            e.preventDefault();
+
+            var $this = $(this),
+                reason = [];
+
+            $('input[name="leaving_page_reason"]:checked').each(function() {
+                reason.push($(this).val());
+            });
+
+            var data = {
+                typeData: 'leavingPageReason',
+                pageId: $this.data('id'),
+                leavingPageReason: reason
+            };
+
+            $.ajax({
+                url: '/ru/?ajax',
+                type: 'POST',
+                data: {data: data},
+                dataType: 'json',
+                success: function(json){
+                    window.location = $this.attr('href');
+                },
+                error: ajaxError
+            });
+        });
     }
 	// console.log($('a[href^="http"]'));
 	
@@ -4740,47 +4787,6 @@ $(document).ready(function() {
 		});
     }
 
-    // если есть секция пролонгации, или реструктуризации:
-    if ($(".prolongation-item").length > 0) {
-		
-    	// получаем url без якоря:
-    	var indexAnchor = location.href.indexOf("#");
-    	if (indexAnchor === -1) {
-        	locationHref = location.href;
-    	} else {
-    		var anchor = location.href.substring(indexAnchor);
-    		console.log(anchor);
-    		if (anchor === '#restructuring-anchor') $(".restructurization").removeClass("hidden");
-    		if (anchor === '#prolongation-anchor') $(".prolongation").removeClass("hidden");
-    		locationHref = location.href.substring(0, indexAnchor);
-    	}
-    	
-    	// обработка кнопки "Продлить":
-    	$(".js-to-prolongation").on('click', function(event){
-
-    		$(".prolongation").removeClass("hidden");
-    		location.href = locationHref + '#prolongation-anchor';
-		});
-    	
-    	$(".js-checkbox-prolong").on('click', function(event){
-
-			var btn = $(this).closest('.prolongation-body').find('.btn-personal');
-			if (this.checked) {
-				$(btn).removeAttr('disabled');
-			} else {
-				$(btn).attr('disabled', true);
-			}
-		});
-    	
-    	// обработка кнопки "Реструктурировать": Сказать Игорю
-  //   	$(".js-to-restructuring").on('click', function(event){
-
-  //   		$(".restructurization").removeClass("hidden");
-  //   		location.href = locationHref + '#restructuring-anchor';
-		// });
-    	
-	};
-
     // если есть кнопка/ссылка просмотра доп.соглашения:
     if ($(".js-btn-dopdogovor").length > 0) {
 		$(".js-btn-dopdogovor").on('click', function(event){
@@ -4800,6 +4806,11 @@ $(document).ready(function() {
     // если есть секции нотификации с popup:
     if ($(".js_div_notify_popup").length > 0) {
 		
+    	// добавляем класс для показа popup через время:
+    	setTimeout(function() { 
+	    	$('.js_div_notify_popup').addClass('active');
+    	}, 3000);
+    	
     	$(".js_btn_notify_popup").on('click', function(event){
 			
     		// обрабатываем кнопку "закрыть" (крестик) 
@@ -4847,6 +4858,60 @@ $(document).ready(function() {
 			sendAjax(data);
 		});
     }
+
+    /* Обрабатывает форму обратной связи.
+     * замыкание в значительной степени повторяет onClickSendEmail(),
+     * но несколько универсальнее.
+     * onClickSendEmail() оставляем пока на всякий случай.
+     */
+    $('.js-send-feedback').on('click', function() {
+		var $form = $($(this).parent('form'));
+		
+		if (!validate($form)) {
+			return false;
+		}
+		
+		var url = "/ru/?ajax",
+			$messageTextarea = $form.find('textarea[name="sendMail[message]"]');
+
+		var data = {
+		    typeData: 'sendEmailtoSupport',
+		    fromName: $form.find('input[name="sendMail[sername]"]').val(),
+		    fromEmail: $form.find('input[name="sendMail[email]"]').val(), 
+		    message: $messageTextarea.val() 
+		};
+
+		// отправить массив на сервер
+		console.log("Передаем запрос ajax " + url);
+
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: {data: data},
+			dataType: 'json',
+			success: function(json){
+				if(json) {
+					//var js = JSON.parse(json);
+					var js = json;
+					
+					console.log(js);
+					if (js.message == 'OK') {
+						$("#div_SendEmail").addClass("bottom-call-hidden");
+						$("#div_resultEmail").removeClass("bottom-call-hidden");
+						$("#thanks").modal("show");
+						$messageTextarea.val("");
+						$("#button_sendMe").removeAttr("disabled");
+					}
+				};
+			},
+		
+			error: function(jqXHR, textStatus, errorThrown){
+				// console.log(jqXHR); // вывод JSON в консоль
+				console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+				// console.log(errorThrown); // вывод JSON в консоль
+			}
+		});
+	});
     
 	//================================================================================================================    
     /*   

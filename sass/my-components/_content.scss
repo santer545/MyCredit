@@ -145,16 +145,27 @@
             font-size: 13px;    
         }
         .neangelu-labe {
-            right: 5px;
+            //right: 5px;
+            right: 10px;
+            bottom: 2px;            
             max-width: 100px;   
             box-shadow: none;
+            img {
+               width: 100%; 
+            }
             @media screen and (max-width: $screen-md-max) {
                 width: 60px;
                 height: 60px;
+                img {
+                   padding: 0; 
+                }
             }
             @media screen and (max-width: $screen-sm-max) {
                 display: block;
-                bottom: 7px;
+                top: -20px;
+                z-index: 3;
+            }
+            @media screen and (max-width: $screen-xs-max) {
                 right: 5px;
             }
         }
@@ -1215,13 +1226,12 @@
             color: #fff;
             font-size: 26px;
             text-align: center;
-            line-height: 26px;
-            padding-top: 9px;
-            padding-bottom: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             box-shadow: 5px 5px 20px -10px rgb(0,0,0);
             img {
                 display: inline-block;
-                vertical-align: baseline;
             }
         }
         &-heading {

@@ -12,6 +12,11 @@ header {
 .navbar {
 	position: static!important;
 }
+.close-mobile-menu {
+	@media screen and (min-width: 768px) {
+		position: static!important;
+	}
+}
 .new-main,
 .new-content {
     .header.js-header {
@@ -32,12 +37,14 @@ header {
 	    	}
 	    }
 	}
+	.calculator-heading--top {
+	    padding: 0;
+	}
 }
 /***shadow***/
 
 	.navBlock-shadow {
 		background-color: transparent;
-		transition: all .3s ease-in;
 	}
 	.navBlock-shadow.open {
 		position: fixed;
@@ -46,8 +53,7 @@ header {
 		right: 0;
 		left: 0;
 		z-index: 98;
-		background-color: rgba(0, 0, 0, .3);
-		transition: all .3s ease-out;
+		background-color: rgba(0, 0, 0, .5);
 		@media screen and (max-width: 1300px) {
 			top: 0;
 		}
@@ -65,7 +71,7 @@ header {
 			text-align: right;
 		}
 		@media screen and (max-width: 767px) {
-		    padding-top: 45px;
+		    padding-top: 50px;
 		}
 		.overflow-menu {
 			display: none;
@@ -94,7 +100,7 @@ header {
 			&.open>a {
 				color: #003764;
 			}
-			&:hover:not(.open) {
+			&:hover:not(.open)>a {
 				@media screen and (max-width: $screen-xs-max) {
 			    	background-color: #ebf1fa;
 				}
@@ -129,6 +135,7 @@ header {
 		        	padding: 0;
 		        	&>a {
 		        		padding: 15px 20px;
+		        		border-radius: 0;
 		        	}
 		        }
 		    }
@@ -151,6 +158,9 @@ header {
 	                display: block;
 	                padding: 15px 20px;
 	                font-size: 16px;                
+	            }
+	            @media screen and (min-width: 1600px) {
+	            	font-size: 15px;
 	            }
 	        }
 	        .dropdown-menu {
@@ -177,38 +187,80 @@ header {
 		}
 	}
 	
-
+	.js-column-height {
+		@media screen and (max-width: $screen-sm-max) {
+	    	height: auto !important;
+		}
+	}
 	/***POP-UP***/
+
 	.pop-up_navBlock {
   		display: none;
   		position: absolute;
   		top: 100%;
     	right: 0;
     	left: 0;
-    	padding: 0 10px;
+    	padding: 0;
     	text-align: left;
 		background-color: #fff;
 		border: 1px solid #e2e2e2;
 		border-bottom-right-radius: 5px;
 		border-bottom-left-radius: 5px;
 		z-index: 99;
-
+		@media screen and (max-width: $screen-xs-max) {
+			position: static;
+			background-color: transparent;
+			border: none;
+		}
+		&.active {
+			display: flex;
+			flex-wrap: nowrap;
+			align-items: stretch;
+			@media screen and (max-width: $screen-sm-max) {
+				flex-wrap: wrap;
+			}
+		}
+		&.navAnsverBlock {
+			@media screen and (min-width: 768px) and (max-width: 991px) {
+				background-color: transparent;
+				border: none;
+				margin-top: 1px;
+			}
+		}
 		.owl-carousel-nav,
 		.owl-stage-outer,
 		.owl-stage,
 		.owl-item,
-		/*.nav-banner*/{
+		.nav-banner{
 			height: 100%;
+			.navAnsverBlock &{
+				@media screen and (max-width: $screen-sm-max) {
+					display: none;
+				}
+			}
+			@media screen and (max-width: $screen-xs-max) {
+				display: none;
+			}
 		}
 		&>.row {
 			display: flex;
 			flex:1 1 auto;
 			height: 100%;
 			flex-wrap: nowrap;
-			@media screen and (max-width: $screen-sm-max) {
+			align-items: stretch;
+			>div {
+				float: none !important;
+			}
+			@media screen  and (max-width: $screen-sm-max) {
 				flex-wrap: wrap;
 				>.col-sm-6:first-of-type {
 					width: calc(50% - 1px);
+				}
+			}
+			@media screen and (max-width: $screen-xs-max) {
+				display: block;
+				>.col-sm-6:first-of-type {
+					width: 100%;
 				}
 			}
 		}
@@ -222,12 +274,18 @@ header {
 			padding: 30px 60px;
 			font-family: $font-family-roman;
 			font-size: 14px;
+			flex: 1 0 33%;
+	    	max-width: 33%;
 			@media screen and (max-width: $screen-sm-max) {
 				padding: 15px;
+				flex: 0 0 50%;
+	    		max-width: 50%;
 			}
 			@media screen and (max-width: $screen-xs-max) {
-				padding: 10px 20px;
+				padding: 10px 50px 10px 20px;
 				font-size: 14px;
+				flex: 0 0 100%;
+	    		max-width: 100%;
 			}
 			a {
 				display: inline-block;
@@ -235,8 +293,8 @@ header {
 				text-decoration: underline;
 				font-family: $font-family-medium;
 				@media screen and (max-width: $screen-xs-max) {
-					margin-top: 10px;
 					padding-left: 0 !important;
+					padding-bottom: 0;
 					text-decoration: underline;
 					display: inline-block !important;
 					font-size: 14px !important;
@@ -250,14 +308,18 @@ header {
 			border-left: 1px solid #e2e2e2;
 			border-right: 1px solid #e2e2e2;
 			padding: 35px 0;
+			flex: 0 0 25%;
+	    	max-width: 25%;
 			@media screen and (max-width: $screen-sm-max) {
+				flex: 0 0 50%;
+	    		max-width: 50%;
 				padding: 10px 0;
 				border-right: none;
 			}
 			@media screen and (max-width: $screen-xs-max) {
 				border:none;
-				border-top: 1px solid #e2e2e2;
-				border-bottom: 1px solid #e2e2e2;
+				flex: 0 0 100%;
+	    		max-width: 100%;
 			}
 			ul {
 				padding: 0;
@@ -276,9 +338,8 @@ header {
     				padding: 10px 60px;
     			}
     			@media screen and (max-width: $screen-xs-max) {
-    				padding: 10px;
-    				text-align: center;
-    				font-size: 14px;
+    				padding: 10px 20px;
+    				text-align: left;
     			}
     			&:hover {
     				background-color: #ebf1fa;
@@ -293,26 +354,6 @@ header {
 
 	.navAboutBlock,
 	& .navAboutBlock .nav-banner {
-		overflow: hidden;
-		@media screen and (min-width: $screen-lg-min) {
-			height: 418px;
-		}
-		@media screen and (min-width: $screen-md-min) {
-			height: 402px;
-		}
-		@media screen and (max-width: $screen-sm-max) {
-			height: auto;
-			max-height: 530px;/*550px;*/
-		}
-		@media screen and (min-width: 580px) and (max-width: $screen-xs-max) {
-			max-height: 590px;
-		}
-		@media screen and (min-width: 430px) and (max-width: 579px) {
-			max-height: 609px;
-		}
-		@media screen and (max-width: 429px) {
-			max-height: 647px;
-		}
 		.pop-up_navBlock_menu a {
 			@media screen and (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
 				padding:10px 25px 10px 30px;
@@ -320,68 +361,37 @@ header {
 		}
 	}
 
-	/***  navTake  ***/
-	.navTakeBlock,
-	& .navTakeBlock .nav-banner {
-		overflow: hidden;
-		@media screen and (min-width: $screen-lg-min) {
-			height: 276px;
-		}
-		@media screen and (min-width: 1042px) and (max-width:  1199px) {
-			height: 247px;
-		}
-		@media screen and (min-width: $screen-md-min) and (max-width: 1041px){
-			height: 259px;
-		}
-		@media screen and (min-width: 768px) and (max-width: 991px) {
-			height: 450px;
-		}
-		@media screen and (max-width: $screen-sm-max) {
-			height: auto;
-			max-height: 405px;
-		}
-		@media screen and (max-width: $screen-xs-max) {
-			max-height: 426px;
-		}
-		@media screen and (min-width: 430px) and (max-width: 574px) {
-			max-height: 445px;
-		}
-		@media screen and (max-width: 429px) {
-			max-height: 483px;
-		}
-	}
 
 	/***  navAnsver  ***/
 	
 	.navAnsverBlock,
 	& .navAnsverBlock .nav-banner {
-		overflow: hidden;
-		@media screen and (min-width: $screen-lg-min) {
-			height: 440px;
-		}
-		@media screen and (max-width: $screen-md-max) {
-			height: 450px;
-		}
-		@media screen and (max-width: $screen-sm-max) {
-			height: auto;
-			max-height: 490px;
-		}
-		@media screen and (min-width: 768px) and (max-width: 991px) {
-			border-radius: 5px;
-		}
-		@media screen and (max-width: $screen-xs-max) {
-			max-height: 690px;
-		}
-		@media screen and (min-width: 375px) and (max-width: 500px) {
-			max-height: 709px;
-		}
-		@media screen and (max-width: 429px) {
-			max-height: 728px;
-		}
 		.pop-up_navBlock_menu {
 			@media screen and (min-width: 768px) and (max-width: 991px) {
 				padding:0;
-				border-right: 1px solid #e2e2e2; 
+				//border-right: 1px solid #e2e2e2;
+				border: none;
+				flex: 0 0 100%;
+	    		max-width: 100%;
+	    		ul {
+	    			background-color: #fff;
+	    			border-radius: 4px;
+		    		>li {
+		    			border: 1px solid #ddd;
+		    			border-top: none;
+	    				//background-color: #fff;
+	    				&:last-child,
+	    				&:last-child>a {
+	    					border-bottom-right-radius: 4px;
+	    					border-bottom-left-radius: 4px;
+	    				}
+	    				&:first-child,
+	    				&:first-child>a {
+	    					border-top-right-radius: 4px;
+	    					border-top-left-radius: 4px;
+	    				}
+		    		}
+		    	}
 			}
 			a {
 				@media screen and (min-width: 991px) and (max-width: $screen-md-max) {
@@ -400,10 +410,10 @@ header {
 				}
 			}
 		}
-	}
-	.navAnsverBlock {
-		@media screen and (max-width: 767px) {
-			display: none !important;
+		.pop-up_navBlock_text{
+			@media screen and (min-width: 768px) and (max-width: 991px) {
+				display: none;
+			}
 		}
 	}
 
@@ -411,18 +421,26 @@ header {
 
 	.carousel-nav {
 		padding: 0;
+		float: none!important;
+		position: relative;
+	    flex: 1 0 42%;
+	    max-width: 42%;
+	    align-self: stretch;
+	    @media screen and (max-width: $screen-sm-max) {
+			flex: 0 0 100%;
+	    	max-width: 100%;
+	    	height: auto !important;
+		}
+		@media screen and (max-width: $screen-xs-max) {
+			display: none;
+		}
 		.owl-dots {
 			position: absolute;
 			padding-left: 0;
-		    bottom: 0;
+		    bottom: 15px;
 		    left: 50%;
 		    text-align: center;
 		    transform: translate(-50%);
-		    @media screen and (min-width: $screen-xs-max) {
-		    	padding-left: 15px;
-		    	bottom: 20px;
-		    	transform: none;
-		    }
 		}
 		.owl-dot {
 			display: inline-block;
@@ -431,10 +449,6 @@ header {
 		    height: 10px;
 		    border-radius: 50%;
 		    background-color: #abbbce;
-		    @media screen and (max-width: $screen-xs-max) {
-		    	width: 8px;
-		    	height: 8px;
-		    }
 			&.active {
 				background-color: #0083d1;
 			}
@@ -444,12 +458,19 @@ header {
 		}
 	}
 	.nav-banner {
-		position: relative;
-		@media screen and (min-width: $screen-sm-max) {
-			min-height: 245px;
-		}
-		@media screen and (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
 
+		// height: 100%;
+		// width: 100%;
+		// flex: 1 0 100%;
+		/*@media screen and (min-width: 992px) {
+			position: absolute;
+		    top: 0;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		}*/
+		>.container-fluid {
+			// height: 100%;
 		}
 		a {
 			font-family: $font-family-roman;
@@ -473,8 +494,13 @@ header {
 		&-heading {
 			font-size: 22px;
 			font-family: $font-family-bold;
-			padding: 50px 0 60px;
+			padding: 50px 30px 60px 0;
 			color: #0054bc;
+			//height: 100%;
+			width: 100%;
+			padding-left: 50%;
+			position: relative;
+			z-index: 1;
 			span {
 				display: inline-block;
 				font: inherit;
@@ -500,6 +526,7 @@ header {
 		    bottom: 0;
 		    top: auto;
 		    width: 60%;
+		    z-index: 0;
 		    @media screen and (max-width: $screen-sm-max) {
 		    	width: 30%;
 		    }
@@ -643,6 +670,11 @@ header {
 	}
 	.navLink_transform .dropdown-menu li:first-child {
 		@media screen and  (min-width: $screen-sm-min) {
+			display: none;
+		}
+	}
+	.navAnsverBlock .carousel-nav {
+		@media screen and (min-width: 768px) and (max-width: 991px) {
 			display: none;
 		}
 	}

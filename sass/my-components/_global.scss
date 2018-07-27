@@ -1045,6 +1045,8 @@
                 -webkit-box-shadow: 10px 10px 54px -16px rgba(255, 69, 75, 1);
                 -moz-box-shadow: 10px 10px 54px -16px rgba(255, 69, 75, 1);
                 box-shadow: 10px 10px 54px -16px rgba(255, 69, 75, 1);
+                right: 10px;
+                bottom: 2px;
                 @media screen and (max-width: $screen-sm-max) {
                     display: none;
                 }

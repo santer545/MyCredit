@@ -1445,7 +1445,8 @@
         vertical-align: middle;
         padding: 20px 0;
         &:not(:last-child) {
-            margin-right: 3%;
+            //margin-right: 3%;
+            margin-right: 2%;
         }
         a {
             font-size: 16px;
