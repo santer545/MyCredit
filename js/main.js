@@ -2031,6 +2031,19 @@ function renameImageForBrowsers() {
 }
 
 $(document).ready(function() {
+        var myHash = location.hash;
+        location.hash = '';
+        if(myHash[1] != undefined){
+            if (window.innerWidth > 1299) {
+                $('html, body').animate({scrollTop: $(myHash).offset().top - 100}, 500);
+            }
+            else if (window.innerWidth > 768){
+                $('html, body').animate({scrollTop: $(myHash).offset().top - 64}, 500);
+            }
+            else {
+               $('html, body').animate({scrollTop: $(myHash).offset().top}, 500); 
+            }
+        }
     prolongationShowHideInfo();
     domRangeCreate();
     menuOverflow();
@@ -2344,6 +2357,8 @@ function navScrol_whyWe()  {
         var anchorOut = $('#anchor_1');
         scrollToObject(anchorOut); // скролинг до объекта
         $('.overflow-menu .more-menu').removeClass("open");
+        $('.mobile-navbar-fixed').removeClass('in');
+        $('.navBlock-shadow').removeClass("open");
         return false;
     });
 }

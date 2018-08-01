@@ -39,7 +39,8 @@
 				max-width: 300px;
 				margin-top:  10px;
 				padding: 10px 15px;
-				background-position: 80% 0;
+				background-position: 85% -30px;
+				background-size: 200%;
             }
     	}
     	.modal-content {
@@ -126,32 +127,40 @@
     			font-size: 35px;
     			position: absolute;
     			top: 12px;
-    			right: 18px;
+    			right: 10px;
     			line-height: 16px;
     		}
     		&:hover {
     			background-color: #daa414;
     			&::after {
-    				right: 8px;
+    				right: 5px;
     			}
     		}
     		@media screen and (max-width:  830px) {
     			margin-bottom: 15px;
     			padding: 10px 36px 10px 20px;
+	    		&::after {
+					top: 10px;
+				}
+				&:hover {
+	    			&::after {
+	    				right: 8px;
+	    			}
+	    		}
     		}
     		@media screen and (max-width:  600px) {
 				margin: 5px auto 10px;
 				width: 100%;
 				text-align: center;
 				&::after {
-					top: 10px;
-					right: 45px;
+					right: 35px;
 				}
 				&:hover {
 	    			&::after {
 	    				right: 25px;
 	    			}
 	    		}
+				
     		}
     	}
     	.description {
@@ -188,6 +197,10 @@
 			@media screen and (max-width: 830px) {
 				padding-top: 20px;
 			}
+			@media screen and (max-width:  600px) {
+				background-position: 80% 0;
+				background-size: cover;
+			}
 		}
 		.personal-text {
 			color: #0056b8;
@@ -204,19 +217,21 @@
 			width: 190px;
 			margin: 20px 0 100px;
 			&::after {
-				top: 10px;
+				top: 11px;
 			}
 			@media screen and (max-width: 830px) {
 				margin-bottom: 50px;
+				&::after {
+					top: 9px;
+				}
 			}
 			@media screen and (max-width:  600px) {
 				margin: 25px auto;
 				&::after {
-					top: 9px;
-					right: 20px;
+					right: 15px;
 				}
 				&:hover::after {
-					right: 15px;
+					right: 10px;
 				}
 			}
 		}

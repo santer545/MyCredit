@@ -3878,10 +3878,11 @@ function submitCreditsForm(formKey, href, amount) {
 
 /**
  * запускает submit формы оплаты кредита
- * 
+ * @param isCurrentCard
+ * @param IsVisaCheckoutPayment
  * @returns {Boolean}
  */
-function submitPay(isCurrentCard) {
+function submitPay(isCurrentCard, isVisaCheckoutPayment) {
 
 	$('.js-btn-pay').attr('disabled', true);	// дизейблим кнопки оплат
 	
@@ -3892,6 +3893,10 @@ function submitPay(isCurrentCard) {
 	} else {
 		document.getElementById("isCurrentCard").value = "0";
 	}
+	
+	if (isVisaCheckoutPayment === 1) {
+		document.getElementById("IsVisaCheckoutPayment").value = "1";
+	}
 		
 	window.document.forms['form_pay'].submit();
 	
@@ -3899,7 +3904,6 @@ function submitPay(isCurrentCard) {
 	
 	return false;
 }
-
 
 /**
  * отсылает данные калькулятора через ajax на локальный сервер для сохранения в $_SESSION, закрывает калькулятор
@@ -4717,7 +4721,7 @@ $(document).ready(function() {
     if ($("#div-beforeunload").length > 0) {
 
     	// событие при нажатии на ссылку:
-		$('body').on('click', 'a[href^="http"][id!="a-beforeunload"], a:not([transport]), a[href^="/"]:not(.confirm), a.lang-link', function(e) {
+		$('body').on('click', 'a[href^="http"][id!="a-beforeunload"]:not([transport]), a[href^="/"]:not(.confirm), a.lang-link', function(e) {
 			e.preventDefault();	// отключить обработчик
 		    // console.log(e);
 		    var href = e.currentTarget.attributes.href.value;

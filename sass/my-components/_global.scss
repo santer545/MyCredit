@@ -936,10 +936,12 @@
         padding: 5px 10px;
         border-radius: 25px;
         font-family: $font-family-bold;
-        font-size: 20px;
+        //font-size: 20px;
+        font-size: 18px;
         color: #ffca54;
         border: 1px dashed #ffca54;
-        margin-left: 10px;
+        //margin-left: 10px;
+        margin-left: 0;
     }
     &-heading {
         text-align: left;
@@ -1080,7 +1082,7 @@
             /*.calculator-banner-text {
                 display: none;
             }*/
-            background-color: #7e57c2;
+            background-color: #7e57c2 !important;
             .calculator-hb-text {
                 display: block;
                 color: #fff;
