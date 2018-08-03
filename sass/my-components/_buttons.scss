@@ -1315,3 +1315,43 @@
   from { background-color: #58b4e5;border-color: #58b4e5;}
   to { background-color: #0056b8;border-color: #0056b8;}
 }
+.pay-block-holder .pay-block.visa-checkout {
+    margin: 22px 0 0 22px; 
+    @media screen and (max-width: $screen-xs-max) {
+        display: block;
+        margin-left: 0;
+    }
+}
+.btn-visa {
+    background: #1A1F71;
+    padding: 7px 12px 7px 80px; 
+    width: 388px;
+    display: flex;
+    justify-content: center;
+    height: 44px;
+    position: relative;
+    &::before {
+        content: "";
+        background-image: url(../assets/images/VISA-aktia/Subtract.svg);
+        background-size: cover;
+        display: block;
+        position: absolute;
+        width: 80px;
+        height: 50px;
+        left: -4px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    @media screen and (max-width: $screen-md-max) {
+        width: 373px;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        width: 374px;
+    }
+    @media screen and (max-width: 480px) and (orientation: landscape) {
+        width: 200px;
+    }
+    @media screen and (max-width: 480px) and (orientation: portrait) {
+        width: 100%;
+    }
+}

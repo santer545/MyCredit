@@ -171,6 +171,10 @@
         color: #0059b7;
         text-decoration: underline;
         border: none;
+        margin-bottom: 10px;
+        &.pay-block {
+            margin-right: 20px;
+        }
     }
     .repayment-additional {
         color: #003864;
