@@ -452,6 +452,8 @@
 				position: relative;
 			}
 			&-heading {
+				display: inline-block;
+    			text-decoration: none;
 				font-size: 18px;
 				padding: 20px 0;
 				text-transform: uppercase;

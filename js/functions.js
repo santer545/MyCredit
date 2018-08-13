@@ -3978,6 +3978,43 @@ function test_verify_card(id) {
 */
 
 /**
+ * Проверяет необходимость перезагрузки страницы Мои карты, при необходимости - перегружает
+ */
+function tranzzoCheckRefreshPage(interval_refresh_page) {
+	var url = "/ru/?ajax";	
+
+	var data = {
+        typeData: 'tranzzoCheckRefreshPage'
+    };
+
+	var timerId = setInterval(function() {
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: {data: data},
+			dataType: 'json',
+			success: function(json) {
+				if (json) {
+					var js = json;
+					// console.log(js);
+					if ((js.message == 'OK') && (js.toRefresh == 'yes')) {
+						location.reload(); 
+					}
+				};
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				// console.log(jqXHR); // вывод JSON в консоль
+				console.log('Сообщение об ошибке от сервера: '+textStatus); // вывод JSON в консоль
+				// console.log(errorThrown); // вывод JSON в консоль
+			}
+		});
+
+	}, interval_refresh_page * 1000);
+	
+	return false;
+}
+
+/**
  * отправляет данные по карте в CRM при нажатии на кнопку
  * @returns
  */
@@ -4605,11 +4642,14 @@ $(function() {
 //    animation: true
 //});
 
-
 $(document).ready(function() {
 	
+	// тест загрузки скриптов:
+	console.log('run downloadJS');
+	downloadJS();
+
 	// перенесено с главной
-	getSessionData();
+	// getSessionData();
 	onLoadSlider();
 	
 	var score = Math.round(Number($("#ratingScore").text()));
@@ -4698,6 +4738,19 @@ $(document).ready(function() {
     	});
     }
 
+    // если есть элементы ввода карты:
+    if ($(".js-card").length > 0) {
+
+        // событие при вводе номера карты:
+    	$(".js-card").on('keyup', function(event) {
+    		var input = $(this).val().replace(/_+/g, '');
+    		// переход на следующий input, если ввели четыре цифры
+    		if (input.length == 4) {
+                $(this).next().focus();
+    		}
+    	});
+    }
+
     // если есть элементы для выбора доп. карт:
     if ($("#btn-cardsAdditional-select").length > 0) {
 
@@ -4706,7 +4759,7 @@ $(document).ready(function() {
     		onClickCardsAdditional('main');
     	});
 
-        // событие при нажатии на кнопку отрицательного отзыва:
+        // событие при нажатии на кнопку удаления:
     	$("#btn-cardsAdditional-delete").on('click', function(event) {
     		onClickCardsAdditional('delete');
     	});

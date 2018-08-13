@@ -747,7 +747,7 @@
     position: relative;
     overflow: hidden;
     @include button-variant($btn-personal-color,
-    #45bc75,
+    #15CD8C,
     transparent);
     border-radius: $btn-personal-radius;
     border-width: 0;
@@ -769,7 +769,7 @@
         left: -35px;
         right: -35px;
         bottom: -17px;
-        background: #45bc75;
+        background: #15CD8C;
         border-radius: 100%;
         -webkit-transform: scale(1);
         transform: scale(1);
@@ -788,6 +788,22 @@
         }
     }
 
+}
+.btn-transparent {
+    display: inline-block;
+    padding: 11px 16px;
+    font-size: 16px;
+    line-height: 19px;
+    min-width: 165px;
+    color: #15CD8C;
+    text-decoration: none;
+    border-radius: $btn-personal-radius;
+    opacity: .5;
+    &:hover {
+        color: #15CD8C;
+        opacity: 1;
+        text-decoration: underline;
+    }
 }
 
 .btn-start {

@@ -1195,9 +1195,10 @@
             bottom: 15px;
             font-size: 0;
             border-radius: 50%;
-            -webkit-box-shadow: 4px -1px 66px -13px rgba(169, 111, 223, 1);
+            /*-webkit-box-shadow: 4px -1px 66px -13px rgba(169, 111, 223, 1);
             -moz-box-shadow: 4px -1px 66px -13px rgba(169, 111, 223, 1);
-            box-shadow: 4px -1px 66px -13px rgba(169, 111, 223, 1);
+            box-shadow: 4px -1px 66px -13px rgba(169, 111, 223, 1);*/
+            box-shadow: 4px -1px 66px -13px #ed9818;
             @media screen and (max-width: 1700px) {
             max-width: 100px;
             right: 30px;

@@ -149,6 +149,7 @@ gulp.task('scripts', function() {
             //sourceDir + '/grayscale.js',
             sourceDir + '/wish.js',
             sourceDir + '/easter.js',
+            sourceDir + '/downloadJS.js',
 
             //подключение функционала пуш уведомлений:
             //sourceDir + '/firebase/firebase-config.js', //- подключается отдельно
