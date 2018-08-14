@@ -965,22 +965,21 @@
                 padding: 15px 30px;
             }
             @media screen and (max-width: $screen-xs-max) {
-                padding: 15px 80px 15px 20px;
+                padding: 15px 120px 15px 20px;
             }
-            @media screen and (max-width: 500px) {
+            /*@media screen and (max-width: 500px) {
                 padding-right: 120px;
             }
             @media screen and (max-width: 480px) {
-                padding: 10px 110px 10px 20px;
-            }
+                padding: 10px 130px 10px 20px;
+            }*/
         }
         &--top {
-            padding: 0;
             position: relative;
             border-radius: 6px 6px 0 0;
             text-align: left;
             background-color: #f1f1f1;
-            font: 22px / 1.2 "HelveticaNeueCyr Medium", Arial, sans-serif;
+            font: 21px / 1.2 "HelveticaNeueCyr Medium", Arial, sans-serif;
             @media screen and (max-width: 480px) {
                 font-size: 15px;
             }
@@ -1198,23 +1197,27 @@
             /*-webkit-box-shadow: 4px -1px 66px -13px rgba(169, 111, 223, 1);
             -moz-box-shadow: 4px -1px 66px -13px rgba(169, 111, 223, 1);
             box-shadow: 4px -1px 66px -13px rgba(169, 111, 223, 1);*/
-            box-shadow: 4px -1px 66px -13px #ed9818;
-            @media screen and (max-width: 1700px) {
-            max-width: 100px;
-            right: 30px;
+            max-width: 200px;
+            right: 0;
             img {
-                border-radius: 50%; 
-            }
-        }
+                    border-radius: 50%;
+                    max-width: 50%;
+                    &.zero-labe {
+                        box-shadow: 4px -1px 66px -13px #ed9818;
+                    }
+                    &.regime-labe {
+                        box-shadow: 4px -1px 66px -13px #EF5350;
+                        position: relative;
+                        right: -10px;
+                    } 
+                }
             @media screen and (max-width: $screen-md-max) {
-                max-width: 100px;
-                right: 20px;
-            }
-            
+                max-width: 150px;
+                right: 10px !important;
+            }            
             @media screen and (max-width: $screen-xs-max) {
-                max-width: 75px;
-                bottom: 10px;
-                right: 10px;
+                max-width: 120px;
+                bottom: 25px !important;
             }
             &-rate {
                 position: absolute;

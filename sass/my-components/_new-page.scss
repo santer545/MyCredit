@@ -1,5 +1,8 @@
 .new-main-av {
 	background-color: #fff;
+	.calculator-heading--top {
+	    padding: 0;
+	}
 }
 header {
 	.row:first-of-type {
@@ -36,9 +39,6 @@ header {
 	    		width: 0; 
 	    	}
 	    }
-	}
-	.calculator-heading--top {
-	    padding: 0;
 	}
 }
 /***shadow***/

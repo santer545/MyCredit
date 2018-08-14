@@ -4788,12 +4788,9 @@ $(document).ready(function() {
         $('.js-leaving-page-interview').on('click', function(e) {
             e.preventDefault();
 
-            var $this = $(this),
-                reason = [];
+            var $this = $(this);
 
-            $('input[name="leaving_page_reason"]:checked').each(function() {
-                reason.push($(this).val());
-            });
+            var reason = $('input[name="leaving_page_reason"]:checked').val();
 
             var data = {
                 typeData: 'leavingPageReason',

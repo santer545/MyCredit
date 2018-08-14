@@ -541,7 +541,7 @@
     color: #fff;
     font-size: 22px;
     font-family: $font-family-medium;
-    background-color: #00b181;
+    background-color: #15CD8C;
     border: none;
     border-radius: 5px;
     border-width: 0;
@@ -803,6 +803,17 @@
         color: #15CD8C;
         opacity: 1;
         text-decoration: underline;
+    }
+}
+.btn-pop-up {
+    @extend .btn-transparent;
+    opacity: 1;
+    color: #fff;
+    background-color: #15CD8C;
+    &:hover {
+        background-color: #06a177;
+        color: #fff;
+        text-decoration: none;
     }
 }
 

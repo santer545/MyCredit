@@ -1261,7 +1261,7 @@ td#fancy_title_right {
     &.beforeunload {
         .modal {
             &-dialog {
-                width: 400px;
+                max-width: 400px;
             }
             &-content {
                 padding: 0;
@@ -1270,23 +1270,124 @@ td#fancy_title_right {
                 padding: 24px 20px 16px;
                 background: #F1F1F1;
                 font-family: $font-family-bold;
+                line-height: 24px;
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
+                @media screen and (max-width: $screen-xs-max) {
+                    padding: 20px 30px 15px;
+                    font-size: 14px;
+                    line-height: 21px;
+                }
+                @media only screen and (max-width: $screen-xs-max) and (orientation: landscape) {
+                    padding: 15px 30px 10px;
+                    font-size: 13px;
+                    line-height: 18px;
+                }
+            }
+            &-body {
+                padding: 0 46px;
+                max-width: 100%;
+                @media screen and (max-width: $screen-xs-max) {
+                    padding: 0 20px;
+                }
+                h5 {
+                    margin-top: 24px;
+                    text-align: left;
+                    color: #000;
+                    line-height: 25px;
+                    @media screen and (max-width: $screen-xs-max) {
+                        margin-top: 15px;
+                    }
+                    @media only screen and (max-width: $screen-xs-max) and (orientation: landscape) {
+                        margin-top: 10px;
+                        font-size: 13px;
+                        line-height: 18px;
+                    }
+                }
+                label {
+                    display: block;
+                    position: relative;
+                    padding-left: 32px;
+                    text-align: left;
+                    margin-bottom: 7px;
+                    font-size: 14px;
+                    color: #777;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                    @media only screen and (max-width: $screen-xs-max) and (orientation: landscape) {
+                        margin-bottom: 5px;
+                        font-size: 13px;
+                    }
+                    .checkbox-emulator {
+                        position: absolute;
+                        left: 0;
+                        width: 16px;
+                        height: 16px;
+                        border: 1px solid #777;
+                        border-radius: 50%;
+                        margin: 2px 8px 3px;
+                        cursor: pointer;
+                        display: inline-block;
+                        vertical-align: middle;
+                        &::before {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            top: 2px;
+                            left: 2px;
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 50%;
+                            background-color: #0055B8;
+                            opacity: 0;
+                        }
+                    }
+                    input {
+                        display: none;
+                        &:hover~span {
+                            text-decoration: underline;
+                        }
+                        &:checked {   
+                            &~span {
+                                color: #0055B8;
+                            }
+                            &+span {
+                                border-color: #0055B8; 
+                                &:before {
+                                    opacity: 1;
+                                }
+                            }
+                            &:hover~span {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
             }
             &-footer {
                 display: flex;
                 justify-content: space-between;
-                padding: 0;
+                padding: 24px 30px;
                 border: none;
                 background-color: transparent; 
                 a {
-                    margin: 0 10px;
                     line-height: 19px;
                     display: inline-block;
-                    &.btn-personal {
+                    .btn-slider {
                         padding: 11px 16px;
                         font-size: 16px;
                     }
+                }
+                @media screen and (max-width: $screen-xs-max) {
+                     padding: 12px 15px;
+                     .btn-transparent,
+                     .btn-pop-up {
+                        min-width: 129px;
+                     }
+                }
+                @media only screen and (max-width: $screen-xs-max) and (orientation: landscape) {
+                    padding: 10px 15px;
                 }
             }
         }
